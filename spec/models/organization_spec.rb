@@ -1,5 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'factory tests' do
+    it 'has factory' do
+      expect(create(:organization)).to be_persisted
+    end
+  end
+
 end
