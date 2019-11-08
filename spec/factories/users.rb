@@ -1,12 +1,9 @@
 FactoryBot.define do
-  factory :organization do
-    name { Faker::Internet.name }
-    logo { Faker::Internet.name }
-  end
   factory :user do
     email { Faker::Internet.email }
-    first_name { Faker::Name.name }
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
     role { 'admin' }
-    organization_id { 1 }
+    organization
   end
 end
