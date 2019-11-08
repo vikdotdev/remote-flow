@@ -21,7 +21,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 
 gem 'jquery-rails'
-
+gem 'html2slim'
 gem 'slim-rails'
 
 gem 'devise'
