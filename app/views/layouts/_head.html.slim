@@ -1,0 +1,32 @@
+head
+  meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+  meta content="IE=edge" http-equiv="X-UA-Compatible" /
+  meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport" /
+  title Login Page - Frest - Bootstrap HTML admin template
+  link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,600%7CIBM+Plex+Sans:300,400,500,600,700" rel="stylesheet" /
+  /! BEGIN: Vendor CSS
+  = stylesheet_link_tag 'vendors.min.css', media: 'all', 'data-turbolinks-track': 'reload'
+  /! END: Vendor CSS
+  /! BEGIN: Theme CSS
+  = stylesheet_link_tag 'bootstrap.css', media: 'all', 'data-turbolinks-track': 'reload'
+  = stylesheet_link_tag 'bootstrap-extended.css', media: 'all', 'data-turbolinks-track': 'reload'
+  = stylesheet_link_tag 'colors.css', media: 'all', 'data-turbolinks-track': 'reload'
+  = stylesheet_link_tag 'components.css', media: 'all', 'data-turbolinks-track': 'reload'
+  = stylesheet_link_tag 'dark-layout.css', media: 'all', 'data-turbolinks-track': 'reload'
+  = stylesheet_link_tag 'semi-dark-layout.css', media: 'all', 'data-turbolinks-track': 'reload'
+  /! END: Theme CSS
+  /! BEGIN: Page CSS
+  = stylesheet_link_tag 'horizontal-menu.css', media: 'all', 'data-turbolinks-track': 'reload'
+  = stylesheet_link_tag 'authentication.css', media: 'all', 'data-turbolinks-track': 'reload'
+  /! END: Page CSS
+  /! BEGIN: Custom CSS
+  = stylesheet_link_tag 'style.css', media: 'all', 'data-turbolinks-track': 'reload'
+  /! END: Custom CSS
+  = csrf_meta_tags
+  = csp_meta_tag
+  = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+
+
+
