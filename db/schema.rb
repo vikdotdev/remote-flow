@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 2019_11_13_151048) do
     t.index ["organization_id"], name: "index_channels_on_organization_id"
   end
 
+  create_table "contents", force: :cascade do |t|
+    t.string "type"
+    t.string "video_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "device_groups", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -39,6 +46,14 @@ ActiveRecord::Schema.define(version: 2019_11_13_151048) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "organization_id", null: false
     t.index ["organization_id"], name: "index_devices_on_organization_id"
+  end
+  
+  create_table "gallery_images", force: :cascade do |t|
+    t.bigint "gallery_id"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["gallery_id"], name: "index_gallery_images_on_gallery_id"
   end
 
   create_table "organizations", force: :cascade do |t|
