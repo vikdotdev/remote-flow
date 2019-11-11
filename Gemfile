@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'jquery-rails'
 
+gem 'slim-rails'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -38,7 +40,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails'
   gem 'faker'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 4.0.0.beta3'
 end
 
 group :development do
