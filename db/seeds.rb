@@ -12,3 +12,5 @@ organization = FactoryBot.create(:organization)
   )
 end
 
+FactoryBot.create(:content_of_gallery)
+FactoryBot.create(:content_of_video)
