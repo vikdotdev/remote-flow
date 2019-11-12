@@ -12,3 +12,5 @@ user_count.each do |n|
   FactoryBot.create(:user, organization_id: (n % organization_count) + 1)
 end
 
+FactoryBot.create(:content_of_gallery)
+FactoryBot.create(:content_of_video)

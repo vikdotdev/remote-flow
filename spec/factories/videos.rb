@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :video do
-    name { "MyString" }
+    type { 'Video' }
+    video_url { Faker::Internet.url }
   end
 end
