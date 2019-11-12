@@ -1,6 +1,4 @@
-class User < ApplicationRecord
-  include ActiveModel::Validations
-  
+class User < ApplicationRecord  
   belongs_to :organization
 
   validates_with EmailValidator
