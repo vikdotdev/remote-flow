@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_08_132757) do
-
+ActiveRecord::Schema.define(version: 2019_11_12_155558) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +28,16 @@ ActiveRecord::Schema.define(version: 2019_11_08_132757) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "organization_id", null: false
     t.index ["organization_id"], name: "index_device_groups_on_organization_id"
+  end
+
+  create_table "devices", force: :cascade do |t|
+    t.string "name"
+    t.string "token"
+    t.boolean "active", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "device_group_id", null: false
+    t.index ["device_group_id"], name: "index_devices_on_device_group_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -58,5 +67,6 @@ ActiveRecord::Schema.define(version: 2019_11_08_132757) do
 
   add_foreign_key "channels", "organizations"
   add_foreign_key "device_groups", "organizations"
+  add_foreign_key "devices", "device_groups"
   add_foreign_key "users", "organizations"
 end
