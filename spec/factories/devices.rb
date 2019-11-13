@@ -5,6 +5,6 @@ FactoryBot.define do
     name { Faker::Address.city }
     token { Digest::MD5::hexdigest('my_token') }
     active { false }
-    device_group
+    organization
   end
 end
