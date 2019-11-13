@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_184848) do
+ActiveRecord::Schema.define(version: 2019_11_13_160701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,12 +32,26 @@ ActiveRecord::Schema.define(version: 2019_11_13_184848) do
     t.index ["channel_id"], name: "index_contents_on_channel_id"
   end
 
+  create_table "channels_device_groups", id: false, force: :cascade do |t|
+    t.bigint "channel_id", null: false
+    t.bigint "device_group_id", null: false
+    t.index ["channel_id", "device_group_id"], name: "index_channels_device_groups_on_channel_id_and_device_group_id"
+    t.index ["device_group_id", "channel_id"], name: "index_channels_device_groups_on_device_group_id_and_channel_id"
+  end
+
   create_table "device_groups", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "organization_id", null: false
     t.index ["organization_id"], name: "index_device_groups_on_organization_id"
+  end
+
+  create_table "device_groups_devices", id: false, force: :cascade do |t|
+    t.bigint "device_group_id", null: false
+    t.bigint "device_id", null: false
+    t.index ["device_group_id", "device_id"], name: "index_device_groups_devices_on_device_group_id_and_device_id"
+    t.index ["device_id", "device_group_id"], name: "index_device_groups_devices_on_device_id_and_device_group_id"
   end
 
   create_table "devices", force: :cascade do |t|
