@@ -1,12 +1,16 @@
 FactoryBot.define do
-  factory :content_of_video, class: 'Content' do
-    type { 'Video' }
-    video_url { Faker::Internet.url }
+  factory :content, class: 'Content' do
+
     organization
-  end
-  factory :content_of_gallery, class: 'Content' do
-    type { 'Gallery' }
-    video_url { Faker::Internet.url }
-    organization
+
+    trait :video do
+      type { 'Video' }
+      video_url { 'https://www.youtube.com/watch?v=IWZ_71EKbng&t=5s' }
+    end
+
+    trait :gallery do
+      type { 'Gallery' }
+      video_url { Faker::Internet.url }
+    end
   end
 end

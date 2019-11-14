@@ -8,8 +8,8 @@ require 'faker'
   devices = FactoryBot.create_list(:device, 20, organization_id: organization.id)
   device_groups = FactoryBot.create_list(:device_group, 10, organization_id: organization.id)
   channels = FactoryBot.create_list(:channel, 10, organization_id: organization.id)
-  content_with_gallery = FactoryBot.create_list(:content_of_gallery, 5, organization_id: organization.id)
-  content_with_video = FactoryBot.create_list(:content_of_video, 5, organization_id: organization.id)
+  content_with_gallery = FactoryBot.create_list(:content, 5, :gallery, organization_id: organization.id)
+  content_with_video = FactoryBot.create_list(:content, 5, :video, organization_id: organization.id)
 
   device_groups.each do |device_group|
     rand(2..6).times do
