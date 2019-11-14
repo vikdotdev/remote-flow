@@ -23,5 +23,5 @@
 //= link login.png
 //= link auth-bg.jpg
 //
-//= link application.scss
+//= link application.css
 
