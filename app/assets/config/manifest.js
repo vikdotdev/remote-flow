@@ -1,7 +1,3 @@
-//= link_tree ../images
-//= link_directory ../stylesheets .css
-//= link_directory ../javascripts .js
-//
 //= link app.js
 //= link app-menu.js
 //= link components.js
@@ -26,3 +22,6 @@
 //
 //= link login.png
 //= link auth-bg.jpg
+//
+//= link application.scss
+
