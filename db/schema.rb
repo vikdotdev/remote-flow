@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_151048) do
+ActiveRecord::Schema.define(version: 2019_11_13_184848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 2019_11_13_151048) do
     t.string "video_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "channel_id"
+    t.index ["channel_id"], name: "index_contents_on_channel_id"
   end
 
   create_table "device_groups", force: :cascade do |t|
@@ -47,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_11_13_151048) do
     t.bigint "organization_id", null: false
     t.index ["organization_id"], name: "index_devices_on_organization_id"
   end
-  
+
   create_table "gallery_images", force: :cascade do |t|
     t.bigint "gallery_id"
     t.string "image"

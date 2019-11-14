@@ -3,7 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :organization
 
-  validates_with EmailValidator
+  # validates_with EmailValidator
   validates :first_name, presence: true
   validates :last_name, presence: true
 end
