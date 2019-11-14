@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_160701) do
+ActiveRecord::Schema.define(version: 2019_11_14_142000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,13 +23,11 @@ ActiveRecord::Schema.define(version: 2019_11_13_160701) do
     t.index ["organization_id"], name: "index_channels_on_organization_id"
   end
 
-  create_table "contents", force: :cascade do |t|
-    t.string "type"
-    t.string "video_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "channel_id"
-    t.index ["channel_id"], name: "index_contents_on_channel_id"
+  create_table "channels_contents", id: false, force: :cascade do |t|
+    t.bigint "channel_id", null: false
+    t.bigint "content_id", null: false
+    t.index ["channel_id", "content_id"], name: "index_channels_contents_on_channel_id_and_content_id"
+    t.index ["content_id", "channel_id"], name: "index_channels_contents_on_content_id_and_channel_id"
   end
 
   create_table "channels_device_groups", id: false, force: :cascade do |t|
@@ -37,6 +35,15 @@ ActiveRecord::Schema.define(version: 2019_11_13_160701) do
     t.bigint "device_group_id", null: false
     t.index ["channel_id", "device_group_id"], name: "index_channels_device_groups_on_channel_id_and_device_group_id"
     t.index ["device_group_id", "channel_id"], name: "index_channels_device_groups_on_device_group_id_and_channel_id"
+  end
+
+  create_table "contents", force: :cascade do |t|
+    t.string "type"
+    t.string "video_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "organization_id"
+    t.index ["organization_id"], name: "index_contents_on_organization_id"
   end
 
   create_table "device_groups", force: :cascade do |t|
@@ -98,6 +105,7 @@ ActiveRecord::Schema.define(version: 2019_11_13_160701) do
   end
 
   add_foreign_key "channels", "organizations"
+  add_foreign_key "contents", "organizations"
   add_foreign_key "device_groups", "organizations"
   add_foreign_key "devices", "organizations"
   add_foreign_key "users", "organizations"
