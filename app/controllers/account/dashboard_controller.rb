@@ -4,6 +4,6 @@ class Account::DashboardController < ApplicationController
       @user = current_user.first_name
     else
       redirect_to new_user_session_path
-   	end
+    end
   end
 end
