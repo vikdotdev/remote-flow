@@ -1,9 +1,6 @@
 class Account::DashboardController < ApplicationController
+  before_action :authenticate_user!
   def index
-    if current_user
-      @user = current_user.first_name
-    else
-      redirect_to new_user_session_path
-    end
+    @user = current_user
   end
 end

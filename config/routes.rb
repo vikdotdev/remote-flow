@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   namespace :account do
-    resources :admins
-    resources :managers
-    resources :super_admin
-    resources :dashboard, only: [:index]
+    get '/', to: 'dashboard#index'
+    resources :users
   end
 end
