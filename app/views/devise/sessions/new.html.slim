@@ -1,11 +1,12 @@
-body.horizontal-layout.horizontal-menu.navbar-sticky.1-column.footer-static.bg-full-screen-image.blank-page.blank-page data-col="1-column" data-menu="horizontal-menu" data-open="hover"
+/!  .navbar-sticky.footer-static.blank-page.blank-page.horizontal-layout
+.horizontal-menu.1-column.bg-full-screen-image data-col="1-column" data-menu="horizontal-menu" data-open="hover"
   .app-content.content
     .content-overlay
-    .content-wrapper
+    .content-wrapper.rf-height-fullscreen
       .content-header.row
       .content-body
         /! login page start
-        section#auth-login.row.flexbox-container
+        section#auth-login.row.flexbox-container.rf-height-fullscreen.rf-flex-center
           .col-xl-8.col-11
             .card.bg-authentication.mb-0
               .row.m-0
@@ -21,5 +22,4 @@ body.horizontal-layout.horizontal-menu.navbar-sticky.1-column.footer-static.bg-f
                 .col-md-6.d-md-block.d-none.text-center.align-self-center.p-3
                   .card-content
                     = image_tag 'login.png', alt: 'branding logo', class: 'img-fluid'
-        /! login page ends
-
+        /! login page end

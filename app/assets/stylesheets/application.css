@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+.rf-height-fullscreen {
+  height: 100vh
+}
+
+.rf-flex-center {
+  justify-content: center;
+  align-items: center;
+}
