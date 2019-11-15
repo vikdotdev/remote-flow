@@ -1,0 +1,26 @@
+section
+  .row
+    .col-md-6
+      .card
+        .card-header
+          h4.card-title
+            = object[:card_title]
+        .card-content
+          .card-body
+            .row
+              .col-md-12
+                = form_for(@device, url: object[:form_path], method: object[:form_method]) do |f|
+                  .form-group.mb-50
+                    = f.label :name
+                    = f.text_field :name,
+                      autofocus: true,
+                      class: 'form-control',
+                      placeholder: 'Device Name'
+                  .form-group
+                    = f.label :organization_id
+                    = f.select :organization_id, Organization.all.collect { |o| [o.name, o.id] }, {}, class: 'form-control'
+
+                  br
+                  .actions
+                    = f.submit object[:button_text], class: 'button btn btn-primary glow w-100 position-relative'
+
