@@ -1,2 +1,8 @@
-p Hello
-p = current_user.first_name
+.container-fluid.mt-3
+  .mb-3
+    = link_to content_tag(:button, 'Device List', class: 'btn btn-primary mr-1 mb-1'), account_devices_path
+    = link_to content_tag(:button, 'Home', class: 'btn btn-primary mr-1 mb-1'), root_path
+
+  h2
+    = "Hello, #{current_user.first_name}"
+

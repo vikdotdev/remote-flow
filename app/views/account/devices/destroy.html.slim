@@ -1,0 +1,6 @@
+.container-fluid.mt-3
+  = link_to content_tag(:button, 'Device List', class: 'btn btn-primary mr-1 mb-1'), account_devices_path
+
+  - flash.each do |key, value|
+    = content_tag :div, value, class: "flash #{key}"
+

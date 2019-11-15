@@ -1,0 +1,31 @@
+.container-fluid.mt-3
+  .mb-3
+    = link_to content_tag(:button, 'Device List', class: 'btn btn-primary mr-1 mb-1'), account_devices_path
+
+section
+  .row
+    .col-md-6
+      .card
+        .card-header
+          h4.card-title Edit Device
+        .card-content
+          .card-body
+            .row
+              .col-md-12
+                = form_for(@device, url: account_device_path) do |f|
+                  = render 'shared/error_messages', object: f.object
+                  .form-group.mb-50
+                    = f.label :name
+                    = f.text_field :name,
+                      autofocus: true,
+                      class: 'form-control',
+                      placeholder: 'Device Name',
+                      value: @device.name
+                  .form-group
+                    = f.label :organization_id
+                    = f.select :organization_id, Organization.all.collect { |o| [o.name, o.id] }, {}, class: 'form-control'
+
+                  br
+                  .actions
+                    = f.submit "Edit", class: 'button btn btn-primary glow w-100 position-relative'
+

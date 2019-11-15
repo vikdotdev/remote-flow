@@ -1,0 +1,50 @@
+/! TODO move this table into partial with 'object' usage
+.container-fluid.mt-3
+  .mb-2
+    = link_to content_tag(:button, 'Add Device', class: 'btn btn-primary mr-1 mb-1'), new_account_device_path
+    = link_to content_tag(:button, 'Dashboard', class: 'btn btn-primary mr-1 mb-1'), account_path
+
+  section
+    .row
+      .col-12
+        .card
+          .card-header
+            h4.card-title Device List
+          .card-content
+            .card-body.card-dashboard
+              p.card-text
+                | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                | do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                | Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                | laboris nisi ut aliquip ex ea commodo consequat.
+              .table-responsive
+                table.table.zero-configuration
+                  thead
+                    tr
+                      th Name
+                      th Active
+                      th Created At
+                      th Updated At
+                      th Delete
+                  tbody
+                  - @devices.each do |device|
+                    tr
+                      td
+                        = link_to "#{device.name}", account_device_path(device)
+                      td
+                        = device.active
+                      td
+                        = device.created_at
+                      td
+                        = device.updated_at
+                      td
+                        = link_to "Delete", account_device_path(device),
+                          method: :delete
+                  tfoot
+                    tr
+                      th Name
+                      th Active
+                      th Created At
+                      th Updated At
+                      th Delete
+

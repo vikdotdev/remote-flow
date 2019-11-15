@@ -1,0 +1,17 @@
+
+.container-fluid.mt-3
+  .mb-3
+    = link_to content_tag(:button, 'Edit this Device', class: 'btn btn-primary mr-1 mb-1'), edit_account_device_path(@device)
+    = link_to content_tag(:button, 'Device List', class: 'btn btn-primary mr-1 mb-1'), account_devices_path
+    = link_to content_tag(:button, 'Delete Device', class: 'btn btn-danger mr-1 mb-1'), account_device_path(@device), method: :delete
+  p
+    = @device.name
+  p
+    = @device.organization.name
+  p
+    = @device.active
+  p
+    = @device.created_at
+  p
+    = @device.updated_at
+
