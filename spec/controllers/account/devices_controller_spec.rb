@@ -2,44 +2,115 @@ require 'rails_helper'
 
 RSpec.describe Account::DevicesController, type: :controller do
   render_views
-  let!(:user) { create(:user, first_name: "John", last_name: "Doe") }
 
-  before do
-    sign_in user
-  end
+  user = FactoryBot.create(:user)
+  device = FactoryBot.create(:device)
 
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
+  context 'when not logged in' do
+    describe 'GET #index' do
+      it 'redirects to login page' do
+        get :index
+        expect(response).not_to render_template(:index)
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    describe 'POST #create' do
+      it 'redirects to login page' do
+        post :create, params: { name: device.name }
+        expect(response).not_to render_template(:show)
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    describe 'GET #new' do
+      it 'redirects to login page' do
+        get :new
+        expect(response).not_to render_template(:new)
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    describe 'DELETE #destroy' do
+      it 'redirects to login page' do
+        expect do
+          delete :destroy, params: { id: device.id }
+        end.not_to change(Device, :count)
+
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    describe 'GET #show' do
+      it 'redirects to login page' do
+        get :show, params: { id: device.id }
+        expect(response).not_to render_template(:show)
+        expect(response).to redirect_to(new_user_session_path)
+      end
     end
   end
 
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
+  context 'when logged in' do
+    before do
+      sign_in user
     end
-  end
 
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
+    describe 'GET #index' do
+      it 'renders index template' do
+        get :index
+        expect(response).to render_template(:index)
+      end
     end
-  end
 
-  describe "GET #destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
+    describe 'POST #create' do
+      it 'renders show template' do
+        post :create, params: {
+          device: {
+            name: device.name,
+            organization_id: device.organization.id
+          }
+        }
+        expect(response).to render_template(:show)
+      end
+
+      it 'renders new template if name is blank' do
+        post :create, params: {
+          device: {
+            name: '',
+            organization_id: device.organization.id
+          }
+        }
+        expect(response).to render_template(:new)
+      end
+
+      it 'renders new template if organization is nil' do
+        post :create, params: {
+          device: { name: 'Correct' }
+        }
+        expect(response).to render_template(:new)
+      end
     end
-  end
 
-  describe "GET #show" do
-    it "returns http success" do
-      get :show
-      expect(response).to have_http_status(:success)
+    describe 'GET #new' do
+      it 'returns http success' do
+        get :new
+        expect(response).to render_template(:new)
+      end
+    end
+
+    describe 'DELETE #destroy' do
+      it 'returns http success' do
+        expect do
+          delete :destroy, params: { id: device.id }
+        end.to change(Device, :count).by(-1)
+      end
+    end
+
+    describe 'GET #show' do
+      it 'renders show template' do
+        get :show, params: { id: device.id }
+        expect(response).to render_template(:show)
+      end
     end
   end
 end

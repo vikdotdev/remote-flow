@@ -1,5 +1,4 @@
 class Account::DevicesController < ApplicationController
-  before_action :authenticate_user!
   def index
     @devices = Device.all
   end
@@ -27,7 +26,6 @@ class Account::DevicesController < ApplicationController
   end
 
   def update
-    # TODO add organization check before updating
     @device = Device.find(params[:id])
     if @device.update_attributes(device_params)
       flash[:success] = 'Device updated'
@@ -52,9 +50,8 @@ class Account::DevicesController < ApplicationController
   end
 
   private
-
-  def device_params
-    params.require(:device).permit(:name, :organization_id)
-  end
+    def device_params
+      params.require(:device).permit(:name, :organization_id)
+    end
 end
 
