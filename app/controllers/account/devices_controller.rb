@@ -1,6 +1,8 @@
 class Account::DevicesController < ApplicationController
+  PER_PAGE = 10
+
   def index
-    @devices = Device.all
+    @devices = Device.all.paginate(page: params[:page], per_page: PER_PAGE)
   end
 
   # POST takes the record created by new action and attempts to save in into DB
