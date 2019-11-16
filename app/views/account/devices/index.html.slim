@@ -1,8 +1,11 @@
-/! TODO move this table into partial with 'object' usage
 .container-fluid.mt-3
   .mb-2
     = link_to content_tag(:button, 'Add Device', class: 'btn btn-primary mr-1 mb-1'), new_account_device_path
     = link_to content_tag(:button, 'Dashboard', class: 'btn btn-primary mr-1 mb-1'), account_path
+
+  - flash.each do |key, value|
+    = content_tag :div, value, class: "flash #{key}"
+
 
   section
     .row

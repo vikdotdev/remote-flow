@@ -2,36 +2,34 @@ class Account::DevicesController < ApplicationController
   PER_PAGE = 10
 
   def index
-    @devices = Device.all.paginate(page: params[:page], per_page: PER_PAGE)
+    @devices = Device.paginate(page: params[:page], per_page: PER_PAGE)
   end
 
-  # POST takes the record created by new action and attempts to save in into DB
   def create
     @device = Device.new(device_params)
     if @device.save
       flash[:success] = 'Device successfully created.'
-      render 'show'
+      redirect_to account_device_path(@device)
     else
       flash[:danger] = 'Failed to create device.'
       render 'new'
     end
   end
 
-  # GET renders a form suitable for creating a new resource
   def new
     @device = Device.new
     @organizations = Organization.all
   end
 
   def edit
-    @device = Device.find(params[:id])
+    @device = find_by_id
   end
 
   def update
-    @device = Device.find(params[:id])
+    @device = find_by_id
     if @device.update_attributes(device_params)
       flash[:success] = 'Device updated'
-      render 'show'
+      redirect_to account_device_path(@device)
     else
       flash[:danger] = 'Error updating device'
       render 'edit'
@@ -52,8 +50,13 @@ class Account::DevicesController < ApplicationController
   end
 
   private
-    def device_params
-      params.require(:device).permit(:name, :organization_id)
-    end
+
+  def device_params
+    params.require(:device).permit(:name, :organization_id)
+  end
+
+  def find_by_id
+    Device.find(params[:id])
+  end
 end
 

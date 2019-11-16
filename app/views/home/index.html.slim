@@ -1,11 +1,11 @@
 .container-fluid.mt-3
   .mb-3
-    - unless user_signed_in?
-      = link_to content_tag(:button, 'Log in', class: 'btn btn-primary mr-1 mb-1'), new_user_session_url
-      = link_to content_tag(:button, 'Sign up', class: 'btn btn-primary mr-1 mb-1'), new_user_registration_path
     - if user_signed_in?
       = link_to content_tag(:button, 'Sign out', class: 'btn btn-primary mr-1 mb-1'), destroy_user_session_path, method: :delete
       = link_to content_tag(:button, 'Dashboard', class: 'btn btn-primary mr-1 mb-1'), account_path
+    - else
+      = link_to content_tag(:button, 'Log in', class: 'btn btn-primary mr-1 mb-1'), new_user_session_url
+      = link_to content_tag(:button, 'Sign up', class: 'btn btn-primary mr-1 mb-1'), new_user_registration_path
 
   h2
     | Home page

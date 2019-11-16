@@ -1,17 +1,21 @@
-
 .container-fluid.mt-3
   .mb-3
     = link_to content_tag(:button, 'Edit this Device', class: 'btn btn-primary mr-1 mb-1'), edit_account_device_path(@device)
     = link_to content_tag(:button, 'Device List', class: 'btn btn-primary mr-1 mb-1'), account_devices_path
     = link_to content_tag(:button, 'Delete Device', class: 'btn btn-danger mr-1 mb-1'), account_device_path(@device), method: :delete
-  p
+
+    - flash.each do |key, value|
+      = content_tag :div, value, class: "flash #{key}"
+
+  h2
     = @device.name
-  p
+  h6
     = @device.organization.name
+  br
   p
-    = @device.active
+    = "Active - #{@device.active}"
   p
-    = @device.created_at
+    = "Created At - #{@device.created_at}"
   p
-    = @device.updated_at
+    = "Updated At - #{@device.updated_at}"
 

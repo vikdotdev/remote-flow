@@ -4,30 +4,3 @@
 
   = render 'account/shared/device_form', object: { card_title: 'Edit Device', form_path: account_device_path, form_method: :patch, button_text: 'Edit' }
 
-/!  section
-/!    .row
-/!      .col-md-6
-/!        .card
-/!          .card-header
-/!            h4.card-title Edit Device
-/!          .card-content
-/!            .card-body
-/!              .row
-/!                .col-md-12
-/!                  = form_for(@device, url: account_device_path, method: :patch) do |f|
-/!                    = render 'shared/error_messages', object: f.object
-/!                    .form-group.mb-50
-/!                      = f.label :name
-/!                      = f.text_field :name,
-/!                        autofocus: true,
-/!                        class: 'form-control',
-/!                        placeholder: 'Device Name',
-/!                        value: @device.name
-/!                    .form-group
-/!                      = f.label :organization_id
-/!                      = f.select :organization_id, Organization.all.collect { |o| [o.name, o.id] }, {}, class: 'form-control'
-/!
-/!                    br
-/!                    .actions
-/!                      = f.submit "Edit", class: 'button btn btn-primary glow w-100 position-relative'
-
