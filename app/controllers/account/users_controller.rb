@@ -1,4 +1,4 @@
-class Account::UsersController < ApplicationController
+class Account::UsersController < Account::AccountController
   before_action :authenticate_user!
   def index
     @users = User.paginate(page: params[:page], per_page: 10)
