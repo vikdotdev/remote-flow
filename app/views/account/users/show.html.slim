@@ -1,0 +1,32 @@
+.row
+  .col-12.col-sm-7
+    .media.mb-2
+      a.mr-1
+        img.users-avatar-shadow.rounded-circle src="https://pbs.twimg.com/profile_images/344513261569854761/fc0b8c1921d37fb628f77dd33478bb60.jpeg" height="64px" width="64px"
+      .media-body.pt-25
+        h4
+          = @user.first_name + " " + @user.last_name
+        span ID:
+        span
+          = @user.id
+.col-12
+  .card
+    .card-content
+      .card-body
+        h4.mb-1 Info:
+        table.table
+          tbody
+           tr
+             td Email:
+             td
+               = @user.email
+           tr
+             td Name:
+             td
+               = @user.first_name + " " + @user.last_name
+           tr
+             td Company:
+             td = @user.organization.name
+           tr
+             td Role:
+             td = @user.role
