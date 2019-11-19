@@ -1,7 +1,7 @@
 class Account::UsersController < Account::AccountController
   before_action :authenticate_user!
   def index
-    @users = User.paginate(page: params[:page], per_page: 10)
+    @users = collection.order(:id).page params[:page]
   end
 
   def show
@@ -10,6 +10,13 @@ class Account::UsersController < Account::AccountController
 
   def edit
     @user = resource
+  end
+
+  def create
+    @user = User.new(users_params)
+    @user.organization_id = current_organization.id unless current_user.super_admin?
+    @user.save
+    redirect_to account_user_path(@user)
   end
 
   def update
@@ -23,17 +30,29 @@ class Account::UsersController < Account::AccountController
 
   def destroy
     @user = resource
-    @user.destroy
-    redirect_to  account_user_path
+    if @user.destroy
+      flash[:success] = 'User successfully deleted.'
+    else
+      flash[:danger] = 'Failed to delete user.'
+    end
+    redirect_to account_users_path
   end
 
   private
 
   def users_params
-    params.require(:user).permit(:first_name, :last_name, :role, :email, :avatar)
+    params.require(:user).permit(:first_name, :last_name, :email, :avatar, :role)
+  end
+
+  def collection
+    if current_user.super_admin?
+      User.all
+    else
+      current_user.organization.users
+    end
   end
 
   def resource
-    User.find(params[:id])
+    collection.find(params[:id])
   end
 end

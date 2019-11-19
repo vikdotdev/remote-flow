@@ -1,0 +1,22 @@
+.app-content.content
+  .content-overlay
+  .content-wrapper
+    .content-header.row
+    .content-body
+      /! users edit start
+      section.users-edit
+        .card
+          .card-content
+            .card-body
+              .media.mb-2
+                a.mr-2 href="#"
+                  img.users-avatar-shadow.rounded-circle alt=("users avatar") height="64" src="https://pbs.twimg.com/profile_images/344513261569854761/fc0b8c1921d37fb628f77dd33478bb60.jpeg" width="64" /
+                .media-body
+                  h4.media-heading Avatar
+                  .col-12.px-0.d-flex
+                    a.btn.btn-sm.btn-primary.mr-25 href="#"  Change
+                    a.btn.btn-sm.btn-light-secondary href="#"  Reset
+                  = render 'account/shared/flash'
+              /! users edit media object ends
+              /! users edit account form start
+              = render 'account/shared/user_form'

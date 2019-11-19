@@ -26,7 +26,11 @@ gem 'slim-rails'
 
 gem 'devise'
 
-gem 'will_paginate'
+gem 'dynamic_form'
+
+gem 'simple_form'
+
+gem 'kaminari'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

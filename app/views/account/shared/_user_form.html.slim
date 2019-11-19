@@ -1,0 +1,6 @@
+= simple_form_for @user, url: account_user_path(@user), html: {class: 'form'} do |f|
+  = f.input :first_name, input_html: { class: 'form-control' }
+  = f.input :last_name, input_html: { class: 'form-control' }
+  = f.input :email, input_html: { class: 'form-control' }
+  = f.input :role, as: :select, priority: [ "admin" ], collection: ["admin", "manager"], input_html: { class: 'form-control' }
+  = f.button :submit, "Save User", class: "btn btn-primary mt-1"
