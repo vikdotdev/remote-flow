@@ -22,6 +22,7 @@
 //
 //= link login.png
 //= link auth-bg.jpg
+//= link register.png
 //
 //= link application.css
 

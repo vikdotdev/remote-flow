@@ -5,12 +5,12 @@
     .content-body
       /! register section starts
       section.row.flexbox-container
-        .col-xl-9.col-10
+        .col-xl-8.col-10
           .card.bg-authentication.mb-0
             .row.m-0
               /! register section left
               .col-md-6.col-12.px-0
-                .card.disable-rounded-right.mb-0.p-0.h-100.d-flex.justify-content-center
+                .card.disable-rounded-right.mb-0.p-2.h-100.d-flex.justify-content-center
                   .card-header.pb-1
                     .card-title
                       h4.text-center.mb-2 Sign Up
@@ -37,17 +37,19 @@
                               | (#{@minimum_password_length} characters minimum)
                           br/
                           = f.password_field :password, autocomplete: "new-password", class: 'form-control', id: "exampleInputPassword1", placeholder: "Password"
-                        .form-group.mb-2
+                        .form-group.mb-50
                           = f.label :password_confirmation, class: 'text-bold-600', for: 'exampleInputConPassword1'
                           br/
                           = f.password_field :password_confirmation, class: 'form-control', placeholder: "Confirmation Password", id: 'exampleInputConPassword1'
+                        br/
                         = f.submit 'Sign up', class: "btn btn-primary glow position-relative w-100"
                       hr/
                       .text-center
                         small.mr-25 Already have an account?
-                        a href=new_user_session_path
-                          small Sign in
+                        small
+                          = link_to "Sign In", new_user_session_path, class: ''
+
               /! image section right
               .col-md-6.d-md-block.d-none.text-center.align-self-center.p-3
-                img.img-fluid alt=("branding logo") src="https://cdn1.savepice.ru/uploads/2019/11/16/2cdacedbcff36cce298c304949309404-full.png" /
+                = image_tag 'register.png', alt: 'branding logo', class: 'img-fluid'
       /! register section endss
