@@ -1,0 +1,50 @@
+.header-navbar-shadow
+nav.header-navbar.main-header-navbar.navbar-expand-lg.navbar.navbar-with-menu.fixed-top
+  .navbar-wrapper
+    .navbar-container.content
+      #navbar-mobile.navbar-collapse
+        .mr-auto.float-left.bookmark-wrapper.d-flex.align-items-center
+          ul.nav.navbar-nav
+            li.nav-item.mobile-menu.d-xl-none.mr-auto
+              a.nav-link.nav-menu-main.menu-toggle.hidden-xs href="#"
+                i.ficon.bx.bx-menu
+        ul.nav.navbar-nav.float-right
+          li.nav-item.d-none.d-lg-block
+            a.nav-link.nav-link-expand
+              i.ficon.bx.bx-fullscreen
+          li.nav-item.nav-search
+            a.nav-link.nav-link-search
+              i.ficon.bx.bx-search
+            .search-input
+              .search-input-icon
+                i.bx.bx-search.primary
+              input.input placeholder=("Search") tabindex="-1" type="text" /
+              .search-input-close
+                i.bx.bx-x
+              ul.search-list
+          li.dropdown.dropdown-user.nav-item
+            a.dropdown-toggle.nav-link.dropdown-user-link data-toggle="dropdown" href="#"
+              .user-nav.d-sm-flex.d-none
+                span.user-name
+                  = "#{current_user.first_name} #{current_user.last_name}"
+                span.user-status Available
+              span
+                = image_tag 'avatar-s-11.jpg', alt: 'avatar', width: '40', height: '40', class: 'round'
+            .dropdown-menu.dropdown-menu-right data-toggle='dropdown'
+              a.dropdown-item href="#"
+                i.bx.bx-user.mr-50
+                | Edit Profile
+              a.dropdown-item href="#"
+                i.bx.bx-envelope.mr-50
+                | My Inbox
+              a.dropdown-item href="#"
+                i.bx.bx-check-square.mr-50
+                | Task
+              a.dropdown-item href="#"
+                i.bx.bx-message.mr-50
+                | Chats
+              .dropdown-divider
+              = link_to destroy_user_session_path, method: :delete, class: 'dropdown-item'
+                i.bx.bx-power-off.mr-50
+                | Logout
+
