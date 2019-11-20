@@ -1,16 +1,9 @@
-.app-content.content
-  .content-overlay
-  .content-wrapper
-    .content-header.row
-      .content-header-left.col-12.mb-2.mt-1
-        .row.breadcrumbs-top
-          .col-12
-    .content-body
-      p Hello, world!
-      - if user_signed_in?
-        = link_to "Sign out", destroy_user_session_path, method: :delete
-      - else
-        = link_to "Log in", new_user_session_url
-        br
-        = link_to "Sign up", new_user_registration_path
+.content-body
+  p Hello, world!
+  - if user_signed_in?
+    = link_to "Sign out", destroy_user_session_path, method: :delete
+  - else
+    = link_to "Log in", new_user_session_url
+    br
+    = link_to "Sign up", new_user_registration_path
 

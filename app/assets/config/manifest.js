@@ -31,11 +31,19 @@
 //= link boxicons.ttf
 //= link boxicons.svg
 //
+//= link frest-logo.png
 //= link login.png
 //= link auth-bg.jpg
 //= link register.png
 //= link forgot-password.png
 //= link reset-password.png
+//
+//= link avatar-s-4.jpg
+//= link avatar-s-11.jpg
+//= link avatar-s-16.jpg
+//= link sketch-mac-icon.png
+//
+//= link flags/4x3/us.svg
 //
 //= link application.css
 
