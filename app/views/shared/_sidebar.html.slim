@@ -40,10 +40,23 @@
               span.menu-item data-i18n="" Devices
       li.nav-item
         a href="#"
-          i.menu-livicon data-icon="help"
-          span.menu-title data-i18n="" Support
+          i.menu-livicon data-icon="pie-chart"
+          span.menu-title data-i18n="" Analytics
       li.nav-item
         a href="#"
           i.menu-livicon data-icon="morph-folder"
-          span.menu-title data-i18n="" Documentation
+          span.menu-title data-i18n="" Reports
+      / non-working link, should be styled like this
+      li.nav-item
+        = link_to destroy_user_session_path, method: :delete
+          i.menu-livicon data-icon="close"
+          | Logout
+      / working button - broken styles
+      li.nav-item
+        = button_to destroy_user_session_path, method: :delete
+          i.menu-livicon data-icon="close"
+          | Logout
+
+      / working link ??
+      = link_to 'logout', destroy_user_session_path, method: :delete
 
