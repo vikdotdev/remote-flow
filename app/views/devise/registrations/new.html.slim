@@ -1,8 +1,4 @@
-.app-content.content
-  .content-overlay
-  .content-wrapper
-    .content-header.row
-    .content-body
+
       /! register section starts
       section.row.flexbox-container
         .col-xl-8.col-10
@@ -27,9 +23,9 @@
                             = org.label 'Organization Name', class: "text-bold-600", for: "exampleInputUsername1"
                             = org.text_field :name, class: "form-control", id: "exampleInputUsername1", placeholder: "Name"
                         .form-group.mb-50
-                          = f.label :email, class:"text-bold-600", for: "exampleInputUsername1"
+                          = f.label :email, class:"text-bold-600", for: "exampleInputEmail1"
                           br/
-                          = f.email_field :email, class: "form-control", id: "exampleInputUsername1", placeholder: "Email"
+                          = f.email_field :email, class: "form-control", id: "exampleInputEmail1", placeholder: "Email"
                         .form-group.mb-50
                           = f.label :password, class: "text-bold-600", for: "exampleInputPassword1"
                           - if @minimum_password_length
