@@ -23,6 +23,8 @@
 //= link login.png
 //= link auth-bg.jpg
 //= link register.png
+//= link forgot-password.png
+//= link reset-password.png
 //
 //= link application.css
 
