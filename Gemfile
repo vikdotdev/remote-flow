@@ -30,6 +30,10 @@ gem 'dynamic_form'
 
 gem 'simple_form'
 
+gem 'rails-controller-testing'
+
+gem 'any_login'
+
 gem 'kaminari'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

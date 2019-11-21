@@ -4,3 +4,4 @@ html.loading data-textdirection="ltr" lang="en"
   body
     = yield
     = render 'shared/frest_javascripts'
+    = any_login_here if defined?(AnyLogin)

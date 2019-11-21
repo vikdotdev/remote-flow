@@ -1,11 +1,14 @@
 class Account::UsersController < Account::AccountController
-  before_action :authenticate_user!
   def index
-    @users = collection.order(:id).page params[:page]
+    @users = collection.order(:id).page(params[:page]).per(10)
   end
 
   def show
     @user = resource
+  end
+
+  def new
+    @user = User.new
   end
 
   def edit
@@ -14,17 +17,23 @@ class Account::UsersController < Account::AccountController
 
   def create
     @user = User.new(users_params)
-    @user.organization_id = current_organization.id unless current_user.super_admin?
-    @user.save
-    redirect_to account_user_path(@user)
+    @user.organization_id = current_organization.id if current_user.admin?
+    if @user.save
+      redirect_to account_user_path(@user)
+      flash[:success] = 'User successfully created.'
+    else
+      render :new
+    end
   end
 
   def update
     @user = resource
     if @user.update(users_params)
       redirect_to account_user_path
+      flash[:success] = 'User successfully updated.'
     else
       render :edit
+      flash[:danger] = 'Failed to update user.'
     end
   end
 
@@ -41,7 +50,7 @@ class Account::UsersController < Account::AccountController
   private
 
   def users_params
-    params.require(:user).permit(:first_name, :last_name, :email, :avatar, :role)
+    params.require(:user).permit(:first_name, :last_name, :email, :avatar, :password, :role, :organization_id)
   end
 
   def collection
@@ -54,5 +63,9 @@ class Account::UsersController < Account::AccountController
 
   def resource
     collection.find(params[:id])
+  end
+
+  def current_organization
+    current_user.organization
   end
 end
