@@ -8,6 +8,7 @@
 //= link vendors.min.js
 //= link horizontal-menu.js
 //= link jquery.sticky.js
+//= link toastr.min.js
 //
 //= link authentication.css
 //= link bootstrap.css
@@ -19,6 +20,7 @@
 //= link vendors.min.css
 //= link horizontal-menu.css
 //= link style.css
+//= link toastr.css
 //
 //= link login.png
 //= link auth-bg.jpg
