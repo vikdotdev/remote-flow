@@ -18,4 +18,15 @@ RSpec.describe User, type: :model do
       expect(build(:user, email: 'some@valid.em')).to be_valid
     end
   end
+
+  describe 'the signin proccess', type: :feature do 
+    it 'sign user in' do 
+      visit '/'
+      click_link("Log in")
+      fill_in 'Email',  with: 'cruz@daughertyruel.com'
+      fill_in 'Password',       with: 'passwd'
+      click_button 'Login'
+      expect(page).to have_current_path(root_path)
+    end
+  end
 end
