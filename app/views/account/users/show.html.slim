@@ -12,7 +12,7 @@
                 img.users-avatar-shadow.rounded-circle alt=("users view avatar") height="64" src="https://pbs.twimg.com/profile_images/344513261569854761/fc0b8c1921d37fb628f77dd33478bb60.jpeg" width="64" /
               .media-body.pt-25
                 h4.media-heading
-                  span.users-view-name = @user.first_name + " " + @user.last_name
+                  span.users-view-name = @user.full_name
                 span ID:
                 span.users-view-id = @user.id
           .col-12.col-sm-5.px-0.d-flex.justify-content-end.align-items-center.px-1.mb-2
@@ -44,7 +44,7 @@
                           td = @user.email
                         tr
                           td Name
-                          td = @user.first_name + " " + @user.last_name
+                          td = @user.full_name
                         tr
                           td Organization
                           td = @user.organization.name
