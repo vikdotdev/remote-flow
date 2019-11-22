@@ -1,6 +1,6 @@
 class Account::UsersController < Account::AccountController
   def index
-    @users = collection.order(:id).page(params[:page]).per(10)
+    @users = collection.by_name.page(params[:page]).per(10)
   end
 
   def show
@@ -17,7 +17,7 @@ class Account::UsersController < Account::AccountController
 
   def create
     @user = User.new(users_params)
-    @user.organization_id = current_organization.id if current_user.admin?
+    @user.organization_id = current_organization.id unless current_user.super_admin?
     if @user.save
       redirect_to account_user_path(@user)
       flash[:success] = 'User successfully created.'
@@ -50,7 +50,12 @@ class Account::UsersController < Account::AccountController
   private
 
   def users_params
-    params.require(:user).permit(:first_name, :last_name, :email, :avatar, :password, :role, :organization_id)
+    permitted = [:first_name, :last_name, :email, :avatar, :password, :role]
+    if current_user.super_admin?
+      permitted << :organization_id
+    end
+
+    params.require(:user).permit(*permitted)
   end
 
   def collection
@@ -63,9 +68,5 @@ class Account::UsersController < Account::AccountController
 
   def resource
     collection.find(params[:id])
-  end
-
-  def current_organization
-    current_user.organization
   end
 end

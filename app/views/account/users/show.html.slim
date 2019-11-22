@@ -40,6 +40,7 @@
                     tr
                       td Name
                       td = @user.full_name
-                    tr
-                      td Organization
-                      td = @user.organization.name
+                    - unless @user.super_admin?
+                      tr
+                        td Organization
+                        td = @user.organization.name
