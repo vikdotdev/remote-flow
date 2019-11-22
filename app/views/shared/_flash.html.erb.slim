@@ -1,0 +1,13 @@
+- unless flash.empty?
+  - flash.each do |type, message|
+    - if type == 'notice'
+      - type = 'info'
+    - elsif type == 'danger'
+      - type = 'error'
+    - elsif type == 'alert'
+      - type == 'warning'
+    javascript:
+      window.onload = function(){
+        console.log("#{type}, #{message}");
+        toastr.#{type}("#{message}", "#{message}", { positionClass: 'toast-top-right', containerId: 'toast-top-right' });
+        };
