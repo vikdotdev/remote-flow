@@ -1,0 +1,6 @@
+- unless flash.empty?
+  script src="jquery.sticky.js"
+  script src="toastr.min.js"
+  - flash.each do |type, message|
+    javascript:
+      toastr.#{type}(message, { positionClass: 'toast-top-right', containerId: 'toast-top-right' });

@@ -1,5 +1,0 @@
-#toast-container.toast-container.toast-top-right
-  - flash.each do |message_type, message|
-    div aria-live="polite" class=("toast toast-#{message_type}") style=("display: block;")
-      .toast-title= message_type
-      .toast-message= message

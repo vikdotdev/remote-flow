@@ -8,7 +8,7 @@
 //= link vendors.min.js
 //= link horizontal-menu.js
 //= link jquery.sticky.js
-//= link toastr.min.js
+//= link toastr.js
 //= link select2.full.min.js
 //= link prism.min.js
 //= link vertical-menu-light.js
