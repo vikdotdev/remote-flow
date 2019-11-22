@@ -1,0 +1,160 @@
+.header-navbar-shadow
+nav.header-navbar.main-header-navbar.navbar-expand-lg.navbar.navbar-with-menu.fixed-top
+  .navbar-wrapper
+    .navbar-container.content
+      #navbar-mobile.navbar-collapse
+        .mr-auto.float-left.bookmark-wrapper.d-flex.align-items-center
+          ul.nav.navbar-nav
+            li.nav-item.mobile-menu.d-xl-none.mr-auto
+              a.nav-link.nav-menu-main.menu-toggle.hidden-xs href="#"
+                i.ficon.bx.bx-menu
+        ul.nav.navbar-nav.float-right
+          / bell start
+          li.dropdown.dropdown-notification.nav-item
+            a.nav-link.nav-link-label data-toggle="dropdown" href="#"
+              i.ficon.bx.bx-bell.bx-tada.bx-flip-horizontal
+              span.badge.badge-pill.badge-danger.badge-up 5
+            ul.dropdown-menu.dropdown-menu-media.dropdown-menu-right
+              li.dropdown-menu-header
+                .dropdown-header.px-1.py-75.d-flex.justify-content-between
+                  span.notification-title 7 new Notification
+                  span.text-bold-400.cursor-pointer Mark all as read
+              li.scrollable-container.media-list.ps
+                a.d-flex.justify-content-between href="javascript:void(0)"
+                .media.d-flex.align-items-center
+                  .media-left.pr-0
+                    .avatar.mr-1.m-0
+                      = image_tag 'avatar-s-11.jpg', alt: 'avatar', width: '39', height: '39'
+                  .media-body
+                    h6.media-heading
+                      span.text-bold-500 Congratulate Socrates Itumay
+                      |  for work anniversaries
+                    small.notification-text Mar 15 12:32pm
+                .d-flex.justify-content-between.read-notification.cursor-pointer
+                  .media.d-flex.align-items-center
+                    .media-left.pr-0
+                      .avatar.mr-1.m-0
+                        = image_tag 'avatar-s-16.jpg', alt: 'avatar', width: '39', height: '39'
+                    .media-body
+                      h6.media-heading
+                        span.text-bold-500 New Message
+                        |  received
+                      small.notification-text You have 18 unread messages
+                .d-flex.justify-content-between.cursor-pointer
+                  .media.d-flex.align-items-center.py-0
+                    .media-left.pr-0
+                      = image_tag 'sketch-mac-icon.png', alt: 'avatar', width: '39', height: '39', class: 'mr-1'
+                    .media-body
+                      h6.media-heading
+                        span.text-bold-500 Updates Available
+                      small.notification-text Sketch 50.2 is currently newly added
+                    .media-right.pl-0
+                      .row.border-left.text-center
+                        .col-12.px-50.py-75.border-bottom
+                          h6.media-heading.text-bold-500.mb-0 Update
+                        .col-12.px-50.py-75
+                          h6.media-heading.mb-0 Close
+                .d-flex.justify-content-between.cursor-pointer
+                  .media.d-flex.align-items-center
+                    .media-left.pr-0
+                      .avatar.bg-primary.bg-lighten-5.mr-1.m-0.p-25
+                        span.avatar-content.text-primary.font-medium-2 LD
+                    .media-body
+                      h6.media-heading
+                        span.text-bold-500 New customer
+                        |  is registered
+                      small.notification-text 1 hrs ago
+                .cursor-pointer
+                  .media.d-flex.align-items-center.justify-content-between
+                    .media-left.pr-0
+                      .media-body
+                        h6.media-heading New Offers
+                    .media-right
+                      .custom-control.custom-switch
+                        input#notificationSwtich.custom-control-input checked="" type="checkbox" /
+                        label.custom-control-label for="notificationSwtich"
+                .d-flex.justify-content-between.cursor-pointer
+                  .media.d-flex.align-items-center
+                    .media-left.pr-0
+                      .avatar.bg-danger.bg-lighten-5.mr-1.m-0.p-25
+                        span.avatar-content
+                          i.bx.bxs-heart.text-danger
+                    .media-body
+                      h6.media-heading
+                        span.text-bold-500 Application
+                        | has been approved
+                      small.notification-text 6 hrs ago
+                .d-flex.justify-content-between.read-notification.cursor-pointer
+                  .media.d-flex.align-items-center
+                    .media-left.pr-0
+                      .avatar.mr-1.m-0
+                        = image_tag 'avatar-s-4.jpg', alt: 'avatar', width: '39', height: '39'
+                    .media-body
+                      h6.media-heading
+                        span.text-bold-500 New file
+                        | has been uploaded
+                      small.notification-text 4 hrs ago
+                .d-flex.justify-content-between.cursor-pointer
+                  .media.d-flex.align-items-center
+                    .media-left.pr-0
+                      .avatar.bg-rgba-danger.m-0.mr-1.p-25
+                        .avatar-content
+                          i.bx.bx-detail.text-danger
+                    .media-body
+                      h6.media-heading
+                        span.text-bold-500 Finance report
+                        | has been generated
+                      small.notification-text 25 hrs ago
+                .d-flex.justify-content-between.cursor-pointer
+                  .media.d-flex.align-items-center.border-0
+                    .media-left.pr-0
+                      .avatar.mr-1.m-0
+                        = image_tag 'avatar-s-16.jpg', alt: 'avatar', width: '39', height: '39'
+                    .media-body
+                      h6.media-heading
+                        span.text-bold-500 New customer
+                        | comment recieved
+                      small.notification-text 2 days ago
+                .ps__rail-x style=("left: 0px; bottom: 0px;")
+                  .ps__thumb-x style=("left: 0px; width: 0px;") tabindex="0"
+                .ps__rail-y style=("top: 0px; right: 0px;")
+                  .ps__thumb-y style=("top: 0px; height: 0px;") tabindex="0"
+              li.dropdown-menu-footer
+                a.dropdown-item.p-50.text-primary.justify-content-center href="javascript:void(0)"  Read all notifications
+          / bell end
+          li.nav-item.nav-search
+            a.nav-link.nav-link-search
+              i.ficon.bx.bx-search
+            .search-input
+              .search-input-icon
+                i.bx.bx-search.primary
+              input.input placeholder=("Search") tabindex="-1" type="text" /
+              .search-input-close
+                i.bx.bx-x
+              ul.search-list
+          li.dropdown.dropdown-user.nav-item
+            a.dropdown-toggle.nav-link.dropdown-user-link data-toggle="dropdown" href="#"
+              .user-nav.d-sm-flex.d-none
+                span.user-name
+                  = current_user.full_name
+                span.user-status Available
+              span
+                = image_tag 'avatar-s-11.jpg', alt: 'avatar', width: '40', height: '40', class: 'round'
+            .dropdown-menu.dropdown-menu-right data-toggle='dropdown'
+              a.dropdown-item href="#"
+                i.bx.bx-user.mr-50
+                | Edit Profile
+              a.dropdown-item href="#"
+                i.bx.bx-envelope.mr-50
+                | My Inbox
+              a.dropdown-item href="#"
+                i.bx.bx-check-square.mr-50
+                | Task
+              a.dropdown-item href="#"
+                i.bx.bx-message.mr-50
+                | Chats
+              .dropdown-divider
+              = link_to destroy_user_session_path, method: :delete, class: 'dropdown-item'
+                i.bx.bx-power-off.mr-50
+                | Logout
+

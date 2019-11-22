@@ -1,11 +1,6 @@
 doctype html
 html.loading data-textdirection="ltr" lang="en"
-  = render 'layouts/head'
+  = render 'shared/head'
   body.vertical-layout.vertical-menu-modern.1-column.navbar-sticky.footer-static.bg-full-screen-image.blank-page.blank-page.pace-done
-    .app-content.content
-      .content-overlay
-      .content-wrapper
-        .content-header.row
-        .content-body
-        = yield
-    = render 'shared/frest_javascripts'
+    = render 'shared/content_container'
+    = render 'shared/template_javascripts'
