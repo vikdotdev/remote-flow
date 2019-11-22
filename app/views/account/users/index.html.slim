@@ -1,39 +1,34 @@
-.app-content.content
-  .content-overlay
-  .content-wrapper
-    .content-header.row
-    .content-body
-      .col-12
-        .card
-          .card-content
-            .card-body
-              = render 'account/shared/flash'
-              = link_to "Add a New User", new_account_user_path, class: "btn btn-primary mt-1"
-              table.table
-                thead
-                  tr
-                    th ID
-                    th First Name
-                    th Last Name
-                    th Email
-                    th Role
-                    th Edit
-                    th Delete
-                tbody
-                - @users.each do |user|
-                  tr
-                    td
-                      = user.id
-                    td
-                      = link_to user.first_name, account_user_path(user)
-                    td
-                      = user.last_name
-                    td
-                      = user.email
-                    td
-                      = user.role
-                    td
-                      = link_to "Edit", edit_account_user_path(user)
-                    td
-                      = link_to "Delete", account_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
-              = paginate @users
+.content-body
+  .col-12
+    .card
+      .card-content
+        .card-body
+          = link_to "Add a New User", new_account_user_path, class: "btn btn-primary mt-1"
+          table.table
+            thead
+              tr
+                th ID
+                th First Name
+                th Last Name
+                th Email
+                th Role
+                th Edit
+                th Delete
+            tbody
+            - @users.each do |user|
+              tr
+                td
+                  = user.id
+                td
+                  = link_to user.first_name, account_user_path(user)
+                td
+                  = user.last_name
+                td
+                  = user.email
+                td
+                  = user.role
+                td
+                  = link_to "Edit", edit_account_user_path(user)
+                td
+                  = link_to "Delete", account_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
+          = paginate @users
