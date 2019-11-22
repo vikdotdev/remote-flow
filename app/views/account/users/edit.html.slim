@@ -5,4 +5,5 @@
         .card-header.pb-0
           h4 Edit:
         .card-body
-          = render 'account/shared/edit_user_form'
+          = render 'account/shared/form', user: @user, action: :edit
+

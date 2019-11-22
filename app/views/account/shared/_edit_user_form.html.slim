@@ -1,8 +1,0 @@
-= simple_form_for @user, url: account_user_path(@user), html: {class: 'form'} do |f|
-  = f.error_messages
-  = f.input :first_name, input_html: { class: 'form-control' }
-  = f.input :last_name, input_html: { class: 'form-control' }
-  = f.input :email, input_html: { class: 'form-control' }
-  = f.input :role, collection: ["admin", "manager"], include_blank: false, include_hidden: false, input_html: { class: 'form-control' }
-  = f.button :submit, "Save User", class: "btn btn-primary mt-1"
-  = link_to 'Back', account_user_path, class: "btn mt-1"
