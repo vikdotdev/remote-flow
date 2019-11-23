@@ -5,45 +5,38 @@ section.users-edit
         ul.nav.nav-tabs.mb-2 role="tablist"
         .tab-content
           #account.tab-pane.active aria-labelledby="account-tab" role="tabpanel"
-            .media.mb-2
-              a.mr-2 href="#"
-                = image_tag 'avatar-s-11.jpg', alt: 'users avatar', width: '64', height: '64', class: 'users-avatar-shadow rounded-circle'
-              .media-body
-                h4.media-heading Avatar
-                .col-12.px-0.d-flex
-                  a.btn.btn-sm.btn-primary.mr-25 href="#"  Change
-                  a.btn.btn-sm.btn-light-secondary href="#"  Reset
-            = form_for(@user, url: account_profile_path, method: :patch) do |f|
+            = simple_form_for(current_user, url: account_profile_path, method: :patch) do |f|
+              .media.mb-2
+                a.mr-2 href="#"
+                  = image_tag 'avatar-s-11.jpg', alt: 'users avatar', width: '64', height: '64', class: 'users-avatar-shadow rounded-circle'
+                .media-body
+                  h4.media-heading Avatar
+                  .col-12.px-0.d-flex
+                    a.btn.btn-sm.btn-primary.mr-25 href="#"  Change
+                    a.btn.btn-sm.btn-light-secondary href="#"  Reset
               .row
                 .col-12.col-sm-6
                   .form-group
                     .controls
-                      = f.label :email
-                      br/
-                      = f.text_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"Email", required: true
+                      = f.input :email, autofocus: true, autocomplete: "email", input_html: { class: "form-control"}, placeholder: "Email", label: 'Email'
                       .help-block
                   .form-group
                     .controls
-                      = f.label :first_name
-                      br/
-                      = f.text_field :first_name, autofocus: true, class: "form-control", placeholder:"First Name", required: true
+                      = f.input :first_name, autofocus: true, placeholder:"First Name", input_html: { class: "form-control"}, label: 'First Name'
                       .help-block
                   .form-group
                     .controls
-                      = f.label :last_name
-                      br/
-                      = f.text_field :last_name, autofocus: true, class: "form-control", placeholder:"Last Name", required: true
+                      = f.input :last_name, autofocus: true, class: "form-control", placeholder:"Last Name", input_html: { class: "form-control"}, label: 'Last Name'
                       .help-block
                 .col-12.col-sm-6
                   .form-group
-                    = f.label "New Password"
-                    br/
-                    = f.password_field :password, autofocus: true, class: "form-control", placeholder:"New Password", autocomplete: "new-password"
+                    = f.input :password, autofocus: true, class: "form-control", placeholder:"New Password", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password'
                     .help-block
                   .form-group
-                    = f.label "Password Confirmation"
-                    br/
-                    = f.password_field :password_confirmation, autofocus: true, class: "form-control", placeholder:"Password Confirmation", autocomplete: "new-password"
+                    = f.input :password_confirmation, autofocus: true, class: "form-control", placeholder:"Password Confirmation", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password Confirmation'
+                    .help-block
+                  .form-group
+                    = f.input :current_password, autofocus: true, class: "form-control", placeholder: "Current Password", autocomplete: "new-password", input_html: {class: "form-control"}, label: 'Current Password', include_blank: false, required: true
                     .help-block
               .col-12.d-flex.flex-sm-row.flex-column.justify-content-center.mt-1
-                = f.submit "Save changes", class: 'btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1'
+                = f.button :submit, "Save changes", class: 'btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1'

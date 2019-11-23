@@ -1,17 +1,12 @@
 class Account::ProfilesController < Account::AccountController
-  def edit
-    @user = User.find(current_user.id)
-  end
+  def edit; end
 
   def update
-    @user = User.find(current_user.id)
-
     respond_to do |format|
-      if @user.update(user_params)
+      if current_user.update_with_password(user_params)
         format.html { redirect_to edit_account_profile_path, notice: 'You have successfully updated' }
-        format.xml  { head :ok }
       else
-        format.html { redirect_to edit_account_profile_path, error: @user.errors.full_messages }
+        format.html { redirect_to edit_account_profile_path, error: current_user.errors.full_messages }
       end
     end
   end
@@ -20,10 +15,9 @@ class Account::ProfilesController < Account::AccountController
 
   def user_params
     if params[:user][:password].blank?
-      params.require(:user).permit(:email, :first_name, :last_name)
+      params.require(:user).permit(:email, :first_name, :last_name, :current_password)
     else
-      params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation)
+      params.require(:user).permit(:email, :first_name, :last_name, :current_password, :password, :password_confirmation)
     end
   end
-
 end
