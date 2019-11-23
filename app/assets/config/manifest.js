@@ -24,6 +24,7 @@
 //= link horizontal-menu.css
 //= link prism.min.css
 //= link style.css
+//= vendors.min.css
 //
 //= link boxicons.eot
 //= link boxicons.woff

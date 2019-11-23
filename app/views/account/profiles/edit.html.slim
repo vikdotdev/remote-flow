@@ -5,7 +5,6 @@ section.users-edit
         ul.nav.nav-tabs.mb-2 role="tablist"
         .tab-content
           #account.tab-pane.active aria-labelledby="account-tab" role="tabpanel"
-            /! users edit media object start
             .media.mb-2
               a.mr-2 href="#"
                 = image_tag 'avatar-s-11.jpg', alt: 'users avatar', width: '64', height: '64', class: 'users-avatar-shadow rounded-circle'
@@ -14,8 +13,6 @@ section.users-edit
                 .col-12.px-0.d-flex
                   a.btn.btn-sm.btn-primary.mr-25 href="#"  Change
                   a.btn.btn-sm.btn-light-secondary href="#"  Reset
-            /! users edit media object ends
-            /! users edit account form start
             = form_for(@user, url: account_profile_path, method: :patch) do |f|
               .row
                 .col-12.col-sm-6
@@ -41,18 +38,12 @@ section.users-edit
                   .form-group
                     = f.label "New Password"
                     br/
-                    = f.password_field :password, autofocus: true, class: "form-control", placeholder:"New Password"
+                    = f.password_field :password, autofocus: true, class: "form-control", placeholder:"New Password", autocomplete: "new-password"
                     .help-block
                   .form-group
                     = f.label "Password Confirmation"
                     br/
-                    = f.password_field :password_confirmation, autofocus: true, class: "form-control", placeholder:"Password Confirmation"
-                    .help-block
-                  .form-group
-                    = f.label "Current Password"
-                    br/
-                    = f.password_field :current_password, autofocus: true, class: "form-control", placeholder:"Current Password", required: true
+                    = f.password_field :password_confirmation, autofocus: true, class: "form-control", placeholder:"Password Confirmation", autocomplete: "new-password"
                     .help-block
               .col-12.d-flex.flex-sm-row.flex-column.justify-content-center.mt-1
                 = f.submit "Save changes", class: 'btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1'
-      /! users edit account form ends
