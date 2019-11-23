@@ -6,8 +6,9 @@ class User < ApplicationRecord
 
   validates :first_name, length: { maximum: 250 }, presence: true
   validates :last_name, length: { maximum: 250 }, presence: true
+  validates :organization_id, presence: true, unless: :super_admin?
 
-  scope :by_name, -> { order("first_name") }
+  scope :by_name, -> { order('first_name') }
 
   def super_admin?
     self.role == 'super_admin'

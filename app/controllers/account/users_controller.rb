@@ -32,8 +32,8 @@ class Account::UsersController < Account::AccountController
       redirect_to account_user_path
       flash[:success] = 'User successfully updated.'
     else
-      render :edit
       flash[:danger] = 'Failed to update user.'
+      render :edit
     end
   end
 
