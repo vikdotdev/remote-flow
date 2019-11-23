@@ -1,4 +1,5 @@
 class Account::UsersController < Account::AccountController
+
   def index
     @users = collection.by_name.page(params[:page]).per(10)
   end
@@ -17,6 +18,7 @@ class Account::UsersController < Account::AccountController
 
   def create
     @user = User.new(users_params)
+    @user.current_user = current_user
     @user.organization_id = current_organization.id unless current_user.super_admin?
     if @user.save
       redirect_to account_user_path(@user)
@@ -28,6 +30,7 @@ class Account::UsersController < Account::AccountController
 
   def update
     @user = resource
+    @user.current_user = current_user
     if @user.update(users_params)
       redirect_to account_user_path
       flash[:success] = 'User successfully updated.'
