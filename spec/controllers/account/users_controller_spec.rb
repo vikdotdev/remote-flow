@@ -88,12 +88,67 @@ RSpec.describe Account::UsersController, type: :controller do
   end
 
   context 'when not logged in' do
-    describe 'GET #index'
-    describe 'GET #show'
-    describe 'GET #new'
-    describe 'GET #edit'
-    describe 'POST #create'
-    describe 'PATCH #update'
-    describe 'DELETE #destroy'
+    describe 'GET #index' do
+      it 'renders index template' do
+        get :index
+        expect(response).not_to render_template(:index)
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    describe 'GET #show' do
+      it 'redirects to login page' do
+        get :show, params: { id: user.id }
+        expect(response).not_to redirect_to(account_user_path(user))
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    describe 'GET #new' do
+      it 'redirects to login page' do
+        get :new
+        expect(response).not_to render_template(:new)
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    describe 'POST #create' do
+      it 'redirects to login page' do
+        post :create, params: { user: user }
+        expect(response).not_to redirect_to(account_user_path(user))
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    describe 'GET #edit' do
+      it 'redirects to login page' do
+        get :edit, params: { id: user.id }
+        expect(response).not_to render_template(:edit)
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    describe 'PATCH #update' do
+      it 'redirects to login page' do
+        patch :update, params: {
+          user: {
+            first_name: 'Jack'
+          },
+          id: user.id
+        }
+
+        expect(response).not_to redirect_to(account_user_path(user))
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    describe 'DELETE #destroy' do
+      it 'redirects to login page' do
+        expect do
+          delete :destroy, params: { id: user.id }
+        end.not_to change(User, :count)
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
   end
 end
