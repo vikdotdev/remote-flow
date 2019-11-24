@@ -1,8 +1,0 @@
-- unless flash.empty?
-  - flash.each do |type, message|
-    - type_translate = {notice: :info, danger: :error, alert: :warning}.with_indifferent_access
-    - type = type_translate[type].to_s if type_translate[type]
-    javascript:
-      window.onload = function(){
-        toastr.#{type}("#{message}", "#{message}", { positionClass: 'toast-top-right', containerId: 'toast-top-right' });
-        };

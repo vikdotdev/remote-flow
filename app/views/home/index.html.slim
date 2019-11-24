@@ -2,6 +2,8 @@
   p Hello, world!
   - if user_signed_in?
     = link_to "Sign out", destroy_user_session_path, method: :delete
+    br
+    = link_to "My Account", account_path, method: :get
   - else
     = link_to "Log in", new_user_session_url
     br
