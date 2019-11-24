@@ -1,9 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe 'factory specs' do
-    let!(:user) { create(:user) }
+  let!(:organization) { create(:organization) }
+  let(:current_user) { build(:user, organization: organization) }
+  let(:user) { build(:user, organization: organization) }
 
+  before(:each) do
+    user.current_user = current_user
+    user.save
+  end
+
+  describe 'factory specs' do
     it 'has factory' do
       expect(user).to be_persisted
     end
@@ -11,11 +18,13 @@ RSpec.describe User, type: :model do
 
   describe 'validation specs' do
     it 'has invalid email' do
-      expect(build(:user, email: 'some_not_valid_email')).not_to be_valid
+      user.email = 'some_not_valid_email'
+      expect(user).not_to be_valid
     end
 
     it 'has valid email' do
-      expect(build(:user, email: 'some@valid.em')).to be_valid
+      user.email = 'some@valid.em'
+      expect(user).to be_valid
     end
   end
 end
