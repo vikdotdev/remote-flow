@@ -85,7 +85,6 @@ RSpec.describe Account::UsersController, type: :controller do
         end.to change(User, :count).by(-1)
       end
     end
-  end
 
   context 'when not logged in' do
     describe 'GET #index' do
@@ -150,5 +149,6 @@ RSpec.describe Account::UsersController, type: :controller do
         expect(response).to redirect_to(new_user_session_path)
       end
     end
+
   end
 end
