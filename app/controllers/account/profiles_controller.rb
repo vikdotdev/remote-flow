@@ -2,12 +2,12 @@ class Account::ProfilesController < Account::AccountController
   def edit; end
 
   def update
-    respond_to do |format|
-      if current_user.update_with_password(user_params)
-        format.html { redirect_to edit_account_profile_path, notice: 'You have successfully updated' }
-      else
-        format.html { redirect_to edit_account_profile_path, error: current_user.errors.full_messages }
-      end
+    if current_user.update_with_password(user_params)
+      flash[:success] = 'You have successfully updated'
+      redirect_to edit_account_profile_path
+    else
+      flash[:danger] = current_user.errors.full_messaages
+      render :edit
     end
   end
 

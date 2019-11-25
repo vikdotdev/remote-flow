@@ -16,27 +16,18 @@ section.users-edit
                     a.btn.btn-sm.btn-light-secondary href="#"  Reset
               .row
                 .col-12.col-sm-6
-                  .form-group
-                    .controls
-                      = f.input :email, autofocus: true, autocomplete: "email", input_html: { class: "form-control"}, placeholder: "Email", label: 'Email'
-                      .help-block
-                  .form-group
-                    .controls
-                      = f.input :first_name, autofocus: true, placeholder:"First Name", input_html: { class: "form-control"}, label: 'First Name'
-                      .help-block
-                  .form-group
-                    .controls
-                      = f.input :last_name, autofocus: true, class: "form-control", placeholder:"Last Name", input_html: { class: "form-control"}, label: 'Last Name'
-                      .help-block
+                  = f.input :email, autofocus: true, autocomplete: "email", input_html: { class: "form-control"}, placeholder: "Email", label: 'Email'
+                  br
+                  = f.input :first_name, autofocus: true, placeholder: "First Name", input_html: { class: "form-control"}, label: 'First Name'
+                  br
+                  = f.input :last_name, autofocus: true, class: "form-control", placeholder: "Last Name", input_html: { class: "form-control"}, label: 'Last Name'
+                  br
                 .col-12.col-sm-6
-                  .form-group
-                    = f.input :password, autofocus: true, class: "form-control", placeholder:"New Password", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password'
-                    .help-block
-                  .form-group
-                    = f.input :password_confirmation, autofocus: true, class: "form-control", placeholder:"Password Confirmation", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password Confirmation'
-                    .help-block
-                  .form-group
-                    = f.input :current_password, autofocus: true, class: "form-control", placeholder: "Current Password", autocomplete: "new-password", input_html: {class: "form-control"}, label: 'Current Password', include_blank: false, required: true
-                    .help-block
+                  = f.input :password, autofocus: true, class: "form-control", placeholder: "New Password", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password'
+                  br
+                  = f.input :password_confirmation, autofocus: true, class: "form-control", placeholder: "Password Confirmation", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password Confirmation'
+                  br
+                  = f.input :current_password, autofocus: true, class: "form-control", placeholder: "Current Password", autocomplete: "new-password", input_html: {class: "form-control"}, label: 'Current Password', include_blank: false, required: true
+                  br
               .col-12.d-flex.flex-sm-row.flex-column.justify-content-center.mt-1
                 = f.button :submit, "Save changes", class: 'btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1'
