@@ -1,4 +1,5 @@
 class Account::UsersController < Account::AccountController
+  include Account::UsersHelper
 
   def index
     @users = collection.by_name.page(params[:page]).per(10)
@@ -14,11 +15,11 @@ class Account::UsersController < Account::AccountController
 
   def edit
     @user = resource
+    redirect_to account_user_path(@user) unless has_access_to_edit_super_admin?
   end
 
   def create
     @user = User.new(users_params)
-    @user.current_user = current_user
     @user.organization_id = current_organization.id unless current_user.super_admin?
     if @user.save
       redirect_to account_user_path(@user)
@@ -30,9 +31,9 @@ class Account::UsersController < Account::AccountController
 
   def update
     @user = resource
-    @user.current_user = current_user
     if @user.update(users_params)
-      redirect_to account_user_path
+      sign_in(current_user, bypass: true)
+      redirect_to account_user_path(@user)
       flash[:success] = 'User successfully updated.'
     else
       flash[:danger] = 'Failed to update user.'
@@ -54,6 +55,11 @@ class Account::UsersController < Account::AccountController
 
   def users_params
     permitted = [:first_name, :last_name, :email, :avatar, :password, :role]
+    if (!current_user.super_admin? && params[:user][:role] == User::SUPER_ADMIN) ||
+       !has_access_to_edit_super_admin?
+      params[:user][:role] = ''
+    end
+
     if current_user.super_admin?
       permitted << :organization_id
     end

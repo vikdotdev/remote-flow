@@ -28,8 +28,9 @@
                       = user.email
                     td
                       = user.role
-                    td
-                      = link_to "Edit", edit_account_user_path(user)
+                      td
+                        = link_to "Edit", edit_account_user_path(user) if has_access_to_edit_super_admin?(user)
+
                     td
                       = link_to "Delete", account_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
             = paginate @users
