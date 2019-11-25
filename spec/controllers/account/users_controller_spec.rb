@@ -28,6 +28,7 @@ RSpec.describe Account::UsersController, type: :controller do
     describe 'GET #show' do
       it 'renders show template' do
         get :show, params: { id: user.id }
+        expect(response).to be_successful
         expect(response).to render_template(:show)
       end
     end
@@ -35,6 +36,7 @@ RSpec.describe Account::UsersController, type: :controller do
     describe 'GET #new' do
       it 'renders new template' do
         get :new, params: { id: user.id }
+        expect(response).to be_successful
         expect(response).to render_template(:new)
       end
     end
@@ -42,6 +44,7 @@ RSpec.describe Account::UsersController, type: :controller do
     describe 'GET #edit' do
       it 'renders edit template' do
         get :edit, params: { id: user.id }
+        expect(response).to be_successful
         expect(response).to render_template(:edit)
       end
     end
@@ -62,6 +65,7 @@ RSpec.describe Account::UsersController, type: :controller do
           }
 
         end.to change(User, :count).by(1)
+        expect(response).to redirect_to(account_user_path(assigns(:user)))
       end
     end
 
@@ -74,6 +78,7 @@ RSpec.describe Account::UsersController, type: :controller do
           id: user.id
         }
 
+        expect(response).to redirect_to(account_user_path(assigns(:user)))
         expect(assigns(:user).first_name).to eq('Jack')
       end
     end
@@ -83,8 +88,10 @@ RSpec.describe Account::UsersController, type: :controller do
         expect do
           delete :destroy, params: { id: user.id }
         end.to change(User, :count).by(-1)
+        expect(response).to redirect_to(account_users_path)
       end
     end
+  end
 
   context 'when not logged in' do
     describe 'GET #index' do
@@ -149,6 +156,5 @@ RSpec.describe Account::UsersController, type: :controller do
         expect(response).to redirect_to(new_user_session_path)
       end
     end
-
   end
 end
