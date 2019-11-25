@@ -8,6 +8,7 @@
 //= link vendors.min.js
 //= link horizontal-menu.js
 //= link jquery.sticky.js
+//= link toastr.min.js
 //= link select2.full.min.js
 //= link prism.min.js
 //= link vertical-menu-light.js
@@ -25,6 +26,9 @@
 //= link prism.min.css
 //= link style.css
 //= vendors.min.css
+
+//= link toastr.css
+
 //
 //= link boxicons.eot
 //= link boxicons.woff

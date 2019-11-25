@@ -17,17 +17,11 @@ section.users-edit
               .row
                 .col-12.col-sm-6
                   = f.input :email, autofocus: true, autocomplete: "email", input_html: { class: "form-control"}, placeholder: "Email", label: 'Email'
-                  br
-                  = f.input :first_name, autofocus: true, placeholder: "First Name", input_html: { class: "form-control"}, label: 'First Name'
-                  br
-                  = f.input :last_name, autofocus: true, class: "form-control", placeholder: "Last Name", input_html: { class: "form-control"}, label: 'Last Name'
-                  br
+                  = f.input :first_name, placeholder: "First Name", input_html: { class: "form-control"}, label: 'First Name'
+                  = f.input :last_name, class: "form-control", placeholder: "Last Name", input_html: { class: "form-control"}, label: 'Last Name'
                 .col-12.col-sm-6
-                  = f.input :password, autofocus: true, class: "form-control", placeholder: "New Password", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password'
-                  br
-                  = f.input :password_confirmation, autofocus: true, class: "form-control", placeholder: "Password Confirmation", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password Confirmation'
-                  br
-                  = f.input :current_password, autofocus: true, class: "form-control", placeholder: "Current Password", autocomplete: "new-password", input_html: {class: "form-control"}, label: 'Current Password', include_blank: false, required: true
-                  br
+                  = f.input :password, class: "form-control", placeholder: "New Password", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password'
+                  = f.input :password_confirmation, class: "form-control", placeholder: "Password Confirmation", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password Confirmation'
+                  = f.input :current_password, class: "form-control", placeholder: "Current Password", autocomplete: "new-password", input_html: {class: "form-control"}, label: 'Current Password', include_blank: false, required: true
               .col-12.d-flex.flex-sm-row.flex-column.justify-content-center.mt-1
                 = f.button :submit, "Save changes", class: 'btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1'

@@ -6,7 +6,7 @@ class Account::ProfilesController < Account::AccountController
       flash[:success] = 'You have successfully updated'
       redirect_to edit_account_profile_path
     else
-      flash[:danger] = current_user.errors.full_messaages
+      flash[:error] = "#{current_user.errors.full_messages}"
       render :edit
     end
   end
