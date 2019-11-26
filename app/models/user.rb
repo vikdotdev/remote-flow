@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-  mount_uploader :avatar, AvatarUploader
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  mount_uploader :avatar, AvatarUploader
+
   belongs_to :organization
   accepts_nested_attributes_for :organization
 

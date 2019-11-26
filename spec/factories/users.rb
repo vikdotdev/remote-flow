@@ -6,5 +6,9 @@ FactoryBot.define do
     password { 'passwd' }
     role { 'admin' }
     organization
+
+    trait :with_avatar do
+      avatar { Rack::Test::UploadedFile.new(Rails.root + "spec/files/#{rand(10)}.jpg", 'image/jpeg') }
+    end
   end
 end
