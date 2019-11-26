@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Account::UsersController, type: :controller do
   render_views
 
-  let!(:super_admin) { create(:user, :super_admin, first_name: 'Kelly', role: User::SUPER_ADMIN) }
+  let!(:super_admin) { create(:user, :super_admin, first_name: 'Kelly') }
   let!(:user) { create(:user, first_name: 'Bob') }
 
   context 'when super_admin logged in' do

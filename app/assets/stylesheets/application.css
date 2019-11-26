@@ -2,5 +2,4 @@
  *= require_tree .
  *= require_self
  *= require account/_form
- *= require account/_login_form
 */
