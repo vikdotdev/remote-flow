@@ -1,5 +1,6 @@
 /*
  *= require_tree .
  *= require_self
- *= require account/users_form
+ *= require account/_form
+ *= require account/_login_form
 */

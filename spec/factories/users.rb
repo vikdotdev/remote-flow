@@ -8,13 +8,16 @@ FactoryBot.define do
     organization
 
     trait :super_admin do
-      role { User.SUPER_ADMIN }
+      role { User::SUPER_ADMIN }
     end
 
     trait :admin do
-      role { User.ADMIN }
+      role { User::ADMIN }
     end
 
+    trait :admin do
+      role { User::MANAGER }
+    end
 
     factory :super_admin, traits: [:super_admin]
   end

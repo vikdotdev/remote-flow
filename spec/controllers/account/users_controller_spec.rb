@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe Account::UsersController, type: :controller do
   render_views
 
-  let!(:admin) { create(:user, :super_admin, first_name: 'Kelly', role: User::SUPER_ADMIN, organization: user.organization) }
+  let!(:super_admin) { create(:user, :super_admin, first_name: 'Kelly', role: User::SUPER_ADMIN) }
   let!(:user) { create(:user, first_name: 'Bob') }
 
   context 'when super_admin logged in' do
     before do
-      sign_in admin
+      sign_in super_admin
     end
 
     describe 'GET #index' do
@@ -193,23 +193,6 @@ RSpec.describe Account::UsersController, type: :controller do
       }
 
       expect(assigns(:user).role).not_to eq(User::SUPER_ADMIN)
-    end
-
-    it 'should not be able to edit super_admins' do
-      patch :update, params: {
-        user: {
-          role: User::MANAGER
-        },
-        id: admin.id
-      }
-
-      expect(admin.role).to eq(User::SUPER_ADMIN)
-    end
-
-    it 'should not be able to access super_admin edit page' do
-      get :edit, params: { id: admin.id }
-
-      expect(response).to redirect_to(account_user_path(admin))
     end
 
     it 'should not be able to create super_admins' do

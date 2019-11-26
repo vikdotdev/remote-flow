@@ -12,7 +12,7 @@
             span ID:
             span.users-view-id = @user.id
       .col-12.col-sm-5.px-0.d-flex.justify-content-end.align-items-center.px-1.mb-2
-        = link_to "Edit", edit_account_user_path(@user), class: "btn btn-sm btn-primary" if has_access_to_edit_super_admin?(@user)
+        = link_to "Edit", edit_account_user_path(@user), class: "btn btn-sm btn-primary"
     /! users view media object ends
     /! users view card data start
     .card

@@ -1,6 +1,4 @@
 class Account::UsersController < Account::AccountController
-  include Account::UsersHelper
-
   def index
     @users = collection.by_name.page(params[:page]).per(10)
   end
@@ -15,7 +13,6 @@ class Account::UsersController < Account::AccountController
 
   def edit
     @user = resource
-    redirect_to account_user_path(@user) unless has_access_to_edit_super_admin?
   end
 
   def create
@@ -55,8 +52,7 @@ class Account::UsersController < Account::AccountController
 
   def users_params
     permitted = [:first_name, :last_name, :email, :avatar, :password, :role]
-    if (!current_user.super_admin? && params[:user][:role] == User::SUPER_ADMIN) ||
-       !has_access_to_edit_super_admin?
+    if !current_user.super_admin? && params[:user][:role] == User::SUPER_ADMIN
       params[:user][:role] = ''
     end
 
