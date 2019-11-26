@@ -1,14 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let!(:organization) { create(:organization) }
-  let(:current_user) { build(:user, organization: organization) }
-  let(:user) { build(:user, organization: organization) }
-
-  before(:each) do
-    user.current_user = current_user
-    user.save
-  end
+  let(:user) { create(:user) }
 
   describe 'factory specs' do
     it 'has factory' do

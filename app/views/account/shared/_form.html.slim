@@ -1,4 +1,3 @@
-- path = params[:action] == :new ? account_users_path(user) : account_user_path(user)
 = simple_form_for user, url: path do |f|
   = f.input :first_name
   = f.input :last_name
@@ -7,9 +6,9 @@
   - roles = [User::ADMIN, User::MANAGER]
   - if current_user.super_admin?
     - roles << User::SUPER_ADMIN
-    - if params[:action] == :new
+    - if params[:action] == 'new'
       = f.association :organization, include_blank: false, include_hidden: false
   = f.input :role, as: :select, priority: roles[0], collection: roles, include_blank: false, include_hidden: false
-  - button_text = params[:action] == :new ? 'Create' : 'Update'
+  - button_text = params[:action] == 'new' ? 'Create' : 'Update'
   = f.button :submit, "#{button_text} User", class: "btn-primary mt-1"
   = link_to 'Back', account_users_path, class: "btn mt-1"

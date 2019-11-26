@@ -5,4 +5,4 @@
         .card-header.pb-0
           h4 Edit:
         .card-body
-          = render 'account/shared/form', user: @user
+          = render 'account/shared/form', user: @user, path: edit_account_user_path(@user)

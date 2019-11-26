@@ -5,5 +5,5 @@
         .card-header.pb-0
           h4 New user:
         .card-body
-          = render 'account/shared/form', user: @user
-= javascript_include_tag 'application'
+          = render 'account/shared/form', user: @user, path: account_users_path
+  = javascript_include_tag 'application'
