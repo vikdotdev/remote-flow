@@ -12,3 +12,5 @@
   - button_text = params[:action] == 'new' ? 'Create' : 'Update'
   = f.button :submit, "#{button_text} User", class: "btn-primary mt-1"
   = link_to 'Back', account_users_path, class: "btn mt-1"
+
+= javascript_include_tag 'account/hide_organization_dropdown'

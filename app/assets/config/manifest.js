@@ -48,4 +48,4 @@
 //= link flags/4x3/us.svg
 //
 //= link application.css
-//= link application.js
+//= link account/hide_organization_dropdown.js
