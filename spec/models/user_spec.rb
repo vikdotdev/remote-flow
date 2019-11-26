@@ -18,4 +18,5 @@ RSpec.describe User, type: :model do
       expect(build(:user, email: 'some@valid.em')).to be_valid
     end
   end
+
 end
