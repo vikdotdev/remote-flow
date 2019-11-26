@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
-
 gem 'simple_form'
 # slim gem is not necessary to include
 gem 'carrierwave', '~> 2.0'
@@ -20,13 +19,13 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
-
 gem 'jquery-rails'
-
 gem 'slim-rails'
-
 gem 'devise'
-
+gem 'dynamic_form'
+gem 'simple_form'
+gem 'any_login'
+gem 'kaminari'
 gem 'any_login'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -60,6 +59,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+  gem 'rails-controller-testing'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'simplecov', require: false

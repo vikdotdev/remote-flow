@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Account::DashboardController, type: :controller do
   render_views
-  let!(:user) { create(:user, first_name: "John", last_name: "Doe") }
+
+  let(:user) { create(:user) }
 
   before do
     sign_in user
