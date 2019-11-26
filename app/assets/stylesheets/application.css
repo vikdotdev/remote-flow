@@ -22,3 +22,19 @@
   justify-content: center;
   align-items: center;
 }
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+
+    position: absolute;
+
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: black;
+    cursor: inherit;
+    display: block;
+}
