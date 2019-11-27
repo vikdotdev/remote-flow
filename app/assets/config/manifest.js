@@ -12,6 +12,7 @@
 //= link select2.full.min.js
 //= link prism.min.js
 //= link vertical-menu-light.js
+//= link bootstrap.js
 //
 //= link authentication.css
 //= link bootstrap.css
@@ -42,6 +43,8 @@
 //= link forgot-password.png
 //= link reset-password.png
 //= link default-avatar.png
+//= link arrow-down.png
+
 //
 //= link avatar-s-4.jpg
 //= link avatar-s-11.jpg
@@ -51,4 +54,4 @@
 //= link flags/4x3/us.svg
 //
 //= link application.css
-
+//= link account/hide_organization_dropdown.js
