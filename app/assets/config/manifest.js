@@ -27,7 +27,6 @@
 //= link prism.min.css
 //= link style.css
 //= vendors.min.css
-
 //= link toastr.css
 
 //
@@ -43,7 +42,9 @@
 //= link register.png
 //= link forgot-password.png
 //= link reset-password.png
+//= link default-avatar.png
 //= link arrow-down.png
+
 //
 //= link avatar-s-4.jpg
 //= link avatar-s-11.jpg

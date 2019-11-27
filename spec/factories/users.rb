@@ -7,6 +7,10 @@ FactoryBot.define do
     role { User::ADMIN }
     organization
 
+    trait :with_avatar do
+      avatar { Rack::Test::UploadedFile.new(Rails.root + "spec/files/#{rand(10)}.jpg", 'image/jpeg') }
+    end
+
     trait :super_admin do
       role { User::SUPER_ADMIN }
     end

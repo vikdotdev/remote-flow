@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  mount_uploader :avatar, AvatarUploader
+  
+  belongs_to :organization
   belongs_to :organization, optional: true
   accepts_nested_attributes_for :organization
   validates :first_name, length: { maximum: 250 }, presence: true
