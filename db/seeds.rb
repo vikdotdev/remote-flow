@@ -1,6 +1,8 @@
 require 'factory_bot_rails'
 require 'faker'
 
+FactoryBot.create(:user, organization_id:  nil, role: 'super_admin')
+
 3.times do
   organization = FactoryBot.create(:organization)
 

@@ -47,7 +47,7 @@
               if ($('.main-menu-content li.sidebar-group-active').length) {
                 activeEl = document.querySelector('.main-menu-content li.sidebar-group-active');
               }
-            }else{              
+            }else{
               menu = document.querySelector('.main-menu-content');
               activeEl = activeEl.getBoundingClientRect().top + menu.scrollTop;
               // If active element's top position is less than 2/3 (66%) of menu height than do not scroll
@@ -825,7 +825,11 @@
           }
         }
 
-        e.stopPropagation();
+        // a necessary change to prevent 'stopPropagation' on #menu-logout link,
+        // otherwise ujs won't have a chance to execute
+        if (!$listItem.is('#menu-logout')) {
+          e.stopPropagation();
+        }
       });
 
 

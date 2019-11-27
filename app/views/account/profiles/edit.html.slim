@@ -1,0 +1,27 @@
+section.users-edit
+  .card
+    .card-content
+      .card-body
+        ul.nav.nav-tabs.mb-2 role="tablist"
+        .tab-content
+          #account.tab-pane.active aria-labelledby="account-tab" role="tabpanel"
+            = simple_form_for(current_user, url: account_profile_path, method: :patch) do |f|
+              .media.mb-2
+                a.mr-2 href="#"
+                  = image_tag 'avatar-s-11.jpg', alt: 'users avatar', width: '64', height: '64', class: 'users-avatar-shadow rounded-circle'
+                .media-body
+                  h4.media-heading Avatar
+                  .col-12.px-0.d-flex
+                    a.btn.btn-sm.btn-primary.mr-25 href="#"  Change
+                    a.btn.btn-sm.btn-light-secondary href="#"  Reset
+              .row
+                .col-12.col-sm-6
+                  = f.input :email, autofocus: true, autocomplete: "email", input_html: { class: "form-control"}, placeholder: "Email", label: 'Email'
+                  = f.input :first_name, placeholder: "First Name", input_html: { class: "form-control"}, label: 'First Name'
+                  = f.input :last_name, class: "form-control", placeholder: "Last Name", input_html: { class: "form-control"}, label: 'Last Name'
+                .col-12.col-sm-6
+                  = f.input :password, class: "form-control", placeholder: "New Password", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password'
+                  = f.input :password_confirmation, class: "form-control", placeholder: "Password Confirmation", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password Confirmation'
+                  = f.input :current_password, class: "form-control", placeholder: "Current Password", autocomplete: "new-password", input_html: {class: "form-control"}, label: 'Current Password', include_blank: false, required: true
+              .col-12.d-flex.flex-sm-row.flex-column.justify-content-center.mt-1
+                = f.button :submit, "Save changes", class: 'btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1'
