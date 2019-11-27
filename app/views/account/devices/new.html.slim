@@ -1,6 +1,11 @@
-.container-fluid.mt-3
-  .mb-3
-    = link_to content_tag(:button, 'Device List', class: 'btn btn-primary mr-1 mb-1'), account_devices_path
-
-  = render 'account/shared/device_form', object: { card_title: 'Add New Device', form_path: account_devices_path, form_method: :post, button_text: 'Add' }
-
+.content-body.mt-2
+  section
+    .card
+      .card-content
+        .card-header.pb-0
+          h4 New Device
+        .card-body
+          = render 'account/devices/form',
+              device: @device,
+              path: account_devices_path,
+              back_path: account_devices_path

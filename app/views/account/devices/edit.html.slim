@@ -1,6 +1,19 @@
-.container-fluid.mt-3
-  .mb-3
-    = link_to content_tag(:button, 'Device List', class: 'btn btn-primary mr-1 mb-1'), account_devices_path
-
-  = render 'account/shared/device_form', object: { card_title: 'Edit Device', form_path: account_device_path, form_method: :patch, button_text: 'Edit' }
-
+.content-body.mt-2
+  .row
+    .col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
+      = link_to "All Devices",
+          account_devices_path(@device),
+          class: "btn btn-sm btn-light-primary mr-50"
+      = link_to "Delete", account_device_path(@device),
+          class: "btn btn-sm btn-light-danger",
+          method: :delete
+  .card
+    .card-content
+      .card-header.pb-0
+        h4 Edit
+      .card-body
+        - path = account_device_path(@device)
+        = render 'account/devices/form',
+            device: @device,
+            path: path,
+            back_path: path

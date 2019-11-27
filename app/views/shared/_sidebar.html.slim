@@ -23,7 +23,7 @@
           span.menu-title data-i18n="" Organization
         ul.menu-content
           li
-            a href="#"
+            = link_to account_users_path do
               i.bx.bx-right-arrow-alt
               span.menu-item data-i18n="" Users
           li
@@ -35,7 +35,7 @@
               i.bx.bx-right-arrow-alt
               span.menu-item data-i18n="" Device Groups
           li
-            a href="#"
+            = link_to account_devices_path do
               i.bx.bx-right-arrow-alt
               span.menu-item data-i18n="" Devices
       li.nav-item

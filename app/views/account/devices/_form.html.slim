@@ -1,0 +1,8 @@
+= simple_form_for device, url: path do |f|
+    = f.input :name, autofocus: true, placeholder: 'Device Name'
+    - if current_user.super_admin?
+      = f.association :organization, include_blank: false, include_hidden: false
+    - button_text = action_name == 'new' ? 'Create' : 'Update'
+    = f.button :submit, "#{button_text} Device", class: "btn-primary mt-1 mr-50"
+    = link_to 'Back', back_path, class: "btn border mt-1"
+

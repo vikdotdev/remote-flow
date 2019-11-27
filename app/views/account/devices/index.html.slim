@@ -1,55 +1,41 @@
-.container-fluid.mt-3
-  .mb-2
-    = link_to content_tag(:button, 'Add Device', class: 'btn btn-primary mr-1 mb-1'), new_account_device_path
-    = link_to content_tag(:button, 'Dashboard', class: 'btn btn-primary mr-1 mb-1'), account_path
-
-  - flash.each do |key, value|
-    = content_tag :div, value, class: "flash #{key}"
-
-
-  section
-    .row
-      .col-12
-        .card
-          .card-header
-            h4.card-title Device List
-          .card-content
-            .card-body.card-dashboard
-              p.card-text
-                | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                | do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                | Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                | laboris nisi ut aliquip ex ea commodo consequat.
-              .table-responsive
-                = will_paginate
-                table.table.zero-configuration
-                  thead
-                    tr
-                      th Name
-                      th Active
-                      th Created At
-                      th Updated At
-                      th Delete
-                  tbody
-                  - @devices.each do |device|
-                    tr
-                      td
-                        = link_to "#{device.name}", account_device_path(device)
-                      td
-                        = device.active
-                      td
-                        = device.created_at
-                      td
-                        = device.updated_at
-                      td
-                        = link_to "Delete", account_device_path(device),
-                          method: :delete
-                  tfoot
-                    tr
-                      th Name
-                      th Active
-                      th Created At
-                      th Updated At
-                      th Delete
-                = will_paginate
+.content-body.mt-2
+  .row
+    .col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
+      = link_to "Add New Device",
+          new_account_device_path,
+          class: "btn btn-sm btn-light-primary"
+  .card
+    .card-header
+      h4.card-title Devices
+    .card-content
+      .card-body
+        .table-responsive
+          table.table.zero-configuration
+            thead
+              tr
+                th ID
+                th Name
+                th Status
+                th Created
+                th Edit
+                th Delete
+            tbody
+              - @devices.each do |device|
+                tr
+                  td
+                    = device.id
+                  td
+                    = link_to device.name, account_device_path(device)
+                  td
+                    = status_badge device
+                  td
+                    = device.created_at.strftime("%m/%d/%Y")
+                  td
+                    = link_to "Edit", edit_account_device_path(device)
+                  td
+                    = link_to "Delete",
+                        account_device_path(device),
+                        class: 'danger',
+                        method: :delete, data: { confirm: 'Are you sure?' }
+          = paginate @devices
 

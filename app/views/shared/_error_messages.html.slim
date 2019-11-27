@@ -1,8 +1,0 @@
-- if object.errors.any?
-  .card-content
-    .card-body
-      .alert.alert-danger.mb-2 role="alert"
-        | The form contains #{pluralize(object.errors.count, "error")}.
-        ul
-          - object.errors.full_messages.each do |msg|
-            li= msg
