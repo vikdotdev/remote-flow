@@ -1,4 +1,28 @@
-nav.header-navbar.main-header-navbar.navbar-expand-lg.navbar.navbar-with-menu style=("background-color: rgb(242), 244, 244); box-shadow: none;"
+nav.header-navbar.navbar-expand-lg.navbar.navbar-with-menu.bg-dark.navbar-dark.mb-2
   .navbar-wrapper
     .navbar-container.content
-      #navbar-mobile.navbar-collapse
+      #navbar-mobile-2.navbar-collapse
+        ul.nav.navbar-nav.left-menu.mr-auto.float-left
+          li.nav-item.mobile-menu.d-lg-none.mr-auto
+            a.nav-link.nav-menu-main.hidden-xs.menu-toggle.is-active href="#"
+              i.ficon.bx.bx-menu
+          li.nav-item.d-none.d-lg-block
+            a.nav-link.navbar-brand href="#"
+              = image_tag 'frest-logo.png', alt: 'avatar', width: '50', height: '50'
+        ul.nav.navbar-nav.right-menu.float-right
+          li.nav-item
+            a.nav-link href="#"
+              i.bx.bx-home.d-sm-none.d-block
+              span.selected-language.d-none.d-sm-block Home
+          li.nav-item
+            a.nav-link href="#"
+              i.bx.bx-edit.d-sm-none.d-block
+              span.d-none.d-sm-block About
+          li.nav-item
+            a.nav-link
+              i.bx.bx-link.d-sm-none.d-block
+              span.d-none.d-sm-block Contact
+          li.nav-item
+            a.nav-link href="#"
+              i.bx.bx-group.d-sm-none.d-block
+              span.d-none.d-sm-block User
