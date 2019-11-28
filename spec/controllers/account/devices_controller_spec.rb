@@ -7,13 +7,12 @@ RSpec.describe Account::DevicesController, type: :controller do
   let!(:another_organization) { create(:organization) }
   let!(:super_admin) { create(:user, :super_admin) }
   let!(:user) { create(:user, organization: organization) }
-  let!(:device) { create(:device, name: 'Danialberg', organization: organization) }
+  let!(:device) { create(:device, :active, name: 'Danialberg', organization: organization) }
 
   context 'when not logged in' do
     describe 'GET #index' do
       it 'redirects to login page' do
         get :index
-        expect(response).not_to render_template(:index)
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -21,7 +20,6 @@ RSpec.describe Account::DevicesController, type: :controller do
     describe 'GET #show' do
       it 'redirects to login page' do
         get :show, params: { id: device.id }
-        expect(response).not_to redirect_to(account_device_path(device))
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -29,7 +27,6 @@ RSpec.describe Account::DevicesController, type: :controller do
     describe 'GET #new' do
       it 'redirects to login page' do
         get :new
-        expect(response).not_to render_template(:new)
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -37,7 +34,6 @@ RSpec.describe Account::DevicesController, type: :controller do
     describe 'POST #create' do
       it 'redirects to login page' do
         post :create, params: { name: device.name }
-        expect(response).not_to redirect_to(account_device_path(device))
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -45,7 +41,6 @@ RSpec.describe Account::DevicesController, type: :controller do
     describe 'GET #edit' do
       it 'redirects to login page' do
         get :edit, params: { id: device.id }
-        expect(response).not_to render_template(:edit)
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -59,7 +54,6 @@ RSpec.describe Account::DevicesController, type: :controller do
           id: device.id
         }
 
-        expect(response).not_to redirect_to(account_device_path(device))
         expect(response).to redirect_to(new_user_session_path)
         expect(device.name).not_to eq('Theofurt')
         expect(device.name).to eq('Danialberg')
@@ -208,8 +202,7 @@ RSpec.describe Account::DevicesController, type: :controller do
         expect(assigns(:device).name).to eq('Theofurt')
       end
 
-      it 'can change device organization' do
-
+      it 'cannot change device organization' do
         patch :update, params: {
           device: {
             organization_id: another_organization.id
@@ -217,7 +210,7 @@ RSpec.describe Account::DevicesController, type: :controller do
           id: device.id
         }
 
-        expect(assigns(:device).organization_id).to eq(another_organization.id)
+        expect(assigns(:device).organization_id).not_to eq(another_organization.id)
         expect(response).to redirect_to(account_device_path(assigns(:device)))
       end
     end

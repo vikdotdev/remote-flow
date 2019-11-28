@@ -27,7 +27,7 @@
                   td
                     = link_to device.name, account_device_path(device)
                   td
-                    = status_badge device
+                    = status_badge device.active
                   td
                     = device.created_at.strftime("%m/%d/%Y")
                   td

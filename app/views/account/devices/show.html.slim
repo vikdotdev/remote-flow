@@ -20,7 +20,7 @@
                 tr
                   td Status:
                   td
-                    = status_badge @device
+                    = status_badge @device.active
           .col-12.col-md-8
             .table-responsive
               table.table.mb-0
@@ -29,8 +29,7 @@
                     td Name
                     td
                       = @device.name
-                  - if @device.organization
-                    tr
-                      td Organization
-                      td
-                        = @device.organization.name
+                  tr
+                    td Organization
+                    td
+                      = @device.organization.name

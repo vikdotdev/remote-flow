@@ -17,7 +17,7 @@ class Account::DevicesController < Account::AccountController
 
   def create
     @device = Device.new(device_params)
-    @device.organization_id = current_organization.id unless current_user.super_admin?
+    @device.organization = current_organization
     if @device.save
       flash[:success] = 'Device successfully created.'
       redirect_to account_device_path(@device)
@@ -51,17 +51,14 @@ class Account::DevicesController < Account::AccountController
   private
 
   def device_params
-    permitted = %i[name]
-    permitted.push :organization_id, :active if current_user.super_admin?
-
-    params.require(:device).permit(*permitted)
+    params.require(:device).permit(:name)
   end
 
   def collection
     if current_user.super_admin?
       Device.all
     else
-      current_user.organization.devices
+      current_organization.devices
     end
   end
 
