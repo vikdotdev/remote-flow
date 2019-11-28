@@ -34,10 +34,11 @@
             a href="#"
               i.bx.bx-right-arrow-alt
               span.menu-item data-i18n="" Device Groups
-          li
-            = link_to account_devices_path do
-              i.bx.bx-right-arrow-alt
-              span.menu-item data-i18n="" Devices
+          - unless current_user.super_admin?
+            li
+              = link_to account_devices_path do
+                i.bx.bx-right-arrow-alt
+                span.menu-item data-i18n="" Devices
       li.nav-item
         a href="#"
           i.menu-livicon data-icon="pie-chart"
