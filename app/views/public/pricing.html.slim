@@ -1,11 +1,11 @@
-link id="pricing-a" href="https://fonts.googleapis.com/css?family=Lato:400,300,700,100" rel="stylesheet" type="text/css" /
-h1 id="pricing-h1"
+link class="pricing-a" href="https://fonts.googleapis.com/css?family=Lato:400,300,700,100" rel="stylesheet" type="text/css" /
+h1 class="pricing-h1"
   | OUR PRICING LIST
   br/
 .price-table-wrapper
   .pricing-table
     h2.pricing-table__header - BASIC -
-    h3.pricing-table__price ₴50
+    h3.pricing-table__price #{number_to_currency(9.99, unit: "$", separator: ",", delimiter: "", format: "%n %u")}
     a.pricing-table__button href="#" target="_blank"
       | Join Now!
     ul.pricing-table__list
@@ -15,7 +15,7 @@ h1 id="pricing-h1"
       li 24 hour support
   .pricing-table.featured-table
     h2.pricing-table__header - BUSINESS -
-    h3.pricing-table__price  ₴100
+    h3.pricing-table__price #{number_to_currency(99.99, unit: "$", separator: ",", delimiter: "", format: "%n %u")}
     a.pricing-table__button href="#" target="_blank"
       | Join Now!
     ul.pricing-table__list
@@ -25,7 +25,7 @@ h1 id="pricing-h1"
       li 24 hour support
   .pricing-table
     h2.pricing-table__header - PREMIUM -
-    h3.pricing-table__price ₴200
+    h3.pricing-table__price #{number_to_currency(199.99, unit: "$", separator: ",", delimiter: "", format: "%n %u")}
     a.pricing-table__button href="#" target="_blank"
       | Join Now!
     ul.pricing-table__list
