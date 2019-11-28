@@ -5,13 +5,13 @@ class Organization < ApplicationRecord
   has_many :channels, dependent: :destroy
   has_many :contents, dependent: :destroy
 
-  after_create :mail_send
+  after_create :send_notification
 
   validates :name, presence: true,
                    uniqueness: true
-
+  
   private
-  def mail_send
-    SuperAdminMailer.notify_email(self).deliver
+  def send_notification
+    SuperAdminMailer.notify_email(self).deliver_now
   end
 end

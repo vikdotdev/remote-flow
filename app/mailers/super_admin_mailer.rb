@@ -1,8 +1,9 @@
 class SuperAdminMailer < ApplicationMailer
-  default from: 'remote-floar@mail.com'
-  
-  def notify_email(org)
-    @org = org    
-    mail(to: 'smtp://localhost:1025', subject: 'Welcome to My Awesome Site')
+  admins_email = User.where(role: User::SUPER_ADMIN).pluck(:email)
+  default to: -> { admins_email },
+          from: 'remote-floar@mail.com'
+  def notify_email(organization)       
+    @organization = organization
+    mail(subject: "Created new organization")
   end
 end
