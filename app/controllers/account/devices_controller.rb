@@ -55,11 +55,7 @@ class Account::DevicesController < Account::AccountController
   end
 
   def collection
-    if current_user.super_admin?
-      Device.all
-    else
-      current_organization.devices
-    end
+    current_organization.devices
   end
 
   def resource

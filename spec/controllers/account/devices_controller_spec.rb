@@ -182,46 +182,4 @@ RSpec.describe Account::DevicesController, type: :controller do
       end
     end
   end
-
-  context 'when logged in as super_admin' do
-    before do
-      sign_in super_admin
-    end
-
-    describe 'PATCH #update' do
-      it 'updates device name' do
-        patch :update, params: {
-          device: {
-            name: 'Theofurt'
-          },
-          id: device.id
-        }
-
-        expect(response).to redirect_to(account_device_path(assigns(:device)))
-        expect(assigns(:device).name).not_to eq('Danialberg')
-        expect(assigns(:device).name).to eq('Theofurt')
-      end
-
-      it 'cannot change device organization' do
-        patch :update, params: {
-          device: {
-            organization_id: another_organization.id
-          },
-          id: device.id
-        }
-
-        expect(assigns(:device).organization_id).not_to eq(another_organization.id)
-        expect(response).to redirect_to(account_device_path(assigns(:device)))
-      end
-    end
-
-
-    describe 'DELETE #destroy' do
-      it 'changes Device.count' do
-        expect do
-          delete :destroy, params: { id: device.id }
-        end.to change(Device, :count).by(-1)
-      end
-    end
-  end
 end
