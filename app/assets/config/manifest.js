@@ -50,6 +50,8 @@
 //= link avatar-s-11.jpg
 //= link avatar-s-16.jpg
 //= link sketch-mac-icon.png
+//= link carousel.jpg
+
 
 //= link instagram_profile_image.png
 //= link logo-remote-flow.png
@@ -59,4 +61,3 @@
 //= link flags/4x3/us.svg
 //
 //= link application.css
-

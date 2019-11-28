@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   }
 
   unauthenticated do
-    get '/', to: 'public#index'
+    root 'public#index'
     get '/pricing', to: 'public#pricing'
   end
 
