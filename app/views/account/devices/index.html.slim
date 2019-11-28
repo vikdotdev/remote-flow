@@ -1,6 +1,11 @@
 .content-body.mt-2
   .row
-    .col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
+    .col-7
+      = render partial: 'account/shared/breadcrumbs', locals: { breadcrumbs: [\
+        { home: true, url: account_path },\
+        { title: 'Devices' }\
+      ]}
+    .col-5.d-flex.justify-content-end.align-items-center.px-1.mb-2
       = link_to "Add New Device",
           new_account_device_path,
           class: "btn btn-sm btn-light-primary"
