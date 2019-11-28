@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :users
     resources :devices
     resource :profile, only: %i[edit update]
+    resources :channels
   end
 end

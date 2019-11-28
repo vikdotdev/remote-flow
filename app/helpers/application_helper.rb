@@ -13,4 +13,8 @@ module ApplicationHelper
     end
     html.html_safe
   end
+
+  def button_text
+    action_name == 'new' ? 'Create' : 'Update'
+  end
 end
