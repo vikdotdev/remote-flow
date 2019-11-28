@@ -1,0 +1,12 @@
+.copyright-text {
+  p {
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.2px;
+    color: #BDD1F8;
+    a.text-primary {
+      transition-duration: 500ms;
+      &:hover {color: #bd2130 !important;}
+    }
+  }
+}
