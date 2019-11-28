@@ -30,6 +30,8 @@
 //= link toastr.css
 //= link pricing-list.css
 
+//=public.css
+
 //
 //= link boxicons.eot
 //= link boxicons.woff
