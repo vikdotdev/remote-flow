@@ -28,14 +28,12 @@ RSpec.describe PublicController, type: :controller do
     it 'doesnt gets public page' do
       get :index
 
-      expect(response).not_to be_successful
+      expect(response).not_to be_routable
     end
 
     it 'doesnt gets pricing page' do
       get :pricing
-
-      expect(response).not_to be_successful
+      expect(response).not_to be_routable
     end
-
   end
 end

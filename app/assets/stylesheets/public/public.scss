@@ -6,6 +6,40 @@
  margin-right: 10px;
 }
 
+.section-heading {
+  h2 {
+      font-weight: 400;
+      color: #5A8DEE;
+      font-size: 38px;
+      margin: 0;
+      margin-bottom: 25px;
+      text-shadow: -2px 2px 2px #598dee3d;
+  }
+}
+
+.awesome-feature-area {
+  p {
+    color: #475F7B;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+  }
+}
+
+.copyright-text {
+  p {
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.2px;
+    color: #BDD1F8;
+    a.text-primary {
+      transition-duration: 500ms;
+      &:hover {color: #bd2130 !important;}
+    }
+  }
+}
+
 .pricint-a{
   text-decoration: none;
   }
