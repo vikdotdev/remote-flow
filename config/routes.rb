@@ -2,7 +2,15 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  root 'public#index'
+
+  unauthenticated do
+    get '/', to: 'public#index'
+    get '/pricing', to: 'public#pricing'
+  end
+
+  authenticated do
+    get '/', to: redirect('/account')
+  end
 
   namespace :account do
     get '/', to: 'dashboard#index'
