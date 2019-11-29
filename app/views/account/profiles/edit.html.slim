@@ -1,28 +1,57 @@
-section.users-edit
+.content-body.mt-2
+  .row
+    .col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
+      a.btn.btn-sm.btn-light-primary.mr-50 href='#'
+        | Dummy button
+
   .card
     .card-content
       .card-body
-        ul.nav.nav-tabs.mb-2 role="tablist"
-        .tab-content
-          #account.tab-pane.active aria-labelledby="account-tab" role="tabpanel"
-            = simple_form_for(current_user, url: account_profile_path, method: :patch) do |f|
-              .media.mb-1
-                = image_tag current_user.avatar.url, width: 75, heigth: 75  , class: 'users-avatar-shadow rounded-circle'
-                .media-body.ml-1
-                  h4.media-heading.mt-50
-                  .file-upload-div
-                    .file-upload.btn.btn-primary
-                      span
-                        | Upload Photo
-                      = f.file_field :avatar, class: "upload"
-              .row
-                .col-12.col-sm-6
-                  = f.input :email, autofocus: true, autocomplete: "email", input_html: { class: "form-control"}, placeholder: "Email", label: 'Email'
-                  = f.input :first_name, placeholder: "First Name", input_html: { class: "form-control"}, label: 'First Name'
-                  = f.input :last_name, class: "form-control", placeholder: "Last Name", input_html: { class: "form-control"}, label: 'Last Name'
-                .col-12.col-sm-6
-                  = f.input :password, class: "form-control", placeholder: "New Password", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password'
-                  = f.input :password_confirmation, class: "form-control", placeholder: "Password Confirmation", autocomplete: "new-password", input_html: { class: "form-control"}, label: 'Password Confirmation'
-                  = f.input :current_password, class: "form-control", placeholder: "Current Password", autocomplete: "new-password", input_html: {class: "form-control"}, label: 'Current Password', include_blank: false, required: true
-              .col-12.d-flex.flex-sm-row.flex-column.justify-content-center.mt-1
-                = f.button :submit, "Save changes", class: 'btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1'
+        = simple_form_for(current_user, url: account_profile_path, method: :patch) do |f|
+          .media.mb-2.ml-2.mt-1.d-flex.align-items-center
+            = image_tag current_user.avatar.url, width: 64, height: 64, class: 'users-avatar-shadow rounded-circle'
+            .file-upload-div
+              .file-upload.btn.btn-primary.ml-2
+                span
+                  | Upload Photo
+                = f.file_field :avatar, class: "upload"
+          .row
+            .col-12.col-sm-6
+              = f.input :email,
+                  autofocus: true,
+                  autocomplete: "email",
+                  input_html: { class: "form-control"},
+                  placeholder: "Email",
+                  label: 'Email'
+              = f.input :first_name,
+                  placeholder: "First Name",
+                  input_html: { class: "form-control"},
+                  label: 'First Name'
+              = f.input :last_name,
+                  class: "form-control",
+                  placeholder: "Last Name",
+                  input_html: { class: "form-control"},
+                  label: 'Last Name'
+            .col-12.col-sm-6
+              = f.input :password,
+                  class: "form-control",
+                  placeholder: "New Password",
+                  autocomplete: "new-password",
+                  input_html: { class: "form-control"},
+                  label: 'Password'
+              = f.input :password_confirmation,
+                  class: "form-control",
+                  placeholder: "Password Confirmation",
+                  autocomplete: "new-password",
+                  input_html: { class: "form-control"},
+                  label: 'Password Confirmation'
+              = f.input :current_password,
+                  class: "form-control",
+                  placeholder: "Current Password",
+                  autocomplete: "new-password",
+                  input_html: {class: "form-control"},
+                  label: 'Current Password',
+                  include_blank: false,
+                  required: true
+          .d-flex.flex-sm-row.flex-column.justify-content-center.mt-1
+            = f.button :submit, "Save changes", class: 'btn btn-primary'

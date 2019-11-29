@@ -1,8 +1,9 @@
-.content-body
+.content-body.mt-2
   section
     .card
       .card-content
         .card-header.pb-0
-          h4 New user:
+          h4 New User
         .card-body
-          = render 'account/shared/form', user: @user, path: account_users_path
+          - path = account_users_path
+          = render 'account/shared/form', user: @user, path: path, back_path: path
