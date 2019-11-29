@@ -6,14 +6,15 @@ section.users-edit
         .tab-content
           #account.tab-pane.active aria-labelledby="account-tab" role="tabpanel"
             = simple_form_for(current_user, url: account_profile_path, method: :patch) do |f|
-              .media.mb-2
-                a.mr-2 href="#"
-                  = image_tag 'avatar-s-11.jpg', alt: 'users avatar', width: '64', height: '64', class: 'users-avatar-shadow rounded-circle'
-                .media-body
-                  h4.media-heading Avatar
-                  .col-12.px-0.d-flex
-                    a.btn.btn-sm.btn-primary.mr-25 href="#"  Change
-                    a.btn.btn-sm.btn-light-secondary href="#"  Reset
+              .media.mb-1
+                = image_tag current_user.avatar.url, width: 75, heigth: 75  , class: 'users-avatar-shadow rounded-circle'
+                .media-body.ml-1
+                  h4.media-heading.mt-50
+                  .file-upload-div
+                    .file-upload.btn.btn-primary
+                      span
+                        | Upload Photo
+                      = f.file_field :avatar, class: "upload"
               .row
                 .col-12.col-sm-6
                   = f.input :email, autofocus: true, autocomplete: "email", input_html: { class: "form-control"}, placeholder: "Email", label: 'Email'

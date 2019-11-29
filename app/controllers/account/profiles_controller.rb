@@ -15,9 +15,9 @@ class Account::ProfilesController < Account::AccountController
 
   def user_params
     if params[:user][:password].blank?
-      params.require(:user).permit(:email, :first_name, :last_name, :current_password)
+      params.require(:user).permit(:email, :first_name, :last_name, :avatar, :current_password)
     else
-      params.require(:user).permit(:email, :first_name, :last_name, :current_password, :password, :password_confirmation)
+      params.require(:user).permit(:email, :first_name, :last_name, :avatar, :current_password, :password, :password_confirmation)
     end
   end
 end

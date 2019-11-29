@@ -12,6 +12,7 @@
 //= link select2.full.min.js
 //= link prism.min.js
 //= link vertical-menu-light.js
+//= link bootstrap.js
 //
 //= link authentication.css
 //= link bootstrap.css
@@ -26,7 +27,6 @@
 //= link prism.min.css
 //= link style.css
 //= vendors.min.css
-
 //= link toastr.css
 //= link pricing-list.css
 
@@ -45,6 +45,9 @@
 //= link register.png
 //= link forgot-password.png
 //= link reset-password.png
+//= link default-avatar.png
+//= link arrow-down.png
+
 //
 //= link avatar-s-4.jpg
 //= link avatar-s-11.jpg
