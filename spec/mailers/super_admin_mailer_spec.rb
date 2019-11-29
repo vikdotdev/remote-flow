@@ -1,17 +1,21 @@
 require "rails_helper"
 
 RSpec.describe SuperAdminMailer, type: :mailer do 
-  describe 'send notify' do
-    let(:admin) { create(:user, role:"super_admin")}
-    let(:organization) { create(:organization) }     
-    let(:mail) { organization.save }
+  describe 'send notification email' do
+    let!(:admin) { create(:user, :super_admin, organization_id: nil)}
+    let!(:organization) { create(:organization) }        
+    let!(:mail) { SuperAdminMailer.notify_email(organization)}
 
-    it 'renders the subject' do
-      expect(mail.subject).to eq('Created new organization')      
+    it 'deliver success' do      
+      expect{create(:organization)}.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
-    it 'with name\'s new organization' do
-      expect(mail.to).to match(admin.email)
+    it 'with admins emails' do
+      expect(mail.to).to match_array(admin.email)
+    end
+
+    it 'with correct subject' do
+      expect(mail.subject).to eq('Created new organization')
     end
   end
 end
