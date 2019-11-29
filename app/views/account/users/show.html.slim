@@ -1,11 +1,11 @@
 .content-body
   .row
     .col-7
-      = render partial: 'account/shared/breadcrumbs', locals: { breadcrumbs: [\
+      = breadcrumbs [\
         { home: true, url: account_path },\
         { title: 'Users', url: account_users_path },\
         { title: 'User' }\
-      ]}
+      ]
   section.users-view
     /! users view media object start
     .row

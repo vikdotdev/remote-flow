@@ -1,12 +1,12 @@
-.content-body
+.content-body.mt-2
   .row
     .col-7
-      = render partial: 'account/shared/breadcrumbs', locals: { breadcrumbs: [\
+      = breadcrumbs [\
         { home: true, url: account_path },\
         { title: 'Users', url: account_users_path },\
         { title: 'User', url: account_user_path(@user) },\
         { title: 'Edit' }\
-      ]}
+      ]
   section
     .card
       .card-content

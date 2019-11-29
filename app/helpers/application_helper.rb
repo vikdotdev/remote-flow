@@ -13,4 +13,12 @@ module ApplicationHelper
     end
     html.html_safe
   end
+
+  def breadcrumbs(links = [])
+    content_for :breadcrumbs do
+      render 'account/shared/breadcrumbs', links: links
+    end
+
+    content_for :breadcrumbs unless links.empty?
+  end
 end
