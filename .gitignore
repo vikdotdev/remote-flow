@@ -6,7 +6,8 @@
 
 # Ignore bundler config.
 /.bundle
-
+.DS_Store
+.idea
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -30,3 +31,4 @@
 yarn-debug.log*
 .yarn-integrity
 coverage
+/public/uploads/

@@ -139,7 +139,7 @@ nav.header-navbar.main-header-navbar.navbar-expand-lg.navbar.navbar-with-menu.fi
                   = current_user.full_name
                 span.user-status Available
               span
-                = image_tag 'avatar-s-11.jpg', alt: 'avatar', width: '40', height: '40', class: 'round'
+                = image_tag current_user.avatar.url, alt: 'avatar', width: '40', height: '40', class: 'round'
             .dropdown-menu.dropdown-menu-right data-toggle='dropdown'
               a.dropdown-item href="#"
                 i.bx.bx-user.mr-50
