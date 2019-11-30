@@ -2,7 +2,7 @@ h1.pricing-h Plans and Pricing
 p.pricing-p Have you tried reflow? Pay for one of the plan or try it for free
 .price-container
   .price-element
-    .price-title
+    .price-title.green
       h3 Basic
       p
         = number_to_currency(9.99, unit: "$", separator: ",", format: "%u %n")
@@ -14,10 +14,10 @@ p.pricing-p Have you tried reflow? Pay for one of the plan or try it for free
       p.price-conditions 1 channel 10 devices
       p.price-conditions 24 hour support
       .price-btn
-        .btn.btn-success Try It
-        .btn Buy It
+        a.btn.btn-success href="#" Try It
+        a.btn.green href="#" Buy It
   .price-element
-    .price-title
+    .price-title.orange
       h3 Pro
       p
         = number_to_currency(99.99, unit: "$", separator: ",", format: "%u %n")
@@ -29,10 +29,10 @@ p.pricing-p Have you tried reflow? Pay for one of the plan or try it for free
       p.price-conditions 5 channel 50 devices
       p.price-conditions 24 hour support
       .price-btn
-        .btn.btn-warning Try It
-        .btn Buy It
+        a.btn.btn-warning href="#" Try It
+        a.btn.orange href="#" Buy It
   .price-element
-    .price-title
+    .price-title.blue
       h3 Premium
       p
         = number_to_currency(199.99, unit: "$", separator: ",", format: "%u %n")
@@ -44,5 +44,5 @@ p.pricing-p Have you tried reflow? Pay for one of the plan or try it for free
       p.price-conditions 10 channel 100 devices
       p.price-conditions 24 hour support
       .price-btn
-        .btn.btn-info Try It
-        .btn Buy It
+        a.btn.btn-info  href="#"Try It
+        a.btn.blue href="#" Buy It
