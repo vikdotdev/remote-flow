@@ -1,12 +1,12 @@
 require "rails_helper"
 
-RSpec.describe SuperAdminMailer, type: :mailer do 
+RSpec.describe SuperAdminMailer, type: :mailer do
   describe 'send notification email' do
     let!(:admin) { create(:user, :super_admin, organization_id: nil)}
-    let!(:organization) { create(:organization) }        
+    let!(:organization) { create(:organization) }
     let!(:mail) { SuperAdminMailer.notify_email(organization)}
 
-    it 'deliver success' do      
+    it 'deliver success' do
       expect{create(:organization)}.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
 
