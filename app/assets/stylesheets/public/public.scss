@@ -27,21 +27,32 @@
   }
 }
 
+.public-footer {
+  background-color: #F5F5F5 !important;
+}
+
 .footer-info {
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  div {
-    border-left: 1px solid grey;
-    width: 20%;
-    padding: 20px 0px;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  ul {
+    list-style: none;
   }
-  div:first-child {
-    border: none;
+  div {
+    padding: 20px 10px;
+    text-align: center;
+  }
+  .text-medium {
+    font-size: 1.5rem;
+    padding-left: 5px;
   }
 }
 
 .copyright-text {
+  border-top: 1px solid #ccc;
+  padding: 20px;
+
   p {
     font-size: 18px;
     font-weight: 300;
