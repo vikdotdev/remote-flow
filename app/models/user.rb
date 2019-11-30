@@ -17,7 +17,7 @@ class User < ApplicationRecord
   validates :role, inclusion: { in: [SUPER_ADMIN, ADMIN, MANAGER] }
 
   scope :by_name, -> { order(:first_name) }
-  scope :all_super_admins, -> { where(role: SUPER_ADMIN) }
+  scope :super_admins, -> { where(role: SUPER_ADMIN) }
 
   def super_admin?
     self.role == SUPER_ADMIN
