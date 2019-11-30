@@ -9,7 +9,7 @@
     a.p-2.text-dark href="#"  Support
     a.p-2.text-dark href="/pricing"  Pricing
     - if user_signed_in?
-      = link_to "My Account", account_path
+      = link_to "My Account", account_path, class: "btn btn-outline-primary"
     - else
-      = link_to "Sing In", new_user_session
-      a.btn.btn-outline-primary href="/users/sign_up"  Sign up
+      = link_to "Sign In", new_user_session_path, class: "btn btn-outline-primary"
+      = link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-primary"
