@@ -1,0 +1,52 @@
+
+h1.pricing-h Plans and Pricing
+p.pricing-p Have you tried reflow? Pay for one of the plan or try it for free
+.price-container
+  .price-element
+    .price-title
+      h3 Basic
+      p
+        = number_to_currency(9.99, unit: "$", separator: ",", format: "%u %n")
+        | per month
+    .price-body
+      .price-header
+      p.price-conditions
+      p.price-conditions
+      p.price-conditions
+      p.price-conditions
+      p.price-conditions
+      .price-btn
+        .btn Try It
+        .btn Buy It
+  .price-element
+    .price-title
+      h3 Pro
+      p
+        = number_to_currency(99.99, unit: "$", separator: ",", format: "%u %n")
+        | per month
+    .price-body
+      .price-header
+      p.price-conditions
+      p.price-conditions
+      p.price-conditions
+      p.price-conditions
+      p.price-conditions
+      .price-btn
+        .btn Try It
+        .btn Buy It
+  .price-element
+    .price-title
+      h3 Premium
+      p
+        = number_to_currency(199.99, unit: "$", separator: ",", format: "%u %n")
+        | per month
+    .price-body
+      .price-header
+      p.price-conditions
+      p.price-conditions
+      p.price-conditions
+      p.price-conditions
+      p.price-conditions
+      .price-btn
+        .btn Try It
+        .btn Buy It
