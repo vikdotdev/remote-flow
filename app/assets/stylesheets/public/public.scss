@@ -27,6 +27,20 @@
   }
 }
 
+.footer-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  div {
+    border-left: 1px solid grey;
+    width: 20%;
+    padding: 20px 0px;
+  }
+  div:first-child {
+    border: none;
+  }
+}
+
 .copyright-text {
   p {
     font-size: 18px;
