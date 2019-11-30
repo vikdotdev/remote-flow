@@ -3,14 +3,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  unauthenticated do
-    root 'public#index'
-    get '/pricing', to: 'public#pricing'
-  end
+  root 'public#index'
 
-  authenticated do
-    get '/', to: redirect('/account')
-  end
+  get '/pricing', to: 'public#pricing'
 
   namespace :account do
     get '/', to: 'dashboard#index'

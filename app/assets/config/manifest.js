@@ -28,7 +28,7 @@
 //= link style.css
 //= vendors.min.css
 //= link toastr.css
-//= link pricing-list.css
+//= link pricing.css
 
 
 //

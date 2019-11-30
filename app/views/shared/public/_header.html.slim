@@ -8,8 +8,8 @@
     a.p-2.text-dark href="#"  Contact
     a.p-2.text-dark href="#"  Support
     a.p-2.text-dark href="/pricing"  Pricing
-  - if user_signed_in?
-    a.btn.btn-outline-primary href="/account/users/:id"  My account
-  - else
-    a.btn.btn-outline-primary href="/users/sign_in"  Sign in
-    a.btn.btn-outline-primary href="/users/sign_up"  Sign up
+    - if user_signed_in?
+      a.btn.btn-outline-primary href="/account/users/:id"  My account
+    - else
+      a.btn.btn-outline-primary href="/users/sign_in"  Sign in
+      a.btn.btn-outline-primary href="/users/sign_up"  Sign up
