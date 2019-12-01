@@ -1,10 +1,12 @@
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Users' },\
+]
+
 .content-body
   .row
     .col-7
-      = breadcrumbs [\
-        { home: true, url: account_path },\
-        { title: 'Users' },\
-      ]
+      = yield :breadcrumbs
   section
     .card
       .card-content

@@ -18,7 +18,5 @@ module ApplicationHelper
     content_for :breadcrumbs do
       render 'account/shared/breadcrumbs', links: links
     end
-
-    content_for :breadcrumbs unless links.empty?
   end
 end

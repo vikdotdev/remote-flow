@@ -1,11 +1,13 @@
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Users', url: account_users_path },\
+  { title: 'User' }\
+]
+
 .content-body
   .row
     .col-7
-      = breadcrumbs [\
-        { home: true, url: account_path },\
-        { title: 'Users', url: account_users_path },\
-        { title: 'User' }\
-      ]
+      = yield :breadcrumbs
   section.users-view
     /! users view media object start
     .row

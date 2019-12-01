@@ -1,10 +1,12 @@
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Devices' }\
+]
+
 .content-body.mt-2
   .row
     .col-7
-      = breadcrumbs [\
-        { home: true, url: account_path },\
-        { title: 'Devices' }\
-      ]
+      = yield :breadcrumbs
     .col-5.d-flex.justify-content-end.align-items-center.px-1.mb-2
       = link_to "Add New Device",
           new_account_device_path,

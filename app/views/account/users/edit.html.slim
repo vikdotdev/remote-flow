@@ -1,12 +1,14 @@
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Users', url: account_users_path },\
+  { title: 'User', url: account_user_path(@user) },\
+  { title: 'Edit' }\
+]
+
 .content-body.mt-2
   .row
     .col-7
-      = breadcrumbs [\
-        { home: true, url: account_path },\
-        { title: 'Users', url: account_users_path },\
-        { title: 'User', url: account_user_path(@user) },\
-        { title: 'Edit' }\
-      ]
+      = yield :breadcrumbs
   section
     .card
       .card-content
