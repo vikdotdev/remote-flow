@@ -12,6 +12,6 @@ class Organization < ApplicationRecord
   
   private
   def send_notification
-    SuperAdminMailer.notify_email(self).deliver_now
+    SuperAdminMailer.new_organization_email(self).deliver_now
   end
 end
