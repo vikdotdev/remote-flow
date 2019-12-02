@@ -27,6 +27,11 @@ class Account::OrganizationsController < Account::AccountController
     @organization = resource
     if @organization.destroy
       flash[:success] = "Organization successfully deleted"
+      if current_user.super_admin?
+        redirect_to account_organizations_path
+      else
+        redirect_to root_path
+      end
     else
       flash[:error] = "Failed to delete organization"
     end

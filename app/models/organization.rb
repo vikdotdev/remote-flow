@@ -11,7 +11,7 @@ class Organization < ApplicationRecord
                    uniqueness: true
   scope :by_name, -> { order(:name) }
 
-  mount_upploader :logo, LogoUploader
+  mount_uploader :logo, LogoUploader
 
   private
   def send_notification
