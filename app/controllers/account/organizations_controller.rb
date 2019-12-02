@@ -18,7 +18,7 @@ class Account::OrganizationsController < Account::AccountController
       redirect_to account_organization_path(@organization)
       flash[:success] = "Organization successfully updated"
     else
-      redirect_to :edit
+      redirect_to organizations: :edit
       flash[:error] = "Failed to update organization"
     end
   end
@@ -40,7 +40,7 @@ class Account::OrganizationsController < Account::AccountController
   private
 
   def organization_params
-    params.require(:organization).permit(:name, :logo)
+    params.require(:organization).permit(:name, :logo, :logo_cache, :remove_logo)
   end
 
   def collection

@@ -22,6 +22,11 @@
         .col-12.col-md-4
           table.table.table-borderless
             tbody
+              -if @organization.logo.url.present?
+                tr
+                  td Logo
+                  td
+                      = image_tag @organization.logo.url, class: 'logo-img'
               tr
                 td Registered:
                 td
