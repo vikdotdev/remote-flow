@@ -14,6 +14,10 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def button_text
+    action_name == 'new' ? 'Create' : 'Update'
+  end
+
   def sidebar_button(options = {})
     return if options.empty?
 
@@ -21,6 +25,8 @@ module ApplicationHelper
   end
 
   def breadcrumbs(links = [])
+    return if links.empty?
+
     content_for :breadcrumbs do
       render 'account/shared/breadcrumbs', links: links
     end
