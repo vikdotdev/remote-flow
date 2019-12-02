@@ -8,7 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   mount_uploader :avatar, AvatarUploader
-    
+
   belongs_to :organization, optional: true
   accepts_nested_attributes_for :organization
   validates :first_name, length: { maximum: 250 }, presence: true
@@ -25,6 +25,10 @@ class User < ApplicationRecord
 
   def admin?
     self.role == ADMIN
+  end
+
+  def manager?
+    self.role == MANAGER
   end
 
   def full_name
