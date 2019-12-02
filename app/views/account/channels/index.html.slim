@@ -1,37 +1,41 @@
-.content-body.mt-2
-  .row
-    .col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
-      = link_to "Add New Channel",
-              new_account_channel_path,
-              class: "btn btn-sm btn-light-primary"
-  .card
-    .card-header
-      h4.card-title Channels
-    .card-content
-      .card-body
-        .table-responsive
-          table.table.zero-configuration
-            thead
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Channels' },\
+]
+
+- content_for :actions do
+  = link_to "Add New Channel",
+          new_account_channel_path,
+          class: "btn btn-sm btn-light-primary"
+        
+.card
+  .card-header
+    h4.card-title Channels
+  .card-content
+    .card-body
+      .table-responsive
+        table.table.zero-configuration
+          thead
+            tr
+              th ID
+              th Name
+              th Created
+              th Edit
+              th Delete
+          tbody
+            - @channels.each do |channel|
               tr
-                th ID
-                th Name
-                th Created
-                th Edit
-                th Delete
-            tbody
-              - @channels.each do |channel|
-                tr
-                  td
-                    = channel.id
-                  td
-                    = link_to channel.name, account_device_path(channel)
-                  td
-                    = channel.created_at.strftime("%m/%d/%Y")
-                  td
-                    = link_to "Edit", edit_account_channel_path(channel)
-                  td
-                    = link_to "Delete",
-                            account_channel_path(channel),
-                            class: 'danger',
-                            method: :delete, data: { confirm: 'Are you sure?' }
-          = paginate @channels
+                td
+                  = channel.id
+                td
+                  = link_to channel.name, account_channel_path(channel)
+                td
+                  = channel.created_at.strftime("%m/%d/%Y")
+                td
+                  = link_to "Edit", edit_account_channel_path(channel)
+                td
+                  = link_to "Delete",
+                          account_channel_path(channel),
+                          class: 'danger',
+                          method: :delete, data: { confirm: 'Are you sure?' }
+        = paginate @channels

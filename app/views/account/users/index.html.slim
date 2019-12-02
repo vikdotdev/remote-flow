@@ -3,7 +3,7 @@
   { title: 'Users' },\
 ]
 
-.col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
+- content_for :actions do
   = link_to "Add New User",
       new_account_user_path,
       class: "btn btn-sm btn-light-primary"
