@@ -25,6 +25,8 @@ module ApplicationHelper
   end
 
   def breadcrumbs(links = [])
+    return if links.empty?
+
     content_for :breadcrumbs do
       render 'account/shared/breadcrumbs', links: links
     end
