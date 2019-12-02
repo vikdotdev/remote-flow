@@ -1,6 +1,7 @@
 = simple_form_for device, url: path do |f|
     = f.input :name, autofocus: true, placeholder: 'Device Name'
     - button_text = action_name == 'new' ? 'Create' : 'Update'
-    = f.button :submit, "#{button_text} Device", class: "btn-primary mt-1 mr-50"
-    = link_to 'Back', back_path, class: "btn border mt-1"
+    .d-flex.flex-sm-row.flex-column.mt-1
+      = f.button :submit, "#{button_text} Device", class: "btn-primary mt-1 mr-sm-50"
+      = link_to 'Back', back_path, class: "btn border mt-1"
 
