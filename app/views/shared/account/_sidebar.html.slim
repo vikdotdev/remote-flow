@@ -12,44 +12,23 @@
   .shadow-bottom
   .main-menu-content.d-flex.flex-column.justify-content-between
     ul#main-menu-navigation.navigation.navigation-main data-icon-style="lines" data-menu="menu-navigation"
-      li.nav-item.active
-        a href="#"
-          i.menu-livicon data-icon="desktop"
-          span.menu-title data-i18n="" Dashboard
-          span.badge.badge-light-danger.badge-pill.badge-round.float-right 2
-      li.nav-item
-        a href="#"
-          i.menu-livicon data-icon="unlink"
-          span.menu-title data-i18n="" Organization
-        ul.menu-content
-          li
-            = link_to account_users_path do
-              i.bx.bx-right-arrow-alt
-              span.menu-item data-i18n="" Users
-          li
-            a href="#"
-              i.bx.bx-right-arrow-alt
-              span.menu-item data-i18n="" Channels
-          li
-            a href="#"
-              i.bx.bx-right-arrow-alt
-              span.menu-item data-i18n="" Device Groups
-          - unless current_user.super_admin?
-            li
-              = link_to account_devices_path do
-                i.bx.bx-right-arrow-alt
-                span.menu-item data-i18n="" Devices
-      li.nav-item
-        a href="#"
-          i.menu-livicon data-icon="pie-chart"
-          span.menu-title data-i18n="" Analytics
-      li.nav-item
-        a href="#"
-          i.menu-livicon data-icon="morph-folder"
-          span.menu-title data-i18n="" Reports
+      = sidebar_button({ text: 'Dashboard', path: '#', icon: 'desktop' })
+      = sidebar_button({ text: 'Users', path: account_users_path, icon: 'users' })
+      - if current_user.admin? || current_user.manager?
+          = sidebar_button({ text: 'Organization', path: '#', icon: 'link' })
+          = sidebar_button({ text: 'Device Groups', path: '#', icon: 'diagram' })
+          = sidebar_button({ text: 'Devices', path: account_devices_path, icon: 'tablet' })
+          = sidebar_button({ text: 'Channels', path: '#', icon: 'thumbnails-small' })
+      - elsif current_user.super_admin?
+          = sidebar_button({ text: 'Organizations', path: '#', icon: 'link' })
+      = sidebar_button({ text: 'Analytics', path: '#', icon: 'pie-chart' })
+      = sidebar_button({ text: 'Reports', path: '#', icon: 'morph-folder' })
     ul.navigation.navigation-main data-icon-style="lines" data-menu="menu-navigation"
-      li#menu-logout.nav-item
-        = link_to destroy_user_session_path, method: :delete
-          i.menu-livicon data-icon="morph-login2"
-          | Logout
+      = sidebar_button({\
+          text: 'Logout',\
+          id: 'menu-logout',\
+          path: destroy_user_session_path,\
+          method: 'delete',\
+          icon: 'morph-login2'\
+        })
 
