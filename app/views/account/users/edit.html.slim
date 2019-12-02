@@ -1,8 +1,14 @@
-.content-body
-  section
-    .card
-      .card-content
-        .card-header.pb-0
-          h4 Edit:
-        .card-body
-          = render 'account/shared/form', user: @user, path: account_user_path(@user)
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Users', url: account_users_path },\
+  { title: 'User', url: account_user_path(@user) },\
+  { title: 'Edit' }\
+]
+
+section
+  .card
+    .card-content
+      .card-header.pb-0
+        h4 Edit:
+      .card-body
+        = render 'account/shared/form', user: @user, path: account_user_path(@user)

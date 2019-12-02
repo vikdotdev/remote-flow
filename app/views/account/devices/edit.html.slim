@@ -1,19 +1,25 @@
-.content-body.mt-2
-  .row
-    .col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
-      = link_to "All Devices",
-          account_devices_path(@device),
-          class: "btn btn-sm btn-light-primary mr-50"
-      = link_to "Delete", account_device_path(@device),
-          class: "btn btn-sm btn-light-danger",
-          method: :delete
-  .card
-    .card-content
-      .card-header.pb-0
-        h4 Edit
-      .card-body
-        - path = account_device_path(@device)
-        = render 'account/devices/form',
-            device: @device,
-            path: path,
-            back_path: path
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Devices', url: account_devices_path },\
+  { title: 'Device', url: account_device_path(@device) },\
+  { title: 'Edit' }\
+]
+
+.col-5.d-flex.justify-content-end.align-items-center.px-1.mb-2
+  = link_to "All Devices",
+      account_devices_path(@device),
+      class: "btn btn-sm btn-light-primary mr-50"
+  = link_to "Delete", account_device_path(@device),
+      class: "btn btn-sm btn-light-danger",
+      method: :delete
+
+.card
+  .card-content
+    .card-header.pb-0
+      h4 Edit
+    .card-body
+      - path = account_device_path(@device)
+      = render 'account/devices/form',
+          device: @device,
+          path: path,
+          back_path: path

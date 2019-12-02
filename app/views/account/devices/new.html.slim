@@ -1,11 +1,16 @@
-.content-body.mt-2
-  section
-    .card
-      .card-content
-        .card-header.pb-0
-          h4 New Device
-        .card-body
-          = render 'account/devices/form',
-              device: @device,
-              path: account_devices_path,
-              back_path: account_devices_path
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Devices', url: account_devices_path },\
+  { title: 'New' }\
+]
+
+section
+  .card
+    .card-content
+      .card-header.pb-0
+        h4 New Device
+      .card-body
+        = render 'account/devices/form',
+            device: @device,
+            path: account_devices_path,
+            back_path: account_devices_path
