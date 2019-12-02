@@ -9,7 +9,10 @@
       .card-body
         = simple_form_for(current_user, url: account_profile_path, method: :patch) do |f|
           .media.mb-2.ml-2.mt-1.d-flex.align-items-center
-            = image_tag current_user.avatar.url, width: 64, height: 64, class: 'users-avatar-shadow rounded-circle'
+            = image_tag current_user.avatar.url,
+              width: 64,
+              height: 64,
+              class: 'users-avatar-shadow rounded-circle'
             .file-upload-div
               .file-upload.btn.btn-primary.ml-2
                 span
@@ -19,8 +22,8 @@
             .col-12.col-sm-6
               = f.input :email,
                   autofocus: true,
-                  autocomplete: "email",
                   class: "form-control",
+                  autocomplete: "email",
                   placeholder: "Email",
                   label: 'Email'
               = f.input :first_name,
@@ -28,28 +31,24 @@
                   class: "form-control",
                   label: 'First Name'
               = f.input :last_name,
-                  class: "form-control",
                   placeholder: "Last Name",
                   class: "form-control",
                   label: 'Last Name'
             .col-12.col-sm-6
               = f.input :password,
-                  class: "form-control",
                   placeholder: "New Password",
-                  autocomplete: "new-password",
                   class: "form-control",
+                  autocomplete: "new-password",
                   label: 'Password'
               = f.input :password_confirmation,
-                  class: "form-control",
                   placeholder: "Password Confirmation",
-                  autocomplete: "new-password",
                   class: "form-control",
+                  autocomplete: "new-password",
                   label: 'Password Confirmation'
               = f.input :current_password,
-                  class: "form-control",
                   placeholder: "Current Password",
-                  autocomplete: "new-password",
                   class: "form-control",
+                  autocomplete: "new-password",
                   label: 'Current Password',
                   include_blank: false,
                   required: true
