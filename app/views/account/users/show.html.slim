@@ -4,53 +4,49 @@
   { title: 'User' }\
 ]
 
-.content-body
+section.users-view
+  /! users view media object start
   .row
-    .col-7
-      = yield :breadcrumbs
-  section.users-view
-    /! users view media object start
-    .row
-      .col-12.col-sm-7
-        .media.mb-2
-          a.mr-1 href="#"
-            img.users-avatar-shadow.rounded-circle alt=("users view avatar") height="64" src="https://pbs.twimg.com/profile_images/344513261569854761/fc0b8c1921d37fb628f77dd33478bb60.jpeg" width="64" /
-          .media-body.pt-25
-            h4.media-heading
-              span.users-view-name = @user.full_name
-            span ID:
-            span.users-view-id = @user.id
-      .col-12.col-sm-5.px-0.d-flex.justify-content-end.align-items-center.px-1.mb-2
-        = link_to "Edit", edit_account_user_path(@user), class: "btn btn-sm btn-primary"
-    /! users view media object ends
-    /! users view card data start
-    .card
-      .card-content
-        .card-header.pb-0
-          h4 Info :
-        .card-body
-          .row
-            .col-12.col-md-4
-              table.table.table-borderless
+    .col-12.col-sm-7
+      .media.mb-2
+        a.mr-1 href="#"
+          img.users-avatar-shadow.rounded-circle alt=("users view avatar") height="64" src="https://pbs.twimg.com/profile_images/344513261569854761/fc0b8c1921d37fb628f77dd33478bb60.jpeg" width="64" /
+        .media-body.pt-25
+          h4.media-heading
+            span.users-view-name = @user.full_name
+          span ID:
+          span.users-view-id = @user.id
+    .col-12.col-sm-5.px-0.d-flex.justify-content-end.align-items-center.px-1.mb-2
+      = link_to "Edit", edit_account_user_path(@user), class: "btn btn-sm btn-primary"
+  /! users view media object ends
+  /! users view card data start
+  .card
+    .card-content
+      .card-header.pb-0
+        h4 Info :
+      .card-body
+        .row
+          .col-12.col-md-4
+            table.table.table-borderless
+              tbody
+                tr
+                  td Registered:
+                  td = @user.created_at.strftime("%m/%d/%Y")
+                tr
+                  td Role:
+                  td = @user.role.capitalize
+          .col-12.col-md-8
+            .table-responsive
+              table.table.mb-0
                 tbody
                   tr
-                    td Registered:
-                    td = @user.created_at.strftime("%m/%d/%Y")
+                    td Email
+                    td = @user.email
                   tr
-                    td Role:
-                    td = @user.role.capitalize
-            .col-12.col-md-8
-              .table-responsive
-                table.table.mb-0
-                  tbody
+                    td Name
+                    td = @user.full_name
+                  - if @user.organization
                     tr
-                      td Email
-                      td = @user.email
-                    tr
-                      td Name
-                      td = @user.full_name
-                    - if @user.organization
-                      tr
-                        td Organization
-                        td = @user.organization.name
-        = link_to 'Back', account_users_path, class: "btn mb-2 ml-2"
+                      td Organization
+                      td = @user.organization.name
+      = link_to 'Back', account_users_path, class: "btn mb-2 ml-2"

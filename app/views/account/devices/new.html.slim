@@ -4,18 +4,13 @@
   { title: 'New' }\
 ]
 
-.content-body.mt-2
-  .row
-    .col-7
-      = yield :breadcrumbs
-    .col-5
-  section
-    .card
-      .card-content
-        .card-header.pb-0
-          h4 New Device
-        .card-body
-          = render 'account/devices/form',
-              device: @device,
-              path: account_devices_path,
-              back_path: account_devices_path
+section
+  .card
+    .card-content
+      .card-header.pb-0
+        h4 New Device
+      .card-body
+        = render 'account/devices/form',
+            device: @device,
+            path: account_devices_path,
+            back_path: account_devices_path

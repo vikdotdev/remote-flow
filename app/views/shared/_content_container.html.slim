@@ -2,4 +2,11 @@
   .content-overlay
   .content-wrapper
     = flash_messages
+    .content-body.mt-2
+      .row
+        .col-7
+          = yield :breadcrumbs
+        .col-5
+          / yield action buttons here
+
     = yield

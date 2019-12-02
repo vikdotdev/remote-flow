@@ -4,14 +4,10 @@
   { title: 'New' }\
 ]
 
-.content-body
-  .row
-    .col-7
-      = yield :breadcrumbs
-  section
-    .card
-      .card-content
-        .card-header.pb-0
-          h4 New user:
-        .card-body
-          = render 'account/shared/form', user: @user, path: account_users_path
+section
+  .card
+    .card-content
+      .card-header.pb-0
+        h4 New user:
+      .card-body
+        = render 'account/shared/form', user: @user, path: account_users_path
