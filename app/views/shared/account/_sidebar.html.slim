@@ -18,7 +18,7 @@
           = sidebar_button({ text: 'Organization', path: account_organization_path(current_user.organization), icon: 'link' })
           = sidebar_button({ text: 'Device Groups', path: '#', icon: 'diagram' })
           = sidebar_button({ text: 'Devices', path: account_devices_path, icon: 'tablet' })
-          = sidebar_button({ text: 'Channels', path: '#', icon: 'thumbnails-small' })
+          = sidebar_button({ text: 'Channels', path: account_channels_path, icon: 'thumbnails-small' })
       - elsif current_user.super_admin?
           = sidebar_button({ text: 'Organizations', path: account_organizations_path, icon: 'link' })
       = sidebar_button({ text: 'Analytics', path: '#', icon: 'pie-chart' })
@@ -31,4 +31,3 @@
           method: 'delete',\
           icon: 'morph-login2'\
         })
-

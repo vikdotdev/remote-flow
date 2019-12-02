@@ -1,6 +1,13 @@
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Channels', url: account_channels_path },\
+  { title: 'Channel', url: account_channel_path(@channel) },\
+  { title: 'Edit' }\
+]
+
 .content-body.mt-2
   .row
-    .col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
+    - content_for :actions do
       = link_to "All Channel",
               account_channels_path(@channel),
               class: "btn btn-sm btn-light-primary mr-50"

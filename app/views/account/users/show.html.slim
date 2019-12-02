@@ -4,7 +4,7 @@
   { title: 'User' }\
 ]
 
-.col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
+- content_for :actions do
   = link_to "All Users", account_users_path, class: "btn btn-sm btn-light-primary mr-50"
   = link_to "Edit", edit_account_user_path(@user), class: "btn btn-sm btn-light-primary mr-50"
   = link_to "Delete", account_user_path(@user), class: "btn btn-sm btn-light-danger", method: :delete
@@ -52,4 +52,3 @@ section.users-view
                   tr
                     td Organization
                     td = @user.organization.name
-

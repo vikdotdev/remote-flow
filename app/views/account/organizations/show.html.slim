@@ -1,7 +1,7 @@
 - if current_user.super_admin?
   - breadcrumbs [\
     { home: true, url: account_path },\
-    { title: 'Organizations', url: account_organization_path },\
+    { title: 'Organizations', url: account_organizations_path },\
     { title: 'Organization' }\
   ]
 - else
@@ -9,7 +9,7 @@
     { home: true, url: account_path },\
     { title: 'Organization' }\
   ]
-.col-5.d-flex.justify-content-end.align-items-center.px-1.mb-2
+- content_for :actions do
   = link_to "All Organizations", account_organizations_path(@organization), class: "btn btn-sm btn-light-primary mr-50" if current_user.super_admin?
   = link_to "Edit", edit_account_organization_path(@organization), class: "btn btn-sm btn-light-primary mr-50"
   = link_to "Delete", account_organization_path(@organization), class: "btn btn-sm btn-light-danger", method: :delete

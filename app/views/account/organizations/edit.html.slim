@@ -12,7 +12,7 @@
   { title: 'Edit' }\
 ]
 
-.col-5.d-flex.justify-content-end.align-items-center.px-1.mb-2
+- content_for :actions do
   = link_to "Delete", account_organization_path(@organization),
       class: "btn btn-sm btn-light-danger",
       method: :delete
