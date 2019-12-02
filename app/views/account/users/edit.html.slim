@@ -5,7 +5,7 @@
   { title: 'Edit' }\
 ]
 
-.col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
+- content_for :actions do
   = link_to "All Users",
       account_users_path(@user),
       class: "btn btn-sm btn-light-primary mr-50"

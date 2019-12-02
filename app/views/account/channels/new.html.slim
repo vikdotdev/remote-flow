@@ -1,11 +1,16 @@
-.content-body.mt-2
-  section
-    .card
-      .card-content
-        .card-header.pb-0
-          h4 New Channel
-        .card-body
-          = render 'account/channels/form',
-                  channel: @channel,
-                  path: account_channels_path,
-                  back_path: account_channels_path
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Channels', url: account_channels_path },\
+  { title: 'New' }\
+]
+
+section
+  .card
+    .card-content
+      .card-header.pb-0
+        h4 New Channel
+      .card-body
+        = render 'account/channels/form',
+                channel: @channel,
+                path: account_channels_path,
+                back_path: account_channels_path

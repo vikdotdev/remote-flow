@@ -3,10 +3,9 @@
   { title: 'Devices' }\
 ]
 
-.col-5.d-flex.justify-content-end.align-items-center.px-1.mb-2
-  = link_to "Add New Device",
-      new_account_device_path,
-      class: "btn btn-sm btn-light-primary"
+- content_for :actions do
+  = link_to "Add New Device", new_account_device_path, class: "btn btn-sm btn-light-primary"
+
 .card
   .card-header
     h4.card-title Devices
@@ -41,4 +40,3 @@
                       class: 'danger',
                       method: :delete, data: { confirm: 'Are you sure?' }
         = paginate @devices
-

@@ -1,5 +1,7 @@
 class Account::OrganizationsController < Account::AccountController
 
+  before_action :require_super_admin_only!
+
   def index
     @organizations = collection.by_name.page(params[:page]).per(10)
   end
@@ -27,11 +29,7 @@ class Account::OrganizationsController < Account::AccountController
     @organization = resource
     if @organization.destroy
       flash[:success] = "Organization successfully deleted"
-      if current_user.super_admin?
-        redirect_to account_organizations_path
-      else
-        redirect_to root_path
-      end
+      redirect_to account_organizations_path
     else
       flash[:error] = "Failed to delete organization"
     end
@@ -44,14 +42,17 @@ class Account::OrganizationsController < Account::AccountController
   end
 
   def collection
-    if current_user.super_admin?
-      Organization.all
-    else
-      Organization.where(id: current_organization.id)
-    end
+    Organization.all
   end
 
   def resource
     collection.find(params[:id])
+  end
+
+  def require_super_admin_only!
+    unless current_user.super_admin?
+      flash[:warning] = "You are not allowed to do such a things!"
+      redirect_to controller: 'dashboard', action: 'index'
+    end
   end
 end
