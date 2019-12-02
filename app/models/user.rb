@@ -8,8 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   mount_uploader :avatar, AvatarUploader
-  
-  belongs_to :organization
+    
   belongs_to :organization, optional: true
   accepts_nested_attributes_for :organization
   validates :first_name, length: { maximum: 250 }, presence: true
@@ -18,6 +17,7 @@ class User < ApplicationRecord
   validates :role, inclusion: { in: [SUPER_ADMIN, ADMIN, MANAGER] }
 
   scope :by_name, -> { order(:first_name) }
+  scope :super_admins, -> { where(role: SUPER_ADMIN) }
 
   def super_admin?
     self.role == SUPER_ADMIN
