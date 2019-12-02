@@ -9,7 +9,8 @@ class Organization < ApplicationRecord
 
   validates :name, presence: true,
                    uniqueness: true
-  
+  scope :by_name, -> { order(:name) }
+
   private
   def send_notification
     SuperAdminMailer.new_organization_email(self).deliver_now

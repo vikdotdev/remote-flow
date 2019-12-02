@@ -7,7 +7,7 @@ module ApplicationHelper
       type = type_translate[type] if type_translate[type]
       html << '<script>
       window.onload = function(){
-        toastr.' + type.to_s + '("' + message + '", "' + message + '", { positionClass: "toast-top-right", containerId: "toast-top-right" });
+        toastr.' + type.to_s + '("' + message + '", { positionClass: "toast-top-right", containerId: "toast-top-right" });
       };
       </script>'
     end
