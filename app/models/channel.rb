@@ -6,4 +6,6 @@ class Channel < ApplicationRecord
   validates :name, presence: true,
                    length: { minimum: 2,
                              maximum: 255 }
+
+  scope :by_name, -> { order(:name) }
 end
