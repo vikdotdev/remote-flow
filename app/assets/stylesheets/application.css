@@ -1,5 +1,8 @@
 /*
  *= require_self
  *= require account/_form
+ *= require public/themify-icons
+ *= require public/public
+
  *= require profile
 */
