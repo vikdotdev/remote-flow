@@ -1,15 +1,17 @@
 require 'rails_helper'
 
-RSpec.feature "Sign in", type: :feature do
-  describe 'the signin proccess', type: :feature do
+RSpec.feature "Public page", type: :feature do
+  describe 'test rendering', type: :feature do
 
-    it 'sign in user' do
+    it 'visits pricing page' do
       visit '/'
       click_link "Pricing"
-      fill_in 'Email', with: user.email
-      fill_in 'Password', with: 'passwd'
-      click_button 'Login'
-      expect(page).to have_current_path(root_path)
+      page.find('h1.pricing-h', text: 'Plans and Pricing')
+    end
+
+    it 'visits root page' do
+      visit '/'
+      page.find('h2', text: 'Unique Features')
     end
   end
 end

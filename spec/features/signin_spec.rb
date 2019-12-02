@@ -6,7 +6,7 @@ RSpec.feature "Sign in", type: :feature do
 
     it 'sign in user' do
       visit '/'
-      click_link "Sign in"
+      click_link "Sign In"
       fill_in 'Email', with: user.email
       fill_in 'Password', with: 'passwd'
       click_button 'Login'

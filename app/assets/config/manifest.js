@@ -1,5 +1,6 @@
 //= link app.js
 //= link app-menu.js
+//= link account/hide_organization_dropdown.js
 //= link components.js
 //= link footer.js
 //= link LivIconsEvo.defaults.js

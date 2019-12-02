@@ -3,9 +3,9 @@ html.loading data-textdirection="ltr" lang="en"
   = render 'shared/head'
   body.vertical-layout.vertical-menu-modern.2-columns.navbar-sticky.footer-static data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
     = flash_messages
-    = render 'shared/header'
-    = render 'shared/sidebar'
-    = render 'shared/content_container'
-    = render 'shared/footer'
+    = render 'shared/account/header'
+    = render 'shared/account/sidebar'
+    = render 'shared/account/content_container'
+    = render 'shared/account/footer'
     = render 'shared/template_javascripts'
 = any_login_here if defined?(AnyLogin)
