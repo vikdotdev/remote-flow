@@ -4,9 +4,9 @@ RSpec.feature "Sign in", type: :feature do
   describe 'the signin proccess', type: :feature do
     let!(:user) { create(:user) }
 
-    it 'sign in user' do 
+    it 'sign in user' do
       visit '/'
-      click_link "Log in"
+      click_link "Sign In"
       fill_in 'Email', with: user.email
       fill_in 'Password', with: 'passwd'
       click_button 'Login'
