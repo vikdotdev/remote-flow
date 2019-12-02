@@ -1,9 +1,15 @@
-.content-body.mt-2
-  .row
-    .col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
-      = link_to "All Users", account_users_path, class: "btn btn-sm btn-light-primary mr-50"
-      = link_to "Edit", edit_account_user_path(@user), class: "btn btn-sm btn-light-primary mr-50"
-      = link_to "Delete", account_user_path(@user), class: "btn btn-sm btn-light-danger", method: :delete
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Users', url: account_users_path },\
+  { title: 'User' }\
+]
+
+.col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
+  = link_to "All Users", account_users_path, class: "btn btn-sm btn-light-primary mr-50"
+  = link_to "Edit", edit_account_user_path(@user), class: "btn btn-sm btn-light-primary mr-50"
+  = link_to "Delete", account_user_path(@user), class: "btn btn-sm btn-light-danger", method: :delete
+
+section.users-view
   .card
     .card-content
       .card-body
@@ -22,8 +28,8 @@
                     = @user.full_name
                 span.users-view-id
                   = "ID #{@user.id}"
-        .row
-          .col-md-5
+
+          .col-12.col-md-4
             table.table.table-borderless
               tbody
                 tr
@@ -32,7 +38,7 @@
                 tr
                   td Role:
                   td = @user.role.capitalize
-          .col-md-7
+          .col-md-8
             table.table.mb-0
               thead
               tbody
@@ -46,3 +52,4 @@
                   tr
                     td Organization
                     td = @user.organization.name
+

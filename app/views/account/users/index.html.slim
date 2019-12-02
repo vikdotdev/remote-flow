@@ -1,14 +1,20 @@
-.content-body.mt-2
-  .row
-    .col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
-      = link_to "Add New User",
-          new_account_user_path,
-          class: "btn btn-sm btn-light-primary"
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Users' },\
+]
+
+.col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
+  = link_to "Add New User",
+      new_account_user_path,
+      class: "btn btn-sm btn-light-primary"
+
+section
   .card
     .card-header
       h4.card-title Users
     .card-content
       .card-body
+        = link_to "Add a New User", new_account_user_path, class: "btn btn-primary mt-1"
         .table-responsive
           table.table
             thead

@@ -1,41 +1,44 @@
-.content-body.mt-2
-  .row
-    .col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
-      = link_to "Add New Device",
-          new_account_device_path,
-          class: "btn btn-sm btn-light-primary"
-  .card
-    .card-header
-      h4.card-title Devices
-    .card-content
-      .card-body
-        .table-responsive
-          table.table.zero-configuration
-            thead
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Devices' }\
+]
+
+.col-5.d-flex.justify-content-end.align-items-center.px-1.mb-2
+  = link_to "Add New Device",
+      new_account_device_path,
+      class: "btn btn-sm btn-light-primary"
+.card
+  .card-header
+    h4.card-title Devices
+  .card-content
+    .card-body
+      .table-responsive
+        table.table.zero-configuration
+          thead
+            tr
+              th ID
+              th Name
+              th Status
+              th Created
+              th Edit
+              th Delete
+          tbody
+            - @devices.each do |device|
               tr
-                th ID
-                th Name
-                th Status
-                th Created
-                th Edit
-                th Delete
-            tbody
-              - @devices.each do |device|
-                tr
-                  td
-                    = device.id
-                  td
-                    = link_to device.name, account_device_path(device)
-                  td
-                    = status_badge device.active
-                  td
-                    = device.created_at.strftime("%m/%d/%Y")
-                  td
-                    = link_to "Edit", edit_account_device_path(device)
-                  td
-                    = link_to "Delete",
-                        account_device_path(device),
-                        class: 'danger',
-                        method: :delete, data: { confirm: 'Are you sure?' }
-          = paginate @devices
+                td
+                  = device.id
+                td
+                  = link_to device.name, account_device_path(device)
+                td
+                  = status_badge device.active
+                td
+                  = device.created_at.strftime("%m/%d/%Y")
+                td
+                  = link_to "Edit", edit_account_device_path(device)
+                td
+                  = link_to "Delete",
+                      account_device_path(device),
+                      class: 'danger',
+                      method: :delete, data: { confirm: 'Are you sure?' }
+        = paginate @devices
 

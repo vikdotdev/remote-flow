@@ -1,9 +1,14 @@
-.content-body.mt-2
-  .row
-    .col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
-      a.btn.btn-sm.btn-light-primary.mr-50 href='#'
-        | Dummy button
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Profile' },\
+  { title: 'Edit' }\
+]
 
+.col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
+  a.btn.btn-sm.btn-light-primary.mr-50 href='#'
+    | Dummy button
+
+section.users-edit
   .card
     .card-content
       .card-body

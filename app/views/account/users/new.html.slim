@@ -1,9 +1,14 @@
-.content-body.mt-2
-  section
-    .card
-      .card-content
-        .card-header.pb-0
-          h4 New User
-        .card-body
-          - path = account_users_path
-          = render 'account/shared/form', user: @user, path: path, back_path: path
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Users', url: account_users_path },\
+  { title: 'New' }\
+]
+
+section
+  .card
+    .card-content
+      .card-header.pb-0
+        h4 New user
+      .card-body
+        - path = account_users_path
+        = render 'account/shared/form', user: @user, path: path, back_path: path

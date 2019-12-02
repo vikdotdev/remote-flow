@@ -13,4 +13,16 @@ module ApplicationHelper
     end
     html.html_safe
   end
+
+  def sidebar_button(options = {})
+    return if options.empty?
+
+    render 'shared/sidebar_button', options: options
+  end
+
+  def breadcrumbs(links = [])
+    content_for :breadcrumbs do
+      render 'account/shared/breadcrumbs', links: links
+    end
+  end
 end

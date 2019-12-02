@@ -1,0 +1,15 @@
+#public-header.d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.bg-white.border-bottom.shadow-sm
+  h5.my-0.mr-md-auto.font-weight-normal
+    a.nav-link.navbar-brand href="/"
+      = image_tag 'logo-remote-flow.png', alt: 'logo', width: '75'
+  nav.my-2.my-md-0.mr-md-3
+    a.p-2.text-dark href="#"  About Us
+    a.p-2.text-dark href="#"  How To Use
+    a.p-2.text-dark href="#"  Contact
+    a.p-2.text-dark href="#"  Support
+    a.p-2.text-dark href="/pricing"  Pricing
+    - if user_signed_in?
+      = link_to "My Account", account_path, class: "btn btn-outline-primary"
+    - else
+      = link_to "Sign In", new_user_session_path, class: "btn btn-outline-primary"
+      = link_to "Sign Up", new_user_registration_path, class: "btn btn-outline-primary"

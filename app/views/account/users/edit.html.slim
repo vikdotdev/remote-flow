@@ -1,12 +1,19 @@
-.content-body.mt-2
-  .row
-    .col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
-      = link_to "All Users",
-          account_users_path(@user),
-          class: "btn btn-sm btn-light-primary mr-50"
-      = link_to "Delete", account_user_path(@user),
-          class: "btn btn-sm btn-light-danger",
-          method: :delete
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Users', url: account_users_path },\
+  { title: 'User', url: account_user_path(@user) },\
+  { title: 'Edit' }\
+]
+
+.col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
+  = link_to "All Users",
+      account_users_path(@user),
+      class: "btn btn-sm btn-light-primary mr-50"
+  = link_to "Delete", account_user_path(@user),
+      class: "btn btn-sm btn-light-danger",
+      method: :delete
+
+section
   .card
     .card-content
       .card-header.pb-0
