@@ -1,5 +1,6 @@
 //= link app.js
 //= link app-menu.js
+//= link account/hide_organization_dropdown.js
 //= link components.js
 //= link footer.js
 //= link LivIconsEvo.defaults.js
@@ -29,6 +30,7 @@
 //= vendors.min.css
 //= link toastr.css
 
+
 //
 //= link boxicons.eot
 //= link boxicons.woff
@@ -50,8 +52,14 @@
 //= link avatar-s-11.jpg
 //= link avatar-s-16.jpg
 //= link sketch-mac-icon.png
+//= link carousel.jpg
+
+
+//= link instagram_profile_image.png
+//= link logo-remote-flow.png
+
+
 //
 //= link flags/4x3/us.svg
 //
 //= link application.css
-//= link account/hide_organization_dropdown.js

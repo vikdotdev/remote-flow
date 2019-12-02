@@ -1,0 +1,48 @@
+h1.pricing-h Plans and Pricing
+p.pricing-p Have you tried reflow? Pay for one of the plan or try it for free
+.price-container
+  .price-element
+    .price-title.green
+      h3 Basic
+      p
+        = number_to_currency(9.99, unit: "$", separator: ",", format: "%u %n")
+        | per month
+    .price-body
+      p.price-header Good for home usage, or one-time event
+      p.price-conditions 30 days free trial
+      p.price-conditions 100gb storage space
+      p.price-conditions 1 channel 10 devices
+      p.price-conditions 24 hour support
+      .price-btn
+        a.btn.btn-success href="#" Try It
+        a.btn.green href="#" Buy It
+  .price-element
+    .price-title.orange
+      h3 Pro
+      p
+        = number_to_currency(99.99, unit: "$", separator: ",", format: "%u %n")
+        | per month
+    .price-body
+      p.price-header The most popular plan, for small companies
+      p.price-conditions 30 days free trial
+      p.price-conditions 200gb storage space
+      p.price-conditions 5 channel 50 devices
+      p.price-conditions 24 hour support
+      .price-btn
+        a.btn.btn-warning href="#" Try It
+        a.btn.orange href="#" Buy It
+  .price-element
+    .price-title.blue
+      h3 Premium
+      p
+        = number_to_currency(199.99, unit: "$", separator: ",", format: "%u %n")
+        | per month
+    .price-body
+      p.price-header Full of everything plan for big companies
+      p.price-conditions 30 days free trial
+      p.price-conditions 400gb storage space
+      p.price-conditions 10 channel 100 devices
+      p.price-conditions 24 hour support
+      .price-btn
+        a.btn.btn-info  href="#"Try It
+        a.btn.blue href="#" Buy It
