@@ -1,7 +1,7 @@
 - type = params[:type].downcase
 - breadcrumbs [\
   { home: true, url: account_path },\
-  { title: 'Contents', url: send("account_organization_#{type}s_path") },\
+  { title: 'Contents', url: send(content_type_path(pluralize: true)) },\
   { title: 'New' }\
 ]
 
@@ -11,5 +11,5 @@ section
       .card-header.pb-0
         h4 New content
       .card-body
-        - path = send("account_organization_#{type}s_path")
+        - path = send(content_type_path(pluralize: true))
         = render 'account/contents/form', content: @content, path: path, back_path: path

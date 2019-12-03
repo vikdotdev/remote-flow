@@ -1,16 +1,16 @@
 - type = params[:type].downcase
 - breadcrumbs [\
   { home: true, url: account_path },\
-  { title: 'Contents', url: send("account_organization_#{type}s_path") },\
-  { title: 'Content', url: send("account_organization_#{type}_path", @content) },\
+  { title: 'Contents', url: send(content_type_path(pluralize: true)) },\
+  { title: 'Content', url: send(content_type_path, @content) },\
   { title: 'Edit' }\
 ]
 
 = content_for :actions do
   = link_to "All Contents",
-      send("account_organization_#{type}s_path", @content),
+      send(content_type_path(pluralize: true), @content),
       class: "btn btn-sm btn-light-primary mr-50"
-  = link_to "Delete", send("account_organization_#{type}_path", @content),
+  = link_to "Delete", send(content_type_path, @content),
       class: "btn btn-sm btn-light-danger",
       method: :delete
 
@@ -20,5 +20,5 @@ section
       .card-header.pb-0
         h4 Edit
       .card-body
-        - path = send("account_organization_#{type}_path", @content)
+        - path = send(content_type_path, @content)
         = render 'account/contents/form', content: @content, path: path, back_path: path
