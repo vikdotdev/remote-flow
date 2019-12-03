@@ -1,0 +1,157 @@
+#carousel-example-caption.carousel.slide data-ride="carousel"
+    ol.carousel-indicators
+      li data-slide-to="0" data-target="#carousel-example-caption"
+      li.active data-slide-to="1" data-target="#carousel-example-caption"
+      li data-slide-to="2" data-target="#carousel-example-caption"
+    .carousel-inner role="listbox"
+      .carousel-item
+        = image_tag 'carousel.jpg', alt: 'logo', class: 'img-fluid'
+        .card-img-overlay.bg-overlay
+          .carousel-caption.d-none.d-sm-block
+            h3 First Slide Label
+            p
+              | Donut jujubes I love topping I love sweet. Jujubes I love brownie gummi bears I love donut sweet
+              | chocolate. Tart chocolate marshmallow.Tart carrot cake muffin.
+      .carousel-item.active
+        = image_tag 'carousel.jpg', alt: 'logo', class: 'img-fluid'
+        .card-img-overlay.bg-overlay
+          .carousel-caption.d-none.d-sm-block
+            h3 Second Slide Label
+            p
+              | Tart macaroon marzipan I love soufflé apple pie wafer. Chocolate bar jelly caramels jujubes
+              | chocolate cake gummies. Cupcake cake I love cake danish carrot cake.
+      .carousel-item
+        = image_tag 'carousel.jpg', alt: 'logo', class: 'img-fluid'
+        .card-img-overlay.bg-overlay
+          .carousel-caption.d-none.d-sm-block
+            h3 Third Slide Label
+            p
+              | Pudding sweet pie gummies. Chocolate bar sweet tiramisu cheesecake chocolate cotton candy pastry
+              | muffin. Marshmallow cake powder icing.
+    a.carousel-control-prev data-slide="prev" href="#carousel-example-caption" role="button"
+      span.carousel-control-prev-icon aria-hidden="true"
+      span.sr-only Previous
+    a.carousel-control-next data-slide="next" href="#carousel-example-caption" role="button"
+      span.carousel-control-next-icon aria-hidden="true"
+      span.sr-only Next
+section#features.awesome-feature-area.bg-white.p-150.pt-5.clearfix
+  .container-fluid
+    .row
+      .col-12.text-center
+        .section-heading
+          h2.wow.pulse style=("visibility: visible; animation-name: pulse;")  Unique Features
+        p.mt-4
+          | Frest admin is perfectly suited for all level of developers which helps you to
+          br/
+          | kick start your next big projects / app.
+    .row.bg-white.mt-5.border-radius-15.shadow-1.py-4
+      .col-12.col-sm-12.col-lg-4.p-0
+        .single-feature.px-4.pt-4
+          .row
+            .col-3.text-right.text-gradient
+              span.ti-paint-bucket.text-medium
+            .col-9
+              h5 Clean &amp; Minimal Design
+              p.text-sm
+                | Beautifully crafted, clean &amp; minimal designed admin theme with 6 different demos light, dark &amp; semi-dark
+                | versions.
+      .col-12.col-sm-12.col-lg-4.p-0
+        .single-feature.px-4.pt-4
+          .row
+            .col-3.text-right.text-gradient
+              span.ti-thumb-up.ti-settings.text-medium
+            .col-9
+              h5 Easy Navigation
+              p.text-sm
+                | Carefully crafted, clean, smart &amp; easy theme navigation with collapsible option.
+      .col-12.col-sm-12.col-lg-4.p-0
+        .single-feature.px-4.pt-4
+          .row
+            .col-3.text-right.text-gradient
+              span.ti-search.text-medium
+            .col-9
+              h5 Quick Search
+              p.text-sm
+                | Easy &amp; smart fuzzy search functionality which enables users to search quickly.
+      .col-12.col-sm-12.col-lg-4.p-0
+        .single-feature.px-4.pt-4
+          .row
+            .col-3.text-right.text-gradient
+              span.ti-star.text-medium
+            .col-9
+              h5 My Bookmarks
+              p.text-sm
+                | Bookmarks allows users to select their favourite pages/apps and navigate quickly.
+      .col-12.col-sm-12.col-lg-4.p-0
+        .single-feature.p-4
+          .row
+            .col-3.text-right.text-gradient
+              span.ti-direction-alt.text-medium
+            .col-9
+              h5 Dark &amp; Light Layouts
+              p.text-sm
+                | Frest comes with built-in light and dark layouts, select as per your preference.
+      .col-12.col-sm-12.col-lg-4.p-0
+        .single-feature.p-4
+          .row
+            .col-3.text-right.text-gradient
+              span.ti-map-alt.text-medium
+            .col-9
+              h5 Multi Language
+              p.text-sm
+                | Multi language support enable you to create your personalized apps in your language.
+      .col-12.col-sm-12.col-lg-4.p-0
+        .single-feature.p-4
+          .row
+            .col-3.text-right.text-gradient
+              span.ti-comments.text-medium
+            .col-9
+              h5 7 Workable Apps
+              p.text-sm
+                | Creative &amp; smart workable apps like email, chat, todo &amp; calender allows you to create your apps faster.
+      .col-12.col-sm-12.col-lg-4.p-0
+        .single-feature.p-4
+          .row
+            .col-3.text-right.text-gradient
+              span.ti-palette.text-medium
+            .col-9
+              h5 Colors Options
+              p.text-sm
+                | Unlimited color options allows you to set your application color as per your branding.
+      .col-12.col-sm-12.col-lg-4.p-0
+        .single-feature.px-4.pt-4
+          .row
+            .col-3.text-right.text-gradient
+              span.ti-write.text-medium
+            .col-9
+              h5 Detailed Documentation
+              p.text-sm
+                | We have provided detailed documentation for our template that will help you to easily use, install and
+                | customize our template and save your time.
+      .col-12.col-sm-12.col-lg-4.p-0
+        .single-feature.p-4
+          .row
+            .col-3.text-right.text-gradient
+              span.ti-cloud-up.text-medium
+            .col-9
+              h5 Continuous Updates
+              p.text-sm Lifetime updates with new demos and features is guaranteed
+      .col-12.col-sm-12.col-lg-4.p-0
+        .single-feature.p-4
+          .row
+            .col-3.text-right.text-gradient
+              span.ti-check-box.text-medium
+            .col-9
+              h5 Quality Code
+              p.text-sm
+                | We follow the best industry code structure that all developers will be able to pick up easily and fall in
+                | love
+      .col-12.col-sm-12.col-lg-4.p-0
+        .single-feature.p-4
+          .row
+            .col-3.text-right.text-gradient
+              span.ti-headphone-alt.text-medium
+            .col-9
+              h5 Support
+              p.text-sm
+                | Get access to premium customer support from the actual people who have created.

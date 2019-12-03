@@ -1,32 +1,42 @@
-.content-body
-  .col-12
-    .card
-      .card-content
-        .card-body
-          = link_to "Add a New User", new_account_user_path, class: "btn btn-primary mt-1"
-          .table-responsive
-            table.table
-              thead
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Users' },\
+]
+
+- content_for :actions do
+  = link_to "Add New User",
+      new_account_user_path,
+      class: "btn btn-sm btn-light-primary"
+
+section
+  .card
+    .card-header
+      h4.card-title Users
+    .card-content
+      .card-body
+        .table-responsive
+          table.table
+            thead
+              tr
+                th ID
+                th Full Name
+                th Email
+                th Role
+                th Edit
+                th Delete
+            tbody
+              - @users.each do |user|
                 tr
-                  th ID
-                  th Full Name
-                  th Email
-                  th Role
-                  th Edit
-                  th Delete
-              tbody
-                - @users.each do |user|
-                  tr
-                    td
-                      = user.id
-                    td
-                      = link_to user.full_name, account_user_path(user)
-                    td
-                      = user.email
-                    td
-                      = user.role
-                    td
-                      = link_to "Edit", edit_account_user_path(user)
-                    td
-                      = link_to "Delete", account_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
-            = paginate @users
+                  td
+                    = user.id
+                  td
+                    = link_to user.full_name, account_user_path(user)
+                  td
+                    = user.email
+                  td
+                    = user.role
+                  td
+                    = link_to "Edit", edit_account_user_path(user)
+                  td
+                    = link_to "Delete", account_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
+          = paginate @users

@@ -1,0 +1,36 @@
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Organizations' }\
+]
+
+.card
+  .card-header
+    h4.card-title Organizations
+  .card-content
+    .card-body
+      .table-responsive
+        table.table.zero-configuration
+          thead
+            tr
+              th ID
+              th Name
+              th Created
+              th Edit
+              th Delete
+          tbody
+            - @organizations.each do |organization|
+              tr
+                td
+                  = organization.id
+                td
+                  = link_to organization.name, account_organization_path(organization)
+                td
+                  = organization.created_at.strftime("%m/%d/%Y")
+                td
+                  = link_to "Edit", edit_account_organization_path(organization)
+                td
+                  = link_to "Delete",
+                      account_organization_path(organization),
+                      class: 'danger',
+                      method: :delete, data: { confirm: 'Are you sure?' }
+        = paginate @organizations

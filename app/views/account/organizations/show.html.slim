@@ -1,0 +1,32 @@
+- if current_user.super_admin?
+  - breadcrumbs [\
+    { home: true, url: account_path },\
+    { title: 'Organizations', url: account_organizations_path },\
+    { title: 'Organization' }\
+  ]
+- else
+  - breadcrumbs [\
+    { home: true, url: account_path },\
+    { title: 'Organization' }\
+  ]
+- content_for :actions do
+  = link_to "All Organizations", account_organizations_path(@organization), class: "btn btn-sm btn-light-primary mr-50" if current_user.super_admin?
+  = link_to "Edit", edit_account_organization_path(@organization), class: "btn btn-sm btn-light-primary mr-50"
+  = link_to "Delete", account_organization_path(@organization), class: "btn btn-sm btn-light-danger", method: :delete
+.card
+  .card-content
+    .card-header.pb-0
+      h4 Info
+    .card-body
+      .row
+        .col-12.col-md-4
+          table.table.table-borderless
+            tbody
+              tr
+                td Registered:
+                td
+                  = @organization.created_at.strftime("%m/%d/%Y")
+              tr
+                td Name:
+                td
+                  = @organization.name

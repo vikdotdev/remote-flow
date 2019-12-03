@@ -1,0 +1,33 @@
+.main-menu.menu-fixed.menu-light.menu-accordion.menu-shadow data-scroll-to-active="true"
+  .navbar-header
+    ul.nav.navbar-nav.flex-row
+      li.nav-item.mr-auto
+        a.navbar-brand href="#"
+          .brand-logo
+          h2.brand-text.mb-0 Reflow
+      li.nav-item.nav-toggle
+        a.nav-link.modern-nav-toggle.pr-0 data-toggle="collapse"
+          i.bx.bx-x.d-block.d-xl-none.font-medium-4.primary.toggle-icon
+          i.toggle-icon.bx.bx-disc.font-medium-4.d-none.d-xl-block.primary data-ticon="bx-disc"
+  .shadow-bottom
+  .main-menu-content.d-flex.flex-column.justify-content-between
+    ul#main-menu-navigation.navigation.navigation-main data-icon-style="lines" data-menu="menu-navigation"
+      = sidebar_button({ text: 'Dashboard', path: '#', icon: 'desktop' })
+      = sidebar_button({ text: 'Users', path: account_users_path, icon: 'users' })
+      - if current_user.admin? || current_user.manager?
+          = sidebar_button({ text: 'Organization', path: account_organization_path(current_user.organization), icon: 'link' })
+          = sidebar_button({ text: 'Device Groups', path: '#', icon: 'diagram' })
+          = sidebar_button({ text: 'Devices', path: account_devices_path, icon: 'tablet' })
+          = sidebar_button({ text: 'Channels', path: account_channels_path, icon: 'thumbnails-small' })
+      - elsif current_user.super_admin?
+          = sidebar_button({ text: 'Organizations', path: account_organizations_path, icon: 'link' })
+      = sidebar_button({ text: 'Analytics', path: '#', icon: 'pie-chart' })
+      = sidebar_button({ text: 'Reports', path: '#', icon: 'morph-folder' })
+    ul.navigation.navigation-main data-icon-style="lines" data-menu="menu-navigation"
+      = sidebar_button({\
+          text: 'Logout',\
+          id: 'menu-logout',\
+          path: destroy_user_session_path,\
+          method: 'delete',\
+          icon: 'morph-login2'\
+        })
