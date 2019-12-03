@@ -22,6 +22,7 @@ class Account::UsersController < Account::AccountController
       redirect_to account_user_path(@user)
       flash[:success] = 'User successfully created.'
     else
+      flash[:danger] = 'Failed to create user.'
       render :new
     end
   end

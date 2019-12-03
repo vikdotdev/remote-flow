@@ -1,0 +1,43 @@
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Contents' },\
+]
+
+= content_for :actions do
+  = link_to "Add New Content",
+      new_account_organization_video_path,
+      class: "btn btn-sm btn-light-primary"
+
+section
+  .card
+    .card-header
+      h4.card-title Content
+    .card-content
+      .card-body
+        .table-responsive
+          table.table
+            thead
+              tr
+                th ID
+                th Type
+                th Created
+                th Edit
+                th Delete
+            tbody
+              - @contents.each do |content|
+                tr
+                  td
+                    = content.id
+                  td
+                    = link_to content.type, account_organization_video_path(content.organization, content)
+                  td
+                    = content.created_at.strftime("%m/%d/%Y")
+                  td
+                    = link_to "Edit", edit_account_organization_video_path(content.organization, content)
+                  td
+                    = link_to "Delete",
+                        account_organization_video_path(content.organization, content),
+                        class: 'danger',
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' }
+          = paginate @contents
