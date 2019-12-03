@@ -31,7 +31,7 @@
               i.bx.bx-right-arrow-alt
               span.menu-item data-i18n="" Channels
           li
-            a href="#"
+            = link_to account_device_groups_path do
               i.bx.bx-right-arrow-alt
               span.menu-item data-i18n="" Device Groups
           - unless current_user.super_admin?

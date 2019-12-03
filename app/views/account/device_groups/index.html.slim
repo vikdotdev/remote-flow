@@ -1,0 +1,37 @@
+.content-body.mt-2
+  .row
+    .col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
+      = link_to "Add N Device Group",
+          new_account_device_group_path,       
+          class: "btn btn-sm btn-light-primary"
+  .card
+    .card-header
+      h4.card-title Devices
+    .card-content
+      .card-body
+        .table-responsive
+          table.table.zero-configuration
+            thead
+              tr
+                th ID
+                th Name                
+                th Created
+                th Edit
+                th Delete
+            tbody
+              - @device_groups.each do |group|
+                tr
+                  td
+                    = group.id
+                  td
+                    = link_to group.name, account_device_group_path(group)                  
+                  td
+                    = group.created_at.strftime("%m/%d/%Y")
+                  td
+                    = link_to "Edit", edit_account_device_group_path(group)
+                  td
+                    = link_to "Delete",
+                        account_device_group_path(group),
+                        class: 'danger',
+                        method: :delete, data: { confirm: 'Are you sure?' }          
+
