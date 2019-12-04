@@ -20,7 +20,7 @@ class Account::OrganizationsController < Account::AccountController
       redirect_to account_organization_path(@organization)
       flash[:success] = "Organization successfully updated"
     else
-      redirect_to organizations: :edit
+      redirect_to edit_account_organization_path
       flash[:error] = "Failed to update organization"
     end
   end
@@ -47,12 +47,5 @@ class Account::OrganizationsController < Account::AccountController
 
   def resource
     collection.find(params[:id])
-  end
-
-  def require_super_admin_only!
-    unless current_user.super_admin?
-      flash[:warning] = "You are not allowed to do such a things!"
-      redirect_to controller: 'dashboard', action: 'index'
-    end
   end
 end
