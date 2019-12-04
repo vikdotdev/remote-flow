@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :devices
     resource  :profile, only: %i[edit update]
     resources :organizations, except: %i[new, create] do
-      resources :videos, controller: :contents, type: 'Video'
+      resources :contents
     end
     resources :channels
   end

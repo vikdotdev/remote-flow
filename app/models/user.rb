@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   SUPER_ADMIN = 'super_admin'.freeze
   ADMIN = 'admin'.freeze
   MANAGER = 'manager'.freeze
