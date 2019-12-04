@@ -40,7 +40,7 @@ class Account::DeviceGroupsController < Account::AccountController
 
   def destroy
     @device_group = resource
-    if @device.destroy
+    if @device_group.destroy
       flash[:success] = 'Device group successfilly deleted.'
     else
       flash[:danger] = 'Failed to delete device.'
@@ -51,7 +51,7 @@ class Account::DeviceGroupsController < Account::AccountController
   private
 
   def device_group_params
-    params.require(:device_group).permit(:name)
+    params.require(:device_group).permit(:name, :descrition)
   end
 
   def collection
