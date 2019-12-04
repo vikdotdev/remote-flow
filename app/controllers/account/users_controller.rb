@@ -1,6 +1,11 @@
 class Account::UsersController < Account::AccountController
   def index
     @users = collection.by_name.page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @users.to_csv, filename: "users-#{Date.today}.csv" }
+    end
   end
 
   def show
