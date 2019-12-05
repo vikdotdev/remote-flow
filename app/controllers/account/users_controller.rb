@@ -27,6 +27,7 @@ class Account::UsersController < Account::AccountController
       redirect_to account_user_path(@user)
       flash[:success] = 'User successfully created.'
     else
+      flash[:danger] = 'Failed to create user.'
       render :new
     end
   end
@@ -34,7 +35,7 @@ class Account::UsersController < Account::AccountController
   def update
     @user = resource
     if @user.update(users_params)
-      sign_in(current_user, bypass: true)
+      bypass_sign_in current_user
       redirect_to account_user_path(@user)
       flash[:success] = 'User successfully updated.'
     else

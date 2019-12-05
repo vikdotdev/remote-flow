@@ -9,11 +9,13 @@ class Organization < ApplicationRecord
 
   validates :name, presence: true,
                    uniqueness: true
+
   scope :by_name, -> { order(:name) }
 
   mount_uploader :logo, LogoUploader
 
   private
+
   def send_notification
     SuperAdminMailer.new_organization_email(self).deliver_now
   end
