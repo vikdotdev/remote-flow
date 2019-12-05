@@ -2,6 +2,8 @@
  *= require_self
  *= require account/_form
  *= require account/_content
+ *= require account/organization_form
+ *= require account/nav-bar
  *= require public/themify-icons
  *= require public/public
 

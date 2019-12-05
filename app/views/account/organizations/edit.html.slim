@@ -1,14 +1,12 @@
-- if current_user.super_admin?
-  - breadcrumbs [\
-    { home: true, url: account_path },\
-    { title: 'Organizations', url: account_organizations_path },\
-    { title: 'Organization', url: account_organization_path(@organization) },\
-    { title: 'Edit' }\
-  ]
-- else
-  - breadcrumbs [\
+- breadcrumbs [\
   { home: true, url: account_path },\
-  { title: 'Organization', url: account_organization_path(@organization) },\
+    \
+  { title: 'Organizations', \
+    url: account_organizations_path },\
+    \
+  { title: 'Organization', \
+    url: account_organization_path(@organization) },\
+    \
   { title: 'Edit' }\
 ]
 
