@@ -1,5 +1,7 @@
 class Account::OrganizationsController < Account::AccountController
 
+  before_action :require_super_admin_only!
+
   def index
     @organizations = collection.by_name.page(params[:page]).per(10)
   end
@@ -18,8 +20,7 @@ class Account::OrganizationsController < Account::AccountController
       redirect_to account_organization_path(@organization)
       flash[:success] = "Organization successfully updated"
     else
-      redirect_to :edit
-      flash[:error] = "Failed to update organization"
+      render :edit
     end
   end
 
@@ -27,7 +28,9 @@ class Account::OrganizationsController < Account::AccountController
     @organization = resource
     if @organization.destroy
       flash[:success] = "Organization successfully deleted"
+      redirect_to account_organizations_path
     else
+      redirect_back(fallback_location: root_path)
       flash[:error] = "Failed to delete organization"
     end
   end
@@ -35,15 +38,11 @@ class Account::OrganizationsController < Account::AccountController
   private
 
   def organization_params
-    params.require(:organization).permit(:name, :logo)
+    params.require(:organization).permit(:name, :logo, :logo_cache, :remove_logo)
   end
 
   def collection
-    if current_user.super_admin?
-      Organization.all
-    else
-      Organization.where(id: current_organization.id)
-    end
+    Organization.all
   end
 
   def resource

@@ -5,6 +5,8 @@ RSpec.describe Account::OrganizationsController, type: :controller do
 
   let!(:organization) { create(:organization, name: 'OldName') }
   let!(:super_admin) { create(:user, :super_admin) }
+  let!(:admin) { create(:user, :admin) }
+
 
   context 'when not logged in' do
     describe 'GET #index' do
@@ -53,7 +55,7 @@ RSpec.describe Account::OrganizationsController, type: :controller do
     end
   end
 
-  context 'when logged in as user' do
+  context 'when logged in as super_admin' do
     before do
       sign_in super_admin
     end
@@ -95,6 +97,21 @@ RSpec.describe Account::OrganizationsController, type: :controller do
         expect(assigns(:organization).name).not_to eq('OldName')
         expect(assigns(:organization).name).to eq('NewName')
       end
+
+      it 'does not updates organization name' do
+        put :update, params: {
+          organization: {
+            name: " "
+          },
+          id: organization.id
+        }
+
+        organization.reload
+
+        # expect(response).to redirect_to(account_organization_path(assigns(:organization)))
+        expect(response).to render_template(:edit)
+        expect(organization.name).to eq('OldName')
+      end
     end
 
     describe 'DELETE #destroy' do
@@ -102,6 +119,22 @@ RSpec.describe Account::OrganizationsController, type: :controller do
         expect do
           delete :destroy, params: { id: organization.id }
         end.to change(Organization, :count).by(-1)
+      end
+    end
+  end
+
+  context 'when loggen in ass admin' do
+    before do
+      sign_in admin
+    end
+
+    describe 'DELETE #destroy' do
+      it 'does not changes organization.count when logged in as admin' do
+        sign_in admin
+
+        expect do
+          delete :destroy, params: { id: organization.id }
+        end.to change(Organization, :count).by(0)
       end
     end
   end
