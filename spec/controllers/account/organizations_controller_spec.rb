@@ -120,14 +120,21 @@ RSpec.describe Account::OrganizationsController, type: :controller do
           delete :destroy, params: { id: organization.id }
         end.to change(Organization, :count).by(-1)
       end
+    end
+  end
 
-      it 'does not changes organization.count' do
+  context 'when loggen in ass admin' do
+    before do
+      sign_in admin
+    end
+
+    describe 'DELETE #destroy' do
+      it 'does not changes organization.count when logged in as admin' do
         sign_in admin
 
         expect do
           delete :destroy, params: { id: organization.id }
         end.to change(Organization, :count).by(0)
-        expect(response).to redirect_to :back
       end
     end
   end
