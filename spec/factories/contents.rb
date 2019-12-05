@@ -5,12 +5,11 @@ FactoryBot.define do
 
     trait :video do
       type { 'Video' }
-      video_url { Faker::Internet.url }
+      video_url { 'https://www.youtube.com/watch?v=Gzj723LkRJY' }
     end
 
     trait :gallery do
       type { 'Gallery' }
-      video_url { Faker::Internet.url }
     end
 
     factory :gallery, class: 'Gallery', traits: [:gallery]

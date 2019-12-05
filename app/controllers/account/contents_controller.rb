@@ -9,6 +9,7 @@ class Account::ContentsController < Account::AccountController
 
   def new
     @content = Content.new
+    @content.type = params[:type]
   end
 
   def edit
@@ -18,7 +19,7 @@ class Account::ContentsController < Account::AccountController
   def create
     @content = collection.new(contents_params)
     if @content.save
-      redirect_to account_organization_content_path(@content.organization, @content)
+      redirect_to account_content_path(@content)
       flash[:success] = 'Content successfully created.'
     else
       flash[:danger] = 'Failed to create content.'
@@ -29,7 +30,7 @@ class Account::ContentsController < Account::AccountController
   def update
     @content = resource
     if @content.update(contents_params)
-      redirect_to account_organization_content_path(@content)
+      redirect_to account_content_path(@content)
       flash[:success] = 'Content successfully updated.'
     else
       flash[:danger] = 'Failed to update content.'
@@ -44,13 +45,13 @@ class Account::ContentsController < Account::AccountController
     else
       flash[:danger] = 'Failed to delete content.'
     end
-    redirect_to account_organization_contents_path
+    redirect_to account_contents_path
   end
 
   private
 
   def contents_params
-    params.require(@content&.type&.downcase || :content).permit(:title, :type, :video_url)
+    params.require(:content).permit(:title, :type, :video_url)
   end
 
   def collection

@@ -12,9 +12,8 @@ Rails.application.routes.draw do
     resources :users
     resources :devices
     resource  :profile, only: %i[edit update]
-    resources :organizations, except: %i[new, create] do
-      resources :contents
-    end
+    resources :organizations, except: %i[new, create]
     resources :channels
+    resources :contents
   end
 end

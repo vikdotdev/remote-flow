@@ -1,16 +1,16 @@
 - breadcrumbs [\
   { home: true, url: account_path },\
-  { title: 'Contents', url: account_organization_contents_path },\
-  { title: 'Content', url: account_organization_content_path(@content) },\
+  { title: 'Contents', url: account_contents_path },\
+  { title: 'Content', url: account_content_path(@content) },\
   { title: 'Edit' }\
 ]
 
 = content_for :actions do
   = link_to "All Contents",
-      account_organization_contents_path(@content),
+      account_contents_path(@content),
       class: "btn btn-sm btn-light-primary mr-50"
   = link_to "Delete",
-      account_organization_content_path(@content),
+      account_content_path(@content),
       class: "btn btn-sm btn-light-danger",
       method: :delete
 
@@ -18,7 +18,8 @@ section
   .card
     .card-content
       .card-header.pb-0
-        h4 Edit
+        h4
+          = "Edit #{@content.type}"
       .card-body
-        - path = account_organization_content_path(@content)
+        - path = account_content_path(@content)
         = render 'account/contents/form', content: @content, path: path, back_path: path
