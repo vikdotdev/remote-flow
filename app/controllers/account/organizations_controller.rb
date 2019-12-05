@@ -20,8 +20,7 @@ class Account::OrganizationsController < Account::AccountController
       redirect_to account_organization_path(@organization)
       flash[:success] = "Organization successfully updated"
     else
-      redirect_to edit_account_organization_path
-      flash[:error] = "Failed to update organization"
+      render :edit
     end
   end
 
@@ -31,6 +30,7 @@ class Account::OrganizationsController < Account::AccountController
       flash[:success] = "Organization successfully deleted"
       redirect_to account_organizations_path
     else
+      redirect_back(fallback_location: root_path)
       flash[:error] = "Failed to delete organization"
     end
   end
