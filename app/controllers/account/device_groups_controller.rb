@@ -1,6 +1,6 @@
 class Account::DeviceGroupsController < Account::AccountController
   def index
-    @device_groups = collection
+    @device_groups = collection.by_name.page(params[:page]).per(10)
   end
 
   def show
@@ -12,7 +12,7 @@ class Account::DeviceGroupsController < Account::AccountController
   end
 
   def create
-    @device_group = DeviceGroup.new
+    @device_group = DeviceGroup.new(device_group_params)
     @device_group.organization = current_organization
     if @device_group.save
       flash[:success] = 'Device group succcessfully created.'
@@ -30,7 +30,7 @@ class Account::DeviceGroupsController < Account::AccountController
   def update
     @device_group = resource
     if @device_group.update(device_group_params)
-      flash[:success] = 'Device group update.'
+      flash[:success] = 'Device group updated'
       redirect_to account_device_groups_path
     else
       flash[:danger] = "Error updating device group."
@@ -43,7 +43,7 @@ class Account::DeviceGroupsController < Account::AccountController
     if @device_group.destroy
       flash[:success] = 'Device group successfilly deleted.'
     else
-      flash[:danger] = 'Failed to delete device.'
+      flash[:danger] = 'Failed to delete device group.'
     end
     redirect_to account_device_groups_path
   end
@@ -51,15 +51,11 @@ class Account::DeviceGroupsController < Account::AccountController
   private
 
   def device_group_params
-    params.require(:device_group).permit(:name, :descrition)
+    params.require(:device_group).permit(:name, :description)
   end
 
   def collection
-    if current_user.super_admin?
-      DeviceGroup.all
-    else
-      current_organization.device_groups
-    end
+    current_organization.device_groups
   end
 
   def resource
