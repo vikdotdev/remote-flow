@@ -8,13 +8,12 @@
     button#new-content-dropdown-button.btn.btn-light-primary.btn-sm.dropdown-toggle data-toggle="dropdown" type="button"
       | Add Content
     #new-content-dropdown.dropdown-menu aria-labelledby="new-content-dropdown-button" x-placement="bottom-start"
-      = link_to 'Video',
-          new_account_content_path(type: 'Video'),
-          class: 'dropdown-item'
-      = link_to 'Gallery',
-          new_account_content_path(type: 'Gallery'),
-          class: 'dropdown-item'
-
+      = link_to new_account_content_path(type: 'Video'), class: 'dropdown-item' do
+        i.bx.bx-video.mr-50
+        | Video
+      = link_to new_account_content_path(type: 'Gallery'), class: 'dropdown-item' do
+        i.bx.bx-images.mr-50
+        | Gallery
 section
   .card
     .card-header
