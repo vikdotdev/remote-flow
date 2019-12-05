@@ -2,8 +2,8 @@
   var button = document.getElementById('new-content-dropdown-button');
 
   function fn() {
-    var e = document.getElementById('new-content-dropdown-select');
-    button.href = e.options[e.selectedIndex].value
+    var selectEl = document.getElementById('new-content-dropdown-select');
+    button.href = selectEl.options[selectEl.selectedIndex].value
   }
 
   $('#new-content-dropdown-select').on('change', fn);
