@@ -51,7 +51,10 @@ class Account::ContentsController < Account::AccountController
   private
 
   def contents_params
-    params.require(:content).permit(:title, :type, :video_url)
+    permitted = %i[title type]
+    permitted << :video_url if params[:type] == Content::VIDEO
+
+    params.require(:content).permit(*permitted)
   end
 
   def collection

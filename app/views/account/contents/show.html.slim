@@ -25,6 +25,7 @@ section
                 td Type
                 td
                   = @content.type
+              = render "account/contents/#{@content.type.downcase}_columns", content: @content
               tr
                 td Organization
                 td

@@ -14,7 +14,6 @@
 //= link prism.min.js
 //= link vertical-menu-light.js
 //= link bootstrap.js
-//= link account/new_content_dropdown.js
 //
 //= link authentication.css
 //= link bootstrap.css
