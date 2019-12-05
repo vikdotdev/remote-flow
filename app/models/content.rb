@@ -6,7 +6,7 @@ class Content < ApplicationRecord
   has_and_belongs_to_many :channels
   belongs_to :organization
 
-  scope :by_title, -> { order('title') }
+  scope :by_title, -> { order(:title) }
   scope :videos, -> { where(type: 'Video') }
 
   validates :title, presence: true
