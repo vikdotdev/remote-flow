@@ -1,6 +1,11 @@
 class Account::UsersController < Account::AccountController
   def index
     @users = collection.by_name.page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data collection.to_csv, filename: "users-#{Date.today}.csv" }
+    end
   end
 
   def show
@@ -22,6 +27,7 @@ class Account::UsersController < Account::AccountController
       redirect_to account_user_path(@user)
       flash[:success] = 'User successfully created.'
     else
+      flash[:danger] = 'Failed to create user.'
       render :new
     end
   end
@@ -29,7 +35,7 @@ class Account::UsersController < Account::AccountController
   def update
     @user = resource
     if @user.update(users_params)
-      sign_in(current_user, bypass: true)
+      bypass_sign_in current_user
       redirect_to account_user_path(@user)
       flash[:success] = 'User successfully updated.'
     else

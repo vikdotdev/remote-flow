@@ -19,6 +19,7 @@
           = sidebar_button({ text: 'Device Groups', path: account_device_groups_path, icon: 'diagram'})
           = sidebar_button({ text: 'Devices', path: account_devices_path, icon: 'tablet' })
           = sidebar_button({ text: 'Channels', path: account_channels_path, icon: 'thumbnails-small' })
+          = sidebar_button({ text: 'Content', path: account_contents_path, icon: 'box' })
       - elsif current_user.super_admin?
           = sidebar_button({ text: 'Organizations', path: account_organizations_path, icon: 'link' })
       = sidebar_button({ text: 'Analytics', path: '#', icon: 'pie-chart' })

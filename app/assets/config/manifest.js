@@ -46,6 +46,7 @@
 //= link reset-password.png
 //= link default-avatar.png
 //= link arrow-down.png
+//= link fallback/logo/default.png
 
 //
 //= link avatar-s-4.jpg

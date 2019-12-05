@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   SUPER_ADMIN = 'super_admin'.freeze
   ADMIN = 'admin'.freeze
   MANAGER = 'manager'.freeze
@@ -35,4 +34,20 @@ class User < ApplicationRecord
     "#{self.first_name} #{self.last_name}"
   end
 
+  def self.to_csv
+    attributes = %w{id email first_name last_name role organization}
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+      left_joins(:organization).select('users.*, organizations.name as organization_name').each do |user|
+        csv << [
+          user.id,
+          user.first_name,
+          user.last_name,
+          user.email,
+          user.role,
+          (user.organization_name || 'N/A')
+        ]
+      end
+    end
+  end
 end

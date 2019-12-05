@@ -1,0 +1,15 @@
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Contents', url: account_contents_path },\
+  { title: 'New' }\
+]
+
+section
+  .card
+    .card-content
+      .card-header.pb-0
+        h4
+          = "New #{@content.type}"
+      .card-body
+        - path = account_contents_path
+        = render 'account/contents/form', content: @content, path: path, back_path: path
