@@ -1,6 +1,9 @@
 # Description
 __Reflow__ is a project that allows you to upload and update contents to display on remote clients with the ability to change them in real time. Project uses [frest template](https://www.pixinvent.com/demo/frest-clean-bootstrap-admin-dashboard-template/html/ltr/vertical-menu-template/dashboard-ecommerce.html) as a front-end.
 
+# Prerequisites
+To run the project you'll need ruby version 2.6.5p, postgresql 12.1, nodejs 10.16.0 and Yarn 1.21.0 to be installed. It may work on older versions but it wasn't tested.
+
 # Setup
 To setup a project you need to run following commands:
 ```
