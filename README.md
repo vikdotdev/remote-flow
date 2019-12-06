@@ -10,7 +10,7 @@ bundle install
 rails db:migrate
 rails s
 ```
-Running server should appear at `localhost:3000`
+Running server should appear at `localhost:3000`.
 
 To run tests use `rspec` command.
 
