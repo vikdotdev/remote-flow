@@ -20,8 +20,10 @@ class Account::DevicesController < Account::AccountController
     @device.organization = current_organization
     if @device.save
       flash[:success] = 'Device successfully created.'
+      redirect_to account_device_path(@device)
     else
       flash[:danger] = 'Failed to create device.'
+      render 'new'
     end
   end
 
@@ -29,8 +31,10 @@ class Account::DevicesController < Account::AccountController
     @device = resource
     if @device.update(device_params)
       flash[:success] = 'Device updated'
+      redirect_to account_device_path(@device)
     else
       flash[:danger] = 'Error updating device'
+      render :edit
     end
   end
 
@@ -41,6 +45,7 @@ class Account::DevicesController < Account::AccountController
     else
       flash[:danger] = 'Failed to delete device.'
     end
+    redirect_to account_devices_path
   end
 
   private

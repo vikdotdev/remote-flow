@@ -38,7 +38,8 @@
                 td
                   = link_to "Delete", account_device_group_path(group),
                       method: :delete, class: 'danger', remote: true,
-                      data: {toggle: "modal", target: "#modalForm"}
+                      data: { confirm: 'Are you sure?',
+                      toggle: "modal", target: "#modalForm" }
         = paginate @device_groups
 
 #modalForm.modal.fade.text-left aria-hidden="true" aria-labelledby="modalForm" role="dialog" tabindex="-1"
