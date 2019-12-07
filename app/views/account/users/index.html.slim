@@ -11,6 +11,36 @@
       new_account_user_path,
       class: "btn btn-sm btn-light-primary"
 
+.card
+  .card-header
+    h4.card-title Search
+  .card-content
+    .card-body
+      = search_form_for(@q, url: account_users_path) do |f|
+        .row
+          .col-md-4.col-12
+            = f.label :first_name_cont, "First name"
+            = f.search_field :first_name_cont, placeholder: 'First name', class: 'form-control'
+          .col-md-4.col-12
+            = f.label :last_name_cont, "Last name"
+            = f.search_field :last_name_cont, placeholder: 'Last name', class: 'form-control'
+          .col-md-4.col-12
+            = f.label :email_cont, "Email"
+            = f.search_field :email_cont, placeholder: 'Email', class: 'form-control'
+          - if current_user.super_admin?
+            .col-md-6.col-12
+              = f.label :role_eq, "Role"
+              = f.select(:role_eq, options_for_select(['admin', 'manager']), { include_blank: true }, {class: 'form-control'})
+          - else
+            .col-md-12.col-12
+              = f.label :role_eq, "Role"
+              = f.select(:role_eq, options_for_select(['admin', 'manager']), { include_blank: true }, {class: 'form-control'})
+          - if current_user.super_admin?
+            .col-md-6.col-12
+              = f.label :organization_id_eq, "Organization"
+              = f.select(:organization_id_eq, options_from_collection_for_select(Organization.all, "id", "name"), { include_blank: true }, {class: 'form-control'})
+          = f.submit class: "btn btn-primary mt-1 ml-1 mr-sm-50"
+
 
 section
   .card
