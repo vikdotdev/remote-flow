@@ -17,8 +17,7 @@ RSpec.describe Account::DeviceGroupsController, type: :controller do
 
     describe 'GET #show' do
       it 'redirects to login page' do
-        get :show,
-        params: { id: device_group.id }
+        get :show, params: { id: device_group.id }
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -121,6 +120,18 @@ RSpec.describe Account::DeviceGroupsController, type: :controller do
           }
         end.to change(DeviceGroup, :count).by(1)
       end
+      it 'cannot creates device group with blank name' do
+        expect do
+          post :create, xhr: true,
+          params: {
+            device_group: {
+              name: '',
+              description: device_group.description,
+              organization_id: device_group.organization.id
+            }
+          }
+        end.to change(DeviceGroup, :count).by(0)
+      end
     end
 
     describe 'PATCH #update' do
@@ -136,7 +147,18 @@ RSpec.describe Account::DeviceGroupsController, type: :controller do
         expect(assigns(:device_group).name).not_to eq('John')
         expect(assigns(:device_group).name).to eq('Theofurt')
       end
-
+      it 'cannot updates device group with blank name' do
+        patch :update, xhr: true,
+        params: {
+          device_group: {
+            name: '',
+            description: device_group.description
+          },
+          id: device_group.id
+        }
+        device_group.reload
+        expect(device_group.name).not_to eq('')
+      end
       it 'cannot change device group organization' do
         patch :update,
         xhr: true,
