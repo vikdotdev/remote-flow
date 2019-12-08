@@ -11,22 +11,26 @@
       new_account_user_path,
       class: "btn btn-sm btn-light-primary"
 
-= render 'account/shared/user_search_form'
-
 section
   .card
     .card-header
       h4.card-title Users
     .card-content
       .card-body
+        = render 'account/shared/user_search_form'
         .table-responsive
           table.table
             thead
               tr
-                th ID
-                th Full Name
-                th Email
-                th Role
+                th
+                  = sort_link @q, :id, 'ID', default_order: :asc
+                th
+                  = sort_link @q, :last_name,  %i(last_name first_name), 'Full name',
+                      default_order: { last_name: 'asc', first_name: 'desc' }
+                th
+                  = sort_link @q, :email, 'Email', default_order: :asc
+                th
+                  = sort_link @q, :role, 'Role', default_order: :asc
                 th Edit
                 th Delete
             tbody
