@@ -16,10 +16,11 @@ class Account::OrganizationsController < Account::AccountController
 
   def update
     @organization = resource
-    if resouerce.update(organization_params)
-      redirect_to account_organization_path(@organization)
+    if resource.update(organization_params)
       flash[:success] = 'Organization successfully updated'
+      redirect_to account_organization_path(@organization)
     else
+      flash[:error] = 'Failed to update organization'
       render :edit
     end
   end
