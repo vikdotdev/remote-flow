@@ -16,9 +16,9 @@ class Account::OrganizationsController < Account::AccountController
 
   def update
     @organization = resource
-    if @organization.update(organization_params)
+    if resouerce.update(organization_params)
       redirect_to account_organization_path(@organization)
-      flash[:success] = "Organization successfully updated"
+      flash[:success] = 'Organization successfully updated'
     else
       render :edit
     end
@@ -26,13 +26,13 @@ class Account::OrganizationsController < Account::AccountController
 
   def destroy
     @organization = resource
-    if @organization.destroy
-      flash[:success] = "Organization successfully deleted"
-      redirect_to account_organizations_path
+    if resource.destroy
+      flash[:success] = 'Organization successfully deleted'
     else
-      redirect_back(fallback_location: root_path)
-      flash[:error] = "Failed to delete organization"
+      flash[:error] = 'Failed to delete organization'
     end
+
+    redirect_to account_organizations_path
   end
 
   private
