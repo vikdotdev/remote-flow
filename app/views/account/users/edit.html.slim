@@ -7,7 +7,7 @@
 
 - content_for :actions do
   = link_to "All Users",
-      account_users_path(@user),
+      account_users_path,
       class: "btn btn-sm btn-light-primary mr-50"
   = link_to "Delete", account_user_path(@user),
       class: "btn btn-sm btn-light-danger",

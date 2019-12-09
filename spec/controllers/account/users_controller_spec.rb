@@ -17,6 +17,21 @@ RSpec.describe Account::UsersController, type: :controller do
         expect(response).to be_successful
         expect(response).to render_template(:index)
       end
+      context 'ransack search by email' do
+
+        let!(:user) { create(:user, email: 'user2@example.com') }
+
+        context 'finds specific user' do
+          before { get :index, params: { q: { email_cont: "user2" } } }
+
+          it "should find just one user" do
+            expect(assigns(:users).first).to eq user
+          end
+
+          it { expect(response).to be_successful }
+          it { expect(response).to render_template(:index) }
+        end
+      end
     end
 
     describe 'GET #show' do
