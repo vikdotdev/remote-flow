@@ -1,0 +1,5 @@
+|
+  $('##{@device_group.id}').addClass('bg-rgba-info').fadeOut('slow', function(){
+    $(this).replaceWith('#{render('account/device_groups/element')}');
+  });
+  $('#modalForm').modal('hide');

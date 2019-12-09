@@ -14,13 +14,11 @@ class Account::DeviceGroupsController < Account::AccountController
   def create
     @device_group = DeviceGroup.new(device_group_params)
     @device_group.organization = current_organization
-    if @device_group.save
-      flash[:success] = 'Device group succcessfully created.'
-      redirect_to account_device_groups_path
-    else
-      flash[:danger] = 'Failed to create device group.'
-      render :new
-    end
+      if @device_group.save
+        flash[:success] = 'Device group succcessfully created.'
+      else
+        flash[:danger] = 'Failed to create device group.'
+      end
   end
 
   def edit
@@ -29,22 +27,20 @@ class Account::DeviceGroupsController < Account::AccountController
 
   def update
     @device_group = resource
-    if @device_group.update(device_group_params)
-      flash[:success] = 'Device group updated'
-      redirect_to account_device_groups_path
-    else
-      flash[:danger] = "Error updating device group."
-      render :edit
-    end
+      if @device_group.update(device_group_params)
+        flash[:success] = 'Device group updated'
+      else
+        flash[:danger] = "Error updating device group."
+      end
   end
 
   def destroy
-    if resource.destroy
+    @device_group = resource
+    if @device_group.destroy
       flash[:success] = 'Device group successfilly deleted.'
     else
       flash[:danger] = 'Failed to delete device group.'
     end
-    redirect_to account_device_groups_path
   end
 
   private

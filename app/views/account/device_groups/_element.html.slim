@@ -1,0 +1,18 @@
+tr id=@device_group.id
+  td
+    = @device_group.id
+  td
+    = link_to @device_group.name, account_device_group_path(@device_group),
+        remote: true,
+        data: {toggle: "modal", target: "#modalForm"}
+  td
+    = @device_group.created_at.strftime("%m/%d/%Y")
+  td
+    = link_to "Edit", edit_account_device_group_path(@device_group),
+        remote: true,
+        data: {toggle: "modal", target: "#modalForm"}
+  td
+    = link_to "Delete", account_device_group_path(@device_group),
+        method: :delete, class: 'danger', remote: true,
+        data: { confirm: 'Are you sure?',
+        toggle: "modal", target: "#modalForm" }
