@@ -160,8 +160,7 @@ RSpec.describe Account::DeviceGroupsController, type: :controller do
         expect(device_group.name).not_to eq('')
       end
       it 'cannot change device group organization' do
-        patch :update,
-        xhr: true,
+        patch :update, xhr: true,
         params: {
           device_group: {
             organization_id: another_organization.id

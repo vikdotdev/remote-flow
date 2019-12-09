@@ -5,10 +5,18 @@ class Account::DeviceGroupsController < Account::AccountController
 
   def show
     @device_group = resource
+    respond_to do |format|
+      format.html { redirect_to account_device_groups_path }
+      format.js
+    end
   end
 
   def new
     @device_group = DeviceGroup.new
+    respond_to do |format|
+      format.html { redirect_to account_device_groups_path }
+      format.js
+    end
   end
 
   def create
@@ -23,6 +31,10 @@ class Account::DeviceGroupsController < Account::AccountController
 
   def edit
     @device_group = resource
+    respond_to do |format|
+      format.html { redirect_to account_device_groups_path }
+      format.js
+    end
   end
 
   def update
