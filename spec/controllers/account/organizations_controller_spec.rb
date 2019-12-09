@@ -93,9 +93,11 @@ RSpec.describe Account::OrganizationsController, type: :controller do
           id: organization.id
         }
 
+        organization.reload
+
         expect(response).to redirect_to(account_organization_path(assigns(:organization)))
-        expect(assigns(:organization).name).not_to eq('OldName')
-        expect(assigns(:organization).name).to eq('NewName')
+        expect(organization.name).not_to eq('OldName')
+        expect(organization.name).to eq('NewName')
       end
 
       it 'does not updates organization name' do
@@ -108,7 +110,6 @@ RSpec.describe Account::OrganizationsController, type: :controller do
 
         organization.reload
 
-        # expect(response).to redirect_to(account_organization_path(assigns(:organization)))
         expect(response).to render_template(:edit)
         expect(organization.name).to eq('OldName')
       end
