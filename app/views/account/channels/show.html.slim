@@ -21,7 +21,7 @@
               tr
                 td Registered:
                 td
-                  = @channel.created_at.strftime("%m/%d/%Y")
+                  = l(@channel.created_at, format: :long)
         .col-12.col-md-8
           .table-responsive
             table.table.mb-0

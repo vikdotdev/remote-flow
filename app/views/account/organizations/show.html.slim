@@ -32,7 +32,7 @@
               tr
                 td Registered:
                 td
-                  = @organization.created_at.strftime("%m/%d/%Y")
+                  = l(@organization.created_at, format: :long)
               tr
                 td Name:
                 td
