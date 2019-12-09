@@ -11,33 +11,7 @@
     h4.card-title Device Groups
   .card-content
     .card-body
-      .table-responsive
-        table.table.zero-configuration
-          thead
-            tr
-              th ID
-              th Name
-              th Created
-              th Edit
-              th Delete
-          tbody
-            - @device_groups.each do |group|
-              tr id="device_group_#{group.id}"
-                td
-                  = group.id
-                td
-                  = link_to group.name, account_device_group_path(group),
-                      remote: true
-                td
-                  = group.created_at.strftime("%m/%d/%Y")
-                td
-                  = link_to "Edit", edit_account_device_group_path(group),
-                      remote: true
-                td
-                  = link_to "Delete", account_device_group_path(group),
-                      method: :delete, class: 'danger', remote: true,
-                      data: { confirm: 'Are you sure?'}
-        = paginate @device_groups, remote: true
+      = render 'account/device_groups/table', device_groups: @device_groups
 
 #modalForm.modal.fade.text-left aria-hidden="true" aria-labelledby="modalForm" role="dialog" tabindex="-1"
   .modal-dialog.modal-dialog-centered.modal-dialog-scrollable role="document"
