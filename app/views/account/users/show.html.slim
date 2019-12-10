@@ -34,7 +34,7 @@ section.users-view
               tbody
                 tr
                   td Registered:
-                  td = @user.created_at.strftime("%m/%d/%Y")
+                  td = l(@user.created_at, format: :long)
                 tr
                   td Role:
                   td = @user.role.capitalize
