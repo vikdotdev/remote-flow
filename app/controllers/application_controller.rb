@@ -18,7 +18,10 @@ class ApplicationController < ActionController::Base
     redirect_to controller: 'dashboard', action: 'index'
   end
 
-  def check_if_admin?
-    current_user.admin?
+  def require_admin_only!
+    return if current_user.admin?
+
+    flash[:warning] = 'You don\'t have permission to perform such action!'
+    redirect_to controller: 'dashboard', action: 'index'
   end
 end

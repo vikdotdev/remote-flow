@@ -1,5 +1,5 @@
 class Account::MyOrganizationController < Account::AccountController
-  before_action :check_if_admin?
+  before_action :require_admin_only!
 
   def show
     @organization = resource
