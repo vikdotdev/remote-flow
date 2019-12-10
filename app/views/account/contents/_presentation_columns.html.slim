@@ -1,4 +1,6 @@
 tr
-  td URL
+  td File
   td
-    = content.file
+    = link_to(content.file.url) do
+      = "#{File.basename(content.file.url)}"
+      i.bx.bxs-download.ml-50
