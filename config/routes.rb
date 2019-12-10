@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get '/', to: 'dashboard#index'
     resources :users
     resources :devices
+    resources :device_groups
     resource  :profile, only: %i[edit update]
     resources :organizations, except: %i[new create]
     resource  :my_organization,
