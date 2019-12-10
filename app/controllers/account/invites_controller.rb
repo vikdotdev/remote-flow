@@ -1,5 +1,5 @@
 class Account::InvitesController < Account::AccountController
-  before_action :authenticate_admin_only
+  before_action :require_admin_only!
 
   def new
     @invite = Invite.new
@@ -29,12 +29,5 @@ class Account::InvitesController < Account::AccountController
     params[:invite][:role] = '' if params[:invite][:role] == User::SUPER_ADMIN
 
     params.require(:invite).permit(:email, :role)
-  end
-
-  def authenticate_admin_only
-    if current_user.super_admin?
-      flash[:danger] = 'Only organization administrator can invite new users.'
-      redirect_to account_path
-    end
   end
 end
