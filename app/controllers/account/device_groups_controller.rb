@@ -47,7 +47,8 @@ class Account::DeviceGroupsController < Account::AccountController
   end
 
   def destroy
-    if resource.destroy
+    @device_group = resource
+    if @device_group.destroy
       flash[:success] = 'Device group successfilly deleted.'
     else
       flash[:danger] = 'Failed to delete device group.'
