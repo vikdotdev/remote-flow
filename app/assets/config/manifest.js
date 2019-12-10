@@ -47,7 +47,12 @@
 //= link default-avatar.png
 //= link arrow-down.png
 //= link fallback/logo/default.png
-
+//= link github.png
+//= link taras.jpeg
+//= link viktor.jpeg
+//= link vasya.jpeg
+//= link miha.jpeg
+//= link lubomir.jpeg
 //
 //= link avatar-s-4.jpg
 //= link avatar-s-11.jpg
