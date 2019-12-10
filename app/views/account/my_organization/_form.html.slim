@@ -1,0 +1,17 @@
+= simple_form_for organization, url: path do |f|
+  .organization-form
+    = f.input :name, autofocus: true, placeholder: 'Organization Name'
+
+    - if organization.logo.url.present?
+      = image_tag organization.logo.url, class: 'logo-img'
+      = f.check_box :remove_logo, class: 'logo-checkbox'
+      = f.label :remove_logo, 'Delete Logo?', class: 'logo-label'
+
+    = f.label :logo, class: 'file' do
+      = f.file_field :logo, id: 'file'
+      span.file-custom
+      = f.hidden_field :logo_cache
+
+    .d-flex.flex-sm-row.flex-column.mt-1
+      = f.button :submit, "Update Organization", class: "btn-primary mt-1 mr-sm-50"
+      = link_to 'Back', back_path, class: "btn border mt-1"

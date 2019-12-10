@@ -1,0 +1,31 @@
+- breadcrumbs [\
+  { home: true, \
+    url: account_path },\
+  { title: 'My Organization', \
+    url: account_my_organization_path },\
+]
+- content_for :actions do
+  = link_to "Edit", edit_account_my_organization_path, \
+            class: "btn btn-sm btn-light-primary mr-50"
+
+.card
+  .card-content
+    .card-header.pb-0
+      h4 Info
+    .card-body
+      .row
+        .col-12.col-md-4
+          table.table.table-borderless
+            tbody
+              tr
+                td Logo
+                td.organization-logo
+                  = image_tag @organization.logo.url, class: 'logo-img'
+              tr
+                td Registered:
+                td
+                  = l(@organization.created_at, format: :long)
+              tr
+                td Name:
+                td
+                  = @organization.name
