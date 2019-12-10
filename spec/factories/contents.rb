@@ -14,6 +14,8 @@ FactoryBot.define do
 
     trait :page do
       type { 'Page' }
+      page_title { Faker::Company.industry }
+      page_body { Faker::Lorem.paragraphs(number: 4).join}
     end
 
     factory :gallery, class: 'Gallery', traits: [:gallery]

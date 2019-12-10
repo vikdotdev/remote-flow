@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_092313) do
+ActiveRecord::Schema.define(version: 2019_12_10_100028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 2019_12_10_092313) do
     t.bigint "device_group_id", null: false
     t.index ["channel_id", "device_group_id"], name: "index_channels_device_groups_on_channel_id_and_device_group_id"
     t.index ["device_group_id", "channel_id"], name: "index_channels_device_groups_on_device_group_id_and_channel_id"
+  end
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "type", limit: 30
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
   create_table "contents", force: :cascade do |t|

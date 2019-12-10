@@ -29,6 +29,7 @@ gem 'kaminari'
 gem 'any_login'
 gem 'ransack'
 gem 'ckeditor'
+gem 'mini_magick'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
