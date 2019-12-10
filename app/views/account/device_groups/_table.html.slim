@@ -16,7 +16,7 @@
             = link_to group.name, account_device_group_path(group),
                 remote: true
           td
-            = l group.created_at, format: :date
+            = l(group.created_at, format: :long)
           td
             = link_to "Edit", edit_account_device_group_path(group),
                 remote: true

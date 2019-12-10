@@ -20,7 +20,7 @@
               tr
                 td Registered:
                 td
-                  = @device.created_at.strftime("%m/%d/%Y")
+                  = l(@device.created_at, format: :long)
               tr
                 td Status:
                 td
