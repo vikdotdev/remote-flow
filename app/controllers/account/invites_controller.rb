@@ -1,4 +1,6 @@
 class Account::InvitesController < Account::AccountController
+  before_action :authenticate_admin_only
+
   def new
     @invite = Invite.new
   end
@@ -14,7 +16,7 @@ class Account::InvitesController < Account::AccountController
       )
 
       flash[:success] = 'Invite sent to a user.'
-      redirect_to account_users_path
+      redirect_to account_path
     else
       flash[:danger] = 'Failed to send invite.'
       render :new
@@ -27,5 +29,10 @@ class Account::InvitesController < Account::AccountController
     params[:invite][:role] = '' if params[:invite][:role] == User::SUPER_ADMIN
 
     params.require(:invite).permit(:email, :role)
+  end
+
+  def authenticate_admin_only
+    flash[:danger] = 'Only organization administrator can invite new users.'
+    redirect_to account_path if current_user.super_admin?
   end
 end

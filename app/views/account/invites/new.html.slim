@@ -7,6 +7,6 @@ section
       .card-body
         = simple_form_for(@invite, url: account_invites_path) do |f|
           = f.input :email
-          = f.input :role
+          = f.input :role, as: :select, collection: [User::ADMIN, User::MANAGER], include_blank: false, include_hidden: false
 
           = f.button :submit, 'Send New Invite', class: "btn-primary w-sm-100"

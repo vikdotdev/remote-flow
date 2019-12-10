@@ -8,7 +8,7 @@ class Invite < ApplicationRecord
   before_create :generate_invitation_token
 
   def send_invite_email(path)
-    InviteMailer.new_user_invite(self, path).deliver
+    InviteMailer.new_user_invite(self, path).deliver_now
   end
 
   private
