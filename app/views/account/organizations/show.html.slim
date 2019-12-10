@@ -14,7 +14,8 @@
             class: "btn btn-sm btn-light-primary mr-50"
   = link_to "Delete", account_organization_path(@organization), \
             class: "btn btn-sm btn-light-danger", \
-            method: :delete
+            method: :delete,
+            data: { confirm: 'Are you sure?' }
 
 .card
   .card-content
