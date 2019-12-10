@@ -15,7 +15,7 @@
       = sidebar_button({ text: 'Dashboard', path: '#', icon: 'desktop', class: 'active'  })
       = sidebar_button({ text: 'Users', path: account_users_path, icon: 'users' })
       - if current_user.admin?
-          = sidebar_button({ text: 'Invitations', path: new_account_invite_path, icon: 'link' })
+          = sidebar_button({ text: 'Invitations', path: new_account_invite_path, icon: 'envelope-put' })
 
       - if current_user.admin? || current_user.manager?
           = sidebar_button({ text: 'My Organization', path: account_my_organization_path, icon: 'link' })

@@ -32,7 +32,9 @@ class Account::InvitesController < Account::AccountController
   end
 
   def authenticate_admin_only
-    flash[:danger] = 'Only organization administrator can invite new users.'
-    redirect_to account_path if current_user.super_admin?
+    if current_user.super_admin?
+      flash[:danger] = 'Only organization administrator can invite new users.'
+      redirect_to account_path
+    end
   end
 end

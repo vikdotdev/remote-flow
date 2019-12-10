@@ -3,7 +3,8 @@ html
   head
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
   body
-    h1 Account Invitation
+    h1
+      = "Invitation to #{@invite.organization.name}"
     p
       = "Hello, you've been invited to #{@invite.organization.name} organization on Reflow!"
     = link_to 'Accept Invitation', @invite_path
