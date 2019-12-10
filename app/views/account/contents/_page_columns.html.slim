@@ -1,7 +1,7 @@
-/ tr
-/   td Page Header
-/   td #{content.page_title.html_safe}
-/ tr
-/   td Page Body
-/   td #{content.page_body.html_safe}
-
+.page-wrapper
+  h1.text-bold-400
+    = @content.page_title.html_safe
+  p.page-body
+    = @content.page_body.html_safe
+  p.page-organization
+    = link_to @content.organization.name, account_my_organization_path

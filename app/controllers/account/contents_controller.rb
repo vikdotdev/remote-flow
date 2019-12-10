@@ -57,7 +57,6 @@ class Account::ContentsController < Account::AccountController
     permitted << :page_body if params[:content][:type] == Content::PAGE
 
     params.require(:content).permit(*permitted)
-    # debugger
   end
 
   def collection
