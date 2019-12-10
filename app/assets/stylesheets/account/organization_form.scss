@@ -10,14 +10,6 @@
 
 .organization-form {
 
-  .is-valid {
-    border-color: #ccc;
-    background-image: inherit;
-    &:focus {
-      border-color: #aaa;
-    }
-  }
-
   .logo-img {
     max-width: 350px;
     display: block;
@@ -95,9 +87,6 @@
       border: .075rem solid #ddd;
       border-radius: 0 .25rem .25rem 0;
     }
-  }
-  .file-choose {
-
   }
 
   .file-custom-file-chosen {
