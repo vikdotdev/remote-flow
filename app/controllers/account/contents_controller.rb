@@ -52,11 +52,12 @@ class Account::ContentsController < Account::AccountController
 
   def contents_params
     permitted = %i[title type]
-    permitted << :video_url if params[:type] == Content::VIDEO
-    permitted << :page_title if params[:type] == Content::PAGE
-    permitted << :page_body if params[:type] == Content::PAGE
+    permitted << :video_url if params[:content][:type] == Content::VIDEO
+    permitted << :page_title if params[:content][:type] == Content::PAGE
+    permitted << :page_body if params[:content][:type] == Content::PAGE
 
     params.require(:content).permit(*permitted)
+    # debugger
   end
 
   def collection

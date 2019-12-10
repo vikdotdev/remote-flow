@@ -18,21 +18,30 @@ section
   .card
     .card-content
       .card-body
-        .row
-          table.table.mb-0
-            thead
-            tbody
-              tr
-                td Title
-                td
-                  = @content.title
-              tr
-                td Type
-                td
-                  = @content.type
-              = render "account/contents/#{@content.type.downcase}_columns", content: @content
-              tr
-                td Organization
-                td
-                  = link_to @content.organization.name,
-                    account_organization_path(@content.organization)
+        .vertical
+          -if @content.type == 'Page'
+            .page-wrapper
+              h1.text-bold-400
+                = @content.page_title
+              p.page-body
+                = @content.page_body
+              p.page-organization
+                = link_to @content.organization.name, account_my_organization_path
+          -else
+            table.table.mb-0
+              thead
+              tbody
+                tr
+                  td Title
+                  td
+                    = @content.title
+                tr
+                  td Type
+                  td
+                    = @content.type
+                = render "account/contents/#{@content.type.downcase}_columns", content: @content
+                tr
+                  td Organization
+                  td
+                    = link_to @content.organization.name,
+                      account_organization_path(@content.organization)
