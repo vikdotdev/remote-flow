@@ -1,7 +1,7 @@
 class Content < ApplicationRecord
   VIDEO = 'Video'.freeze
   GALLERY = 'Gallery'.freeze
-  PAGE = 'PAGE'.freeze
+  PAGE = 'Page'.freeze
   TYPES = [VIDEO, GALLERY, PAGE].freeze
 
   has_and_belongs_to_many :channels

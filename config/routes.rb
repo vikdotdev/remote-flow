@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount Ckeditor::Engine => '/ckeditor'
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -20,5 +19,7 @@ Rails.application.routes.draw do
               controller: :my_organization
     resources :channels
     resources :contents
+
+    mount Ckeditor::Engine => '/ckeditor'
   end
 end

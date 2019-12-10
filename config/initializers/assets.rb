@@ -13,4 +13,3 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += ['manifest.js']
 Rails.application.config.assets.precompile += %w[ckeditor/config.js]
-
