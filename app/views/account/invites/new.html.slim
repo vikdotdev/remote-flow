@@ -1,0 +1,12 @@
+section
+  .card
+    .card-header
+      h4.card-title
+        Invite User
+    .card-content
+      .card-body
+        = simple_form_for(@invite, url: account_invites_path) do |f|
+          = f.input :email
+          = f.input :role
+
+          = f.button :submit, 'Send New Invite', class: "btn-primary w-sm-100"

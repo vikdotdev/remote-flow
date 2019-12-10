@@ -19,5 +19,6 @@ Rails.application.routes.draw do
               controller: :my_organization
     resources :channels
     resources :contents
+    resources :invites
   end
 end

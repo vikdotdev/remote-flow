@@ -24,6 +24,7 @@ class Account::UsersController < Account::AccountController
   def create
     @user = User.new(users_params)
     @user.organization_id = current_organization.id unless current_user.super_admin?
+
     if @user.save
       redirect_to account_user_path(@user)
       flash[:success] = 'User successfully created.'
