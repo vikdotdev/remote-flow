@@ -6,8 +6,16 @@
 ]
 
 - content_for :actions do
+<<<<<<< HEAD
   = link_to "All Devices",account_devices_path, class: "btn btn-sm btn-light-primary mr-50"
   = link_to "Delete", account_device_path(@device), class: "btn btn-sm btn-light-danger", method: :delete
+=======
+  = link_to "All Devices",account_devices_path(@device), class: "btn btn-sm btn-light-primary mr-50"
+  = link_to "Delete", account_device_path(@device),
+      class: "btn btn-sm btn-light-danger",
+      method: :delete,
+      data: { confirm: 'Are you sure?' }
+>>>>>>> master
 
 .card
   .card-content
