@@ -47,7 +47,7 @@ RSpec.describe Account::InvitesController, type: :controller do
             role: User::ADMIN
           }
         }
-        expect(response).to redirect_to(account_path)
+        expect(response).to redirect_to(account_invites_path)
       end
 
       it 'renders new when invalid email' do

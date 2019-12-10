@@ -17,9 +17,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.role = invite.role
 
       if @user.save
-        redirect_to account_user_path(@user)
+        invite.destroy
         bypass_sign_in @user
         flash[:success] = 'User successfully created.'
+        redirect_to account_user_path(@user)
       else
         flash[:danger] = 'Failed to create user.'
         render action: :new, params: { invite_token: @token }

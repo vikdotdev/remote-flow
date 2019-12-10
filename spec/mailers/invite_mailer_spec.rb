@@ -4,7 +4,7 @@ RSpec.describe InviteMailer, type: :mailer do
   let!(:user) { create(:user, :admin) }
   let!(:invite) { create(:invite, sender: user) }
   let(:mail) do
-    invite.send_invite_email(new_user_registration_url(invite_token: invite.token))
+    invite.send_invite_email
   end
 
   it 'changes deliveries count' do

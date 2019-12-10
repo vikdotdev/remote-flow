@@ -9,5 +9,6 @@ class CreateInvites < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+    add_index :organization_id, :role, :sender_id
   end
 end
