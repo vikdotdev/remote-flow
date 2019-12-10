@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_100028) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "organization_id", null: false
     t.index ["organization_id"], name: "index_devices_on_organization_id"
+    t.index ["token"], name: "index_devices_on_token"
   end
 
   create_table "gallery_images", force: :cascade do |t|
