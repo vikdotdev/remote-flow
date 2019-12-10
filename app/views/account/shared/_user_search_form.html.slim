@@ -11,6 +11,7 @@
       = f.search_field :email_cont, placeholder: 'Email', class: 'form-control'
     - roles = [User::ADMIN, User::MANAGER]
     - if current_user.super_admin?
+      - roles << User::SUPER_ADMIN
       .col-md-2.col-12
         = f.label :role_eq, "Role"
         = f.select(:role_eq, options_for_select(roles,
