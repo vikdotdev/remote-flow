@@ -12,6 +12,10 @@
   .shadow-bottom
   .main-menu-content.d-flex.flex-column.justify-content-between
     ul#main-menu-navigation.navigation.navigation-main data-icon-style="lines" data-menu="menu-navigation"
+
+      - if current_user != true_user
+        = sidebar_button({ text: 'Stop Impersonation', path: stop_impersonating_account_users_path, method: :post, icon: 'desktop' })
+
       = sidebar_button({ text: 'Dashboard', path: '#', icon: 'desktop', class: 'active'  })
       = sidebar_button({ text: 'Users', path: account_users_path, icon: 'users' })
       - if current_user.admin? || current_user.manager?

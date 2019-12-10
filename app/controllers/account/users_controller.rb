@@ -10,6 +10,7 @@ class Account::UsersController < Account::AccountController
   end
 
   def show
+    debugger
     @user = resource
   end
 
@@ -53,6 +54,18 @@ class Account::UsersController < Account::AccountController
       flash[:danger] = 'Failed to delete user.'
     end
     redirect_to account_users_path
+  end
+
+  def impersonate
+    user = User.find(params[:id])
+    impersonate_user(user)
+    redirect_to account_path
+  end
+
+  def stop_impersonating
+    debugger
+    stop_impersonating_user
+    redirect_to account_path
   end
 
   private
