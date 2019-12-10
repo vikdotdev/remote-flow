@@ -31,7 +31,13 @@
 
 en:
   hello: "Hello world"
+<<<<<<< HEAD
   date:
     formats:
       long: "%-d %B %Y"
       short: "%b %d"
+=======
+  time:
+    formats:
+      date: "%m/%d/%Y"
+>>>>>>> master
