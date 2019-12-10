@@ -13,7 +13,10 @@ Rails.application.routes.draw do
     resources :devices
     resources :device_groups
     resource  :profile, only: %i[edit update]
-    resources :organizations, except: %i[new, create]
+    resources :organizations, except: %i[new create]
+    resource  :my_organization,
+              only: %i[show edit update],
+              controller: :my_organization
     resources :channels
     resources :contents
   end
