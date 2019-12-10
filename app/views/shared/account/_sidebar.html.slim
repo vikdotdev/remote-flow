@@ -16,7 +16,7 @@
       = sidebar_button({ text: 'Users', path: account_users_path, icon: 'users' })
       - if current_user.admin? || current_user.manager?
           = sidebar_button({ text: 'My Organization', path: account_my_organization_path, icon: 'link' })
-          = sidebar_button({ text: 'Device Groups', path: '#', icon: 'diagram' })
+          = sidebar_button({ text: 'Device Groups', path: account_device_groups_path, icon: 'diagram' })
           = sidebar_button({ text: 'Devices', path: account_devices_path, icon: 'tablet' })
           = sidebar_button({ text: 'Channels', path: account_channels_path, icon: 'thumbnails-small' })
           = sidebar_button({ text: 'Content', path: account_contents_path, icon: 'box' })
