@@ -1,11 +1,5 @@
-require 'slack-notifier'
-
 class Account::UsersController < Account::AccountController
   def index
-    notifier = Slack::Notifier.new "https://hooks.slack.com/services/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",
-      channel: "#reflow",
-      username: "notifier"
-    notifier.ping "Hello World"
     @q = collection.ransack(params[:q])
     @users = @q.result.by_name.page(params[:page]).per(10)
 
