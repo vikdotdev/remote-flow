@@ -1,5 +1,8 @@
 class Account::UsersController < Account::AccountController
-  before_action :require_admin_or_user_admin_only, only: [:index,:new,:destroy]
+  before_action :require_admin_or_super_admin_only, only: [:index, :new, :destroy]
+  before_action :have_access_to_page, only: [:edit, :show, :update],
+                unless: -> { current_user.admin? || current_user.super_admin? }
+
   def index
     @q = collection.ransack(params[:q])
     @users = @q.result.by_name.page(params[:page]).per(10)
