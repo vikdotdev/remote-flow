@@ -55,7 +55,6 @@ class Account::ContentsController < Account::AccountController
     permitted << :video_url if params[:content][:type] == Content::VIDEO
     permitted << :file if params[:content][:type] == Content::PRESENTATION
 
-
     params.require(:content).permit(*permitted)
   end
 
