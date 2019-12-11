@@ -125,6 +125,23 @@ RSpec.describe Account::UsersController, type: :controller do
         expect(response).to redirect_to(account_users_path)
       end
     end
+
+    describe 'POST #impersonate' do
+      it 'redirects to account_path' do
+        post :impersonate, params: { id: user.id }
+        expect(flash[:warning]).to be_nil
+        expect(response).to redirect_to(account_path)
+      end
+    end
+
+    describe 'POST #stop_impersonating' do
+      it 'redirects to account_path' do
+        post :impersonate, params: { id: user.id }
+        expect(flash[:warning]).to be_nil
+        post :stop_impersonating
+        expect(response).to redirect_to(account_path)
+      end
+    end
   end
 
   context 'when super_admin not logged in' do
@@ -199,29 +216,45 @@ RSpec.describe Account::UsersController, type: :controller do
       sign_in user
     end
 
-    it 'should not be able to elevate privilages to super_admin' do
-      patch :update, params: {
-        user: {
-          role: User::SUPER_ADMIN
-        },
-        id: user.id
-      }
-
-      expect(assigns(:user).role).not_to eq(User::SUPER_ADMIN)
+    describe 'POST #impersonate' do
+      it 'returns success' do
+        post :impersonate, params: { id: user.id }
+        expect(flash[:warning]).not_to be_nil
+      end
     end
 
-    it 'should not be able to create super_admins' do
-      expect do
-        post :create, params: {
+    describe 'POST #stop_impersonating' do
+      it 'returns success' do
+        post :impersonate, params: { id: user.id }
+        expect(flash[:warning]).not_to be_nil
+      end
+    end
+
+    describe 'cannot elevate privalages' do
+      it 'should not be able to elevate privilages to super_admin' do
+        patch :update, params: {
           user: {
-            first_name: user.first_name,
-            last_name: user.last_name,
-            email: "#{user.email}another",
-            role: User::SUPER_ADMIN,
-            password: 'password'
-          }
+            role: User::SUPER_ADMIN
+          },
+          id: user.id
         }
-      end.not_to change(User, :count)
+
+        expect(assigns(:user).role).not_to eq(User::SUPER_ADMIN)
+      end
+
+      it 'should not be able to create super_admins' do
+        expect do
+          post :create, params: {
+            user: {
+              first_name: user.first_name,
+              last_name: user.last_name,
+              email: "#{user.email}another",
+              role: User::SUPER_ADMIN,
+              password: 'password'
+            }
+          }
+        end.not_to change(User, :count)
+      end
     end
   end
 end
