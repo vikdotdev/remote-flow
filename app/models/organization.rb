@@ -4,7 +4,7 @@ class Organization < ApplicationRecord
   has_many :devices, dependent: :destroy
   has_many :channels, dependent: :destroy
   has_many :contents, dependent: :destroy
-  has_many :invites, dependent: :destroy
+  has_many :invites, dependent: :delete_all
 
   after_create :send_notification
 

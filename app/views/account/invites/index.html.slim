@@ -15,7 +15,6 @@
         table.table.zero-configuration
           thead
             tr
-              th ID
               th Email
               th Role
               th Inviter
@@ -25,14 +24,15 @@
             - @invites.each do |invite|
               tr
                 td
-                  = invite.id
-                td
                   = invite.email
                 td
                   = invite.role
                 td
-                  - inviter = invite.sender
-                  = link_to inviter.full_name, account_user_path(inviter)
+                  - if invite.sender
+                    - inviter = invite.sender
+                    = link_to inviter.full_name, account_user_path(inviter)
+                  - else
+                    span N/A
                 td
                   = l(invite.created_at, format: :short)
                 td
@@ -40,5 +40,4 @@
                       account_invite_path(invite),
                       class: 'danger',
                       method: :delete, data: { confirm: 'Are you sure?' }
-        = paginate @invites
 
