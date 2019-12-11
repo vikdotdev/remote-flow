@@ -1,4 +1,5 @@
 class Account::UsersController < Account::AccountController
+  before_action :require_admin_or_user_admin_only, only: [:index,:new,:destroy]
   def index
     @q = collection.ransack(params[:q])
     @users = @q.result.by_name.page(params[:page]).per(10)
