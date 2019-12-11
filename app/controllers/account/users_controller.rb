@@ -1,4 +1,6 @@
 class Account::UsersController < Account::AccountController
+  before_action :require_super_admin_only!, only: [:impersonate]
+
   def index
     @q = collection.ransack(params[:q])
     @users = @q.result.by_name.page(params[:page]).per(10)
