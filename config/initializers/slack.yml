@@ -1,5 +1,5 @@
 development:
-  token: 'https://hooks.slack.com/services/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'
+  token: 'https://hooks.slack.com/services/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'
   channel: '#reflow'
   username: 'notifier-bot'
 

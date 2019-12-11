@@ -4,8 +4,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     resource.role = User::ADMIN
     resource.organization_id = resource.organization.id if resource.organization.save
-    resource.first_name = 'test_first_name'
-    resource.last_name = 'test_last_name'
 
     resource.save
     yield resource if block_given?
@@ -21,6 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         respond_with resource, location: after_inactive_sign_up_path_for(resource)
       end
     else
+      resource.organization.delete
       clean_up_passwords resource
       set_minimum_password_length
       respond_with resource
@@ -30,7 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation,
+    params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation,
                                  organization_attributes: [:name])
   end
 
