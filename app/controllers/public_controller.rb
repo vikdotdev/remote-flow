@@ -6,4 +6,7 @@ class PublicController < ApplicationController
 
   def pricing
   end
+
+  def about_us
+  end
 end

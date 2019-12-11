@@ -31,8 +31,6 @@
 //= vendors.min.css
 //= link toastr.css
 
-
-//
 //= link boxicons.eot
 //= link boxicons.woff
 //= link boxicons.woff2
@@ -48,7 +46,12 @@
 //= link default-avatar.png
 //= link arrow-down.png
 //= link fallback/logo/default.png
-
+//= link github.png
+//= link taras.jpeg
+//= link viktor.jpeg
+//= link vasya.jpeg
+//= link miha.jpeg
+//= link lubomir.jpeg
 //
 //= link avatar-s-4.jpg
 //= link avatar-s-11.jpg
@@ -56,11 +59,8 @@
 //= link sketch-mac-icon.png
 //= link carousel.jpg
 
-
 //= link instagram_profile_image.png
 //= link logo-remote-flow.png
-
-
 //
 //= link flags/4x3/us.svg
 //
