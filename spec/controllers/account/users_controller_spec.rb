@@ -127,19 +127,19 @@ RSpec.describe Account::UsersController, type: :controller do
     end
 
     describe 'POST #impersonate' do
-      it 'redirects to account_path' do
+      it 'impersonates another user' do
         post :impersonate, params: { id: user.id }
         expect(flash[:warning]).to be_nil
-        expect(response).to redirect_to(account_path)
+        expect(controller.send(:current_user)).not_to eq(controller.send(:true_user))
       end
     end
 
     describe 'POST #stop_impersonating' do
-      it 'redirects to account_path' do
+      it 'stops impersonating another user' do
         post :impersonate, params: { id: user.id }
         expect(flash[:warning]).to be_nil
         post :stop_impersonating
-        expect(response).to redirect_to(account_path)
+        expect(controller.send(:current_user)).to eq(controller.send(:true_user))
       end
     end
   end
@@ -217,16 +217,10 @@ RSpec.describe Account::UsersController, type: :controller do
     end
 
     describe 'POST #impersonate' do
-      it 'returns success' do
+      it 'cannot impersonate another user' do
         post :impersonate, params: { id: user.id }
         expect(flash[:warning]).not_to be_nil
-      end
-    end
-
-    describe 'POST #stop_impersonating' do
-      it 'returns success' do
-        post :impersonate, params: { id: user.id }
-        expect(flash[:warning]).not_to be_nil
+        expect(controller.send(:current_user)).to eq(controller.send(:true_user))
       end
     end
 
