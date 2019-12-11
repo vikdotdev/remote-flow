@@ -28,6 +28,7 @@ gem 'any_login'
 gem 'kaminari'
 gem 'any_login'
 gem 'ransack'
+gem 'pretender'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

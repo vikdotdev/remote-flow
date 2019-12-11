@@ -9,7 +9,10 @@ Rails.application.routes.draw do
 
   namespace :account do
     get '/', to: 'dashboard#index'
-    resources :users
+    resources :users do
+      post :impersonate, on: :member
+      post :stop_impersonating, on: :collection
+    end
     resources :devices
     resources :device_groups
     resource  :profile, only: %i[edit update]
