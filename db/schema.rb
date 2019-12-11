@@ -91,6 +91,8 @@ ActiveRecord::Schema.define(version: 2019_12_09_125245) do
     t.string "token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["organization_id"], name: "index_invites_on_organization_id"
+    t.index ["token"], name: "index_invites_on_token"
   end
 
   create_table "organizations", force: :cascade do |t|
