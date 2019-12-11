@@ -1,5 +1,5 @@
 class Account::UsersController < Account::AccountController
-  before_action :require_admin_or_super_admin_only
+  before_action :require_admin_or_super_admin_only, except: [:stop_impersonating]
   before_action :require_super_admin_only!, only: [:impersonate]
 
   def index
