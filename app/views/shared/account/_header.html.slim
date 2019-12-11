@@ -16,7 +16,6 @@ nav.header-navbar.main-header-navbar.navbar-expand-lg.navbar.navbar-with-menu.fi
                   method: 'post',
                   class: "btn btn-sm btn-light-danger"
 
-
         ul.nav.navbar-nav.float-right
           / bell start
           li.dropdown.dropdown-notification.nav-item
@@ -150,7 +149,7 @@ nav.header-navbar.main-header-navbar.navbar-expand-lg.navbar.navbar-with-menu.fi
               span
                 = image_tag current_user.avatar.url, alt: 'avatar', width: '40', height: '40', class: 'round'
             .dropdown-menu.dropdown-menu-right data-toggle='dropdown'
-              = link_to edit_account_profile_path, class: 'dropdown-item'
+              = link_to edit_account_profile_path, method: :get, class: 'dropdown-item'
                 i.bx.bx-user.mr-50
                 | Edit Profile
               a.dropdown-item href="#"
@@ -169,4 +168,3 @@ nav.header-navbar.main-header-navbar.navbar-expand-lg.navbar.navbar-with-menu.fi
               = link_to destroy_user_session_path, method: :delete, class: 'dropdown-item'
                 i.bx.bx-power-off.mr-50
                 | Logout
-
