@@ -150,7 +150,7 @@ nav.header-navbar.main-header-navbar.navbar-expand-lg.navbar.navbar-with-menu.fi
               span
                 = image_tag current_user.avatar.url, alt: 'avatar', width: '40', height: '40', class: 'round'
             .dropdown-menu.dropdown-menu-right data-toggle='dropdown'
-              = link_to edit_account_user_path(current_user), class: 'dropdown-item'
+              = link_to edit_account_profile_path(current_user), class: 'dropdown-item'
                 i.bx.bx-user.mr-50
                 | Edit Profile
               a.dropdown-item href="#"

@@ -32,11 +32,4 @@ class ApplicationController < ActionController::Base
     flash[:warning] = 'You don\'t have permission to perform such action!'
     redirect_to controller: 'dashboard', action: 'index'
   end
-
-  def have_access_to_page
-    if params[:id].to_i != current_user.id
-      flash[:warning] = 'You don\'t have permission to perform such action!'
-      redirect_to controller: 'dashboard', action: 'index'
-    end
-  end
 end

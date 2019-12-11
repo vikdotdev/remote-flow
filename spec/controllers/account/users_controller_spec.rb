@@ -238,34 +238,22 @@ RSpec.describe Account::UsersController, type: :controller do
     end
 
     describe "GET #show" do
-      it "render show template" do
+      it "redirect to home page" do
         get :show, params: { id: manager.id }
-        expect(response).to be_successful
-        expect(response).to render_template(:show)
+        expect(response).to redirect_to(account_path)
       end
     end
 
     describe "GET #edit" do
-      it "render show template" do
+      it "redirect to home page" do
         get :edit, params: { id: manager.id }
-        expect(response).to be_successful
-        expect(response).to render_template(:edit)
+        expect(response).to redirect_to(account_path)
       end
     end
 
     describe "PATCH #update" do
-      it "should be able to update self" do
-        patch :update, params: {
-          user: {
-            first_name: 'Jack'
-          },
-          id: manager.id
-        }
-        manager.reload
-        expect(manager.first_name).to eq('Jack')
-      end
 
-      it "should not be able to update another user" do
+      it "should not be able to update user" do
         patch :update, params: {
           user: {
             first_name: 'Jack'
@@ -300,7 +288,7 @@ RSpec.describe Account::UsersController, type: :controller do
     end
 
     describe "POST #destroy" do
-      it "should not be able to destroy another user" do
+      it "should not be able to destroy user" do
         expect do
           delete :destroy, params: { id: user.id }
         end.not_to change(User, :count)
