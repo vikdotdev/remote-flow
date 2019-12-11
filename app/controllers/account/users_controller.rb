@@ -2,6 +2,7 @@ class Account::UsersController < Account::AccountController
   before_action :require_admin_or_super_admin_only, only: [:index, :new, :destroy]
   before_action :have_access_to_page, only: [:edit, :show, :update],
                 unless: -> { current_user.admin? || current_user.super_admin? }
+  before_action :require_super_admin_only!, only: [:impersonate]
 
   def index
     @q = collection.ransack(params[:q])
@@ -57,6 +58,17 @@ class Account::UsersController < Account::AccountController
       flash[:danger] = 'Failed to delete user.'
     end
     redirect_to account_users_path
+  end
+
+  def impersonate
+    user = User.find(params[:id])
+    impersonate_user(user)
+    redirect_to account_path
+  end
+
+  def stop_impersonating
+    stop_impersonating_user
+    redirect_to account_path
   end
 
   private
