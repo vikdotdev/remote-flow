@@ -12,4 +12,8 @@ class Content < ApplicationRecord
   scope :presentation, -> { where(type: 'Presentation') }
 
   validates :title, presence: true
+
+  def file_name
+    File.basename(self.file.url)
+  end
 end

@@ -14,8 +14,7 @@ FactoryBot.define do
 
     trait :presentation do
       type { 'Presentation' }
-      #file { Rack::Test::UploadedFile.new(Rails.root + "spec/files/example.pdf", 'example/pdf') }
-      file { Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/files/example.pdf'))) }
+      file { Rack::Test::UploadedFile.new(Rails.root + "spec/files/example.pdf", 'application/pdf') }
     end
 
     factory :gallery, class: 'Gallery', traits: [:gallery]
