@@ -10,7 +10,6 @@ class Account::UsersController < Account::AccountController
   end
 
   def show
-    debugger
     @user = resource
   end
 
@@ -63,7 +62,6 @@ class Account::UsersController < Account::AccountController
   end
 
   def stop_impersonating
-    debugger
     stop_impersonating_user
     redirect_to account_path
   end
