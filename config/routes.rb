@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
+  mount Ckeditor::Engine => '/ckeditor'
+
 
   root 'public#index'
 
@@ -23,5 +25,6 @@ Rails.application.routes.draw do
               controller: :my_organization
     resources :channels
     resources :contents
+    resources :invites, except: %i[edit update]
   end
 end

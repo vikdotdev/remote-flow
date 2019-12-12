@@ -1,10 +1,16 @@
 .organization-logo {
 
+  display: flex;
+  justify-content: space-around;
+
   .logo-img {
     max-width: 350px;
-    display: block;
-    margin-bottom: 10px;
+    display: inline;
     max-height: 600px;
+  }
+
+  .organization-logo-info {
+    width: 60%;
   }
 }
 
@@ -13,9 +19,9 @@
   .logo-img {
     max-width: 350px;
     display: block;
-    margin-bottom: 10px;
     max-height: 600px;
   }
+
 
   .logo-label {
     margin-bottom: 10px;

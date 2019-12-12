@@ -15,7 +15,7 @@ RSpec.describe SuperAdminMailer, type: :mailer do
     end
 
     it 'with correct subject' do
-      expect(mail.subject).to eq('Created new organization')
+      expect(mail.subject).to eq('New organization created')
     end
   end
 end

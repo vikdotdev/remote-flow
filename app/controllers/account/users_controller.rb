@@ -1,4 +1,5 @@
 class Account::UsersController < Account::AccountController
+  before_action :require_admin_or_super_admin_only, except: [:stop_impersonating]
   before_action :require_super_admin_only!, only: [:impersonate]
 
   def index
@@ -26,6 +27,7 @@ class Account::UsersController < Account::AccountController
   def create
     @user = User.new(users_params)
     @user.organization_id = current_organization.id unless current_user.super_admin?
+
     if @user.save
       redirect_to account_user_path(@user)
       flash[:success] = 'User successfully created.'
