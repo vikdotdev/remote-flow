@@ -49,6 +49,7 @@ group :development, :test do
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 4.0.0.beta3'
+  gem 'parallel_tests'
 end
 
 group :development do
