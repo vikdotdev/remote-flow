@@ -6,7 +6,7 @@ FactoryBot.create(:user, organization_id:  nil, role: 'super_admin')
 3.times do
   organization = FactoryBot.create(:organization)
 
-  FactoryBot.create_list(:user, 10, :with_avatar, organization_id: organization.id)
+  users = FactoryBot.create_list(:user, 10, :with_avatar, organization_id: organization.id)
   devices = FactoryBot.create_list(:device, 20, organization_id: organization.id)
   device_groups = FactoryBot.create_list(:device_group, 10, organization_id: organization.id)
   channels = FactoryBot.create_list(:channel, 10, organization_id: organization.id)
@@ -35,6 +35,12 @@ FactoryBot.create(:user, organization_id:  nil, role: 'super_admin')
     rand(0..3).times do
       content = content_with_presentation.sample
       channel.contents << content unless channel.contents.include? content
+    end
+  end
+
+  users.each do |user|
+    rand(0..3).times do
+      FactoryBot.create(:invite, organization_id: organization.id, sender: user)
     end
   end
 end
