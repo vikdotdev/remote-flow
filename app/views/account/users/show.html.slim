@@ -56,4 +56,4 @@ section.users-view
                     - if current_user.super_admin?
                       td = link_to @user.organization.name, account_organization_path(@user.organization)
                     - else
-                      td = link_to @user.organization.name, account_my_organization_pathq
+                      td = link_to @user.organization.name, account_my_organization_path
