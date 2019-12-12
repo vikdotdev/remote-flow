@@ -15,6 +15,9 @@
       = sidebar_button({ text: 'Dashboard', path: '#', icon: 'desktop', class: 'active'  })
       - if current_user.admin? || current_user.super_admin?
         = sidebar_button({ text: 'Users', path: account_users_path, icon: 'users' })
+      - if current_user.admin?
+        = sidebar_button({ text: 'Invitations', path: account_invites_path, icon: 'envelope-put' })
+
       - if current_user.admin? || current_user.manager?
         = sidebar_button({ text: 'My Organization', path: account_my_organization_path, icon: 'link' })
         = sidebar_button({ text: 'Device Groups', path: account_device_groups_path, icon: 'diagram' })
@@ -23,6 +26,7 @@
         = sidebar_button({ text: 'Content', path: account_contents_path, icon: 'box' })
       - elsif current_user.super_admin?
         = sidebar_button({ text: 'Organizations', path: account_organizations_path, icon: 'link' })
+
       = sidebar_button({ text: 'Analytics', path: '#', icon: 'pie-chart' })
       = sidebar_button({ text: 'Reports', path: '#', icon: 'morph-folder' })
       = sidebar_button({ text: 'Public Page', path: root_path, icon: 'home' })
@@ -34,3 +38,4 @@
           method: 'delete',\
           icon: 'morph-login2'\
         })
+

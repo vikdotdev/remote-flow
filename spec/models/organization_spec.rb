@@ -8,5 +8,4 @@ RSpec.describe Organization, type: :model do
       expect(organization).to be_persisted
     end
   end
-
 end

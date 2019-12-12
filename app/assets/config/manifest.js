@@ -15,6 +15,8 @@
 //= link vertical-menu-light.js
 //= link bootstrap.js
 //= link show_file_name_in_file_field.js
+//= link ckeditor/application.js
+
 //
 //= link authentication.css
 //= link bootstrap.css
@@ -30,6 +32,8 @@
 //= link style.css
 //= vendors.min.css
 //= link toastr.css
+//= link ckeditor/application.css
+
 
 //= link boxicons.eot
 //= link boxicons.woff
