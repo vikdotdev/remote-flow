@@ -20,6 +20,7 @@ section
       h4.card-title Contents
     .card-content
       .card-body
+        = render 'account/contents/content_search_form', q: @q
         .table-responsive
           table.table
             thead

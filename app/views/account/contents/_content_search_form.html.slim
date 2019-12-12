@@ -1,0 +1,11 @@
+= search_form_for(q, url: account_contents_path) do |f|
+  .row.mb-1
+    .col-md-3.col-12
+      = f.label :title_start, "Tite"
+      = f.search_field :title_start, placeholder: 'Tite', class: 'form-control'
+    .col-md-3.col-12
+      = f.label :type_eq, "Type"
+      = f.select(:type_eq, options_for_select(Content::TYPES,
+          selected: params.dig(:q,:type_eq)),
+          { include_blank: true }, {class: 'form-control'})
+    = f.submit class: "btn btn-primary mt-2 ml-1 mr-sm-50 pl-4 pr-4"
