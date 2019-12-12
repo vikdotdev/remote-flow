@@ -1,0 +1,38 @@
+.content-body
+  section.row.flexbox-container.vh-100.flex-justify-content-center.flex-align-items-center
+    .col-xl-8.col-11
+      .card.bg-authentication.mb-0
+        .row.m-0
+          .col-md-6.col-12.px-0
+            .card.disable-rounded-right.mb-0.p-2.h-100.d-flex.justify-content-center
+              .card-header.pb-1
+                .card-title
+                  h4.text-center.mb-2 Sign Up
+              .card-content
+                .card-body
+                  - path = @token ? accept_registrations_path : registrations_path
+                  = simple_form_for(@user, url: path) do |f|
+                    = render "devise/shared/error_messages", resource: @user
+                    - if @token
+                      = f.hidden_field :invite_token, value: @token
+                    - else
+                      .form-group.mb-2
+                        = f.fields_for :organization, @user.organization do |org|
+                          = org.input :name, class: "form-control", label: 'Organization Name', placeholder: "Organization Name"
+                      .form-group.mb-2
+                        = f.input :email, class: "form-control", placeholder: "Email"
+
+                    = f.input :first_name, class: "form-control", placeholder: "First Name"
+                    = f.input :last_name, class: "form-control", id: "exampleInputEmail1", placeholder: "Last Name"
+                    = f.input :password, autocomplete: "new-password", class: 'form-control', placeholder: "Password"
+                    = f.input :password_confirmation, class: 'form-control', placeholder: "Password confirmation"
+                    = f.button :submit, class: "btn btn-primary glow position-relative w-100 mt-2"
+                  hr/
+                  .text-center
+                    small.mr-25 Already have an account?
+                    small
+                      = link_to "Sign In", new_user_session_path
+
+          .col-md-6.d-md-block.d-none.text-center.align-self-center.p-3
+            = image_tag 'register.png', alt: 'branding logo', class: 'img-fluid'
+

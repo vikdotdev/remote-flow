@@ -3,8 +3,7 @@ class User < ApplicationRecord
   ADMIN = 'admin'.freeze
   MANAGER = 'manager'.freeze
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable
 
   mount_uploader :avatar, AvatarUploader
 
