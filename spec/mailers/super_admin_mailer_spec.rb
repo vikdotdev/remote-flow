@@ -11,7 +11,7 @@ RSpec.describe SuperAdminMailer, type: :mailer do
     end
 
     it 'with admins emails' do
-      expect(mail.to).to match_array(admin.email)
+      expect(mail.to).to match_array(User.super_admins.pluck(:email))
     end
 
     it 'with correct subject' do
