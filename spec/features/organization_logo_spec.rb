@@ -13,7 +13,7 @@ RSpec.feature "Organization Logo", type: :feature do
       click_button 'Login'
 
       visit "/account/organizations/#{organization.id}"
-      page.find('img.logo-img')['src'].should including "/assets/fallback/logo/default"
+      expect(page.find('img.logo-img')['src']).to include("/assets/fallback/logo/default")
     end
   end
 end

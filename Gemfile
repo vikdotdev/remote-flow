@@ -27,6 +27,8 @@ gem 'kaminari'
 gem 'any_login'
 gem 'ransack'
 gem 'slack-notifier'
+gem 'ckeditor'
+gem 'mini_magick'
 gem 'pretender'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
