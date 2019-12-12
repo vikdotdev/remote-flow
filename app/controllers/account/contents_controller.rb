@@ -1,6 +1,7 @@
 class Account::ContentsController < Account::AccountController
   def index
-    @contents = collection.by_title.page(params[:page]).per(10)
+    @q = collection.ransack(params[:q])
+    @contents = @q.result.by_title.page(params[:page]).per(10)
   end
 
   def show
