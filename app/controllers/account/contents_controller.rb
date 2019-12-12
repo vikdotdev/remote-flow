@@ -53,8 +53,9 @@ class Account::ContentsController < Account::AccountController
   def contents_params
     permitted = %i[title type]
     permitted << :video_url if params[:content][:type] == Content::VIDEO
+    permitted << :body if params[:content][:type] == Content::PAGE
     permitted << :file if params[:content][:type] == Content::PRESENTATION
-    
+
     params.require(:content).permit(*permitted)
   end
 
