@@ -9,7 +9,9 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   belongs_to :organization, optional: true
+  has_many :sent_invites, class_name: 'Invite', foreign_key: 'sender_id'
   accepts_nested_attributes_for :organization
+
   validates :first_name, length: { maximum: 250 }, presence: true
   validates :last_name, length: { maximum: 250 }, presence: true
   validates :organization_id, presence: true, unless: :super_admin?

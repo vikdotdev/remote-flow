@@ -25,6 +25,6 @@ Rails.application.routes.draw do
               controller: :my_organization
     resources :channels
     resources :contents
-
+    resources :invites, except: %i[edit update]
   end
 end
