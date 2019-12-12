@@ -7,6 +7,7 @@ RSpec.describe Account::ContentsController, type: :controller do
   let!(:another_organization) { create(:organization) }
   let!(:user) { create(:user, organization: organization) }
   let!(:video) { create(:video, title: 'Danialberg', organization: organization) }
+  let!(:presentation) { create(:presentation, title: 'Presentation', organization: organization) }
 
   context 'when not logged in' do
     describe 'GET #index' do
@@ -130,6 +131,20 @@ RSpec.describe Account::ContentsController, type: :controller do
         }
         expect(response).to render_template(:new)
         expect(video.title).to eq('Danialberg')
+      end
+
+      it 'creates presentation content type' do
+        expect do
+          post :create, params: {
+            content: {
+              title: presentation.title,
+              organization_id: presentation.organization.id,
+              file: presentation.file
+            }
+          }
+        end.to change(Content, :count).by(1)
+
+        expect(response).to redirect_to(account_content_path(assigns(:content)))
       end
     end
 
