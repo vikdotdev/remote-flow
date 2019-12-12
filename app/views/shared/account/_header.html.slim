@@ -8,6 +8,15 @@ nav.header-navbar.main-header-navbar.navbar-expand-lg.navbar.navbar-with-menu.fi
             li.nav-item.mobile-menu.d-xl-none.mr-auto
               a.nav-link.nav-menu-main.menu-toggle.hidden-xs href="#"
                 i.ficon.bx.bx-menu
+
+          .ml-3.ml-xl-0
+            - if current_user != true_user
+              = link_to 'Stop Impersonating',
+                  stop_impersonating_account_users_path,
+                  method: 'post',
+                  class: "btn btn-sm btn-light-danger"
+
+
         ul.nav.navbar-nav.float-right
           / bell start
           li.dropdown.dropdown-notification.nav-item
