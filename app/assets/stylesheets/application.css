@@ -4,6 +4,7 @@
  *= require account/_form
  *= require account/organization_form
  *= require account/nav-bar
+ *= require account/page-content
  *= require public/themify-icons
  *= require public/public
  *= require public/about-us
