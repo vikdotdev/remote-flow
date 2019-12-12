@@ -26,6 +26,7 @@ gem 'any_login'
 gem 'kaminari'
 gem 'any_login'
 gem 'ransack'
+gem 'slack-notifier'
 gem 'ckeditor'
 gem 'mini_magick'
 gem 'pretender'
@@ -47,6 +48,7 @@ group :development, :test do
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 4.0.0.beta3'
+  gem 'parallel_tests'
 end
 
 group :development do

@@ -19,19 +19,15 @@
   .card-content
     .card-header.pb-0
       h4 Info
-    .card-body
-      .row
-        .col-12.col-md-4
+    .row
+      .card-body
           table.table.table-borderless
-            tbody
-              tr
-                td.organization-logo
-                  = image_tag @organization.logo.url, class: 'logo-img'
-              tr
-                td Registered:
-                td
+            .organization-logo
+              = image_tag @organization.logo.url, class: 'logo-img'
+              .organization-logo-info
+                h5 Registered:
+                p
                   = l(@organization.created_at, format: :long)
-              tr
-                td Name:
-                td
+                h5 Name:
+                p
                   = @organization.name
