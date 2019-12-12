@@ -34,8 +34,3 @@ section
                   td
                     = @content.type
                 = render "account/contents/#{@content.type.downcase}_columns", content: @content
-                tr
-                  td Organization
-                  td
-                    = link_to @content.organization.name,
-                      account_organization_path(@content.organization)

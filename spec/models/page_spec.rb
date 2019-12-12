@@ -7,5 +7,10 @@ RSpec.describe Page, type: :model do
     it 'Page model has factories' do
       expect(page).to be_persisted
     end
+
+    it 'Page model has title validation' do
+      page.title = ' '
+      expect(page).not_to be_valid
+    end
   end
 end

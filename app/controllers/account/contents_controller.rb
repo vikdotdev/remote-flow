@@ -18,7 +18,6 @@ class Account::ContentsController < Account::AccountController
 
   def create
     @content = collection.new(contents_params)
-    # debugger
     if @content.save
       redirect_to account_content_path(@content)
       flash[:success] = 'Content successfully created.'
