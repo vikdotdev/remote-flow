@@ -20,11 +20,11 @@ class Organization < ApplicationRecord
   private
 
   def send_slack_notification
-    config = YAML.load_file('config/initializers/slack.yml')
+    config = Rails.application.config.SLACK_CONFIG
     notifier = Slack::Notifier.new(
-      config[Rails.env]['token'],
-      channel: config[Rails.env]['channel'],
-      username: config[Rails.env]['username']
+      config[:token],
+      channel: config[:channel],
+      username: config[:username]
     )
 
     notifier.ping "Organization #{name} was just created!"
