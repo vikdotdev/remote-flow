@@ -124,7 +124,7 @@ RSpec.describe Account::OrganizationsController, type: :controller do
     end
   end
 
-  context 'when loggen in as admin' do
+  context 'when logged in as admin' do
     before do
       sign_in admin
     end

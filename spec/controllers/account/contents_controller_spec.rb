@@ -183,36 +183,34 @@ RSpec.describe Account::ContentsController, type: :controller do
     end
   end
 
-  context 'filter with ransack' do
+  context 'when a user tries to' do
     before do
       sign_in user
     end
 
-    describe 'search content' do
-      it 'by title' do
+    describe 'GET #index' do
+      it 'search by title' do
         get :index, params: { q: { title_start: "Dani" } }
         expect(assigns(:contents)).to eq [video]
         expect(response).to be_successful
         expect(response).to render_template(:index)
       end
 
-      it 'by type' do
+      it 'search by type' do
         get :index, params: { q: { type_eq: 'Page' } }
         expect(assigns(:contents)).to eq [page]
         expect(response).to be_successful
         expect(response).to render_template(:index)
       end
-    end
 
-    describe 'sort content' do
-      it 'by descending id' do
+      it 'sort by descending id' do
         get :index, params: { q: { s: 'id desc' } }
         expect(assigns(:contents).to_a).to eq Content.all.order('id DESC').to_a
         expect(response).to be_successful
         expect(response).to render_template(:index)
       end
 
-      it 'by ascending title' do
+      it 'sort by ascending title' do
         get :index, params: { q: { s: 'title asc' } }
         expect(assigns(:contents).to_a).to eq Content.all.order('title ASC').to_a
         expect(response).to be_successful
