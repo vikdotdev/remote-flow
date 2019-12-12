@@ -54,8 +54,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_100028) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "organization_id"
     t.string "title"
-    t.string "page_title"
-    t.text "page_body"
+    t.text "body"
     t.index ["organization_id"], name: "index_contents_on_organization_id"
   end
 

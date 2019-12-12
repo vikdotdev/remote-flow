@@ -10,12 +10,12 @@ CKEDITOR.editorConfig = function( config ) {
 		config.filebrowserUploadUrl = "/ckeditor/attachment_files",
 		config.filebrowserUploadMethod = 'form',
 		config.allowedContent = true,
+		config.height = '500px',
 
-		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
 		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
 		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
 		{ name: 'forms', groups: [ 'forms' ] },
-		{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
     { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
     '/',
 		{ name: 'links', groups: [ 'links' ] },
@@ -24,6 +24,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'colors', groups: [ 'colors' ] },
 		{ name: 'tools', groups: [ 'tools' ] },
 		{ name: 'others', groups: [ 'others' ] },
-  ];
-  // config.toolbar = 'Groups'
+		{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+
+	];
 };

@@ -18,6 +18,7 @@ class Account::ContentsController < Account::AccountController
 
   def create
     @content = collection.new(contents_params)
+    # debugger
     if @content.save
       redirect_to account_content_path(@content)
       flash[:success] = 'Content successfully created.'
@@ -53,8 +54,7 @@ class Account::ContentsController < Account::AccountController
   def contents_params
     permitted = %i[title type]
     permitted << :video_url if params[:content][:type] == Content::VIDEO
-    permitted << :page_title if params[:content][:type] == Content::PAGE
-    permitted << :page_body if params[:content][:type] == Content::PAGE
+    permitted << :body if params[:content][:type] == Content::PAGE
 
     params.require(:content).permit(*permitted)
   end

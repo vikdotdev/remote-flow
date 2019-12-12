@@ -19,9 +19,9 @@ section
     .card-content
       .card-body
         .vertical
-          -if @content.type == 'Page'
-            = render "account/contents/page_columns"
-          -else
+          - if @content.type == 'Page'
+            = render "account/contents/page_columns", content: @content
+          - else
             table.table.mb-0
               thead
               tbody
