@@ -15,14 +15,17 @@
                   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
                     = render "devise/shared/error_messages", resource: resource
 
-                    .form-group.mb-2
-                      = f.fields_for :organization do |org|
-                        = org.label 'Organization Name', class: "text-bold-600", for: "exampleInputUsername1"
-                        = org.text_field :name, class: "form-control", id: "exampleInputUsername1", placeholder: "Name"
-                    .form-group.mb-50
-                      = f.label :email, class:"text-bold-600", for: "exampleInputEmail1"
-                      br/
-                      = f.email_field :email, class: "form-control", id: "exampleInputEmail1", placeholder: "Email"
+                    - if @token
+                      = f.hidden_field :invite_token, value: @token
+                    - else
+                      .form-group.mb-2
+                        = f.fields_for :organization do |org|
+                          = org.label 'Organization Name', class: "text-bold-600", for: "exampleInputUsername1"
+                          = org.text_field :name, class: "form-control", id: "exampleInputUsername1", placeholder: "Name"
+                      .form-group.mb-50
+                        = f.label :email, class:"text-bold-600", for: "exampleInputEmail1"
+                        br/
+                        = f.email_field :email, class: "form-control", id: "exampleInputEmail1", placeholder: "Email"
 
                     .form-group.mb-50
                       = f.label :first_name, class:"text-bold-600", for: "exampleInputEmail1"
