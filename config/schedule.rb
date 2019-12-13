@@ -18,3 +18,10 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+set :environment, :development
+set :output, "#{path}/log/cron.log"
+
+
+every :monday, at: '8:00 am' do
+  runner 'send_statistic_to_super_admin'
+end

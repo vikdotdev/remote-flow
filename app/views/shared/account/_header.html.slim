@@ -162,7 +162,7 @@ nav.header-navbar.main-header-navbar.navbar-expand-lg.navbar.navbar-with-menu.fi
                 i.bx.bx-message.mr-50
                 | Chats
               .dropdown-divider
-              = link_to root_path, class: 'dropdown-item'
+              = link_to root_path, method: :get , class: 'dropdown-item'
                 i.bx.bx-layout.mr-50
                 | Public Page
               = link_to destroy_user_session_path, method: :delete, class: 'dropdown-item'
