@@ -26,14 +26,19 @@ section
       h4.card-title Contents
     .card-content
       .card-body
+        = render 'account/contents/content_search_form', q: @q
         .table-responsive
           table.table
             thead
               tr
-                th ID
-                th Title
-                th Type
-                th Created
+                th
+                  = sort_link @q, :id, 'ID', default_order: :asc
+                th
+                  = sort_link @q, :title, 'Title', default_order: :asc
+                th
+                  = sort_link @q, :type, 'Type', default_order: :asc
+                th
+                  = sort_link @q, :created_at, 'Created', default_order: :asc
                 th Edit
                 th Delete
             tbody
