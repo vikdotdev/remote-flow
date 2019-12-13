@@ -76,5 +76,23 @@ RSpec.feature 'Page title', type: :feature do
       expect(page).to have_title("Remote Flow | #{user.full_name}")
     end
 
+    it 'public page title' do
+      visit '/'
+
+      expect(page).to have_title('Remote Flow | Public page')
+    end
+
+    it 'pricing page title' do
+      visit '/pricing'
+
+      expect(page).to have_title('Remote Flow | Pricing')
+    end
+
+    it 'about us page title' do
+      visit '/about_us'
+
+      expect(page).to have_title('Remote Flow | About us')
+    end
+
   end
 end
