@@ -5,6 +5,7 @@ class Account::ChannelsController < Account::AccountController
 
   def show
     @channel = resource
+    set_meta_tags title: @channel.name
   end
 
   def new
