@@ -1,6 +1,5 @@
 class RegistrationsController < ApplicationController
   layout 'devise'
-  # before_action :require_admin_or_super_admin_only, only: %i[new]
 
   def new
     @token = params[:invite_token]
@@ -12,8 +11,9 @@ class RegistrationsController < ApplicationController
     @user = User.new(sign_up_params)
     @user.role = User::ADMIN
 
-    if @user.organization.save
+    if @user.valid_disregarding_organization? && @user.organization.save
       @user.organization_id = @user.organization.id
+
       if @user.save
         bypass_sign_in @user
         flash[:success] = 'Success! Welcome.'
@@ -22,7 +22,7 @@ class RegistrationsController < ApplicationController
     end
 
     unless @user.valid?
-      flash[:success] = 'Error signing up.'
+      flash[:danger] = 'Error signing up.'
       render :new
     end
   end

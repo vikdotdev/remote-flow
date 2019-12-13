@@ -51,4 +51,8 @@ class User < ApplicationRecord
       end
     end
   end
+
+  def valid_disregarding_organization?
+    valid? || (errors.messages.key?(:organization_id) && errors.messages.keys.size == 1)
+  end
 end
