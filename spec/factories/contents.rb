@@ -18,8 +18,14 @@ FactoryBot.define do
       body { "<h4>#{ Faker::Lorem.sentence(word_count: 5) }</h4>" + Faker::Lorem.paragraphs(number: 4).map{|pr| "<p>#{pr}</p>" }.join + "<b>Author: #{ Faker::Name.name }<b>" }
     end
 
+    trait :presentation do
+      type { 'Presentation' }
+      file { Rack::Test::UploadedFile.new(Rails.root + "spec/files/example.pdf") }
+    end
+
     factory :gallery, class: 'Gallery', traits: [:gallery]
     factory :video, class: 'Video', traits: [:video]
+    factory :presentation, class: 'Presentation', traits: [:presentation]
     factory :page, class: 'Page', traits: [:page]
   end
 end
