@@ -7,6 +7,8 @@ RSpec.describe Account::ContentsController, type: :controller do
   let!(:another_organization) { create(:organization) }
   let!(:user) { create(:user, organization: organization) }
   let!(:video) { create(:video, title: 'Danialberg', organization: organization) }
+  let!(:presentation) { create(:presentation, organization: organization) }
+  let(:uploaded_file) { fixture_file_upload('spec/files/example.pdf') }
 
   context 'when not logged in' do
     describe 'GET #index' do
@@ -130,6 +132,21 @@ RSpec.describe Account::ContentsController, type: :controller do
         }
         expect(response).to render_template(:new)
         expect(video.title).to eq('Danialberg')
+      end
+
+      it 'creates presentation content type' do
+        expect do
+          post :create, params: {
+            content: {
+              type: 'Presentation',
+              title: 'Presentation',
+              file: uploaded_file
+            }
+          }
+        end.to change(Content, :count).by(1)
+
+        expect(Content.last.file.file.original_filename).to eq(uploaded_file.original_filename)
+        expect(assigns(:content).title).to eq('Presentation')
       end
     end
 

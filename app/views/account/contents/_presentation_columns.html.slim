@@ -1,0 +1,6 @@
+tr
+  td File
+  td
+    = link_to(content.file.url) do
+      = "#{truncate(content.file_name, length: 15)}"
+      i.bx.bxs-download.ml-50
