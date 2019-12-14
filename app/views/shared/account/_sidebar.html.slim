@@ -24,10 +24,10 @@
         = sidebar_button({ text: 'Devices', path: account_devices_path, icon: 'tablet' })
         = sidebar_button({ text: 'Channels', path: account_channels_path, icon: 'thumbnails-small' })
         = sidebar_button({ text: 'Content', path: account_contents_path, icon: 'box' })
+        = sidebar_button({ text: 'Analytics', path: '#', icon: 'pie-chart' })
       - elsif current_user.super_admin?
         = sidebar_button({ text: 'Organizations', path: account_organizations_path, icon: 'link' })
-
-      = sidebar_button({ text: 'Analytics', path: '#', icon: 'pie-chart' })
+        = sidebar_button({ text: 'Analytics', path: account_analitics_path, icon: 'pie-chart' })
       = sidebar_button({ text: 'Reports', path: '#', icon: 'morph-folder' })
     ul.navigation.navigation-main data-icon-style="lines" data-menu="menu-navigation"
       = sidebar_button({\
@@ -37,4 +37,3 @@
           method: 'delete',\
           icon: 'morph-login2'\
         })
-
