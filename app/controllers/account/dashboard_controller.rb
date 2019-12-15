@@ -2,7 +2,7 @@ class Account::DashboardController < Account::AccountController
   def index
   end
 
-  def analitics
+  def analytics
     require_super_admin_only!
   end
 end

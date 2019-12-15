@@ -16,8 +16,8 @@ RSpec.describe Account::DashboardController, type: :controller do
       expect(response).to be_successful
     end
 
-    it 'should show analitics page' do
-      get :analitics
+    it 'should show analytics page' do
+      get :analytics
       expect(response).to be_successful
     end
   end
