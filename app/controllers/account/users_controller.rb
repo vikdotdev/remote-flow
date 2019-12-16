@@ -50,6 +50,18 @@ class Account::UsersController < Account::AccountController
     end
   end
 
+  def update_password
+    @user = resource
+    if @user.update(users_params)
+      bypass_sign_in current_user
+      redirect_to account_user_path(@user)
+      flash[:success] = 'User password successfully updated.'
+    else
+      flash[:danger] = 'Failed to update user password.'
+      render :edit
+    end
+  end
+
   def destroy
     @user = resource
     if @user.destroy
@@ -82,7 +94,7 @@ class Account::UsersController < Account::AccountController
     if current_user.super_admin?
       permitted << :organization_id
     end
-    unless params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+    unless params[:user][:current_password].blank? && params[:user][:password].blank? && params[:user][:password_confirmation].blank?
       permitted << :password
       permitted << :password_confirmation
     end
