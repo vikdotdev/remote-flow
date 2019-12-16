@@ -24,3 +24,21 @@ rails db:environment:set RAILS_ENV=development
 rails db:reset
 ```
 
+# Running specs in parallel
+
+Create additional database(s):
+```
+rake parallel:create
+```
+Copy development schema (repeat after migrations):
+```
+rake parallel:prepare
+```
+Setup environment from scratch (create db and loads schema, useful for CI):
+```
+rake parallel:setup
+```
+Run
+```
+rake parallel:spec          # RSpec
+```

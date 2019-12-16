@@ -12,6 +12,7 @@ FactoryBot.create(:user, organization_id:  nil, role: 'super_admin')
   channels = FactoryBot.create_list(:channel, 10, organization_id: organization.id)
   content_with_gallery = FactoryBot.create_list(:content, 5, :gallery, organization_id: organization.id)
   content_with_video = FactoryBot.create_list(:content, 5, :video, organization_id: organization.id)
+  content_with_presentation = FactoryBot.create_list(:content, 5, :presentation, organization_id: organization.id)
   content_with_page = FactoryBot.create_list(:content, 5, :page, organization_id: organization.id)
 
   device_groups.each do |device_group|
@@ -33,10 +34,17 @@ FactoryBot.create(:user, organization_id:  nil, role: 'super_admin')
     end
 
     rand(0..3).times do
+      content = content_with_presentation.sample
+      channel.contents << content unless channel.contents.include? content
+    end
+
+    rand(0..3).times do
       content = content_with_page.sample
       channel.contents << content unless channel.contents.include? content
     end
   end
+
+
 
   users.each do |user|
     rand(0..3).times do

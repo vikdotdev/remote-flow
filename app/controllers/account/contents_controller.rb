@@ -1,10 +1,12 @@
 class Account::ContentsController < Account::AccountController
   def index
-    @contents = collection.by_title.page(params[:page]).per(10)
+    @q = collection.ransack(params[:q])
+    @contents = @q.result.by_title.page(params[:page]).per(10)
   end
 
   def show
     @content = resource
+    set_meta_tags title: @content.title
   end
 
   def new
@@ -54,6 +56,7 @@ class Account::ContentsController < Account::AccountController
     permitted = %i[title type]
     permitted << :video_url if params[:content][:type] == Content::VIDEO
     permitted << :body if params[:content][:type] == Content::PAGE
+    permitted << :file if params[:content][:type] == Content::PRESENTATION
 
     params.require(:content).permit(*permitted)
   end

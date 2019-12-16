@@ -7,6 +7,9 @@ RSpec.describe Account::ContentsController, type: :controller do
   let!(:another_organization) { create(:organization) }
   let!(:user) { create(:user, organization: organization) }
   let!(:video) { create(:video, title: 'Danialberg', organization: organization) }
+  let!(:page) { create(:page, organization: organization) }
+  let!(:presentation) { create(:presentation, organization: organization) }
+  let(:uploaded_file) { fixture_file_upload('spec/files/example.pdf') }
 
   context 'when not logged in' do
     describe 'GET #index' do
@@ -131,6 +134,21 @@ RSpec.describe Account::ContentsController, type: :controller do
         expect(response).to render_template(:new)
         expect(video.title).to eq('Danialberg')
       end
+
+      it 'creates presentation content type' do
+        expect do
+          post :create, params: {
+            content: {
+              type: 'Presentation',
+              title: 'Presentation',
+              file: uploaded_file
+            }
+          }
+        end.to change(Content, :count).by(1)
+
+        expect(Content.last.file.file.original_filename).to eq(uploaded_file.original_filename)
+        expect(assigns(:content).title).to eq('Presentation')
+      end
     end
 
     describe 'PATCH #update' do
@@ -181,4 +199,41 @@ RSpec.describe Account::ContentsController, type: :controller do
       end
     end
   end
+
+  context 'when a user tries to' do
+    before do
+      sign_in user
+    end
+
+    describe 'GET #index' do
+      it 'search by title' do
+        get :index, params: { q: { title_start: "Dani" } }
+        expect(assigns(:contents)).to eq [video]
+        expect(response).to be_successful
+        expect(response).to render_template(:index)
+      end
+
+      it 'search by type' do
+        get :index, params: { q: { type_eq: 'Page' } }
+        expect(assigns(:contents)).to eq [page]
+        expect(response).to be_successful
+        expect(response).to render_template(:index)
+      end
+
+      it 'sort by descending id' do
+        get :index, params: { q: { s: 'id desc' } }
+        expect(assigns(:contents).to_a).to eq Content.all.order('id DESC').to_a
+        expect(response).to be_successful
+        expect(response).to render_template(:index)
+      end
+
+      it 'sort by ascending title' do
+        get :index, params: { q: { s: 'title asc' } }
+        expect(assigns(:contents).to_a).to eq Content.all.order('title ASC').to_a
+        expect(response).to be_successful
+        expect(response).to render_template(:index)
+      end
+    end
+  end
+
 end
