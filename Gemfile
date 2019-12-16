@@ -30,6 +30,7 @@ gem 'slack-notifier'
 gem 'ckeditor'
 gem 'mini_magick'
 gem 'pretender'
+gem 'meta-tags'
 gem 'sidekiq'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
