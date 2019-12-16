@@ -34,7 +34,6 @@ class Account::InvitesController < Account::AccountController
     redirect_to account_invites_path
   end
 
-
   private
 
   def invite_params
@@ -50,5 +49,4 @@ class Account::InvitesController < Account::AccountController
   def resource
     collection.find(params[:id])
   end
-
 end

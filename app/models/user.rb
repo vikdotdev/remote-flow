@@ -3,7 +3,10 @@ class User < ApplicationRecord
   ADMIN = 'admin'.freeze
   MANAGER = 'manager'.freeze
 
-  devise :database_authenticatable, :recoverable, :rememberable, :validatable
+  attr_accessor :skip_organization_validation
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
   mount_uploader :avatar, AvatarUploader
 
@@ -52,7 +55,9 @@ class User < ApplicationRecord
     end
   end
 
-  def valid_disregarding_organization?
-    valid? || (errors.messages.key?(:organization_id) && errors.messages.keys.size == 1)
+  private
+
+  def organization_validation(skip = nil)
+    errors.add(:volume, 'cannot be above 400 cubic inches')
   end
 end

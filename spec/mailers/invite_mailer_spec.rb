@@ -11,6 +11,6 @@ RSpec.describe InviteMailer, type: :mailer do
 
   it 'has invitation link on mail' do
     expect(mail.body.encoded)
-      .to include("#{new_registration_url}?invite_token=#{invite.token}")
+      .to include("#{new_accept_invite_url}?invite_token=#{invite.token}")
   end
 end

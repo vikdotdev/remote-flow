@@ -10,14 +10,13 @@
                   h4.text-center.mb-2 Sign Up
               .card-content
                 .card-body
-                  - path = @token ? accept_registrations_path : registrations_path
-                  = simple_form_for(@user, url: path) do |f|
-                    = render "devise/shared/error_messages", resource: @user
-                    - if @token
-                      = f.hidden_field :invite_token, value: @token
+                  = simple_form_for(resource, url: path) do |f|
+                    = render "devise/shared/error_messages", resource: resource
+                    - if defined?(token) && token
+                      = f.hidden_field :invite_token, value: token
                     - else
                       .form-group.mb-2
-                        = f.fields_for :organization, @user.organization do |org|
+                        = f.fields_for :organization, resource.organization do |org|
                           = org.input :name, class: "form-control", label: 'Organization Name', placeholder: "Organization Name"
                       .form-group.mb-2
                         = f.input :email, class: "form-control", placeholder: "Email"
