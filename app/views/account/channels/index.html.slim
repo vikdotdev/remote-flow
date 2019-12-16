@@ -13,13 +13,17 @@
     h4.card-title Channels
   .card-content
     .card-body
+      = render 'account/channels/channels_search_form', q: @q
       .table-responsive
         table.table.zero-configuration
           thead
             tr
-              th ID
-              th Name
-              th Created
+              th
+                = sort_link @q, :id, 'ID', default_order: :asc
+              th
+                = sort_link @q, :name, 'Name', default_order: :asc
+              th
+                = sort_link @q, :create_at, 'Created', default_order: :asc
               th Edit
               th Delete
           tbody

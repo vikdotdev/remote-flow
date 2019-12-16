@@ -14,6 +14,7 @@ class Account::UsersController < Account::AccountController
 
   def show
     @user = resource
+    set_meta_tags title: @user.full_name
   end
 
   def new
