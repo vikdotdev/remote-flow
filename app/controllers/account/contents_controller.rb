@@ -20,8 +20,8 @@ class Account::ContentsController < Account::AccountController
   def create
     @content = collection.new(contents_params)
     if @content.save
-      redirect_to account_content_path(@content)
       flash[:success] = 'Content successfully created.'
+      redirect_to account_content_path(@content)
     else
       flash[:danger] = 'Failed to create content.'
       render :new
