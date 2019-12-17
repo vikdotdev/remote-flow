@@ -31,7 +31,6 @@ gem 'ckeditor'
 gem 'mini_magick'
 gem 'pretender'
 gem 'whenever', require: false
-
 gem 'meta-tags'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
