@@ -5,6 +5,7 @@ class Account::DevicesController < Account::AccountController
 
   def show
     @device = resource
+    set_meta_tags title: @device.name
   end
 
   def new

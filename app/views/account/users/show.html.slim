@@ -48,6 +48,9 @@ section.users-view
                   td Email
                   td = @user.email
                 tr
+                  td Last Sign In
+                  td = l(@user.current_sign_in_at, format: :long)
+                tr
                   td Name
                   td = @user.full_name
                 - if @user.organization
