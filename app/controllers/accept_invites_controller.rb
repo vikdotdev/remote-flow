@@ -9,10 +9,8 @@ class AcceptInvitesController < ApplicationController
   def create
     @token = params[:user][:invite_token]
 
-    return if @token.nil?
-
     @user = User.new(accept_params)
-    invite = Invite.find_by(token: @token)
+    invite = Invite.find_by!(token: @token)
     @user.organization = invite.organization
     @user.email = invite.email
     @user.role = invite.role
