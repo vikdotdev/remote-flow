@@ -31,8 +31,4 @@ module ApplicationHelper
       render 'account/shared/breadcrumbs', links: links
     end
   end
-
-  def admin_or_super_admin?
-    current_user.super_admin? || current_user.admin?
-  end
 end

@@ -47,10 +47,9 @@ section.users-view
                 tr
                   td Email
                   td = @user.email
-                - if admin_or_super_admin?
-                  tr
-                    td Last Sign In
-                    td = l(@user.current_sign_in_at, format: :long)
+                tr
+                  td Last Sign In
+                  td = l(@user.current_sign_in_at, format: :long)
                 tr
                   td Name
                   td = @user.full_name
