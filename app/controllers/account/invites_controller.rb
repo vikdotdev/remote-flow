@@ -2,7 +2,7 @@ class Account::InvitesController < Account::AccountController
   before_action :require_admin_only!
 
   def index
-    @invites = collection.by_creation_date.page(params[:page]).per(10)
+    @invites = collection.includes(:sender).by_creation_date.page(params[:page]).per(10)
   end
 
   def new
