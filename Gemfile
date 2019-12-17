@@ -30,6 +30,7 @@ gem 'slack-notifier'
 gem 'ckeditor'
 gem 'mini_magick'
 gem 'pretender'
+gem 'meta-tags'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -48,6 +49,8 @@ group :development, :test do
   gem 'faker'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 4.0.0.beta3'
+  gem 'rubocop'
+  gem 'rubocop-rails'
   gem 'parallel_tests'
 end
 
