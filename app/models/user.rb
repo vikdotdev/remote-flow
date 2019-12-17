@@ -62,6 +62,6 @@ class User < ApplicationRecord
     return unless organization_id.nil?
     return if super_admin? || skip_organization_validation
 
-    errors.add(:organization_id, 'should be present')
+    errors.add(:organization_id, 'must be present')
   end
 end
