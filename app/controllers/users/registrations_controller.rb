@@ -1,8 +1,13 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  def new
+    build_resource
+    resource.build_organization
+  end
+
   def create
     build_resource(sign_up_params)
 
-    resoure.skip_organization_validation = true
+    resource.skip_organization_validation = true
     resource.role = User::ADMIN
 
     resource.save

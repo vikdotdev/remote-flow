@@ -21,7 +21,7 @@ class AcceptInvitesController < ApplicationController
       invite.destroy
       bypass_sign_in @user
       flash[:success] = 'User successfully created.'
-      redirect_to account_path(@user)
+      redirect_to account_path
     else
       flash[:danger] = 'Failed to create user.'
       render action: :new, params: { invite_token: @token }

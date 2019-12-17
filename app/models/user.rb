@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   validates :first_name, length: { maximum: 250 }, presence: true
   validates :last_name, length: { maximum: 250 }, presence: true
-  validates :organization_id, presence: true, unless: :super_admin?
+  validate :organization_validation
   validates :role, inclusion: { in: [SUPER_ADMIN, ADMIN, MANAGER] }
 
   scope :by_name, -> { order(:first_name) }
@@ -57,7 +57,11 @@ class User < ApplicationRecord
 
   private
 
-  def organization_validation(skip = nil)
-    errors.add(:volume, 'cannot be above 400 cubic inches')
+  def organization_validation
+    self.skip_organization_validation ||= false
+    return unless organization_id.nil?
+    return if super_admin? || skip_organization_validation
+
+    errors.add(:organization_id, 'should be present')
   end
 end
