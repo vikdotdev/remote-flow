@@ -1,10 +1,12 @@
 class Account::ChannelsController < Account::AccountController
   def index
-    @channels = collection.by_name.page(params[:page]).per(10)
+    @q = collection.ransack(params[:q])
+    @channels = @q.result.by_name.page(params[:page]).per(10)
   end
 
   def show
     @channel = resource
+    set_meta_tags title: @channel.name
   end
 
   def new
