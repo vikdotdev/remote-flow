@@ -31,8 +31,9 @@ section
                   = sort_link @q, :email, 'Email', default_order: :asc
                 th
                   = sort_link @q, :role, 'Role', default_order: :asc
-                th
-                  = sort_link @q, :last_sign_in_at, 'Last Sign In', default_order: :asc
+                - if @user&.current_sign_in_at
+                  th
+                    = sort_link @q, :last_sign_in_at, 'Last Sign In', default_order: :asc
                 th Edit
                 th Delete
             tbody
