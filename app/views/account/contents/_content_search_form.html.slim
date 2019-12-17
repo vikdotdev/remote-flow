@@ -1,9 +1,9 @@
 = search_form_for(q, url: account_contents_path) do |f|
   .row.mb-1.justify-content-lg-center
-    .col-lg-5.col-md-4.col-12
-      = f.label :title_start, "Tite"
-      = f.search_field :title_start, placeholder: 'Tite', class: 'form-control'
-    .col-lg-5.col-md-4.col-12.mt-1.mt-md-0
+    .col-lg-5.col-md-4.col-12.pr-lg-0.pr-md-0
+      = f.label :title_start, "Title"
+      = f.search_field :title_start, placeholder: 'Title', class: 'form-control'
+    .col-lg-5.col-md-4.col-12.mt-1.mt-md-0.pr-lg-0.pr-md-0
       = f.label :type_eq, "Type"
       = f.select(:type_eq, options_for_select(Content::TYPES,
           selected: params.dig(:q, :type_eq)),

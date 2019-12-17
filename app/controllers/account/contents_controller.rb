@@ -6,6 +6,7 @@ class Account::ContentsController < Account::AccountController
 
   def show
     @content = resource
+    set_meta_tags title: @content.title
   end
 
   def new

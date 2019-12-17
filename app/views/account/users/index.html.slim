@@ -17,7 +17,7 @@ section
       h4.card-title Users
     .card-content
       .card-body
-        = render 'account/shared/user_search_form', q: @q
+        = render 'account/users/user_search_form', q: @q
         .table-responsive
           table.table
             thead
@@ -31,6 +31,8 @@ section
                   = sort_link @q, :email, 'Email', default_order: :asc
                 th
                   = sort_link @q, :role, 'Role', default_order: :asc
+                th
+                  = sort_link @q, :last_sign_in_at, 'Last Sign In', default_order: :asc
                 th Edit
                 th Delete
             tbody
@@ -44,6 +46,8 @@ section
                     = user.email
                   td
                     = user.role
+                  td
+                    = l(user.current_sign_in_at, format: :long) if user.current_sign_in_at
                   td
                     = link_to "Edit", edit_account_user_path(user)
                   td

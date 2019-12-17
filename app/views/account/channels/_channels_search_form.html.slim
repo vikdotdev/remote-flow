@@ -1,0 +1,7 @@
+= search_form_for(q, url: account_channels_path) do |f|
+  .row.mb-1.justify-content-lg-center
+    .col-md-10.col-12.pr-md-0
+      = f.label :name_start, "Name"
+      = f.search_field :name_cont, placeholder: 'Name', class: 'form-control'
+    .col-md-2.col-12
+      = f.submit class: "btn btn-primary mt-md-2 mt-1 w-100"

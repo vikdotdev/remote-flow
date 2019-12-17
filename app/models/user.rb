@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   attr_accessor :skip_organization_validation
 
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable
 
   mount_uploader :avatar, AvatarUploader
