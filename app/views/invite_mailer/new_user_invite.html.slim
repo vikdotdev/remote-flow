@@ -7,4 +7,4 @@ html
       = "Invitation to #{@invite.organization.name}"
     p
       = "Hello, you've been invited to #{@invite.organization.name} organization on Reflow!"
-    = link_to 'Accept Invitation', new_user_registration_url(invite_token: @invite.token)
+    = link_to 'Accept Invitation', new_accept_invite_url(invite_token: @invite.token)

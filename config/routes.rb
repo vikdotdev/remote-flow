@@ -7,11 +7,14 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
+  mount Ckeditor::Engine => '/ckeditor'
 
   root 'public#index'
 
   get '/pricing', to: 'public#pricing'
   get '/about_us', to: 'public#about_us'
+
+  resources :accept_invites, only: %i[new create]
 
   namespace :account do
     get '/', to: 'dashboard#index'
