@@ -1,4 +1,3 @@
-
 require 'rails_helper'
 
 RSpec.feature "Users export", type: :feature do
@@ -29,3 +28,4 @@ RSpec.feature "Users export", type: :feature do
     end
   end
 end
+
