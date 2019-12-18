@@ -1,12 +1,15 @@
 class Presentation < Content
-  after_create :generate_previews
+  mount_uploader :file, PresentationUploader
+
+  has_many :screenshots, dependent: :destroy
+
   validates :file, presence: true
 
-  mount_uploader :file, PresentationUploader
+  after_create :generate_previews
 
   private
 
   def generate_previews
-    ProcessPdfWorker.perform_in(Time.now)
+    ProcessPdfWorker.perform_async(id)
   end
 end
