@@ -2,8 +2,18 @@ class Account::ProfilesController < Account::AccountController
   def edit; end
 
   def update
-    if current_user.update_with_password(user_params)
+    if current_user.update(user_params)
       flash[:success] = 'You have successfully updated'
+      redirect_to edit_account_profile_path
+    else
+      flash[:error] = "#{current_user.errors.full_messages}"
+      render :edit
+    end
+  end
+  def update_password
+    if current_user.update_with_password(user_password_params)
+      bypass_sign_in(current_user)
+      flash[:success] = 'You have successfully updated password'
       redirect_to edit_account_profile_path
     else
       flash[:error] = "#{current_user.errors.full_messages}"
@@ -14,10 +24,10 @@ class Account::ProfilesController < Account::AccountController
   private
 
   def user_params
-    if params[:user][:password].blank?
-      params.require(:user).permit(:email, :first_name, :last_name, :avatar, :current_password)
-    else
-      params.require(:user).permit(:email, :first_name, :last_name, :avatar, :current_password, :password, :password_confirmation)
-    end
+    params.require(:user).permit(:email, :first_name, :last_name)
+  end
+
+  def user_password_params
+    params.require(:user).permit(:current_password, :password, :password_confirmation)
   end
 end

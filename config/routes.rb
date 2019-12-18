@@ -19,7 +19,9 @@ Rails.application.routes.draw do
     end
     resources :devices
     resources :device_groups
-    resource  :profile, only: %i[edit update]
+    resource  :profile, only: %i[edit update] do
+      patch :update_password, on: :collection
+    end
     resources :organizations, except: %i[new create]
     resource  :my_organization,
               only: %i[show edit update],

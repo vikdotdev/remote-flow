@@ -40,7 +40,7 @@ class Account::UsersController < Account::AccountController
 
   def update
     @user = resource
-    if @user.update(users_params)
+    if @user.update_without_password(users_params)
       bypass_sign_in current_user
       redirect_to account_user_path(@user)
       flash[:success] = 'User successfully updated.'
@@ -52,7 +52,7 @@ class Account::UsersController < Account::AccountController
 
   def update_password
     @user = resource
-    if @user.update(users_params)
+    if @user.update_with_password(user_params_password)
       bypass_sign_in current_user
       redirect_to account_user_path(@user)
       flash[:success] = 'User password successfully updated.'
@@ -97,6 +97,15 @@ class Account::UsersController < Account::AccountController
     unless params[:user][:current_password].blank? && params[:user][:password].blank? && params[:user][:password_confirmation].blank?
       permitted << :password
       permitted << :password_confirmation
+      permitted << :current_password
+    end
+    params.require(:user).permit(*permitted)
+  end
+
+  def user_params_password
+    permitted = [:current_password, :password_confirmation]
+    unless params[:user][:password].blank?
+      permitted << :password
     end
     params.require(:user).permit(*permitted)
   end
