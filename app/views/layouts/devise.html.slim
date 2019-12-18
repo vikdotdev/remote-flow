@@ -3,6 +3,10 @@ html.loading data-textdirection="ltr" lang="en"
   = render 'shared/head'
   body.vertical-layout.vertical-menu-modern.1-column.navbar-sticky.footer-static.bg-full-screen-image.blank-page.blank-page.pace-done
     = flash_messages
-    = render 'shared/account/content_container'
+    .app-content.content
+      .content-overlay
+      .content-wrapper
+        = flash_messages
+        = yield
     = render 'shared/template_javascripts'
 = any_login_here if defined?(AnyLogin)
