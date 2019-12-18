@@ -10,14 +10,12 @@ class ProcessPdfWorker
     end
 
     images.each_with_index do |image, i|
-      path = Rails.root.join("tmp/storage/#{presentation.file.identifier}-#{i}.png")
-      image.write(path) do
-        self.quality = 100
-      end
+      temp = Tempfile.new(["#{presentation.file.identifier}-#{i}", '.png'])
+      image.write("png:#{temp.path}") { self.quality = 100 }
+      Screenshot.create!(presentation: presentation, file: temp.open)
 
-      Screenshot.create!(presentation: presentation, file: path.open)
-
-      File.delete(path) if File.exist?(path)
+      temp.close
+      temp.unlink
     end
   end
 end

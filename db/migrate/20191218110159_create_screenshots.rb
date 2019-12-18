@@ -6,5 +6,7 @@ class CreateScreenshots < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
+    add_index :screenshots, :presentation_id
   end
 end
