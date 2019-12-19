@@ -1,11 +1,19 @@
 require 'rails_helper'
+require 'sidekiq/testing'
 
 RSpec.describe Presentation, type: :model do
   describe 'factory spec' do
-    let!(:presentation) { create(:content, :presentation) }
+    let!(:presentation) { create(:presentation) }
 
-    it 'Presentation model has factories' do
+    it 'has factories' do
       expect(presentation).to be_persisted
+    end
+
+    it 'has screenshots' do
+      Sidekiq::Testing.inline! do
+        presentation = FactoryBot.create(:presentation)
+        expect(presentation.screenshots.count).to eq(5)
+      end
     end
   end
 end

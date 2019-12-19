@@ -45,7 +45,6 @@ FactoryBot.create(:user, organization_id:  nil, role: 'super_admin')
   end
 
 
-
   users.each do |user|
     rand(0..3).times do
       FactoryBot.create(:invite, organization_id: organization.id, sender: user)

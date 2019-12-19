@@ -2,11 +2,11 @@ class ProcessPdfWorker
   include Sidekiq::Worker
   sidekiq_options retry: false
 
-  def perform(id)
+  def perform(id, density = '300x300')
     presentation = Presentation.find(id)
     images = Magick::Image.read(presentation.file.path) do
       self.quality = 100
-      self.density = '300x300'
+      self.density = density
     end
 
     images.each_with_index do |image, i|

@@ -20,6 +20,7 @@ FactoryBot.define do
 
     trait :presentation do
       type { 'Presentation' }
+      title { Faker::Company.industry }
       file { Rack::Test::UploadedFile.new(Rails.root + "spec/files/example.pdf") }
     end
 
