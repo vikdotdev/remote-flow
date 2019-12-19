@@ -6,6 +6,8 @@
 //= link LivIconsEvo.defaults.js
 //= link LivIconsEvo.min.js
 //= link LivIconsEvo.tools.js
+//= link moment.min.js
+//= link daterangepicker.js
 //= link vendors.min.js
 //= link horizontal-menu.js
 //= link jquery.sticky.js
@@ -25,6 +27,7 @@
 //= link colors.css
 //= link components.css
 //= link dark-layout.css
+//= link daterangepicker.css
 //= link semi-dark-layout.css
 //= link vertical-menu.css
 //= link vendors.min.css
@@ -72,3 +75,4 @@
 //= link flags/4x3/us.svg
 //
 //= link application.css
+//= link application.js
