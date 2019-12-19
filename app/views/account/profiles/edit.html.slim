@@ -38,12 +38,9 @@ section#page-account-settings
                         class: 'rounded mr-75'
                       .media-body.mt-25
                         .col-12.px-0.d-flex.flex-sm-row.flex-column.justify-content-start
-                          button#select-files.btn.btn-sm.btn-light-primary.ml-50.mb-50.mb-sm-0.dz-clickable
-                            | Upload new photo
-                          form#dpz-btn-select-files.dropzone.dropzone-area.dz-clickable action="#" hidden=""
-                            .dz-default.dz-message
-                              span Drop files here to upload
-                          button.btn.btn-sm.btn-light-secondary.ml-50 Reset
+                          = simple_form_for(current_user, url: account_profile_path) do |f|
+                            = f.file_field :avatar, class: "upload"
+                            = f.button :submit, 'Update photo', class: 'btn btn-sm btn-light-primary ml-50 mb-50 mb-sm-0'
                         p.text-muted.ml-1.mt-50
                           small
                             | Allowed JPG, GIF or PNG. Max size of 800kB
@@ -86,13 +83,13 @@ section#page-account-settings
                           = f.button :submit, "Save changes", class:'btn btn-primary glow mr-sm-1 mb-1'
                           = link_to 'Cancel', account_path, class: "btn btn-light mb-1"
                   #account-vertical-password.tab-pane.fade aria-expanded="false" aria-labelledby="account-pill-password" role="tabpanel"
-                    = simple_form_for(current_user, url: update_password_account_profile_path) do |f|
+                    = simple_form_for(current_user, url: update_password_account_profile_path, html:{ novalidate: false }) do |f|
                       .row
                         .col-12
                           .form-group
                             .controls
                               = f.input :current_password,
-                                require: true,
+                                required: true,
                                 label: 'Old password',
                                 class: 'form-control'
                               .help-block
@@ -100,7 +97,7 @@ section#page-account-settings
                           .form-group
                             .controls
                               = f.input :password,
-                                require: true,
+                                required: true,
                                 label: 'New password',
                                 class: 'form-control'
                               .help-block
@@ -108,7 +105,7 @@ section#page-account-settings
                           .form-group
                             .controls
                               = f.input :password_confirmation,
-                                require: true,
+                                required: true,
                                 label: 'Confirmation password',
                                 class: 'form-control'
                               .help-block

@@ -17,15 +17,15 @@
 section
   .card
     .card-content.row.m-0
-      .col-md-6.pl-0.pr-0
+      .col-md-12.pl-0.pr-0
         .card-header.pb-0
           h4 Edit
         .card-body
           - path = account_user_path(@user)
           = render 'account/shared/form', user: @user, path: path, back_path: path
-      .col-md-6.pl-0.pr-0
-        .card-header.pb-0
-          h4 Change password
-        .card-body
-          - path = update_password_account_user_path(@user)
-          = render 'account/shared/form_password_update', user: @user, path: path, back_path: path
+      -if current_user.super_admin?
+        .col-md-12.pl-0.pr-0
+          .card-header.pb-0
+            h4 Change password
+          .card-body
+            = render 'account/shared/form_password_update', user: @user

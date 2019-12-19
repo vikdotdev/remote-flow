@@ -24,10 +24,10 @@ class Account::ProfilesController < Account::AccountController
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name)
+    params.require(:user).permit(:email, :first_name, :last_name, :avatar)
   end
 
   def user_password_params
-    params.require(:user).permit(:current_password, :password, :password_confirmation)
+    params.require(:user).permit(:password, :password_confirmation, :current_password)
   end
 end
