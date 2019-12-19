@@ -3,7 +3,7 @@ require 'sidekiq/testing'
 
 RSpec.describe Presentation, type: :model do
   describe 'factory spec' do
-    let!(:presentation) { create(:presentation) }
+    let!(:presentation) { create(:presentation_with_screenshots) }
 
     it 'has factories' do
       expect(presentation).to be_persisted
