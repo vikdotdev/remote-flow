@@ -2,6 +2,8 @@ FactoryBot.define do
   factory :screenshot do
     file { Rack::Test::UploadedFile.new(Rails.root + "spec/files/screenshot.png") }
 
-    presentation
+    trait :with_presentation do
+      presentation
+    end
   end
 end

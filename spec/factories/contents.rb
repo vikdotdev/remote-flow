@@ -22,6 +22,14 @@ FactoryBot.define do
       type { 'Presentation' }
       title { Faker::Company.industry }
       file { Rack::Test::UploadedFile.new(Rails.root + "spec/files/example.pdf") }
+
+      transient do
+        screenshots_count { 5 }
+      end
+
+      after(:create) do |instance, evaluator|
+        create_list(:screenshot, evaluator.screenshots_count, presentation: instance)
+      end
     end
 
     factory :gallery, class: 'Gallery', traits: [:gallery]
