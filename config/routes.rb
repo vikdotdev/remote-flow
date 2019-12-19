@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+
+  mount Sidekiq::Web => '/sidekiq'
+  mount Ckeditor::Engine => '/ckeditor'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-
-  mount Ckeditor::Engine => '/ckeditor'
 
   root 'public#index'
 
