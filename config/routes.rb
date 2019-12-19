@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     resources :devices
     resources :device_groups
     resource  :profile, only: %i[edit update] do
-      patch :update_password, on: :collection
+      patch :update_password, on: :member
     end
     resources :organizations, except: %i[new create]
     resource  :my_organization,
