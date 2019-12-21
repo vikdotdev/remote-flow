@@ -40,24 +40,12 @@ class Account::UsersController < Account::AccountController
 
   def update
     @user = resource
-    if @user.update_without_password(users_params)
+    if @user.update(users_params)
       bypass_sign_in current_user
       redirect_to account_user_path(@user)
       flash[:success] = 'User successfully updated.'
     else
       flash[:danger] = 'Failed to update user.'
-      render :edit
-    end
-  end
-
-  def update_password
-    @user = resource
-    if @user.update(user_params_password)
-      bypass_sign_in current_user
-      redirect_to account_user_path(@user)
-      flash[:success] = 'User password successfully updated.'
-    else
-      flash[:danger] = 'Failed to update user password.'
       render :edit
     end
   end

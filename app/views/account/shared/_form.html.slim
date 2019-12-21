@@ -2,9 +2,8 @@
   = f.input :first_name
   = f.input :last_name
   = f.input :email, required: true
-  - unless action_name == 'edit' || action_name == 'update_password'
-    = f.input :password, required: true
-    = f.input :password_confirmation, required: true
+  = f.input :password, required: true
+  = f.input :password_confirmation, required: true
   - roles = [User::ADMIN, User::MANAGER]
   - if current_user.super_admin?
     - roles << User::SUPER_ADMIN

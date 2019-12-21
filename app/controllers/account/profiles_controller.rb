@@ -10,6 +10,7 @@ class Account::ProfilesController < Account::AccountController
       render :edit
     end
   end
+
   def update_password
     if current_user.update_with_password(user_password_params)
       bypass_sign_in(current_user)

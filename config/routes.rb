@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     resources :users do
       post :impersonate, on: :member
       post :stop_impersonating, on: :collection
-      patch :update_password, on: :member
     end
     resources :devices
     resources :device_groups
