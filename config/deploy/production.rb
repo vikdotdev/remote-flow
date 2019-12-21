@@ -7,6 +7,7 @@ server "192.99.152.165", user: "deployer", roles: %w{app web db}
 # server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
 # server "db.example.com", user: "deploy", roles: %w{db}
 
+config.serve_static_files = true
 
 # role-based syntax
 # ==================

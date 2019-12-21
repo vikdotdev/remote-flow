@@ -1,5 +1,5 @@
 CKEDITOR.editorConfig = function( config ) {
-	config.toolbarGroups = [
+	config.toolbar_Full = [
 
 	config.filebrowserBrowseUrl = "/ckeditor/attachment_files",
 	config.filebrowserFlashBrowseUrl = "/ckeditor/attachment_files",
@@ -10,7 +10,6 @@ CKEDITOR.editorConfig = function( config ) {
 	config.filebrowserUploadUrl = "/ckeditor/attachment_files",
 	config.filebrowserUploadMethod = 'form',
 	config.allowedContent = true,
-	config.height = '500px',
 
 	{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
 	{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
@@ -26,4 +25,6 @@ CKEDITOR.editorConfig = function( config ) {
 	{ name: 'others', groups: [ 'others' ] },
 	{ name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
 	];
+	config.toolbar = "Full";
+	config.height = 500;
 };
