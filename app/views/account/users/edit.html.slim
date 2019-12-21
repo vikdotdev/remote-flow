@@ -22,4 +22,4 @@ section
           h4 Edit
         .card-body
           - path = account_user_path(@user)
-          = render 'account/shared/form', user: @user, path: path, back_path: path
+          = render 'account/shared/form_without_password', user: @user, path: path, back_path: path
