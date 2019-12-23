@@ -16,37 +16,22 @@
   hr/
   .row
     .col-12
-      .form-group
-        .controls
-          = f.input :first_name,
-            placeholder: "First Name",
-            class: "form-control",
-            label: 'First Name'
-          .help-block
+      = f.input :first_name,
+        placeholder: "First Name",
+        class: "form-control",
+        label: 'First Name'
     .col-12
-      .form-group
-        .controls
-          = f.input :last_name,
-            placeholder: "Last Name",
-            class: "form-control",
-            label: 'Last Name'
+      = f.input :last_name,
+        placeholder: "Last Name",
+        class: "form-control",
+        label: 'Last Name'
     .col-12
-      .form-group
-        .controls
-          = f.input :email,
-            autofocus: true,
-            class: "form-control",
-            autocomplete: "email",
-            placeholder: "Email",
-            label: 'Email'
-          .help-block
-    .col-12
-      .alert.bg-rgba-warning.alert-dismissible.mb-2 role="alert"
-        button.close aria-label="Close" data-dismiss="alert" type="button"
-          span aria-hidden="true"  ×
-        p.mb-0
-          | Your email is not confirmed. Please check your inbox.
-        a href=("javascript: void(0);")  Resend confirmation
+      = f.input :email,
+        autofocus: true,
+        class: "form-control",
+        autocomplete: "email",
+        placeholder: "Email",
+        label: 'Email'
     .col-12.d-flex.flex-sm-row.flex-column.justify-content-end
       = f.button :submit, "Save changes", class:'btn btn-primary glow mr-sm-1 mb-1'
       = link_to 'Cancel', account_path, class: "btn btn-light mb-1"

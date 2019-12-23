@@ -4,16 +4,10 @@
   { title: 'Edit' }\
 ]
 
-- content_for :actions do
-  .col-12.d-flex.justify-content-end.align-items-center.px-1
-    a.btn.btn-sm.btn-light-primary.mr-50 href='#'
-      | Dummy button
-
 section#page-account-settings
   .row
     .col-12
       .row
-        /! left menu section
         .col-md-3.mb-2.mb-md-0.pills-stacked
           ul.nav.nav-pills.flex-column
             li.nav-item
@@ -24,7 +18,6 @@ section#page-account-settings
               a#account-pill-password.nav-link.d-flex.align-items-center aria-expanded="false" data-toggle="pill" href="#account-vertical-password"
                 i.bx.bx-lock
                 span Change Password
-        /! right content section
         .col-md-9
           .card
             .card-content
