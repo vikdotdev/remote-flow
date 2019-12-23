@@ -1,4 +1,5 @@
 (function() {
+  if (!$('#dashboard-data').length) return;
 
   var $primary = '#5A8DEE';
   var $danger = '#FF5B5C';
@@ -18,7 +19,7 @@
     }
   }
 
-  var data = $('.dashboard-data').data('data')
+  var data = $('#dashboard-data').data('data')
   console.log(data)
 
   new ApexCharts(document.querySelector("#organization-creation-dynamics"), {
@@ -57,13 +58,13 @@
     },
     series: [{
       name: 'Weeks',
-      data: [165, 175, 186, 189, 193, 196],
+      data: [165, 175, 186, 189, 196],
       type: 'area',
     }],
 
     xaxis: {
       offsetY: -50,
-      categories: ['', 1, 2, 3, 4, ''],
+      categories: ['', 20, 15, 10, ''],
       axisBorder: {
         show: false,
       },
@@ -88,8 +89,14 @@
         type: 'donut',
         animations: animations
       },
-      series: [44, 55],
-      labels: ['Admin', 'Manager']
+      series: [
+        data.role_distribution.admins.count,
+        data.role_distribution.managers.count
+      ],
+      labels: [
+        data.role_distribution.admins.role,
+        data.role_distribution.managers.role
+      ]
     }).render();
 
   new ApexCharts(document.querySelector("#content-type-chart"), {
@@ -98,8 +105,18 @@
         animations: animations,
         height: 282,
       },
-      series: [20, 30, 44, 6],
-      labels: ['Page', 'Video', 'Presentation', 'Gallery']
+      series: [
+        data.content_type_distribution.pages.count,
+        data.content_type_distribution.videos.count,
+        data.content_type_distribution.presentations.count,
+        data.content_type_distribution.galleries.count
+      ],
+      labels: [
+        data.content_type_distribution.pages.type,
+        data.content_type_distribution.videos.type,
+        data.content_type_distribution.presentations.type,
+        data.content_type_distribution.galleries.type
+      ]
     }).render();
 
   new ApexCharts(document.querySelector("#logged-in-chart"), {

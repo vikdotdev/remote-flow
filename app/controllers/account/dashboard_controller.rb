@@ -6,15 +6,28 @@ module Report
 
     def collection
       if @user.super_admin?
-        self.class.all
+        self.class.name.demodulize.constantize.all
       else
-        @user.organization.send(self.class.name.demodulize.pluralize.downcase.to_sym)
+        @user.organization.send(self.class.name.demodulize.pluralize.downcase)
       end
     end
   end
 
   class User < BaseReport
     def trends
+    end
+
+    def role_distribution
+      {
+        admins: {
+          role: ::User::ADMIN.capitalize,
+          count: collection.where(role: ::User::ADMIN).count,
+        },
+        managers: {
+          role: ::User::MANAGER.capitalize,
+          count: collection.where(role: ::User::MANAGER).count
+        }
+      }
     end
   end
 
@@ -30,6 +43,28 @@ module Report
     def files
       collection.where.not(file: nil)
     end
+
+    def type_distribution
+      {
+        pages: {
+          type: ::Content::PAGE,
+          count: collection.where(type: ::Content::PAGE).count,
+        },
+        galleries: {
+          type: ::Content::GALLERY,
+          count: collection.where(type: ::Content::GALLERY).count,
+        },
+        presentations: {
+          type: ::Content::PRESENTATION,
+          count: collection.where(type: ::Content::PRESENTATION).count,
+        },
+        videos: {
+          type: ::Content::VIDEO,
+          count: collection.where(type: ::Content::VIDEO).count
+        }
+      }
+    end
+
   end
 
   class Invite < BaseReport
@@ -47,16 +82,18 @@ class Dashboard
     data = Hash.new
 
     if user.super_admin?
-      data[:organization_trends] = Report::Organization.new(@user).collection
+      data[:organizations] = Report::Organization.new(@user).collection
+      # data[:organization_trends] = Report::Organization.new(@user).trends
     else
-      data[:user_trends] = Report::User.new(@user).collection
+      # data[:user_trends] = Report::User.new(@user).trends
     end
 
+    data[:role_distribution] = Report::User.new(@user).role_distribution
     data[:channels] = Report::Channel.new(@user).collection
     data[:invites] = Report::Invite.new(@user).collection
 
     content_report = Report::Content.new(@user)
-    data[:content] = content_report.collection
+    data[:content_type_distribution] = content_report.type_distribution
     data[:files] = content_report.files
 
     data
