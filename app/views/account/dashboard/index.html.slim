@@ -1,215 +1,157 @@
 section#dashboard-ecommerce
   .row
     /! Statistics Cards Starts
-    .col-xl-2.col-md-4.col-sm-6
+    .col-lg-2.col-sm-4.col-6
       .card.text-center
         .card-content
-          .card-body.py-1
+          .card-body
             .badge-circle.badge-circle-lg.badge-circle-light-success.mx-auto.mb-50
               i.bx.bx-tv.font-medium-5
             .text-muted.line-ellipsis Channels
             h3.mb-0 1.2k
-    .col-xl-2.col-md-4.col-sm-6
+    .col-lg-2.col-sm-4.col-6
       .card.text-center
         .card-content
-          .card-body.py-1
+          .card-body
             .badge-circle.badge-circle-lg.badge-circle-light-secondary.mx-auto.mb-50
               i.bx.bx-briefcase-alt.font-medium-5
             .text-muted.line-ellipsis Organizations
             h3.mb-0 1.2k
-    .col-xl-2.col-md-4.col-sm-6
+    .col-lg-2.col-sm-4.col-6
       .card.text-center
         .card-content
-          .card-body.py-1
+          .card-body
             .badge-circle.badge-circle-lg.badge-circle-light-secondary.mx-auto.mb-50
               i.bx.bx-briefcase-alt.font-medium-5
             .text-muted.line-ellipsis Devices Connected
             h3.mb-0 1.2k
-    .col-xl-2.col-md-4.col-sm-6
+    .col-lg-2.col-sm-4.col-6
       .card.text-center
         .card-content
-          .card-body.py-1
+          .card-body
             .badge-circle.badge-circle-lg.badge-circle-light-danger.mx-auto.mb-50
               i.bx.bx-user.font-medium-5
             .text-muted.line-ellipsis Users
             h3.mb-0 45.6k
-    .col-xl-2.col-md-4.col-sm-6
+    .col-lg-2.col-sm-4.col-6
       .card.text-center
         .card-content
-          .card-body.py-1
+          .card-body
             .badge-circle.badge-circle-lg.badge-circle-light-warning.mx-auto.mb-50
               i.bx.bx-file.font-medium-5
             .text-muted.line-ellipsis Files Uploaded
             h3.mb-0 1.2k
-    .col-xl-2.col-md-4.col-sm-6
+    .col-lg-2.col-sm-4.col-6
       .card.text-center
         .card-content
-          .card-body.py-1
+          .card-body
             .badge-circle.badge-circle-lg.badge-circle-light-warning.mx-auto.mb-50
               i.bx.bx-file.font-medium-5
             .text-muted.line-ellipsis Invites Sent
             h3.mb-0 1.2k
 
+  .row
+    .col-lg-8.col-12
+      .card
+        /! Order Summary Starts
+        .card.mb-0
+          .card-header.d-flex.justify-content-between.align-items-center
+            h4.card-title ???
+          .card-content
+            .card-body.p-0
+              #order-summary-chart
+
+    .col-lg-4.col-12
+      .row
+        .col-lg-12.col-md-6
+          .card
+            .card-header.d-flex.justify-content-between.align-items-center.pb-0
+              h4.card-title Logged In
+            .card-content
+              .card-body.pb-0 style=("position: relative;")
+                #logged-in-chart style=("min-height: 115px;")
+
+        .col-lg-12.col-md-6
+          .card
+            .card-header.d-flex.justify-content-between.align-items-center.pb-0
+              h4.card-title ???
+            .card-content
+              .card-body.pb-0 style=("position: relative;")
+                #logged-in-chart2 style=("min-height: 115px;")
 
   .row
-    /! Multi Radial Chart Starts
-    .col-xl-4.col-md-6.col-12.dashboard-visit
+    .col-xl-6.col-12
       .card
-        .card-header.d-flex.justify-content-between.align-items-center
-          h4.card-title Visits of 2019
-          i.bx.bx-dots-vertical-rounded.font-medium-3.cursor-pointer
+        .card-header
+          h4.card-title User Roles
+        .card-content
+          .card-body style=("position: relative;")
+            #user-type-chart.d-flex.justify-content-center style=("min-height: 296.049px;")
+
+    .col-xl-6.col-12
+      .card
+        .card-header
+          h4.card-title Content Types
+        .card-content
+          .card-body style=("position: relative;")
+            #content-type-chart.d-flex.justify-content-center style=("min-height: 296.049px;")
+
+    .col-xl-6.col-12
+      .card
+        .card-header
+          h4.card-title
+            | Timeline
         .card-content
           .card-body
-            #multi-radial-chart
-            ul.list-inline.d-flex.justify-content-around.mb-0
-              li
-                span.bullet.bullet-xs.bullet-primary.mr-50
-                | Target
-              li
-                span.bullet.bullet-xs.bullet-danger.mr-50
-                | Mart
-              li
-                span.bullet.bullet-xs.bullet-warning.mr-50
-                | Ebay
+            ul.widget-timeline.ps.ps--active-y
+              li.timeline-items.timeline-icon-success.active
+                .timeline-time Mon 8:17pm
+                h6.timeline-title Jonny Richie Commented
+                p.timeline-text
+                  | on
+                  a href="JavaScript:void(0);"  Project name
+                .timeline-content
+                  | Story behind vedio game and lame is very creative
+              li.timeline-items.timeline-icon-primary.active
+                .timeline-time 5 days ago
+                h6.timeline-title Mathew Slick attached file
+                p.timeline-text
+                  | on
+                  a href="JavaScript:void(0);"  Project name
+                .timeline-content
+                  | Data Folder.sketch
+              li.timeline-items.timeline-icon-danger.active
+                .timeline-time 7 hours ago
+                h6.timeline-title Mathew Slick docs
+                p.timeline-text
+                  | on
+                  a href="JavaScript:void(0);"  Project name
+                .timeline-content
+                  | Updated Docs.pdf
+              li.timeline-items.timeline-icon-info.active
+                .timeline-time 5 hour ago
+                h6.timeline-title Ndrew send you a message
+                p.timeline-text
+                  | on
+                  a href="JavaScript:void(0);"  Project name
+                .timeline-content
+                  | Nor again is there anyone who loves or pursues or desires to obtain pain of itself,
+                  | because it is
+                  | pain, but because occasionally circumstances
+              li.timeline-items.timeline-icon-warning
+                .timeline-time 2 min ago
+                h6.timeline-title Mathew Slick liked
+                p.timeline-text
+                  | on
+                  a href="JavaScript:void(0);"  Project name
+                .timeline-content
+                  | The Amairates
+            .ps__rail-x style=("left: 0px; bottom: -396px;")
+              .ps__thumb-x style=("left: 0px; width: 0px;") tabindex="0"
+            .ps__rail-y style=("top: 396px; height: 415px; right: 0px;")
+              .ps__thumb-y style=("top: 203px; height: 212px;") tabindex="0"
+            button.btn.btn-block.btn-primary View All Notifications
 
-            .col-xl-12.col-lg-6.col-12.dashboard-revenue-growth
-              .card
-                .card-header.d-flex.justify-content-between.align-items-center.pb-0
-                  h4.card-title Revenue Growth
-                  .d-flex.align-items-end.justify-content-end
-                    span.mr-25 $25,980
-                    i.bx.bx-dots-vertical-rounded.font-medium-3.cursor-pointer
-                .card-content
-                  .card-body.pb-0
-                    #revenue-growth-chart
-        /! Revenue Growth Chart Starts
-  .row
-    .col-xl-8.col-12.dashboard-order-summary
-      .card
-        .row
-          /! Order Summary Starts
-          .col-md-8.col-12.order-summary.border-right.pr-md-0
-            .card.mb-0
-              .card-header.d-flex.justify-content-between.align-items-center
-                h4.card-title Order Summary
-                .d-flex
-                  button.btn.btn-sm.btn-light-primary.mr-1 type="button"  Month
-                  button.btn.btn-sm.btn-primary.glow type="button"  Week
-              .card-content
-                .card-body.p-0
-                  #order-summary-chart
-          /! Sales History Starts
-          .col-md-4.col-12.pl-md-0
-            .card.mb-0
-              .card-header.pb-50
-                h4.card-title Sales History
-              .card-content
-                .card-body.py-1
-                  .d-flex.justify-content-between.align-items-center.mb-2
-                    .sales-item-name
-                      p.mb-0 Airpods
-                      small.text-muted 30 min ago
-                    .sales-item-amount
-                      h6.mb-0
-                        span.text-success +
-                        | $50
-                  .d-flex.justify-content-between.align-items-center.mb-2
-                    .sales-item-name
-                      p.mb-0 iPhone
-                      small.text-muted 2 hour ago
-                    .sales-item-amount
-                      h6.mb-0
-                        span.text-danger -
-                        | $59
-                  .d-flex.justify-content-between.align-items-center
-                    .sales-item-name
-                      p.mb-0 Macbook
-                      small.text-muted 1 day ago
-                    .sales-item-amount
-                      h6.mb-0
-                        span.text-success +
-                        | $12
-                .card-footer.border-top.pb-0
-                  h5 Total Sales
-                  span.text-primary.text-bold-500 $82,950.96
-                  .progress.progress-bar-primary.progress-sm.my-50
-                    .progress-bar aria-valuenow="78" role="progressbar" style="width:78%"
-    /! Latest Update Starts
-    .col-xl-4.col-md-6.col-12.dashboard-latest-update
-      .card
-        .card-header.d-flex.justify-content-between.align-items-center.pb-50
-          h4.card-title Latest Update
-          .dropdown
-            button#dropdownMenuButtonSec.btn.btn-sm.btn-outline-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
-              | 2019
-            .dropdown-menu aria-labelledby="dropdownMenuButtonSec"
-              a.dropdown-item href="#"  2019
-              a.dropdown-item href="#"  2018
-              a.dropdown-item href="#"  2017
-        .card-content
-          .card-body.p-0.pb-1
-            ul.list-group.list-group-flush
-              li.list-group-item.list-group-item-action.border-0.d-flex.align-items-center.justify-content-between
-                .list-left.d-flex
-                  .list-icon.mr-1
-                    .avatar.bg-rgba-primary.m-0
-                      .avatar-content
-                        i.bx.bxs-zap.text-primary.font-size-base
-                  .list-content
-                    span.list-title Total Products
-                    small.text-muted.d-block 1.2k New Products
-                span 10.6k
-              li.list-group-item.list-group-item-action.border-0.d-flex.align-items-center.justify-content-between
-                .list-left.d-flex
-                  .list-icon.mr-1
-                    .avatar.bg-rgba-info.m-0
-                      .avatar-content
-                        i.bx.bx-stats.text-info.font-size-base
-                  .list-content
-                    span.list-title Total Sales
-                    small.text-muted.d-block 39.4k New Sales
-                span 26M
-              li.list-group-item.list-group-item-action.border-0.d-flex.align-items-center.justify-content-between
-                .list-left.d-flex
-                  .list-icon.mr-1
-                    .avatar.bg-rgba-danger.m-0
-                      .avatar-content
-                        i.bx.bx-credit-card.text-danger.font-size-base
-                  .list-content
-                    span.list-title Total Revenue
-                    small.text-muted.d-block 43.5k New Revenue
-                span 15.89M
-              li.list-group-item.list-group-item-action.border-0.d-flex.align-items-center.justify-content-between
-                .list-left.d-flex
-                  .list-icon.mr-1
-                    .avatar.bg-rgba-success.m-0
-                      .avatar-content
-                        i.bx.bx-dollar.text-success.font-size-base
-                  .list-content
-                    span.list-title Total Cost
-                    small.text-muted.d-block Total Expenses
-                span 1.25B
-              li.list-group-item.list-group-item-action.border-0.d-flex.align-items-center.justify-content-between
-                .list-left.d-flex
-                  .list-icon.mr-1
-                    .avatar.bg-rgba-primary.m-0
-                      .avatar-content
-                        i.bx.bx-user.text-primary.font-size-base
-                  .list-content
-                    span.list-title Total Users
-                    small.text-muted.d-block New Users
-                span 1.2k
-              li.list-group-item.list-group-item-action.border-0.d-flex.align-items-center.justify-content-between
-                .list-left.d-flex
-                  .list-icon.mr-1
-                    .avatar.bg-rgba-danger.m-0
-                      .avatar-content
-                        i.bx.bx-edit-alt.text-danger.font-size-base
-                  .list-content
-                    span.list-title Total Visits
-                    small.text-muted.d-block New Visits
-                span 4.6k
-    /! Earning Swiper Starts
     /! Dashboard Ecommerce ends
 /! END: Content
 .sidenav-overlay
