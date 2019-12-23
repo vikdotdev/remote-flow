@@ -29,6 +29,8 @@ gem 'ckeditor'
 gem 'mini_magick'
 gem 'pretender'
 gem 'meta-tags'
+gem 'groupdate'
+gem 'chartkick'
 gem 'sidekiq'
 gem 'rmagick'
 # Use Redis adapter to run Action Cable in production

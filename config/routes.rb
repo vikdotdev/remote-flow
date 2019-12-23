@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   namespace :account do
     get '/', to: 'dashboard#index'
+    get '/analytics', to: 'dashboard#analytics'
     resources :users do
       post :impersonate, on: :member
       post :stop_impersonating, on: :collection
