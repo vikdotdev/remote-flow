@@ -18,7 +18,10 @@
     }
   }
 
-  new ApexCharts(document.querySelector("#order-summary-chart"), {
+  var data = $('.dashboard-data').data('data')
+  console.log(data)
+
+  new ApexCharts(document.querySelector("#organization-creation-dynamics"), {
     chart: {
       height: 284,
       type: 'line',
@@ -54,17 +57,13 @@
     },
     series: [{
       name: 'Weeks',
-      data: [165, 175, 162, 173, 160, 195, 160, 170, 160, 190, 180],
+      data: [165, 175, 186, 189, 193, 196],
       type: 'area',
-    }, {
-      name: 'Months',
-      data: [168, 168, 155, 178, 155, 170, 190, 160, 150, 170, 140],
-      type: 'line',
     }],
 
     xaxis: {
       offsetY: -50,
-      categories: ['', 1, 2, 3, 4, 5, 6, 7, 8, 9, ''],
+      categories: ['', 1, 2, 3, 4, ''],
       axisBorder: {
         show: false,
       },
@@ -85,7 +84,7 @@
 
   new ApexCharts(document.querySelector("#user-type-chart"), {
       chart: {
-        height: 360,
+        height: 282,
         type: 'donut',
         animations: animations
       },
@@ -94,7 +93,11 @@
     }).render();
 
   new ApexCharts(document.querySelector("#content-type-chart"), {
-      chart: { type: 'pie', animations: animations, height: 360 },
+      chart: {
+        type: 'pie',
+        animations: animations,
+        height: 282,
+      },
       series: [20, 30, 44, 6],
       labels: ['Page', 'Video', 'Presentation', 'Gallery']
     }).render();

@@ -1,6 +1,14 @@
 section
+  = content_tag :div, class: "dashboard-data", data: {data: @data} do
   .row
     /! Statistics Cards Starts
+    .col-lg-4.col-sm-8
+      .card
+        .card-header.d-flex.justify-content-between.align-items-center.pb-0
+          h4.card-title Logged In
+        .card-content
+          .card-body.pb-0 style=("position: relative;")
+            #logged-in-chart style=("min-height: 115px;")
     .col-lg-2.col-sm-4.col-6
       .card.text-center
         .card-content
@@ -8,23 +16,8 @@ section
             .badge-circle.badge-circle-lg.badge-circle-light-success.mx-auto.mb-50
               i.bx.bx-tv.font-medium-5
             .text-muted.line-ellipsis Channels
-            h3.mb-0 1.2k
-    .col-lg-2.col-sm-4.col-6
-      .card.text-center
-        .card-content
-          .card-body
-            .badge-circle.badge-circle-lg.badge-circle-light-secondary.mx-auto.mb-50
-              i.bx.bx-briefcase-alt.font-medium-5
-            .text-muted.line-ellipsis Organizations
-            h3.mb-0 1.2k
-    .col-lg-2.col-sm-4.col-6
-      .card.text-center
-        .card-content
-          .card-body
-            .badge-circle.badge-circle-lg.badge-circle-light-secondary.mx-auto.mb-50
-              i.bx.bx-briefcase-alt.font-medium-5
-            .text-muted.line-ellipsis Devices Connected
-            h3.mb-0 1.2k
+            h3.mb-0
+              = @data[:channels].count
     .col-lg-2.col-sm-4.col-6
       .card.text-center
         .card-content
@@ -32,7 +25,8 @@ section
             .badge-circle.badge-circle-lg.badge-circle-light-danger.mx-auto.mb-50
               i.bx.bx-user.font-medium-5
             .text-muted.line-ellipsis Users
-            h3.mb-0 45.6k
+            h3.mb-0
+              = @data[:channels].count
     .col-lg-2.col-sm-4.col-6
       .card.text-center
         .card-content
@@ -40,7 +34,8 @@ section
             .badge-circle.badge-circle-lg.badge-circle-light-warning.mx-auto.mb-50
               i.bx.bx-file.font-medium-5
             .text-muted.line-ellipsis Files Uploaded
-            h3.mb-0 1.2k
+            h3.mb-0
+              = @data[:files].count
     .col-lg-2.col-sm-4.col-6
       .card.text-center
         .card-content
@@ -48,39 +43,21 @@ section
             .badge-circle.badge-circle-lg.badge-circle-light-warning.mx-auto.mb-50
               i.bx.bx-file.font-medium-5
             .text-muted.line-ellipsis Invites Sent
-            h3.mb-0 1.2k
+            h3.mb-0
+              = @data[:invites].count
 
   .row
-    .col-lg-8.col-12
+    .col-xl-7.col-12
       .card
         /! Order Summary Starts
         .card.mb-0
           .card-header.d-flex.justify-content-between.align-items-center
-            h4.card-title ???
+            h4.card-title Organizations Dynamics
           .card-content
             .card-body.p-0
-              #order-summary-chart
+              #organization-creation-dynamics
 
-    .col-lg-4.col-12
-      .row
-        .col-lg-12.col-md-6
-          .card
-            .card-header.d-flex.justify-content-between.align-items-center.pb-0
-              h4.card-title Logged In
-            .card-content
-              .card-body.pb-0 style=("position: relative;")
-                #logged-in-chart style=("min-height: 115px;")
-
-        .col-lg-12.col-md-6
-          .card
-            .card-header.d-flex.justify-content-between.align-items-center.pb-0
-              h4.card-title ???
-            .card-content
-              .card-body.pb-0 style=("position: relative;")
-                #logged-in-chart2 style=("min-height: 115px;")
-
-  .row
-    .col-xl-6.col-12
+    .col-xl-5.col-lg-6.col-12
       .card
         .card-header
           h4.card-title User Roles
@@ -88,7 +65,7 @@ section
           .card-body style=("position: relative;")
             #user-type-chart.d-flex.justify-content-center style=("min-height: 296.049px;")
 
-    .col-xl-6.col-12
+    .col-xl-6.col-lg-6.col-12
       .card
         .card-header
           h4.card-title Content Types
@@ -103,7 +80,7 @@ section
             | Timeline
         .card-content
           .card-body
-            ul.widget-timeline.ps.ps--active-y
+            ul.widget-timeline.position-relative.padding-right-1 style=('height: 400px;')
               li.timeline-items.timeline-icon-success.active
                 .timeline-time Mon 8:17pm
                 h6.timeline-title Jonny Richie Commented
@@ -146,12 +123,7 @@ section
                   a href="JavaScript:void(0);"  Project name
                 .timeline-content
                   | The Amairates
-            .ps__rail-x style=("left: 0px; bottom: -396px;")
-              .ps__thumb-x style=("left: 0px; width: 0px;") tabindex="0"
-            .ps__rail-y style=("top: 396px; height: 415px; right: 0px;")
-              .ps__thumb-y style=("top: 203px; height: 212px;") tabindex="0"
             button.btn.btn-block.btn-primary View All Notifications
-
     /! Dashboard Ecommerce ends
 /! END: Content
 .sidenav-overlay
