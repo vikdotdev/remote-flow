@@ -88,13 +88,15 @@ class Dashboard
       # data[:user_trends] = Report::User.new(@user).trends
     end
 
-    data[:role_distribution] = Report::User.new(@user).role_distribution
+    user_report = Report::User.new(@user)
+    content_report = Report::Content.new(@user)
+
     data[:channels] = Report::Channel.new(@user).collection
     data[:invites] = Report::Invite.new(@user).collection
-
-    content_report = Report::Content.new(@user)
-    data[:content_type_distribution] = content_report.type_distribution
+    data[:users] = user_report.collection
+    data[:role_distribution] = user_report.role_distribution
     data[:files] = content_report.files
+    data[:content_type_distribution] = content_report.type_distribution
 
     data
   end
