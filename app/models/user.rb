@@ -3,7 +3,9 @@ class User < ApplicationRecord
   ADMIN = 'admin'.freeze
   MANAGER = 'manager'.freeze
 
-  devise :database_authenticatable, :registerable,
+  attr_accessor :skip_organization_validation
+
+  devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable
 
   mount_uploader :avatar, AvatarUploader
@@ -14,7 +16,7 @@ class User < ApplicationRecord
 
   validates :first_name, length: { maximum: 250 }, presence: true
   validates :last_name, length: { maximum: 250 }, presence: true
-  validates :organization_id, presence: true, unless: :super_admin?
+  validate :organization_validation
   validates :role, inclusion: { in: [SUPER_ADMIN, ADMIN, MANAGER] }
 
   scope :by_name, -> { order(:first_name) }
@@ -51,5 +53,15 @@ class User < ApplicationRecord
         ]
       end
     end
+  end
+
+  private
+
+  def organization_validation
+    self.skip_organization_validation ||= false
+    return unless organization_id.nil?
+    return if super_admin? || skip_organization_validation
+
+    errors.add(:organization_id, 'must be present')
   end
 end
