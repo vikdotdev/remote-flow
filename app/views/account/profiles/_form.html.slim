@@ -1,0 +1,37 @@
+= simple_form_for(current_user, url: account_profile_path, method: :patch) do |f|
+  .media
+    = image_tag current_user.avatar.url,
+      width: 64,
+      height: 64,
+      class: 'rounded mr-75'
+    .media-body.mt-25
+      .col-12.px-0.d-flex.flex-sm-row.flex-column.justify-content-start
+        .file-upload-div
+          .file-upload.btn.btn-primary.ml-2
+            span Upload Photo
+            = f.file_field :avatar, class: "upload"
+      p.text-muted.ml-1.mt-50
+        small
+          | Allowed JPG, GIF or PNG. Max size of 800kB
+  hr/
+  .row
+    .col-12
+      = f.input :first_name,
+        placeholder: "First Name",
+        class: "form-control",
+        label: 'First Name'
+    .col-12
+      = f.input :last_name,
+        placeholder: "Last Name",
+        class: "form-control",
+        label: 'Last Name'
+    .col-12
+      = f.input :email,
+        autofocus: true,
+        class: "form-control",
+        autocomplete: "email",
+        placeholder: "Email",
+        label: 'Email'
+    .col-12.d-flex.flex-sm-row.flex-column.justify-content-end
+      = f.button :submit, "Save changes", class:'btn btn-primary glow mr-sm-1 mb-1'
+      = link_to 'Cancel', account_path, class: "btn btn-light mb-1"
