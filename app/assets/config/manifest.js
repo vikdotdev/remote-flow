@@ -18,7 +18,6 @@
 //= link bootstrap.js
 //= link show_file_name_in_file_field.js
 //= link ckeditor/config.js
-//= link config.js
 
 //
 //= link authentication.css
