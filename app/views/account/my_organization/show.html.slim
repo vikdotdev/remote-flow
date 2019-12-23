@@ -1,8 +1,8 @@
 - breadcrumbs [\
-  {home: true, \
-    url: account_path}, \
-  {title: 'My Organization', \
-    url: account_my_organization_path},\
+  { home: true, \
+    url: account_path }, \
+  { title: 'My Organization', \
+    url: account_my_organization_path },\
 ]
 - content_for :actions do
   = link_to "Edit", edit_account_my_organization_path, \
@@ -33,7 +33,7 @@
                           i.bx.bxs-group.font-medium-5
                         .text-muted.line-ellipsis Users
                         h3.mb-0
-                          = @users_of_organization
+                          = current_organization.users.count
                   .card.text-center.col-xs-6
                     .card-content
                       .card-body.py-1
@@ -41,7 +41,7 @@
                           i.bx.bx-sort.font-medium-5
                         .text-muted.line-ellipsis Channels
                         h3.mb-0
-                          = @channels_of_organization
+                          = current_organization.channels.count
                   .card.text-center.col-xs-6
                     .card-content
                       .card-body.py-1
@@ -49,7 +49,7 @@
                           i.bx.bxs-devices.font-medium-5
                         .text-muted.line-ellipsis Devices
                         h3.mb-0
-                          = @devices_of_organization
+                          =current_organization.devices.count
                   .card.text-center.col-xs-6
                     .card-content
                       .card-body.py-1
@@ -57,4 +57,4 @@
                           i.bx.bxs-file-blank.font-medium-5
                         .text-muted.line-ellipsis Contents
                         h3.mb-0
-                          = @contents_of_organization
+                          = current_organization.contents.count

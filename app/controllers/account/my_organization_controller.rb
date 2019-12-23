@@ -3,10 +3,6 @@ class Account::MyOrganizationController < Account::AccountController
 
   def show
     @organization = resource
-    @users_of_organization = current_organization.id
-    @channels_of_organization = current_organization.channels.count
-    @devices_of_organization = current_organization.devices.count
-    @contents_of_organization = current_organization.contents.count
 
     set_meta_tags title: @organization.name
   end
