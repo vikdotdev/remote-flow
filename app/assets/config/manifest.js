@@ -35,8 +35,7 @@
 //= link horizontal-menu.css
 //= link prism.min.css
 //= link style.css
-//= vendors.min.css
-//= link dashboard-ecommerce.css
+//= link vendors.min.css
 //= link toastr.css
 //= link ckeditor/application.css
 
