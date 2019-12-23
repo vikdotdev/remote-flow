@@ -20,7 +20,8 @@
 //= link bootstrap.js
 //= link show_file_name_in_file_field.js
 //= link ckeditor/application.js
-//
+//= link jqBootstrapValidation.js
+
 //= link authentication.css
 //= link bootstrap.css
 //= link bootstrap-extended.css
@@ -37,6 +38,7 @@
 //= link style.css
 //= link vendors.min.css
 //= link toastr.css
+//= link form-validation.css
 //= link ckeditor/application.css
 
 //= link boxicons.eot
