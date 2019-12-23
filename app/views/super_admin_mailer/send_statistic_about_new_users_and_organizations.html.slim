@@ -1,5 +1,5 @@
 h1 Statistic about users:
 p
-  = @users_count + " users were created"
+  = @users_count.to_s + pluralize(@users_count, 'user') + ': created this week'
 p
-  = @organizations_count + " organiztions were created"
+  = @organizations_count.to_s + pluralize(@organizations_count, 'organization') + ': created this week'

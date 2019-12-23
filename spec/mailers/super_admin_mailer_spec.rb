@@ -18,4 +18,6 @@ RSpec.describe SuperAdminMailer, type: :mailer do
       expect(mail.subject).to eq('New organization created')
     end
   end
+
+  describe 'has'
 end
