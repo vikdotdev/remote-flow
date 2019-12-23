@@ -6,7 +6,7 @@ class Account::ProfilesController < Account::AccountController
       flash[:success] = 'You have successfully updated'
       redirect_to edit_account_profile_path
     else
-      flash[:error] = "#{current_user.errors.full_messages}"
+      flash[:error] = 'Failed to update profile'
       render :edit
     end
   end
@@ -17,7 +17,7 @@ class Account::ProfilesController < Account::AccountController
       flash[:success] = 'You have successfully updated password'
       redirect_to edit_account_profile_path
     else
-      flash[:error] = "#{current_user.errors.full_messages}"
+      flash[:error] = 'Failed to update profile password'
       render :edit
     end
   end
