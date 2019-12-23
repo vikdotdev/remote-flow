@@ -1,0 +1,3 @@
+class ChannelSerializer < ApplicationSerializer
+
+end
