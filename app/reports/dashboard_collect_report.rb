@@ -1,5 +1,3 @@
-require 'base_report'
-
 class Dashboard
   attr_reader :user, :organization
 
@@ -8,7 +6,7 @@ class Dashboard
   end
 
   def data
-    result = Hash.new
+    result = {}
 
     if user.super_admin?
       result[:organization_count] = OrganizationReport.new(@user).count

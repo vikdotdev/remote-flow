@@ -1,5 +1,5 @@
 (function() {
-  if (!$('#dashboard-data').length) return;
+  if (!$('#dashboard_js').length) return;
 
   function thinOut(acc, n, i) {
     if (i % 5 == 0) {
@@ -17,7 +17,7 @@
   var $secondary_light = '#e7edf3';
   var $light_primary = "#E2ECFF";
 
-  var data = $('#dashboard-data').data('data')
+  var data = JSON.parse(window.data.replace(/&quot;/g,'"'))
 
   var animations = {
     enabled: true,
