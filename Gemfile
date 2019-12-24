@@ -33,6 +33,7 @@ gem 'pretender'
 gem 'meta-tags'
 gem 'sidekiq'
 gem 'rmagick'
+gem 'omniauth'
 gem 'omniauth-google-oauth2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
