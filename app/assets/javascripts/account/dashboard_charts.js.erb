@@ -91,38 +91,43 @@
   };
 
 
-  new ApexCharts(document.querySelector("#organization-creation-dynamics"),
-    dynamicsChartOptions
-  ).render();
+  if (data.organization_trends) {
+    new ApexCharts(document.querySelector("#organization-creation-dynamics"),
+      dynamicsChartOptions
+    ).render();
+  }
 
-  new ApexCharts(
-    document.querySelector("#user-creation-dynamics"),
-    Object.assign(
-      dynamicsChartOptions,
-      { series: [{
-          name: 'Users',
-          data: (data.user_trends ? data.user_trends.series_data : []),
-          type: 'area',
-        }],
-        xaxis: {
-          offsetY: -50,
-          categories: (data.user_trends ? ['', ...data.user_trends.dates].concat('').reduce(thinOut, []): []),
-          axisBorder: {
-            show: false,
-          },
-          axisTicks: {
-            show: false,
-          },
-          labels: {
-            show: true,
-            style: {
-              colors: $secondary
+
+  if (data.user_trends) {
+    new ApexCharts(
+      document.querySelector("#user-creation-dynamics"),
+      Object.assign(
+        dynamicsChartOptions,
+        { series: [{
+            name: 'Users',
+            data: data.user_trends.series_data,
+            type: 'area',
+          }],
+          xaxis: {
+            offsetY: -50,
+            categories: ['', ...data.user_trends.dates].concat('').reduce(thinOut, []),
+            axisBorder: {
+              show: false,
+            },
+            axisTicks: {
+              show: false,
+            },
+            labels: {
+              show: true,
+              style: {
+                colors: $secondary
+              }
             }
           }
         }
-      }
-    )
-  ).render();
+      )
+    ).render();
+  }
 
   new ApexCharts(document.querySelector("#user-type-chart"), {
       chart: {
