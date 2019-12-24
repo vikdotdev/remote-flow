@@ -36,6 +36,12 @@ class Account::UsersController < Account::AccountController
       flash[:danger] = 'Failed to create user.'
       render :new
     end
+
+    @admins = User.where(role: 'admin', organization_id: current_organization.id)
+
+    @admins.each do |admin|
+      admin.notifications.create(body: "A new user has been created, user name: #{@user.first_name} #{@user.last_name}")
+    end
   end
 
   def update
@@ -56,6 +62,11 @@ class Account::UsersController < Account::AccountController
       flash[:success] = 'User successfully deleted.'
     else
       flash[:danger] = 'Failed to delete user.'
+    end
+    @admins = User.where(role: 'admin', organization_id: current_organization.id)
+
+    @admins.each do |admin|
+      admin.notifications.create(body: "User: #{@user.first_name} #{@user.last_name}, has been deleted")
     end
     redirect_to account_users_path
   end

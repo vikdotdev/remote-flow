@@ -44,10 +44,11 @@ FactoryBot.create(:user, organization_id:  nil, role: 'super_admin')
     end
   end
 
-
   users.each do |user|
     rand(0..3).times do
       FactoryBot.create(:invite, organization_id: organization.id, sender: user)
     end
+
+    FactoryBot.create_list(:notification, 7, notificable_id: user.id, notificable_type: :user)
   end
 end

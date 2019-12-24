@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_18_110159) do
+ActiveRecord::Schema.define(version: 2019_12_24_085335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2019_12_18_110159) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "organization_id"
     t.string "title"
-    t.text "body"
     t.string "file"
+    t.text "body"
     t.index ["organization_id"], name: "index_contents_on_organization_id"
   end
 
@@ -105,6 +105,16 @@ ActiveRecord::Schema.define(version: 2019_12_18_110159) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["organization_id"], name: "index_invites_on_organization_id"
     t.index ["token"], name: "index_invites_on_token"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "body"
+    t.boolean "read", default: false
+    t.string "notificable_type"
+    t.bigint "notificable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["notificable_type", "notificable_id"], name: "index_notifications_on_notificable_type_and_notificable_id"
   end
 
   create_table "organizations", force: :cascade do |t|

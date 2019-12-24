@@ -1,0 +1,30 @@
+li.dropdown.dropdown-notification.nav-item
+  a.nav-link.nav-link-label data-toggle="dropdown" href="#"
+    i.ficon.bx.bx-bell.bx-tada.bx-flip-horizontal
+    - if @unread_notifications.nil?
+      span.badge.badge-pill.badge-dark.badge-up 0
+    - else
+      span.badge.badge-pill.badge-danger.badge-up "#{@unread_notificaitons.count}"
+  ul.dropdown-menu.dropdown-menu-media.dropdown-menu-right
+    li.dropdown-menu-header
+      .dropdown-header.px-1.py-75.d-flex.justify-content-between
+        - unless @unread_notificaitons.nil?
+          span.notification-title "#{@unread_notificaitons.count} new #{pluralize(@unread_notificaitons.count, 'notification')}"
+        = link_to url: '/notificaitons/mark_all_as_read', method: :get
+          span.text-bold-400.cursor-pointer Mark all as read
+    li.scrollable-container.media-list.ps
+      - unless @notifications.nil?
+        = @notifications.each do |notification|
+          a.d-flex.justify-content-between href="/notification/masrt_as_read/#{notification.id}"
+            .media.d-flex.align-items-center
+              .media-body
+                h6.media-heading
+                  span.text-bold-500 "#{notification.body}"
+                small.notification-text "#{notification.created_at}"
+      .ps__rail-x style=("left: 0px; bottom: 0px;")
+        .ps__thumb-x style=("left: 0px; width: 0px;") tabindex="0"
+      .ps__rail-y style=("top: 0px; right: 0px;")
+        .ps__thumb-y style=("top: 0px; height: 0px;") tabindex="0"
+    li.dropdown-menu-footer
+      = link_to 'Read all notifications', url: '/notificaitons/mark_all_as_read', method: :get, class: 'dropdown-item p-50 text-primary justify-content-center'
+
