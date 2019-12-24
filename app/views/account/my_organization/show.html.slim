@@ -24,6 +24,10 @@
               h5 Name:
               p
                 = @organization.name
+              - if @organization.id == current_user.organization_id
+                h5 Token:
+                p
+                  = @organization.token
               .container
                 .row
                   .card.text-center.col-xs-6
