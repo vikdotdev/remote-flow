@@ -24,8 +24,8 @@
     easing: 'easeout',
     speed: 1100,
     animateGradually: {
-        enabled: true,
-        delay: 550
+      enabled: true,
+      delay: 550
     }
   };
 
@@ -101,7 +101,8 @@
       document.querySelector("#user-creation-dynamics"),
       Object.assign(
         dynamicsChartOptions,
-        { series: [{
+        {
+          series: [{
             name: 'Users',
             data: data.user_trends.series_data,
             type: 'area',
