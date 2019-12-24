@@ -8,15 +8,15 @@ class Dashboard
   def data
     result = {}
 
+    user_report = UserReport.new(@user)
+    content_report = ContentReport.new(@user)
+
     if user.super_admin?
       result[:organization_count] = OrganizationReport.new(@user).count
       result[:organization_trends] = OrganizationReport.new(@user).trends
     else
-      result[:user_trends] = UserReport.new(@user).trends
+      result[:user_trends] = user_report.trends
     end
-
-    user_report = UserReport.new(@user)
-    content_report = ContentReport.new(@user)
 
     result[:channel_count] = ChannelReport.new(@user).count
     result[:invite_count] = InviteReport.new(@user).count

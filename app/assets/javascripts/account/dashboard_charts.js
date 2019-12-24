@@ -1,5 +1,5 @@
 (function() {
-  if (!$('#dashboard_js').length) return;
+  if (!$('#js-dashboard').length) return;
 
   function thinOut(acc, n, i) {
     if (i % 5 == 0) {
