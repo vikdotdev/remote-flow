@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   belongs_to :organization, optional: true
   has_many :sent_invites, class_name: 'Invite', foreign_key: 'sender_id'
-  has_many :notifications, as: :notificable
+  has_many :notifications, as: :notificable, dependent: :destroy
   accepts_nested_attributes_for :organization
 
   validates :first_name, length: { maximum: 250 }, presence: true
