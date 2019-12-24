@@ -47,15 +47,27 @@ section
               = @data[:invites].count
 
   .row
-    .col-xl-7.col-12
-      .card
-        /! Order Summary Starts
-        .card.mb-0
-          .card-header.d-flex.justify-content-between.align-items-center
-            h4.card-title Organizations Dynamics
-          .card-content
-            .card-body.p-0
-              #organization-creation-dynamics
+    - if current_user.super_admin?
+      .col-xl-7.col-12
+        .card
+          /! Order Summary Starts
+          .card.mb-0
+            .card-header.d-flex.justify-content-between.align-items-center
+              h4.card-title Organizations Dynamics
+            .card-content
+              .card-body.p-0
+                #organization-creation-dynamics
+    - else
+      .col-xl-7.col-12
+        .card
+          /! Order Summary Starts
+          .card.mb-0
+            .card-header.d-flex.justify-content-between.align-items-center
+              h4.card-title User Dynamics
+            .card-content
+              .card-body.p-0
+                #user-creation-dynamics
+
 
     .col-xl-5.col-lg-6.col-12
       .card

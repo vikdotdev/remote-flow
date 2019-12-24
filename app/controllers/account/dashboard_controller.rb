@@ -11,12 +11,24 @@ module Report
         @user.organization.send(self.class.name.demodulize.pluralize.downcase)
       end
     end
+
+    def trends
+      series_data = []
+      dates = []
+
+      (30.days.ago.to_date..Date.today).each do |date|
+        series_data.push(collection.where('created_at < ?', date.to_datetime).count)
+        dates.push(date.day)
+      end
+
+      {
+        series_data: series_data,
+        dates: dates[2..-1]
+      }
+    end
   end
 
   class User < BaseReport
-    def trends
-    end
-
     def role_distribution
       {
         admins: {
@@ -29,14 +41,6 @@ module Report
         }
       }
     end
-  end
-
-  class Organization < BaseReport
-    def trends
-    end
-  end
-
-  class Channel < BaseReport
   end
 
   class Content < BaseReport
@@ -64,7 +68,12 @@ module Report
         }
       }
     end
+  end
 
+  class Organization < BaseReport
+  end
+
+  class Channel < BaseReport
   end
 
   class Invite < BaseReport
@@ -83,9 +92,9 @@ class Dashboard
 
     if user.super_admin?
       data[:organizations] = Report::Organization.new(@user).collection
-      # data[:organization_trends] = Report::Organization.new(@user).trends
+      data[:organization_trends] = Report::Organization.new(@user).trends
     else
-      # data[:user_trends] = Report::User.new(@user).trends
+      data[:user_trends] = Report::User.new(@user).trends
     end
 
     user_report = Report::User.new(@user)

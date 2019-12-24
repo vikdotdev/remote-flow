@@ -1,6 +1,14 @@
 (function() {
   if (!$('#dashboard-data').length) return;
 
+  function thinOut(acc, n, i) {
+    if (i % 5 == 0) {
+      return (acc.push(n), acc)
+    }
+
+    return (acc.push(''), acc)
+  }
+
   var $primary = '#5A8DEE';
   var $danger = '#FF5B5C';
   var $warning = '#FDAC41';
@@ -8,6 +16,8 @@
   var $secondary = '#828D99';
   var $secondary_light = '#e7edf3';
   var $light_primary = "#E2ECFF";
+
+  var data = $('#dashboard-data').data('data')
 
   var animations = {
     enabled: true,
@@ -17,12 +27,9 @@
         enabled: true,
         delay: 550
     }
-  }
+  };
 
-  var data = $('#dashboard-data').data('data')
-  console.log(data)
-
-  new ApexCharts(document.querySelector("#organization-creation-dynamics"), {
+  var dynamicsChartOptions = {
     chart: {
       height: 284,
       type: 'line',
@@ -57,14 +64,14 @@
       }
     },
     series: [{
-      name: 'Weeks',
-      data: [165, 175, 186, 189, 196],
+      name: 'Organizations',
+      data: (data.organization_trends ? data.organization_trends.series_data : []),
       type: 'area',
     }],
 
     xaxis: {
       offsetY: -50,
-      categories: ['', 20, 15, 10, ''],
+      categories: (data.organization_trends ? ['', ...data.organization_trends.dates].concat('').reduce(thinOut, []) : []),
       axisBorder: {
         show: false,
       },
@@ -80,8 +87,42 @@
     },
     tooltip: {
       x: { show: false }
-    },
-  }).render();
+    }
+  };
+
+
+  new ApexCharts(document.querySelector("#organization-creation-dynamics"),
+    dynamicsChartOptions
+  ).render();
+
+  new ApexCharts(
+    document.querySelector("#user-creation-dynamics"),
+    Object.assign(
+      dynamicsChartOptions,
+      { series: [{
+          name: 'Users',
+          data: (data.user_trends ? data.user_trends.series_data : []),
+          type: 'area',
+        }],
+        xaxis: {
+          offsetY: -50,
+          categories: (data.user_trends ? ['', ...data.user_trends.dates].concat('').reduce(thinOut, []): []),
+          axisBorder: {
+            show: false,
+          },
+          axisTicks: {
+            show: false,
+          },
+          labels: {
+            show: true,
+            style: {
+              colors: $secondary
+            }
+          }
+        }
+      }
+    )
+  ).render();
 
   new ApexCharts(document.querySelector("#user-type-chart"), {
       chart: {
