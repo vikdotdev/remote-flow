@@ -1,30 +1,30 @@
 class Account::NotificationController < Account::AccountController
-  def show
-    @notifications = current_user.notifications
-    @read_notifications = current_user.notifications.where(read: true)
-    @unread_notificaitons = current_user.notifications.where(read: false)
-  end
-
   def create
     @notification = Notification.new(notification_params)
     @notification.save
   end
 
-  def mark_s_read
+  def mark_as_read
     @notification = resource
-    @notification.read = true
+    @notification.update_attributes(read: true)
+
+    respond_to do |format|
+      format.html { redirect_to '/account' }
+    end
   end
 
   def mark_all_as_read
-    collection.each do |notification|
-      notification.read = true
+    collection.update_all(read: true)
+
+    respond_to do |format|
+      format.html { redirect_to '/account' }
     end
   end
 
   private
 
-def notification_params
-    params.require(:notification).permit(:body, :read)
+  def notification_params
+    params.require(:notification).permit(:body, :read, :notificable_type)
   end
 
   def collection

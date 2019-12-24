@@ -19,6 +19,8 @@ class User < ApplicationRecord
   validates :last_name, length: { maximum: 250 }, presence: true
   validate :organization_validation
   validates :role, inclusion: { in: [SUPER_ADMIN, ADMIN, MANAGER] }
+  validates :password, confirmation: true
+  validates :password_confirmation, presence: true, if: :password
 
   scope :by_name, -> { order(:first_name) }
   scope :super_admins, -> { where(role: SUPER_ADMIN) }

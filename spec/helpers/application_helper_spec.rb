@@ -10,7 +10,7 @@ RSpec.describe ApplicationHelper, type: :helper do
       ]
 
       expect(content_for(:breadcrumbs)).to \
-        include('<a href="/account"><i class="bx bx-home"></i></a>')
+        include('<a href="/account"><i class="bx bx-home-alt"></i></a>')
     end
 
     it 'returns nil on empty params' do

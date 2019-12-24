@@ -68,7 +68,8 @@ RSpec.describe Account::UsersController, type: :controller do
               last_name: user.last_name,
               email: "#{user.email}other",
               role: User::SUPER_ADMIN,
-              password: 'password'
+              password: 'password',
+              password_confirmation: 'password'
             }
           }
         end.to change(User, :count).by(1)

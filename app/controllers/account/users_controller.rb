@@ -85,7 +85,7 @@ class Account::UsersController < Account::AccountController
   private
 
   def users_params
-    permitted = [:first_name, :last_name, :email, :avatar, :password, :role]
+    permitted = [:first_name, :last_name, :email, :avatar, :role]
     if !current_user.super_admin? && params[:user][:role] == User::SUPER_ADMIN
       params[:user][:role] = ''
     end
@@ -93,7 +93,15 @@ class Account::UsersController < Account::AccountController
     if current_user.super_admin?
       permitted << :organization_id
     end
+    unless params[:user][:password].blank? && params[:user][:password_confirmation]
+      permitted << :password
+      permitted << :password_confirmation
+    end
+    params.require(:user).permit(*permitted)
+  end
 
+  def user_params_password
+    permitted = [:password, :password_confirmation]
     params.require(:user).permit(*permitted)
   end
 

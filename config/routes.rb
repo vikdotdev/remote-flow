@@ -17,15 +17,18 @@ Rails.application.routes.draw do
 
   namespace :account do
     get '/', to: 'dashboard#index'
+    get '/analytics', to: 'dashboard#analytics'
     resources :users do
       post :impersonate, on: :member
       post :stop_impersonating, on: :collection
     end
-    get '/notifications/mark_as_read/:id', to: 'notifications#mark_read'
-    get '/notificaitons/mark_all_as_read', to: 'notifiacations#mark_all_as_read'
+    get '/notifications/mark_as_read/:id', to: 'notification#mark_as_read'
+    get '/notificaitons/mark_all_as_read', to: 'notification#mark_all_as_read'
     resources :devices
     resources :device_groups
-    resource  :profile, only: %i[edit update]
+    resource  :profile, only: %i[edit update] do
+      patch :update_password, on: :member
+    end
     resources :organizations, except: %i[new create]
     resource  :my_organization,
               only: %i[show edit update],

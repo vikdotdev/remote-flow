@@ -21,8 +21,6 @@ gem 'jquery-rails'
 gem 'slim-rails'
 gem 'devise'
 gem 'dynamic_form'
-gem 'simple_form'
-gem 'any_login'
 gem 'kaminari'
 gem 'any_login'
 gem 'ransack'
@@ -33,6 +31,8 @@ gem 'pretender'
 gem 'whenever', require: false
 
 gem 'meta-tags'
+gem 'groupdate'
+gem 'chartkick'
 gem 'sidekiq'
 gem 'rmagick'
 # Use Redis adapter to run Action Cable in production
