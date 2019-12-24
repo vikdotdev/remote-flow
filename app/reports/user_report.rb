@@ -1,4 +1,4 @@
-class Report::User < Report::BaseReport
+class UserReport < BaseReport
   def role_distribution
     {
       admins: {

@@ -1,14 +1,19 @@
-class Report::BaseReport
+class BaseReport
   def initialize(user)
     @user = user
   end
 
   def collection
+    klass_name = self.class.name.demodulize.sub('Report', '')
     if @user.super_admin?
-      self.class.name.demodulize.constantize.all
+      klass_name.constantize.all
     else
-      @user.organization.send(self.class.name.demodulize.pluralize.downcase)
+      @user.organization.send(klass_name.pluralize.downcase)
     end
+  end
+
+  def count
+    collection.count
   end
 
   def trends
@@ -26,4 +31,3 @@ class Report::BaseReport
     }
   end
 end
-

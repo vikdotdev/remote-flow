@@ -90,13 +90,11 @@
     }
   };
 
-
   if (data.organization_trends) {
     new ApexCharts(document.querySelector("#organization-creation-dynamics"),
       dynamicsChartOptions
     ).render();
   }
-
 
   if (data.user_trends) {
     new ApexCharts(
@@ -199,10 +197,10 @@
     },
     colors: [$info, $secondary_light],
     series: [{
-      name: '2019',
+      name: 'Today',
       data: [50, 70, 100, 120, 140, 100, 70, 80, 90, 110, 50, 70, 35, 110, 100, 105, 125, 80]
     }, {
-      name: '2018',
+      name: 'Yesterday',
       data: [70, 50, 20, 30, 20, 90, 90, 60, 50, 0, 50, 60, 140, 50, 20, 20, 10, 0]
     }],
     xaxis: {

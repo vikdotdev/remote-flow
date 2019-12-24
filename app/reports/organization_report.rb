@@ -1,4 +1,3 @@
-  class Report::Organization < Report::BaseReport
-  end
-
+class OrganizationReport < BaseReport
+end
 

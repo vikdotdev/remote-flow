@@ -17,7 +17,7 @@ section
               i.bx.bx-tv.font-medium-5
             .text-muted.line-ellipsis Channels
             h3.mb-0
-              = @data[:channels].count
+              = @data[:channel_count]
     .col-lg-2.col-sm-4.col-6
       .card.text-center
         .card-content
@@ -26,7 +26,7 @@ section
               i.bx.bx-user.font-medium-5
             .text-muted.line-ellipsis Users
             h3.mb-0
-              = @data[:users].count
+              = @data[:user_count]
     .col-lg-2.col-sm-4.col-6
       .card.text-center
         .card-content
@@ -35,7 +35,7 @@ section
               i.bx.bx-file.font-medium-5
             .text-muted.line-ellipsis Files Uploaded
             h3.mb-0
-              = @data[:files].count
+              = @data[:file_count]
     .col-lg-2.col-sm-4.col-6
       .card.text-center
         .card-content
@@ -44,7 +44,7 @@ section
               i.bx.bx-file.font-medium-5
             .text-muted.line-ellipsis Invites Sent
             h3.mb-0
-              = @data[:invites].count
+              = @data[:invite_count]
 
   .row
     - if current_user.super_admin?

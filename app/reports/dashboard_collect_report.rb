@@ -1,3 +1,5 @@
+require 'base_report'
+
 class Dashboard
   attr_reader :user, :organization
 
@@ -6,27 +8,26 @@ class Dashboard
   end
 
   def data
-    data = Hash.new
+    result = Hash.new
 
     if user.super_admin?
-      data[:organizations] = Report::Organization.new(@user).collection
-      data[:organization_trends] = Report::Organization.new(@user).trends
+      result[:organization_count] = OrganizationReport.new(@user).count
+      result[:organization_trends] = OrganizationReport.new(@user).trends
     else
-      data[:user_trends] = Report::User.new(@user).trends
+      result[:user_trends] = UserReport.new(@user).trends
     end
 
-    user_report = Report::User.new(@user)
-    content_report = Report::Content.new(@user)
+    user_report = UserReport.new(@user)
+    content_report = ContentReport.new(@user)
 
-    data[:channels] = Report::Channel.new(@user).collection
-    data[:invites] = Report::Invite.new(@user).collection
-    data[:users] = user_report.collection
-    data[:role_distribution] = user_report.role_distribution
-    data[:files] = content_report.files
-    data[:content_type_distribution] = content_report.type_distribution
+    result[:channel_count] = ChannelReport.new(@user).count
+    result[:invite_count] = InviteReport.new(@user).count
+    result[:user_count] = user_report.count
+    result[:role_distribution] = user_report.role_distribution
+    result[:file_count] = content_report.file_count
+    result[:content_type_distribution] = content_report.type_distribution
 
-    data
+    result
   end
 end
-
 

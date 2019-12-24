@@ -1,3 +1,2 @@
-  class Report::Channel < Report::BaseReport
-  end
-
+class ChannelReport < BaseReport
+end

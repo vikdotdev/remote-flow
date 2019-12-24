@@ -1,6 +1,6 @@
-class Report::Content < Report::BaseReport
-  def files
-    collection.where.not(file: nil)
+class ContentReport < BaseReport
+  def file_count
+    collection.where.not(file: nil).count
   end
 
   def type_distribution
@@ -24,5 +24,4 @@ class Report::Content < Report::BaseReport
     }
   end
 end
-
 
