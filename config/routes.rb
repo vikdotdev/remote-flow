@@ -5,16 +5,14 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   root 'public#index'
 
   get '/pricing', to: 'public#pricing'
   get '/about_us', to: 'public#about_us'
-
-  get 'users/auth/:provider/callback', to: 'sessions#googleAuth'
-  get 'auth/failure', to: redirect('/')
 
   resources :accept_invites, only: %i[new create]
 
