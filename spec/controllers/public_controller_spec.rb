@@ -15,49 +15,5 @@ RSpec.describe PublicController, type: :controller do
 
       expect(response).to be_successful
     end
-
-    it 'gets contact us page' do
-      get :contact_us
-
-      expect(response).to be_successful
-    end
-  end
-
-  describe "POST #feedback" do
-    it "create new feedback" do
-      expect do
-        post :feedback, params:{
-          feedback:{
-            name: 'Jonh',
-            email: 'example@mail.com',
-            message: 'Message text'
-          }
-        }
-      end.to change(Feedback, :count).by(1)
-    end
-
-    it "cannot create new feedback with blank name" do
-      expect do
-        post :feedback, params:{
-          feedback:{
-            name: '',
-            email: 'example@mail.com',
-            message: 'Message text'
-          }
-        }
-      end.to change(Feedback, :count).by(0)
-    end
-
-    it "cannot create new feedback with blank email" do
-      expect do
-        post :feedback, params:{
-          feedback:{
-            name: 'Jonh',
-            email: '',
-            message: 'Message text'
-          }
-        }
-      end.to change(Feedback, :count).by(0)
-    end
   end
 end
