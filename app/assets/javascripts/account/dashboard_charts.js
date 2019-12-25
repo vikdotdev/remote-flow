@@ -9,15 +9,15 @@
     return (acc.push(''), acc)
   }
 
-  var $primary = '#5A8DEE';
-  var $danger = '#FF5B5C';
-  var $warning = '#FDAC41';
-  var $info = '#00CFDD';
-  var $secondary = '#828D99';
-  var $secondary_light = '#e7edf3';
-  var $light_primary = "#E2ECFF";
+  var primary = '#5A8DEE';
+  var danger = '#FF5B5C';
+  var warning = '#FDAC41';
+  var info = '#00CFDD';
+  var secondary = '#828D99';
+  var secondary_light = '#e7edf3';
+  var light_primary = "#E2ECFF";
 
-  var data = JSON.parse(window.data.replace(/&quot;/g,'"'))
+  var data = window.data
 
   var animations = {
     enabled: true,
@@ -42,7 +42,7 @@
       },
       animations: animations
     },
-    colors: [$primary, $primary],
+    colors: [primary, primary],
     dataLabels: {
       enabled: false
     },
@@ -57,7 +57,7 @@
         inverseColors: false,
         shade: 'light',
         type: "vertical",
-        gradientToColors: [$light_primary, $primary],
+        gradientToColors: [light_primary, primary],
         opacityFrom: 0.7,
         opacityTo: 0.55,
         stops: [0, 80, 100]
@@ -81,7 +81,7 @@
       labels: {
         show: true,
         style: {
-          colors: $secondary
+          colors: secondary
         }
       }
     },
@@ -119,7 +119,7 @@
             labels: {
               show: true,
               style: {
-                colors: $secondary
+                colors: secondary
               }
             }
           }
@@ -151,17 +151,12 @@
         height: 282,
       },
       series: [
-        data.content_type_distribution.pages.count,
-        data.content_type_distribution.videos.count,
-        data.content_type_distribution.presentations.count,
-        data.content_type_distribution.galleries.count
+        data.content_type_distribution.Page,
+        data.content_type_distribution.Video,
+        data.content_type_distribution.Presentation,
+        data.content_type_distribution.Gallery
       ],
-      labels: [
-        data.content_type_distribution.pages.type,
-        data.content_type_distribution.videos.type,
-        data.content_type_distribution.presentations.type,
-        data.content_type_distribution.galleries.type
-      ]
+      labels: Object.keys(data.content_type_distribution)
     }).render();
 
   new ApexCharts(document.querySelector("#logged-in-chart"), {
@@ -196,7 +191,7 @@
     dataLabels: {
       enabled: false
     },
-    colors: [$info, $secondary_light],
+    colors: [info, secondary_light],
     series: [{
       name: 'Today',
       data: [50, 70, 100, 120, 140, 100, 70, 80, 90, 110, 50, 70, 35, 110, 100, 105, 125, 80]
@@ -214,7 +209,7 @@
       },
       labels: {
         style: {
-          colors: $secondary
+          colors: secondary
         },
         offsetY: -5
       }
