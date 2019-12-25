@@ -402,7 +402,6 @@ DEPENDENCIES
   carrierwave (~> 2.0)
   chartkick
   ckeditor
-  cucumber
   cucumber-rails
   database_cleaner
   devise
