@@ -1,3 +1,4 @@
+require 'mailer'
 namespace :send_mail do
   desc 'Send super_admin statistic about new users and organizations'
 
