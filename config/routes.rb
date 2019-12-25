@@ -22,7 +22,6 @@ Rails.application.routes.draw do
       post :impersonate, on: :member
       post :stop_impersonating, on: :collection
     end
-    get '/notifications/mark_as_read/:id', to: 'notification#mark_as_read'
     get '/notificaitons/mark_all_as_read', to: 'notification#mark_all_as_read'
     resources :devices
     resources :device_groups
