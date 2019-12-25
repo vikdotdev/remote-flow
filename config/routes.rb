@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resource :organizations, only: %i[show]
+      resource :organizations
     end
   end
 end

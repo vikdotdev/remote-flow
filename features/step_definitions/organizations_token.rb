@@ -13,5 +13,5 @@ When 'I am on organization page' do
 end
 
 Then 'I should see organization token' do
-  page.should have_content(@admin.organization.token)
+  expect(page).to have_content(@admin.organization.token)
 end

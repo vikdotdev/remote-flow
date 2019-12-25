@@ -1,29 +1,43 @@
 class Api::V1::OrganizationsController < Api::V1::ApiController
+  skip_before_action :verify_authenticity_token
 
   def show
-    @organization = resource
-
-    render json: @organization
-  end
-
-  def update
-    @organization = resource
-    if @organization.update(organization_params)
-      render json @organization
+    if current_organization
+      render json: current_organization
     else
-      render_error @organization.errors.full_messages[0], :unprocessable_entity
+      head 404
     end
   end
 
+  def create
+    @organization = Organization.new(organization_params)
+
+    if @organization.save
+      render json: @organization
+    else
+      head :unprocessable_entity
+    end
+  end
+
+  def update
+    if current_organization&.update(organization_params)
+      render json: current_organization
+    else
+      head 404
+    end
+  end
+
+  def destroy
+    if current_organization&.destroy
+      head 200
+    else
+      head 404
+    end
+  end
+
+  private
+
   def organization_params
     params.require(:organization).permit(:name, :logo, :logo_cache, :remove_logo)
-  end
-
-  def collection
-    Organization.all
-  end
-
-  def resource
-    collection.where(token: request.headers['token'])
   end
 end
