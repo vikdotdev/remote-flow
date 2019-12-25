@@ -60,19 +60,28 @@ class User < ApplicationRecord
     data = access_token.info
     user = User.where(email: data['email']).first
 
-    # Uncomment the section below if you want users to be created if they don't exist
     unless user
-     user = User.create(first_name: data['first_name'],
-     last_name: data['last_name'],
-     email: data['email'],
-     role: ADMIN,
-     password: Devise.friendly_token[0,20],
-     google_token: access_token.credentials.token,
-     google_refresh_token: access_token.credentials.refresh_token
-     )
-     byebug
+      user = User.create(first_name: data['first_name'],
+      last_name: data['last_name'],
+      email: data['email'],
+      role: ADMIN,
+      password: Devise.friendly_token[0,20],
+      google_token: access_token.credentials.token,
+      google_refresh_token: access_token.credentials.refresh_token
+      )
     end
     user
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.google_data"] && session["devise.google_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+        user.first_name = data['given_name'] if user.first_name.blank?
+        user.last_name = data['family_name'] if user.last_name.blank?
+        user.password = user.password_confirmation = Devise.friendly_token[0,20]
+      end
+    end
   end
 
   private
