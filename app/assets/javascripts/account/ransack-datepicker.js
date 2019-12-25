@@ -1,4 +1,4 @@
-$(document).ready(function() {
+(function() {
   $('.datepicker').daterangepicker({
     timePicker: true,
     timePicker24Hour: true,
@@ -6,4 +6,4 @@ $(document).ready(function() {
       format: 'DD/MM/YYYY HH:mm'
     }
   });
-});
+})();

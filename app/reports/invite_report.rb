@@ -1,0 +1,3 @@
+class InviteReport < BaseReport
+end
+
