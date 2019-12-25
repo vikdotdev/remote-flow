@@ -8,12 +8,15 @@ RSpec.describe Account::UsersController, type: :report do
     it 'raises an exception on report creation' do
       expect { OrganizationReport.new(admin) }.not_to raise_error
     end
+
     it 'raises an exception on collection method' do
       expect { OrganizationReport.new(admin).collection }.to raise_error NoMethodError
     end
+
     it 'raises an exception on count method' do
       expect { OrganizationReport.new(admin).count }.to raise_error NoMethodError
     end
+
     it 'raises an exception on trends method' do
       expect { OrganizationReport.new(admin).trends }.to raise_error NoMethodError
     end
@@ -23,14 +26,22 @@ RSpec.describe Account::UsersController, type: :report do
     it 'does not raise an exception on report creation' do
       expect { OrganizationReport.new(super_admin) }.not_to raise_error
     end
+
     it 'does not raise an exception on collection method' do
       expect { OrganizationReport.new(super_admin).collection }.not_to raise_error
     end
+
     it 'does not raise an exception on count method' do
       expect { OrganizationReport.new(super_admin).count }.not_to raise_error
     end
+
     it 'does not raise an exception on trends method' do
       expect { OrganizationReport.new(super_admin).trends }.not_to raise_error
+    end
+
+    it 'returns correct trends array lengths' do
+      trends = OrganizationReport.new(super_admin).trends
+      expect(trends[:series_data].length).to eq(trends[:dates].length + 2)
     end
   end
 end

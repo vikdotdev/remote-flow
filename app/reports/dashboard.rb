@@ -12,8 +12,9 @@ class Dashboard
     content_report = ContentReport.new(@user)
 
     if user.super_admin?
-      result[:organization_count] = OrganizationReport.new(@user).count
-      result[:organization_trends] = OrganizationReport.new(@user).trends
+      organization_report = OrganizationReport.new(@user)
+      result[:organization_count] = organization_report.count
+      result[:organization_trends] = organization_report.trends
     else
       result[:user_trends] = user_report.trends
     end
