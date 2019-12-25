@@ -7,8 +7,8 @@ class SuperAdminMailer < ApplicationMailer
   end
 
   def send_statistic_about_new_users_and_organizations
-    @users_count = User.where(["? - created_at <= 7", Date.today]).count
-    @organizatinos_count = Organization.where(["? - created_at <= 7", Date.today]).count
+    @users_count = User.where(["DATE(created_at) >= ?", Date.today - 7.days]).count
+    @organizatinos_count = Organization.where(["DATE(created_at) >= ?", Date.today - 7.days]).count
     mail(to: super_admin_emails, subject: 'Weekly statistics')
   end
 
