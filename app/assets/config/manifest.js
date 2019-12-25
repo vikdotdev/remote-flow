@@ -6,6 +6,8 @@
 //= link LivIconsEvo.defaults.js
 //= link LivIconsEvo.min.js
 //= link LivIconsEvo.tools.js
+//= link apexcharts.js
+
 //= link moment.min.js
 //= link daterangepicker.js
 //= link vendors.min.js
@@ -20,7 +22,6 @@
 //= link ckeditor/application.js
 //= link jqBootstrapValidation.js
 
-//
 //= link authentication.css
 //= link bootstrap.css
 //= link bootstrap-extended.css
@@ -31,14 +32,14 @@
 //= link semi-dark-layout.css
 //= link vertical-menu.css
 //= link vendors.min.css
+//= link apexcharts.css
 //= link horizontal-menu.css
 //= link prism.min.css
 //= link style.css
-//= vendors.min.css
+//= link vendors.min.css
 //= link toastr.css
 //= link form-validation.css
 //= link ckeditor/application.css
-
 
 //= link boxicons.eot
 //= link boxicons.woff

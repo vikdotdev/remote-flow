@@ -20,10 +20,12 @@ FactoryBot.define do
       role { User::ADMIN }
     end
 
-    trait :admin do
+    trait :manager do
       role { User::MANAGER }
     end
 
     factory :super_admin, traits: [:super_admin]
+    factory :admin, traits: [:admin]
+    factory :manager, traits: [:manager]
   end
 end

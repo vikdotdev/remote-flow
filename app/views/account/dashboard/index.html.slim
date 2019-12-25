@@ -1,5 +1,144 @@
-.content-body
-  p Hello
-  p
-    = current_user.full_name
+javascript:
+  var data = #{raw @data.to_json}
 
+section#js-dashboard
+  .row
+    /! Statistics Cards Starts
+    .col-lg-4.col-sm-8
+      .card
+        .card-header.d-flex.justify-content-between.align-items-center.pb-0
+          h4.card-title Logged In
+        .card-content
+          .card-body.pb-0 style=("position: relative;")
+            #logged-in-chart style=("min-height: 115px;")
+    .col-lg-2.col-sm-4.col-6
+      .card.text-center
+        .card-content
+          .card-body
+            .badge-circle.badge-circle-lg.badge-circle-light-success.mx-auto.mb-50
+              i.bx.bx-tv.font-medium-5
+            .text-muted.line-ellipsis Channels
+            h3.mb-0
+              = @data[:channel_count]
+    .col-lg-2.col-sm-4.col-6
+      .card.text-center
+        .card-content
+          .card-body
+            .badge-circle.badge-circle-lg.badge-circle-light-danger.mx-auto.mb-50
+              i.bx.bx-user.font-medium-5
+            .text-muted.line-ellipsis Users
+            h3.mb-0
+              = @data[:user_count]
+    .col-lg-2.col-sm-4.col-6
+      .card.text-center
+        .card-content
+          .card-body
+            .badge-circle.badge-circle-lg.badge-circle-light-warning.mx-auto.mb-50
+              i.bx.bx-file.font-medium-5
+            .text-muted.line-ellipsis Files Uploaded
+            h3.mb-0
+              = @data[:file_count]
+    .col-lg-2.col-sm-4.col-6
+      .card.text-center
+        .card-content
+          .card-body
+            .badge-circle.badge-circle-lg.badge-circle-light-warning.mx-auto.mb-50
+              i.bx.bx-file.font-medium-5
+            .text-muted.line-ellipsis Invites Sent
+            h3.mb-0
+              = @data[:invite_count]
+
+  .row
+    - if current_user.super_admin?
+      .col-xl-7.col-12
+        .card
+          /! Order Summary Starts
+          .card.mb-0
+            .card-header.d-flex.justify-content-between.align-items-center
+              h4.card-title Organizations Dynamics
+            .card-content
+              .card-body.p-0
+                #organization-creation-dynamics
+    - else
+      .col-xl-7.col-12
+        .card
+          /! Order Summary Starts
+          .card.mb-0
+            .card-header.d-flex.justify-content-between.align-items-center
+              h4.card-title User Dynamics
+            .card-content
+              .card-body.p-0
+                #user-creation-dynamics
+
+
+    .col-xl-5.col-lg-6.col-12
+      .card
+        .card-header
+          h4.card-title User Roles
+        .card-content
+          .card-body style=("position: relative;")
+            #user-type-chart.d-flex.justify-content-center style=("min-height: 296.049px;")
+
+    .col-xl-6.col-lg-6.col-12
+      .card
+        .card-header
+          h4.card-title Content Types
+        .card-content
+          .card-body style=("position: relative;")
+            #content-type-chart.d-flex.justify-content-center style=("min-height: 296.049px;")
+
+    .col-xl-6.col-12
+      .card
+        .card-header
+          h4.card-title
+            | Timeline
+        .card-content
+          .card-body
+            ul.widget-timeline.position-relative.padding-right-1 style=('height: 400px;')
+              li.timeline-items.timeline-icon-success.active
+                .timeline-time Mon 8:17pm
+                h6.timeline-title Jonny Richie Commented
+                p.timeline-text
+                  | on
+                  a href="JavaScript:void(0);"  Project name
+                .timeline-content
+                  | Story behind vedio game and lame is very creative
+              li.timeline-items.timeline-icon-primary.active
+                .timeline-time 5 days ago
+                h6.timeline-title Mathew Slick attached file
+                p.timeline-text
+                  | on
+                  a href="JavaScript:void(0);"  Project name
+                .timeline-content
+                  | Data Folder.sketch
+              li.timeline-items.timeline-icon-danger.active
+                .timeline-time 7 hours ago
+                h6.timeline-title Mathew Slick docs
+                p.timeline-text
+                  | on
+                  a href="JavaScript:void(0);"  Project name
+                .timeline-content
+                  | Updated Docs.pdf
+              li.timeline-items.timeline-icon-info.active
+                .timeline-time 5 hour ago
+                h6.timeline-title Ndrew send you a message
+                p.timeline-text
+                  | on
+                  a href="JavaScript:void(0);"  Project name
+                .timeline-content
+                  | Nor again is there anyone who loves or pursues or desires to obtain pain of itself,
+                  | because it is
+                  | pain, but because occasionally circumstances
+              li.timeline-items.timeline-icon-warning
+                .timeline-time 2 min ago
+                h6.timeline-title Mathew Slick liked
+                p.timeline-text
+                  | on
+                  a href="JavaScript:void(0);"  Project name
+                .timeline-content
+                  | The Amairates
+            button.btn.btn-block.btn-primary View All Notifications
+    /! Dashboard Ecommerce ends
+/! END: Content
+.sidenav-overlay
+.drag-target
