@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Feedback, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "factory specs" do
+    let!(:feedback) { create(:feedback) }
+
+    it "has factory" do
+      expect(feedback).to be_persisted
+    end
+  end
 end

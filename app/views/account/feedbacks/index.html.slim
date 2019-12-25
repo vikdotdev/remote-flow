@@ -1,0 +1,22 @@
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Feedback' }\
+]
+
+h4.card-title Feedback
+- @feedback.each_with_index do |feedback, index|
+  .card.collapse-header role="tablist"
+    div id="headingCollapse#{index}" class="card-header d-flex justify-content-between align-items-center border-bottom-1" aria-controls="collapse#{index}" aria-expanded="false" data-target="#collapse#{index}" data-toggle="collapse" role="tab"
+      .collapse-title.media
+        .media-body
+          span.text-primary
+            = feedback.name
+          span.d-sm-inline.d-none &nbsp;&lt;#{feedback.email}&gt;
+      .information.d-sm-flex.d-none.align-items-center
+        small.text-muted.mr-50
+          = feedback.created_at
+    div id="collapse#{index}" class="collapse" aria-labelledby="headingCollapse#{index}" role="tabpanel"
+      .card-content
+        .card-body.py-1
+          p.text-bold-500
+            = feedback.message

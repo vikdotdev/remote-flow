@@ -28,6 +28,7 @@
       - elsif current_user.super_admin?
         = sidebar_button({ text: 'Organizations', path: account_organizations_path, icon: 'link' })
         = sidebar_button({ text: 'Analytics', path: account_analytics_path, icon: 'pie-chart' })
+        = sidebar_button({ text: 'Feedback', path: account_feedbacks_path, icon: 'envelope-put'})
       = sidebar_button({ text: 'Reports', path: '#', icon: 'morph-folder' })
     ul.navigation.navigation-main data-icon-style="lines" data-menu="menu-navigation"
       = sidebar_button({\
