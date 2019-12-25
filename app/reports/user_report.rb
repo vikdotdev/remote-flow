@@ -1,15 +1,6 @@
 class UserReport < BaseReport
   def role_distribution
-    {
-      admins: {
-        role: User::ADMIN.capitalize,
-        count: collection.where(role: User::ADMIN).count,
-      },
-      managers: {
-        role: User::MANAGER.capitalize,
-        count: collection.where(role: User::MANAGER).count
-      }
-    }
+    collection.group(:role).count
   end
 end
 

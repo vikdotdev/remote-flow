@@ -135,13 +135,10 @@
         animations: animations
       },
       series: [
-        data.role_distribution.admins.count,
-        data.role_distribution.managers.count
+        data.role_distribution.admin,
+        data.role_distribution.manager
       ],
-      labels: [
-        data.role_distribution.admins.role,
-        data.role_distribution.managers.role
-      ]
+      labels: Object.keys(data.role_distribution).map(r => r[0].toUpperCase() + r.slice(1))
     }).render();
 
   new ApexCharts(document.querySelector("#content-type-chart"), {
