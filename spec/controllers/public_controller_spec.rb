@@ -16,5 +16,11 @@ RSpec.describe PublicController, type: :controller do
 
       expect(response).to be_successful
     end
+
+    it 'gets contact us page' do
+      get :contact_us
+
+      expect(response).to be_successful
+    end
   end
 end

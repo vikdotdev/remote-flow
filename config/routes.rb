@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/pricing', to: 'public#pricing'
   get '/about_us', to: 'public#about_us'
   get '/contact_us', to: 'public#contact_us'
+  post '/contact_us', to: 'public#feedback'
 
   resources :accept_invites, only: %i[new create]
 
@@ -32,5 +33,6 @@ Rails.application.routes.draw do
     resources :channels
     resources :contents
     resources :invites, except: %i[edit update]
+    resources :feedbacks, only: %i[index]
   end
 end
