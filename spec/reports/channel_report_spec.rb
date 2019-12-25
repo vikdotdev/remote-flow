@@ -19,6 +19,10 @@ RSpec.describe ChannelReport, type: :report do
     expect { ChannelReport.new(user).trends }.not_to raise_error
   end
 
+  it 'returns correct collection length' do
+    expect(ChannelReport.new(user).count).to eq(Channel.count)
+  end
+
   it 'returns correct trends array lengths' do
     trends = ChannelReport.new(user).trends
     expect(trends[:series_data].length).to eq(trends[:dates].length + 2)

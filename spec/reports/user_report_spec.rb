@@ -19,6 +19,10 @@ RSpec.describe UserReport, type: :report do
     expect { UserReport.new(user).trends }.not_to raise_error
   end
 
+  it 'returns correct collection length' do
+    expect(UserReport.new(user).count).to eq(User.count)
+  end
+
   it 'returns correct trends array lengths' do
     trends = UserReport.new(user).trends
     expect(trends[:series_data].length).to eq(trends[:dates].length + 2)

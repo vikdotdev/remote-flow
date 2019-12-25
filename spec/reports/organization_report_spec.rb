@@ -39,6 +39,10 @@ RSpec.describe Account::UsersController, type: :report do
       expect { OrganizationReport.new(super_admin).trends }.not_to raise_error
     end
 
+    it 'returns correct collection length' do
+      expect(OrganizationReport.new(super_admin).count).to eq(Organization.count)
+    end
+
     it 'returns correct trends array lengths' do
       trends = OrganizationReport.new(super_admin).trends
       expect(trends[:series_data].length).to eq(trends[:dates].length + 2)

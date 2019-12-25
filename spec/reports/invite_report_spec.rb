@@ -19,6 +19,10 @@ RSpec.describe InviteReport, type: :report do
     expect { InviteReport.new(user).trends }.not_to raise_error
   end
 
+  it 'returns correct collection length' do
+    expect(InviteReport.new(user).count).to eq(Invite.count)
+  end
+
   it 'returns correct trends array lengths' do
     trends = InviteReport.new(user).trends
     expect(trends[:series_data].length).to eq(trends[:dates].length + 2)
