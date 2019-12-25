@@ -16,9 +16,10 @@
 
 section
   .card
-    .card-content
-      .card-header.pb-0
-        h4 Edit
-      .card-body
-        - path = account_user_path(@user)
-        = render 'account/shared/form', user: @user, path: path, back_path: path
+    .card-content.row.m-0
+      .col-md-12.pl-0.pr-0
+        .card-header.pb-0
+          h4 Edit
+        .card-body
+          - path = account_user_path(@user)
+          = render 'account/shared/form_without_password', user: @user, path: path, back_path: path

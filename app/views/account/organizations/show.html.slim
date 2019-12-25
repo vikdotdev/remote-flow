@@ -1,8 +1,8 @@
 - breadcrumbs [\
   { home: true, \
-    url: account_path },\
+    url: account_path }, \
   { title: 'Organizations', \
-    url: account_organizations_path },\
+    url: account_organizations_path }, \
   { title: 'Organization' }\
 ]
 - content_for :actions do
@@ -13,7 +13,7 @@
   = link_to "Delete", account_organization_path(@organization), \
             class: "btn btn-sm btn-light-danger", \
             method: :delete,
-            data: { confirm: 'Are you sure?' }
+          data: { confirm: 'Are you sure?' }
 
 .card
   .card-content
@@ -21,13 +21,13 @@
       h4 Info
     .row
       .card-body
-          table.table.table-borderless
-            .organization-logo
-              = image_tag @organization.logo.url, class: 'logo-img'
-              .organization-logo-info
-                h5 Registered:
-                p
-                  = l(@organization.created_at, format: :long)
-                h5 Name:
-                p
-                  = @organization.name
+        table.table.table-borderless
+          .organization-logo
+            = image_tag @organization.logo.url, class: 'logo-img'
+            .organization-logo-info
+              h5 Registered:
+              p
+                = l(@organization.created_at, format: :long)
+              h5 Name:
+              p
+                = @organization.name
