@@ -1,6 +1,8 @@
 doctype html
 html.loading data-textdirection="ltr" lang="en"
   = render 'shared/head'
+  = javascript_include_tag Ckeditor.cdn_url
+
   body.vertical-layout.vertical-menu-modern.2-columns.navbar-sticky.footer-static data-open="click" data-menu="vertical-menu-modern" data-col="2-columns"
     = flash_messages
     = render 'shared/account/header'
