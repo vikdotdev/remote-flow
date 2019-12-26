@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: remote_flow_production
-  # username: remote_flow
-  # password: <%= ENV['REMOTE_FLOW_DATABASE_PASSWORD'] %>
+  database: remote_flow
+  password: <%= ENV['REMOTE_FLOW_DATABASE_PASSWORD'] %>
+
