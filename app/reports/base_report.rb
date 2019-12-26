@@ -20,7 +20,7 @@ class BaseReport
     series_data = []
     dates = []
 
-    (30.days.ago.to_date..Date.today).each do |date|
+    (30.days.ago.to_datetime..DateTime.now).each do |date|
       series_data.push(collection.where('created_at < ?', date.to_datetime).count)
       dates.push(date.day)
     end
