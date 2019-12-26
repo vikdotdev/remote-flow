@@ -4,14 +4,15 @@
 ]
 
 h4.card-title Feedbacks
-- @feedback.each_with_index do |feedback, index|
+- @feedbacks.each_with_index do |feedback, index|
   .card.collapse-header role="tablist"
-    div id="headingCollapse#{index}" class="card-header d-flex justify-content-between align-items-center border-bottom-1" aria-controls="collapse#{index}" aria-expanded="false" data-target="#collapse#{index}" data-toggle="collapse" role="tab"
+    div id="headingCollapse#{index}" class="card-header d-flex justify-content-between align-items-center border-bottom" aria-controls="collapse#{index}" aria-expanded="false" data-target="#collapse#{index}" data-toggle="collapse" role="tab"
       .collapse-title.media
         .media-body
-          span.text-primary
+          span.text-primary.mr-1
             = feedback.name
-          span.d-sm-inline.d-none &nbsp;&lt;#{feedback.email}&gt;
+          span.d-sm-inline.d-none
+            = feedback.email
       .information.d-sm-flex.d-none.align-items-center
         small.text-muted.mr-50
           = l(feedback.created_at, format: :long)

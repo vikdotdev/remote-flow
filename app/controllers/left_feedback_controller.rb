@@ -2,6 +2,7 @@ class LeftFeedbackController < ApplicationController
   layout 'public'
 
   def new
+    set_meta_tags title: 'Contact us'
     @feedback = Feedback.new
   end
 
