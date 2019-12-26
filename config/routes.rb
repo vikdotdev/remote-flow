@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/about_us', to: 'public#about_us'
 
   resources :accept_invites, only: %i[new create]
-  resources :feedbacks, only: %i[new create index]
+  resources :feedbacks, only: %i[new create]
 
   namespace :account do
     get '/', to: 'dashboard#index'
