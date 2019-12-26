@@ -6,4 +6,4 @@
 h3.mb-2 Organizations created
 .card.p-1
   .card-body
-      = line_chart Organization.group_by_day(:created_at).count
+    = line_chart Organization.group_by_day(:created_at).count
