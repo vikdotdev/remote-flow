@@ -128,45 +128,42 @@
     ).render();
   }
 
-  const userData = Object.values(data.role_distribution)
+  (function() {
+    if(!data || !data.role_distribution) return;
 
-  const normalizedUserSeries = userData.map(({ type, count }) => {
-    return count ? count : 0
-  }).filter(n => n);
+    var chartData = data.role_distribution || {};
+    var series = Object.values(chartData).filter(value => !!value);
+    var labels = Object.keys(chartData).filter(key => !!chartData[key])
+      .map(r => r[0].toUpperCase() + r.slice(1));
 
-  const normalizedUserLabels = userData.map(({ role, count }) => {
-    return count ? role : 0
-  }).filter(n => n);
+    new ApexCharts(document.querySelector("#user-type-chart"), {
+      chart: {
+        height: 282,
+        type: 'donut',
+        animations: animations
+      },
+      series: series,
+      labels: labels
+    }).render();
+  })();
 
-  new ApexCharts(document.querySelector("#user-type-chart"), {
-    chart: {
-      height: 282,
-      type: 'donut',
-      animations: animations
-    },
-    series: normalizedUserSeries,
-    labels: normalizedUserLabels
-  }).render();
+  (function() {
+    if(!data || !data.content_type_distribution) return;
 
-  const contentData = Object.values(data.content_type_distribution)
+    var chartData = data.content_type_distribution || {};
+    var series = Object.values(chartData).filter(value => !!value);
+    var labels = Object.keys(chartData).filter(key => !!chartData[key]);
 
-  const normalizedContentSeries = contentData.map(({ type, count }) => {
-    return count ? count : 0
-  }).filter(n => n);
-
-  const normalizedContentLabels = contentData.map(({ type, count }) => {
-    return count ? type : 0
-  }).filter(n => n);
-
-  new ApexCharts(document.querySelector("#content-type-chart"), {
-    chart: {
-      type: 'pie',
-      animations: animations,
-      height: 282,
-    },
-    series: normalizedContentSeries,
-    labels: normalizedContentLabels
-  }).render();
+    new ApexCharts(document.querySelector("#content-type-chart"), {
+      chart: {
+        type: 'pie',
+        animations: animations,
+        height: 282,
+      },
+      series: series,
+      labels: labels
+    }).render();
+  })();
 
   new ApexCharts(document.querySelector("#logged-in-chart"), {
     chart: {
