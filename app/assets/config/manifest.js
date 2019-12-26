@@ -20,7 +20,7 @@
 //= link bootstrap.js
 //= link show_file_name_in_file_field.js
 //= link jqBootstrapValidation.js
-// = link ckeditor/config.js
+//= link ckeditor/config.js
 //= link ckeditor/application.js
 
 //= link authentication.css

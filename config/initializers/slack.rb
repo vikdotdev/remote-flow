@@ -1,2 +1,2 @@
-SLACK_CONFIG = YAML.load_file('config/slack.yml')[Rails.env].symbolize_keys rescue nil
+SLACK_CONFIG = YAML.load_file('config/slack.yml')[Rails.env].symbolize_keys
 

@@ -1,5 +1,5 @@
-
-# Preview all emails at http://localhost:3000/rails/mailers/super_admin_mailer
 class SuperAdminMailerPreview < ActionMailer::Preview
-
+  def sample_preview
+    SuperAdminMailer.send_statistic_about_new_users_and_organizations
+  end
 end
