@@ -3,6 +3,7 @@ class Account::MyOrganizationController < Account::AccountController
 
   def show
     @organization = resource
+
     set_meta_tags title: @organization.name
   end
 
