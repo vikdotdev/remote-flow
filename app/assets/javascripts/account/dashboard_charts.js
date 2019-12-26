@@ -128,33 +128,45 @@
     ).render();
   }
 
+  const userData = Object.values(data.role_distribution)
+
+  const normalizedUserSeries = userData.map(({ type, count }) => {
+    return count ? count : 0
+  }).filter(n => n);
+
+  const normalizedUserLabels = userData.map(({ role, count }) => {
+    return count ? role : 0
+  }).filter(n => n);
+
   new ApexCharts(document.querySelector("#user-type-chart"), {
-      chart: {
-        height: 282,
-        type: 'donut',
-        animations: animations
-      },
-      series: [
-        data.role_distribution.admin,
-        data.role_distribution.manager
-      ],
-      labels: Object.keys(data.role_distribution).map(r => r[0].toUpperCase() + r.slice(1))
-    }).render();
+    chart: {
+      height: 282,
+      type: 'donut',
+      animations: animations
+    },
+    series: normalizedUserSeries,
+    labels: normalizedUserLabels
+  }).render();
+
+  const contentData = Object.values(data.content_type_distribution)
+
+  const normalizedContentSeries = contentData.map(({ type, count }) => {
+    return count ? count : 0
+  }).filter(n => n);
+
+  const normalizedContentLabels = contentData.map(({ type, count }) => {
+    return count ? type : 0
+  }).filter(n => n);
 
   new ApexCharts(document.querySelector("#content-type-chart"), {
-      chart: {
-        type: 'pie',
-        animations: animations,
-        height: 282,
-      },
-      series: [
-        data.content_type_distribution.Page,
-        data.content_type_distribution.Video,
-        data.content_type_distribution.Presentation,
-        data.content_type_distribution.Gallery
-      ],
-      labels: Object.keys(data.content_type_distribution)
-    }).render();
+    chart: {
+      type: 'pie',
+      animations: animations,
+      height: 282,
+    },
+    series: normalizedContentSeries,
+    labels: normalizedContentLabels
+  }).render();
 
   new ApexCharts(document.querySelector("#logged-in-chart"), {
     chart: {
