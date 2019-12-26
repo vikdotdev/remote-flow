@@ -1,4 +1,4 @@
-class Api::V1::OrganizationsController < Api::V1::ApiController
+class Api::V1::OrganizationController < Api::V1::ApiController
   skip_before_action :verify_authenticity_token
 
   def show

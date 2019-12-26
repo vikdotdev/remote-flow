@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::V1::OrganizationsController, type: :controller do
+RSpec.describe Api::V1::OrganizationController, type: :controller do
 
   let!(:organization) { create(:organization) }
   let!(:admin) { create(:user, :admin) }
