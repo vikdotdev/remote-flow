@@ -19,9 +19,8 @@
 //= link vertical-menu-light.js
 //= link bootstrap.js
 //= link show_file_name_in_file_field.js
-//= link jqBootstrapValidation.js
-//= link ckeditor/config.js
 //= link ckeditor/application.js
+//= link jqBootstrapValidation.js
 
 //= link authentication.css
 //= link bootstrap.css
@@ -40,7 +39,6 @@
 //= link vendors.min.css
 //= link toastr.css
 //= link form-validation.css
-//= link ckeditor/ckeditor.css
 //= link ckeditor/application.css
 
 //= link boxicons.eot

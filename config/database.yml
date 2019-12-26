@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: remote_flow
+  database: remote_flow_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: remote_flow_production
-  # username: remote_flow
-  # password: <%= ENV['REMOTE_FLOW_DATABASE_PASSWORD'] %>
+  username: remote_flow
+  password: <%= ENV['REMOTE_FLOW_DATABASE_PASSWORD'] %>
