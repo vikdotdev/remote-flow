@@ -1,4 +1,4 @@
-class LeftFeedbackController < ApplicationController
+class FeedbacksController < ApplicationController
   layout 'public'
 
   def new
@@ -8,9 +8,9 @@ class LeftFeedbackController < ApplicationController
 
   def create
     @feedback = Feedback.new(feedback_params)
-    if  @feedback.save
+    if @feedback.save
       flash[:success] = 'The message was successfully sent. We will contact you shortly.'
-      redirect_to new_left_feedback_path
+      redirect_to new_feedback_path
     else
       flash[:danger] = 'An error occurred, please try again later'
       render :new

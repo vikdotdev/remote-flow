@@ -22,6 +22,11 @@ RSpec.describe Account::DashboardController, type: :controller do
         get :analytics
         expect(response).to be_successful
       end
+
+      it 'renders index template' do
+        get :feedbacks
+        expect(response).to be_successful
+      end
     end
   end
 
@@ -40,6 +45,12 @@ RSpec.describe Account::DashboardController, type: :controller do
         get :analytics
         expect(response).to redirect_to(account_path)
       end
+
+      it 'redirect to login page' do
+        get :feedbacks
+        expect(response).to redirect_to(account_path)
+      end
     end
+
   end
 end

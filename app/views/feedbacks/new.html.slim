@@ -3,7 +3,7 @@ p.pricing-p You can call us or find our contacts
 .container.mb-5
   .row
     .col-md-6
-      = simple_form_for @feedback, url:contact_us_path, method: 'post' do |f|
+      = simple_form_for @feedback do |f|
         = f.input :name
         = f.input :email
         = f.input :message, as: :text, input_html:{ rows: '14' }

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe LeftFeedbackController, type: :controller do
-
+RSpec.describe FeedbacksController, type: :controller do
   describe "GET #new" do
     it 'renders new template' do
       get :new
