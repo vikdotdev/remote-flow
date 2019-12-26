@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get '/pricing', to: 'public#pricing'
   get '/about_us', to: 'public#about_us'
 
+  get 'users/auth/:provider/callback', to: 'sessions#googleAuth'
+  get 'auth/failure', to: redirect('/')
+
   resources :accept_invites, only: %i[new create]
 
   namespace :account do
@@ -32,4 +35,5 @@ Rails.application.routes.draw do
     resources :contents
     resources :invites, except: %i[edit update]
   end
+
 end

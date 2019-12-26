@@ -33,6 +33,7 @@ gem 'pretender'
 gem 'meta-tags'
 gem 'sidekiq'
 gem 'rmagick'
+gem 'omniauth-google-oauth2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
