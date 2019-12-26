@@ -60,7 +60,7 @@ class User < ApplicationRecord
 
   def self.from_omniauth(access_token)
     data = access_token.info
-    user = User.where(email: data['email']).first
+    user = User.find_or_initialize_by(email: data['email'])
 
     unless user
       user = User.create(first_name: data['first_name'],
