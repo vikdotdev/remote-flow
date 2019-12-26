@@ -21,8 +21,6 @@ gem 'jquery-rails'
 gem 'slim-rails'
 gem 'devise'
 gem 'dynamic_form'
-gem 'simple_form'
-gem 'any_login'
 gem 'kaminari'
 gem 'any_login'
 gem 'ransack'
@@ -32,6 +30,8 @@ gem 'mini_magick'
 gem 'pretender'
 gem 'whenever', require: false
 gem 'meta-tags'
+gem 'groupdate'
+gem 'chartkick'
 gem 'sidekiq'
 gem 'rmagick'
 # Use Redis adapter to run Action Cable in production
@@ -64,6 +64,11 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger', '>= 0.1.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 end
 
 group :test do

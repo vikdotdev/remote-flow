@@ -17,13 +17,16 @@ Rails.application.routes.draw do
 
   namespace :account do
     get '/', to: 'dashboard#index'
+    get '/analytics', to: 'dashboard#analytics'
     resources :users do
       post :impersonate, on: :member
       post :stop_impersonating, on: :collection
     end
     resources :devices
     resources :device_groups
-    resource  :profile, only: %i[edit update]
+    resource  :profile, only: %i[edit update] do
+      patch :update_password, on: :member
+    end
     resources :organizations, except: %i[new create]
     resource  :my_organization,
               only: %i[show edit update],
