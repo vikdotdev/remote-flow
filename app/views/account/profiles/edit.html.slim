@@ -4,58 +4,26 @@
   { title: 'Edit' }\
 ]
 
-.col-12.d-flex.justify-content-end.align-items-center.px-1.mb-2
-  a.btn.btn-sm.btn-light-primary.mr-50 href='#'
-    | Dummy button
-
-section.users-edit
-  .card
-    .card-content
-      .card-body
-        = simple_form_for(current_user, url: account_profile_path, method: :patch) do |f|
-          .media.mb-2.ml-2.mt-1.d-flex.align-items-center
-            = image_tag current_user.avatar.url,
-              width: 64,
-              height: 64,
-              class: 'users-avatar-shadow rounded-circle'
-            .file-upload-div
-              .file-upload.btn.btn-primary.ml-2
-                span
-                  | Upload Photo
-                = f.file_field :avatar, class: "upload"
-          .row
-            .col-12.col-sm-6
-              = f.input :email,
-                  autofocus: true,
-                  class: "form-control",
-                  autocomplete: "email",
-                  placeholder: "Email",
-                  label: 'Email'
-              = f.input :first_name,
-                  placeholder: "First Name",
-                  class: "form-control",
-                  label: 'First Name'
-              = f.input :last_name,
-                  placeholder: "Last Name",
-                  class: "form-control",
-                  label: 'Last Name'
-            .col-12.col-sm-6
-              = f.input :password,
-                  placeholder: "New Password",
-                  class: "form-control",
-                  autocomplete: "new-password",
-                  label: 'Password'
-              = f.input :password_confirmation,
-                  placeholder: "Password Confirmation",
-                  class: "form-control",
-                  autocomplete: "new-password",
-                  label: 'Password Confirmation'
-              = f.input :current_password,
-                  placeholder: "Current Password",
-                  class: "form-control",
-                  autocomplete: "new-password",
-                  label: 'Current Password',
-                  include_blank: false,
-                  required: true
-          .d-flex.flex-sm-row.flex-column.justify-content-center.mt-1
-            = f.button :submit, "Save changes", class: 'btn btn-primary'
+section#page-account-settings
+  .row
+    .col-12
+      .row
+        .col-md-3.mb-2.mb-md-0.pills-stacked
+          ul.nav.nav-pills.flex-column
+            li.nav-item
+              a#account-pill-general.nav-link.d-flex.align-items-center.active aria-expanded="true" data-toggle="pill" href="#account-vertical-general"
+                i.bx.bx-cog
+                span General
+            li.nav-item
+              a#account-pill-password.nav-link.d-flex.align-items-center aria-expanded="false" data-toggle="pill" href="#account-vertical-password"
+                i.bx.bx-lock
+                span Change Password
+        .col-md-9
+          .card
+            .card-content
+              .card-body
+                .tab-content
+                  #account-vertical-general.tab-pane.active aria-expanded="true" aria-labelledby="account-pill-general" role="tabpanel"
+                    = render 'account/profiles/form'
+                  #account-vertical-password.tab-pane.fade aria-expanded="false" aria-labelledby="account-pill-password" role="tabpanel"
+                    = render 'account/profiles/form_password'

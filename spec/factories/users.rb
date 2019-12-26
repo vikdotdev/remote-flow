@@ -4,6 +4,7 @@ FactoryBot.define do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     password { 'passwd' }
+    password_confirmation { 'passwd' }
     role { User::ADMIN }
     organization
 
@@ -19,10 +20,12 @@ FactoryBot.define do
       role { User::ADMIN }
     end
 
-    trait :admin do
+    trait :manager do
       role { User::MANAGER }
     end
 
     factory :super_admin, traits: [:super_admin]
+    factory :admin, traits: [:admin]
+    factory :manager, traits: [:manager]
   end
 end

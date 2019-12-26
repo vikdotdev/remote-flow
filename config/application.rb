@@ -15,5 +15,7 @@ module RemoteFlow
     config.generators do |g|
       g.template_engine :slim
     end
+
+    config.hosts << 'site.com'
   end
 end

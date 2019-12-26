@@ -1,0 +1,3 @@
+class OrganizationReport < BaseReport
+end
+
