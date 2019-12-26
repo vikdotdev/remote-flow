@@ -29,7 +29,6 @@ gem 'ckeditor'
 gem 'mini_magick'
 gem 'pretender'
 gem 'whenever', require: false
-
 gem 'meta-tags'
 gem 'groupdate'
 gem 'chartkick'
