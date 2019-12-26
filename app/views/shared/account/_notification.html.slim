@@ -9,7 +9,7 @@ li.dropdown.dropdown-notification.nav-item
       .dropdown-header.px-1.py-75.d-flex.justify-content-between
         span.notification-title
           = notifications.unread.count.to_s + " unread " + "notification".pluralize(notifications.unread.count)
-        = link_to account_notificaitons_mark_all_as_read_path
+        = link_to account_notification_mark_all_as_read_path
           span.text-bold-400.cursor-pointer.notification-span Mark all as read
     li.scrollable-container.media-list.ps
       - notifications.each do |notification|
@@ -29,5 +29,5 @@ li.dropdown.dropdown-notification.nav-item
       .ps__rail-y style=("top: 0px; right: 0px;")
         .ps__thumb-y style=("top: 0px; height: 0px;") tabindex="0"
     li.dropdown-menu-footer
-      = link_to "Read all notifications", account_notificaitons_mark_all_as_read_path,\
+      = link_to "Read all notifications", account_notification_mark_all_as_read_path,\
                 class: "dropdown-item p-50 text-primary justify-content-center"

@@ -49,6 +49,6 @@ FactoryBot.create(:user, organization_id:  nil, role: 'super_admin')
       FactoryBot.create(:invite, organization_id: organization.id, sender: user)
     end
 
-    FactoryBot.create_list(:notification, 7, notificable_id: user.id, notificable_type: 'User', user_id: user.id)
+    FactoryBot.create_list(:notification, 7, notificable: user, user_id: user.id)
   end
 end

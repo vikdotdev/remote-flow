@@ -22,7 +22,7 @@ Rails.application.routes.draw do
       post :impersonate, on: :member
       post :stop_impersonating, on: :collection
     end
-    get '/notificaitons/mark_all_as_read', to: 'notification#mark_all_as_read'
+    get '/notification/mark_all_as_read', to: 'notification#mark_all_as_read'
     resources :devices
     resources :device_groups
     resource  :profile, only: %i[edit update] do
