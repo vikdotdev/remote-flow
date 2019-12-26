@@ -35,11 +35,11 @@ RSpec.describe Account::DashboardController, type: :controller do
         get :index
         expect(response).to be_successful
       end
-    end
 
       it 'should not show super_admin analytics page' do
         get :analytics
         expect(response).to redirect_to(account_path)
       end
+    end
   end
 end
