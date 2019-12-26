@@ -14,12 +14,12 @@ Rails.application.routes.draw do
   get '/about_us', to: 'public#about_us'
 
   resources :accept_invites, only: %i[new create]
-  resources :feedbacks, only: %i[new create]
+  resources :feedbacks, only: %i[new create index]
 
   namespace :account do
     get '/', to: 'dashboard#index'
     get '/analytics', to: 'dashboard#analytics'
-    get '/feedbacks', to: 'dashboard#feedbacks'
+
     resources :users do
       post :impersonate, on: :member
       post :stop_impersonating, on: :collection
@@ -36,5 +36,6 @@ Rails.application.routes.draw do
     resources :channels
     resources :contents
     resources :invites, except: %i[edit update]
+    resources :feedbacks, only: %i[index destroy]
   end
 end

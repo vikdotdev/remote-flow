@@ -7,8 +7,4 @@ class Account::DashboardController < Account::AccountController
 
   def analytics
   end
-
-  def feedbacks
-    @feedbacks = Feedback.by_creation_date
-  end
 end

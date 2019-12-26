@@ -9,8 +9,9 @@ h4.card-title Feedbacks
           span.d-sm-inline.d-none
             = feedback.email
       .information.d-sm-flex.d-none.align-items-center
-        small.text-muted.mr-50
+        small.text-muted.mr-5
           = l(feedback.created_at, format: :long)
+        = link_to 'Delete', account_feedback_path(feedback), method: :delete
     div id="collapse#{index}" class="collapse" aria-labelledby="headingCollapse#{index}" role="tabpanel"
       .card-content
         .card-body.py-1
