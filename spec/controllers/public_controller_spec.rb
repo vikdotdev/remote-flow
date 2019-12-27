@@ -4,7 +4,6 @@ RSpec.describe PublicController, type: :controller do
   render_views
 
   describe 'actions test' do
-
     it 'gets public page' do
       get :index
 
