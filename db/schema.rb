@@ -87,6 +87,14 @@ ActiveRecord::Schema.define(version: 2019_12_24_221133) do
     t.index ["token"], name: "index_devices_on_token"
   end
 
+  create_table "feedbacks", force: :cascade do |t|
+    t.string "email"
+    t.string "name"
+    t.text "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "gallery_images", force: :cascade do |t|
     t.bigint "gallery_id"
     t.string "image"
@@ -112,6 +120,7 @@ ActiveRecord::Schema.define(version: 2019_12_24_221133) do
     t.string "logo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "token"
   end
 
   create_table "screenshots", force: :cascade do |t|

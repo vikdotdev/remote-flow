@@ -48,7 +48,12 @@
 //= link boxicons.woff2
 //= link boxicons.ttf
 //= link boxicons.svg
-//
+
+//= link themify.eot
+//= link themify.woff
+//= link themify.ttf
+//= link themify.svg
+
 //= link frest-logo.png
 //= link login.png
 //= link auth-bg.jpg
