@@ -59,8 +59,8 @@ class Account::UsersController < Account::AccountController
     if @user.destroy
       flash[:success] = 'User successfully deleted.'
 
-      User.current_user_organization_admins.each do |admin|
-        admin.notifications.create(body: Notification::USER_DELETED)
+      User.admins.where(organization_id: @user.organization_id).each do |admin|
+        admin.notifications.create(notification_type: Notification::USER_DELETED, notifiable: admin, user_id: admin.id, )
       end
     else
       flash[:danger] = 'Failed to delete user.'

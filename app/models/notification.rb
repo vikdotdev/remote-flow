@@ -14,7 +14,6 @@ class Notification < ApplicationRecord
 
   scope :latest_notifications, -> { order(id: :desc).limit(10) }
   scope :unread, -> { where(read: false ) }
-  scope :read, -> { where(read: true ) }
 
   def set_body
     case self.notification_type
