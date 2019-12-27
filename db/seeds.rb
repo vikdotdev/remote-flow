@@ -48,8 +48,8 @@ super_administrator = FactoryBot.create(:user, organization_id:  nil, role: 'sup
     rand(0..3).times do
       FactoryBot.create(:invite, organization_id: organization.id, sender: user)
     end
-
-    FactoryBot.create(:notification, notificable: users.sample, user: user, notification_type: Notification::ORGANIZATION_CREATED)
+    FactoryBot.create_list(:notification, 7, notificable: user, user: user, notification_type: Notification::NOTIFICATION_TYPES.sample)
   end
-  FactoryBot.create(:notification, notificable: organization, user: super_administrator, notification_type: Notification::ORGANIZATION_CREATED)
+
+  # FactoryBot.create(:notification, notificable: organization, user: super_administrator, notification_type: Notification::ORGANIZATION_CREATED)
 end

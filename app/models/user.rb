@@ -26,7 +26,7 @@ class User < ApplicationRecord
   scope :super_admins, -> { where(role: SUPER_ADMIN) }
   scope :admins, -> { where(role: ADMIN) }
 
-  after_create :send_notification_about_creation
+  # after_create :send_notification_about_creation
 
   def super_admin?
     self.role == SUPER_ADMIN
@@ -77,9 +77,9 @@ class User < ApplicationRecord
     end
   end
 
-  def send_notification_about_deletion
-    User.admins.where(organization_id: self.organization_id).each do |admin|
-      admin.notifications << Notification.new(notification_type: Notification::USER_DELETED, notificable: self, user: admin)
-    end
-  end
+  # def send_notification_about_deletion
+  #   User.admins.where(organization_id: self.organization_id).each do |admin|
+  #     admin.notifications << Notification.new(notification_type: Notification::USER_DELETED, notificable: self, user: admin)
+  #   end
+  # end
 end

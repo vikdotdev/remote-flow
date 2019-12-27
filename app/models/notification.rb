@@ -8,7 +8,7 @@ class Notification < ApplicationRecord
 
   NOTIFICATION_TYPES = [USER_ADDED, USER_DELETED, ORGANIZATION_CREATED]
 
-  belongs_to :notificable, polymorphic: true
+  belongs_to :notificable, polymorphic: true, optional: true
   belongs_to :user
 
   scope :latest_notifications, -> { order(id: :desc).limit(10) }
@@ -19,12 +19,11 @@ class Notification < ApplicationRecord
   def set_body
     case self.notification_type
     when USER_ADDED
-      self.body = "User #{notificable.full_name} has been added to organization"
+      self.body = "User has been added to organization"
     when USER_DELETED
-      self.body = "User: #{notificable.full_name} has been deleted"
+      self.body = "User: has been deleted"
     when ORGANIZATION_CREATED
-      debugger
-      self.body = "Organization: #{Organization.find(notificable.id).name} was created"
+      self.body = "Organization: was created"
     else
       raise 'Unknown type'
     end
