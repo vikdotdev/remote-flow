@@ -12,7 +12,7 @@ class Notification < ApplicationRecord
   belongs_to :notificable, polymorphic: true
   belongs_to :user
 
-  scope :latest_notifications, -> { order(id: :desc).limit(5) }
+  scope :latest_notifications, -> { order(id: :desc).limit(10) }
   scope :unread, -> { where(read: false ) }
   scope :read, -> { where(read: true ) }
 
