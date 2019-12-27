@@ -27,6 +27,8 @@
                       = f.input :password, autocomplete: "new-password", class: 'form-control', placeholder: "Password"
                       = f.input :password_confirmation, class: 'form-control', placeholder: "Password confirmation"
                     = f.button :submit, class: "btn btn-primary glow position-relative w-100 mt-2"
+                    - if session["devise.google_data"].nil?
+                      = link_to 'Create with Google', user_google_oauth2_omniauth_authorize_path, class: 'button btn btn-danger mt-1 glow w-100 position-relative'
                   hr/
                   .text-center
                     small.mr-25 Already have an account?
