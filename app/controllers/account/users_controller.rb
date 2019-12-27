@@ -33,8 +33,8 @@ class Account::UsersController < Account::AccountController
       redirect_to account_user_path(@user)
       flash[:success] = 'User successfully created.'
 
-      User.current_user_organization_admins.each do |admin|
-        admin.notifications.create(body: Notification::USER_ADDED + "#{@user.first_name} #{@user.last_name}")
+      User.admins.where(organization_id: @user.organization_id).each do |admin|
+        admin.notifications.create(notification_type: Notification::USER_ADDED, notifiable: admin, user_id: admin.id, )
       end
     else
       flash[:danger] = 'Failed to create user.'
@@ -60,7 +60,7 @@ class Account::UsersController < Account::AccountController
       flash[:success] = 'User successfully deleted.'
 
       User.current_user_organization_admins.each do |admin|
-        admin.notifications.create(body: Notification::USER_DELETED + "#{@user.first_name} #{@user.last_name}")
+        admin.notifications.create(body: Notification::USER_DELETED)
       end
     else
       flash[:danger] = 'Failed to delete user.'

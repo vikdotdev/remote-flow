@@ -20,7 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         respond_with resource, location: after_sign_up_path_for(resource)
 
         User.super_admins.each do |super_admin|
-          super_admin.notifications.create(body: Notification::ORGANIZATION_CREATE + "#{current_user.organization.name}")
+          super_admin.notifications.create(notification_type: Notification::ORGANIZATION_CREATE, notifiable: super_admin, user_id: super_admin.id)
         end
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"

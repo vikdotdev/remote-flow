@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :notification do
-    body { Faker::Address.community }
+    notification_type { Notification::NOTIFICATION_TYPES.sample}
     user
+    association :notificable, factory: :user
   end
 end

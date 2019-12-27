@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   scope :by_name, -> { order(:first_name) }
   scope :super_admins, -> { where(role: SUPER_ADMIN) }
-  scope :current_user_organization_admins, -> { where(role: ADMIN, organization_id: current_organization.id ) }
+  scope :admins, -> { where(role: ADMIN) }
 
   def super_admin?
     self.role == SUPER_ADMIN
