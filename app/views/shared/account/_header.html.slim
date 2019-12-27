@@ -18,7 +18,8 @@ nav.header-navbar.main-header-navbar.navbar-expand-lg.navbar.navbar-with-menu.fi
 
         ul.nav.navbar-nav.float-right
           = render partial: 'shared/account/notification',\
-                   locals: { notifications: current_user.notifications.latest_notifications }
+                   locals: { notifications: current_user.notifications.latest_notifications,
+                             unread_notifications_count: current_user.notifications.unread.count }
           li.nav-item.nav-search
             a.nav-link.nav-link-search
               i.ficon.bx.bx-search
