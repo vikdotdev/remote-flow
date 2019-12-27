@@ -15,6 +15,6 @@ module RemoteFlow
       g.template_engine :slim
     end
 
-    config.hosts << 'localhost' << 'www.example.com'
+    config.hosts << 'localhost' << 'www.example.com' << 'remote-flow.pp.ua'
   end
 end
