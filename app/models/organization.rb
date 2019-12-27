@@ -8,6 +8,7 @@ class Organization < ApplicationRecord
 
   after_create :send_email_notification
   after_create :send_slack_notification
+  before_create :generate_token
 
   validates :name, presence: true,
                    uniqueness: true
@@ -30,5 +31,12 @@ class Organization < ApplicationRecord
 
   def send_email_notification
     SuperAdminMailer.new_organization_email(self).deliver_now
+  end
+
+  def generate_token
+    self.token = loop do
+      random_token = SecureRandom.urlsafe_base64(nil, false)
+      break random_token unless Organization.exists?(token: random_token)
+    end
   end
 end
