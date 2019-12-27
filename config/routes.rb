@@ -37,4 +37,10 @@ Rails.application.routes.draw do
     resources :invites, except: %i[edit update]
     resources :feedbacks, only: %i[index destroy]
   end
+
+  namespace :api do
+    namespace :v1 do
+      resource :organization, only: %i[show]
+    end
+  end
 end
