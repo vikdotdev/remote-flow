@@ -32,10 +32,6 @@ class Account::UsersController < Account::AccountController
     if @user.save
       redirect_to account_user_path(@user)
       flash[:success] = 'User successfully created.'
-
-      User.admins.where(organization_id: @user.organization_id).each do |admin|
-        admin.notifications.create(notification_type: Notification::USER_ADDED, notifiable: admin, user_id: admin.id, )
-      end
     else
       flash[:danger] = 'Failed to create user.'
       render :new
@@ -58,10 +54,6 @@ class Account::UsersController < Account::AccountController
     @user = resource
     if @user.destroy
       flash[:success] = 'User successfully deleted.'
-
-      User.admins.where(organization_id: @user.organization_id).each do |admin|
-        admin.notifications.create(notification_type: Notification::USER_DELETED, notifiable: admin, user_id: admin.id, )
-      end
     else
       flash[:danger] = 'Failed to delete user.'
     end

@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Notification, type: :model do
-  let!(:notification) { create(:notification) }
-
   describe 'factory specs' do
     it 'has factory' do
-      expect(notification).to be_persisted
+      expect(build(:notification)).to be_valid
     end
   end
 end

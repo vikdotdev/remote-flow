@@ -17,6 +17,8 @@ class Organization < ApplicationRecord
 
   mount_uploader :logo, LogoUploader
 
+  after_create :send_notification_about_creation
+
   private
 
   def send_slack_notification
@@ -37,6 +39,12 @@ class Organization < ApplicationRecord
     self.token = loop do
       random_token = SecureRandom.urlsafe_base64(nil, false)
       break random_token unless Organization.exists?(token: random_token)
+    end
+  end
+
+  def send_notification_about_creation
+    User.super_admins.each do |super_admin|
+      super_admin.notifications << Notification.new(notification_type: Notification::ORGANIZATION_CREATED, notificable: self)
     end
   end
 end

@@ -8,7 +8,7 @@ RSpec.describe Account::NotificationsController, type: :controller do
     it 'marks all notifications as read' do
       sign_in user
       get :mark_all_as_read
-      expect(user.notifications.find(notification.id).read).to eq(true)
+      expect(user.notifications.find(notification.id).read).to be_truthy
     end
   end
 
