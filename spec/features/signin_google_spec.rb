@@ -1,8 +1,9 @@
 require 'rails_helper'
 
-RSpec.feature 'Register new user', type: :feature do
-
-  context 'Sign Up via Google' do
+RSpec.feature 'Sign In user with Google', type: :feature do
+  let!(:organization) { create(:organization) }
+  let!(:user) { create(:user, email: 'jesse@mountainmantechnologies.com', organization: organization) }
+  context 'Sign In via Google' do
     background do
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
@@ -19,16 +20,12 @@ RSpec.feature 'Register new user', type: :feature do
       })
     end
 
-    scenario 'with partial user details heads to a pre-populated registration form' do
+    scenario 'login user with google account' do
       visit root_path
-      click_link 'Sign Up'
-      click_link 'Create with Google'
-      expect(page).to have_selector("input[value='Jesse']")
-      expect(page).to have_selector("input[value='Spevack']")
-      fill_in 'Organization Name', with: 'Example Organization'
-      click_button('Create User')
+      click_link 'Sign In'
+      click_link 'Login with Google'
 
-      expect(page).to have_content(:all, "Welcome! You have signed up successfully.")
+      expect(page).to have_content(:all, "Successfully authenticated from Google account.")
       expect(page).to have_current_path(root_path)
     end
   end

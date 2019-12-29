@@ -262,9 +262,8 @@ Devise.setup do |config|
 
   config.sign_out_via = :delete
 
-  config.omniauth :google_oauth2,
-    '677154065603-cqsjsrdlunh4ihqfv7llfddq5qeuo3sc.apps.googleusercontent.com',
-    'PGYszeRugd4WPYerzh3IRnVO'
+  config.omniauth :google_oauth2, Rails.application.secrets.GOOGLE_CLIENT_ID,
+    Rails.application.secrets.GOOGLE_SECRET_KEY
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
