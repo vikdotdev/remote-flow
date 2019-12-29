@@ -34,6 +34,9 @@ gem 'groupdate'
 gem 'chartkick'
 gem 'sidekiq'
 gem 'rmagick'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'activerecord-session_store'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -81,6 +84,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'simplecov', require: false
+  gem 'launchy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

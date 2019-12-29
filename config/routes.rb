@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   root 'public#index'
@@ -43,4 +44,5 @@ Rails.application.routes.draw do
       resource :organization, only: %i[show]
     end
   end
+
 end

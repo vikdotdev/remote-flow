@@ -18,14 +18,17 @@
                       .form-group.mb-2
                         = f.fields_for :organization, resource.organization do |org|
                           = org.input :name, class: "form-control", label: 'Organization Name', placeholder: "Organization Name"
-                      .form-group.mb-2
-                        = f.input :email, class: "form-control", placeholder: "Email"
-
-                    = f.input :first_name, class: "form-control", placeholder: "First Name"
-                    = f.input :last_name, class: "form-control", id: "exampleInputEmail1", placeholder: "Last Name"
-                    = f.input :password, autocomplete: "new-password", class: 'form-control', placeholder: "Password"
-                    = f.input :password_confirmation, class: 'form-control', placeholder: "Password confirmation"
+                      - if session["devise.google_data"].nil?
+                        .form-group.mb-2
+                          = f.input :email, class: "form-control", placeholder: "Email"
+                      = f.input :first_name, class: "form-control", placeholder: "First Name"
+                      = f.input :last_name, class: "form-control", id: "exampleInputEmail1", placeholder: "Last Name"
+                    - if session["devise.google_data"].nil?
+                      = f.input :password, autocomplete: "new-password", class: 'form-control', placeholder: "Password"
+                      = f.input :password_confirmation, class: 'form-control', placeholder: "Password confirmation"
                     = f.button :submit, class: "btn btn-primary glow position-relative w-100 mt-2"
+                    - if session["devise.google_data"].nil?
+                      = link_to 'Create with Google', user_google_oauth2_omniauth_authorize_path, class: 'button btn btn-danger mt-1 glow w-100 position-relative'
                   hr/
                   .text-center
                     small.mr-25 Already have an account?
@@ -34,4 +37,3 @@
 
           .col-md-6.d-md-block.d-none.text-center.align-self-center.p-3
             = image_tag 'register.png', alt: 'branding logo', class: 'img-fluid'
-
