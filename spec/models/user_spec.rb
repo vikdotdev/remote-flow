@@ -51,17 +51,16 @@ RSpec.describe User, type: :model do
 
     context 'with new user' do
       let(:auth_data) { OmniAuth::AuthHash.new(
-          info: {
-            email: 'jessepinkman@gmail.com',
-            first_name: 'Jesse',
-            last_name: 'Spevack'
-          },
-          credentials: {
-            token: 'abcdefg12345',
-            refresh_token: '12345abcdefg',
-          }
-        )
-      }
+        info: {
+          email: 'jessepinkman@gmail.com',
+          first_name: 'Jesse',
+          last_name: 'Spevack'
+        },
+        credentials: {
+          token: 'abcdefg12345',
+          refresh_token: '12345abcdefg',
+        }
+      )}
 
       subject { User.from_omniauth(auth_data) }
 
