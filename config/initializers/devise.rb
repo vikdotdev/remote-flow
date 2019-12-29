@@ -261,10 +261,10 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   config.sign_out_via = :delete
-  client_id = Rails.application.secrets[:GOOGLE_CLIENT_ID]
-  client_secret = Rails.application.secrets[:GOOGLE_SECRET_KEY]
 
-  config.omniauth :google_oauth2, client_id, client_secret
+  config.omniauth :google_oauth2,
+    '677154065603-cqsjsrdlunh4ihqfv7llfddq5qeuo3sc.apps.googleusercontent.com',
+    'PGYszeRugd4WPYerzh3IRnVO'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

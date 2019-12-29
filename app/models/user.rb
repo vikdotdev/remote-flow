@@ -4,6 +4,8 @@ class User < ApplicationRecord
   MANAGER = 'manager'.freeze
 
   attr_accessor :skip_organization_validation
+  attr_accessor :skip_password_validation
+
 
   devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable, :omniauthable,
@@ -64,13 +66,11 @@ class User < ApplicationRecord
     unless user
       password = Devise.friendly_token[0,20]
       user = User.create(first_name: data[:first_name],
-      last_name: data[:last_name],
-      email: data[:email],
-      role: ADMIN,
-      password: password,
-      password_confirmation: password,
-      google_token: access_token[:credentials][:token],
-      google_refresh_token: access_token[:credentials][:refresh_token]
+        last_name: data[:last_name],
+        email: data[:email],
+        role: ADMIN,
+        google_token: access_token[:credentials][:token],
+        google_refresh_token: access_token[:credentials][:refresh_token]
       )
     end
     user
@@ -78,12 +78,12 @@ class User < ApplicationRecord
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.google_data"] && session["devise.google_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
-        user.first_name = data['given_name'] if user.first_name.blank?
-        user.last_name = data['family_name'] if user.last_name.blank?
-        user.password = user.password_confirmation = Devise.friendly_token[0,20]
+      if data = session["devise.google_data"]
+        user.email = data["info"]["email"] if user.email.blank?
+        user.first_name = data["info"]['first_name'] if user.first_name.blank?
+        user.last_name = data["info"]['last_name'] if user.last_name.blank?
       end
+
     end
   end
 
@@ -95,5 +95,10 @@ class User < ApplicationRecord
     return if super_admin? || skip_organization_validation
 
     errors.add(:organization_id, 'must be present')
+  end
+
+  def password_required?
+    return false if skip_password_validation
+    super
   end
 end
