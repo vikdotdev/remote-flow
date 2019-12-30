@@ -14,7 +14,7 @@ class Account::InvitesController < Account::AccountController
     @invite.sender = current_user
     @invite.organization = current_organization
 
-    if @invite.save
+    if !collection.exists?(email: @invite.email) && @invite.save
       @invite.send_invite_email
       flash[:success] = 'Invite sent to a user.'
       redirect_to account_invites_path
