@@ -12,7 +12,7 @@ RSpec.describe AdminMailer, type: :mailer do
     end
 
     it 'with admins emails' do
-       expect(mail.to).to match_array(organization.users.admins.pluck(:email))
+      expect(mail.to).to match_array(organization.users.admins.pluck(:email))
     end
 
     it 'with correct subject' do
