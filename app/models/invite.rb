@@ -5,7 +5,8 @@ class Invite < ApplicationRecord
   scope :by_creation_date, -> { order(:created_at) }
 
   validates :role, inclusion: { in: [User::SUPER_ADMIN, User::ADMIN, User::MANAGER] }
-  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true,
+    uniqueness: { scope: :organization }
 
   before_create :generate_invitation_token
 
