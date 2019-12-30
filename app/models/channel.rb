@@ -14,7 +14,6 @@ class Channel < ApplicationRecord
   private
 
   def send_email_notification
-    organization = self.organization
-    AdminMailer.delete_channel_email(self, organization).deliver_now
+    AdminMailer.delete_channel_email(self).deliver_now
   end
 end

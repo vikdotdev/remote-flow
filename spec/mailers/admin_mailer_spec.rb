@@ -5,7 +5,7 @@ RSpec.describe AdminMailer, type: :mailer do
     let!(:admin) { create(:user, :admin, organization: organization) }
     let!(:organization) { create(:organization) }
     let!(:channel) { create(:channel, organization: organization) }
-    let!(:mail) { AdminMailer.delete_channel_email(channel, organization) }
+    let!(:mail) { AdminMailer.delete_channel_email(channel) }
 
     it 'deliver success' do
       expect { channel.destroy }.to change { ActionMailer::Base.deliveries.count }.by(1)

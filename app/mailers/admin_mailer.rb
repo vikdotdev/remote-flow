@@ -1,9 +1,9 @@
 class AdminMailer < ApplicationMailer
   default from: 'remote-flow@mail.com'
 
-  def delete_channel_email(channel, organization)
+  def delete_channel_email(channel)
     @channel = channel
-    mail(to: admins_email(organization), subject: 'Channel was deleted')
+    mail(to: admins_email(channel.organization), subject: 'Channel was deleted')
   end
 
   private
