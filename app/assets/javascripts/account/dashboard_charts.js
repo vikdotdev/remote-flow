@@ -86,7 +86,12 @@
       }
     },
     tooltip: {
-      x: { show: false }
+      x: { show: false },
+      y: {
+        formatter: function(val) {
+          return val;
+        }
+      }
     }
   };
 
