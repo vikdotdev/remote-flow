@@ -26,6 +26,7 @@ class User < ApplicationRecord
 
   scope :by_name, -> { order(:first_name) }
   scope :super_admins, -> { where(role: SUPER_ADMIN) }
+  scope :admins, -> { where(role: ADMIN) }
 
   def super_admin?
     self.role == SUPER_ADMIN
