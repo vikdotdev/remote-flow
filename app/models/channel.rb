@@ -3,7 +3,7 @@ class Channel < ApplicationRecord
   has_and_belongs_to_many :device_groups
   has_and_belongs_to_many :contents
 
-  after_destroy :send_email_notification
+  after_destroy :notify_deleted
 
   validates :name, presence: true,
                    length: { minimum: 2,
@@ -13,7 +13,7 @@ class Channel < ApplicationRecord
 
   private
 
-  def send_email_notification
-    AdminMailer.delete_channel_email(self).deliver_now
+  def notify_deleted
+    AdminMailer.delete_channel(self).deliver_now
   end
 end
