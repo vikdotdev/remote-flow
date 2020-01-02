@@ -3,7 +3,7 @@ class Account::MyOrganizationController < Account::AccountController
 
   def show
     @organization = resource
-    @users = @organization.users.by_name.page(params[:page]).per(50)
+    @users = @organization.users.by_name.page(params[:page]).per(30)
 
     set_meta_tags title: @organization.name
   end
