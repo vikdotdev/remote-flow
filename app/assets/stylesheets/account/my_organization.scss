@@ -1,0 +1,7 @@
+.organization-user-cards {
+  display: grid;
+  grid-gap: 12px;
+  text-align: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, 105px);
+}
