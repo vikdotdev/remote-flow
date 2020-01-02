@@ -1,0 +1,9 @@
+- if !content.screenshots.low_only.empty?
+  section
+    .card
+      .card-content
+        .card-body
+          .p-50.p-1
+            - content.screenshots.low_only.each do |screenshot|
+              = image_tag screenshot.file.url, class: ' img-fluid m-1'
+
