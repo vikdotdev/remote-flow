@@ -1,5 +1,5 @@
 class Account::FeedbacksController < Account::AccountController
-  before_action :require_super_admin_only!, only: [:index, :destroy]
+  before_action :require_super_admin_only!, only: [:index, :destroy, :restore]
 
   def index
     @feedbacks = Feedback.with_deleted.by_creation_date

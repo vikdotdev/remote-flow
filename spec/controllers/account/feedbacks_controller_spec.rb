@@ -33,7 +33,6 @@ RSpec.describe Account::FeedbacksController, type: :controller do
           }
         end.to change(Feedback.with_deleted, :count).by(-1)
       end
-
     end
 
     describe 'PATCH #restore' do
@@ -59,13 +58,31 @@ RSpec.describe Account::FeedbacksController, type: :controller do
     end
 
     describe 'DELETE #destroy' do
-      it 'renders index template' do
+      it 'doesnt soft delete feedback' do
         expect do
           delete :destroy, params: {
             id: feedback.id
           }
         end.to change(Feedback, :count).by(0)
+        expect(response).to redirect_to(account_path)
+      end
 
+      it 'doesnt really delete feedback' do
+        expect do
+          delete :destroy, params: {
+            id: feedback_deleted.id
+          }
+        end.to change(Feedback.with_deleted, :count).by(0)
+        expect(response).to redirect_to(account_path)
+      end
+    end
+
+    describe 'PATCH #restore' do
+      it 'doesnt restores feedback' do
+        expect do
+          patch :restore, params: { id: feedback_deleted.id }
+          feedback_deleted.reload
+        end.not_to change(feedback_deleted, :deleted_at)
         expect(response).to redirect_to(account_path)
       end
     end
