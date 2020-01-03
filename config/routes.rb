@@ -36,7 +36,11 @@ Rails.application.routes.draw do
     resources :channels
     resources :contents
     resources :invites, except: %i[edit update]
-    resources :feedbacks, only: %i[index destroy]
+    resources :feedbacks, only: %i[index destroy] do
+      member do
+        patch :restore
+      end
+    end
   end
 
   namespace :api do

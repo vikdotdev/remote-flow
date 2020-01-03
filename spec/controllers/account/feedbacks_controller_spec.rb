@@ -26,6 +26,18 @@ RSpec.describe Account::FeedbacksController, type: :controller do
         end.to change(Feedback, :count).by(-1)
       end
     end
+
+    describe 'PATCH #restore'
+      let!(:feedback_deleted) { create(:feedback, deleted_at: '2020-12-12 12:12:22')}
+      it 'restores feedback' do
+        byebug
+        expect do
+          patch :restore, params: {
+            id: feedback_deleted.id
+          }
+          byebug
+        end.to change(feedback_deleted, :deleted_at).to(nil)
+      end
   end
 
   context 'when logged in as user' do
