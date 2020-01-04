@@ -1,7 +1,7 @@
 class SuperAdminMailer < ApplicationMailer
   default from: 'remote-flow@mail.com'
 
-  def new_organization_email(organization)
+  def new_organization(organization)
     @organization = organization
     mail(to: super_admin_emails, subject: 'New organization created') unless super_admin_emails.empty?
   end

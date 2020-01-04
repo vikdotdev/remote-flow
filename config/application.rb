@@ -14,7 +14,7 @@ module RemoteFlow
     config.generators do |g|
       g.template_engine :slim
     end
-
+    config.active_job.queue_adapter = :sidekiq
     config.hosts << 'localhost' << 'www.example.com' << 'remote-flow.pp.ua'
   end
 end

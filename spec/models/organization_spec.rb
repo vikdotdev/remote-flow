@@ -16,4 +16,12 @@ RSpec.describe Organization, type: :model do
     expect(notifier).to receive(:ping)
     Organization.create(name: 'hey')
   end
+
+  describe 'callback spec' do
+    it "triggers #send_email_notification on create" do
+      organization = build(:organization)
+      expect(organization).to receive(:send_email_notification)
+      organization.save
+    end
+  end
 end

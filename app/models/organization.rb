@@ -30,7 +30,7 @@ class Organization < ApplicationRecord
   end
 
   def send_email_notification
-    SuperAdminMailer.new_organization_email(self).deliver_now
+    SuperAdminMailer.new_organization(self).deliver_later
   end
 
   def generate_token
