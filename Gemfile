@@ -60,6 +60,7 @@ group :development, :test do
   gem 'parallel_tests'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'capybara-screenshot'
 end
 
 group :development do
@@ -72,8 +73,6 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-passenger', '>= 0.1.1'
-  gem 'capistrano-rails'
-  gem 'capistrano-rvm'
 end
 
 group :test do
