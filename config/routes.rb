@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get '/pricing', to: 'public#pricing'
   get '/about_us', to: 'public#about_us'
 
+  get '/404', to: "errors#not_found"
+  get '/500', to: "errors#internal_error"
+
   resources :accept_invites, only: %i[new create]
   resources :feedbacks, only: %i[new create]
 
