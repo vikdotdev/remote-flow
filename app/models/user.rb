@@ -16,6 +16,7 @@ class User < ApplicationRecord
   belongs_to :organization, optional: true
   has_many :sent_invites, class_name: 'Invite', foreign_key: 'sender_id'
   has_many :notifications, as: :notificable, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   accepts_nested_attributes_for :organization
 
   validates :first_name, length: { maximum: 250 }, presence: true
@@ -29,7 +30,8 @@ class User < ApplicationRecord
   scope :super_admins, -> { where(role: SUPER_ADMIN) }
   scope :admins, -> { where(role: ADMIN) }
 
-  after_create :send_notification_about_creation
+  after_create :notify_created!
+  before_destroy :notify_deleted!
 
   def super_admin?
     self.role == SUPER_ADMIN
@@ -101,15 +103,15 @@ class User < ApplicationRecord
     errors.add(:organization_id, 'must be present')
   end
 
-  def send_notification_about_creation
+  def notify_created!
     User.admins.where(organization_id: self.organization_id).each do |admin|
-      admin.notifications << Notification.new(notification_type: Notification::USER_ADDED, notificable: self, user: admin)
+      admin.notifications.new(notification_type: Notification::USER_ADDED, notificable: self)
     end
   end
 
-  def send_notification_about_deletion
+  def notify_deleted!
     User.admins.where(organization_id: self.organization_id).each do |admin|
-      admin.notifications << Notification.new(notification_type: Notification::USER_DELETED, notificable: self, user: admin)
+      admin.notifications.new(notification_type: Notification::USER_DELETED, notificable: self)
     end
   end
 

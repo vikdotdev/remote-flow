@@ -17,8 +17,8 @@ class Organization < ApplicationRecord
 
   mount_uploader :logo, LogoUploader
 
-  after_create :send_notification_about_creation
-
+  after_create :notify_created!
+  before_destroy :notify_deleted!
   private
 
   def send_slack_notification
@@ -42,9 +42,15 @@ class Organization < ApplicationRecord
     end
   end
 
-  def send_notification_about_creation
+  def notify_created!
     User.super_admins.each do |super_admin|
-      super_admin.notifications << Notification.new(notification_type: Notification::ORGANIZATION_CREATED, notificable: self)
+      super_admin.notifications.new(notification_type: Notification::ORGANIZATION_CREATED, notificable: self)
+    end
+  end
+
+  def notify_deleted!
+    User.super_admins.each do |super_admin|
+      super_admin.notifications.new(notification_type: Notification::ORGANIZATION_DELETED, notificable: self)
     end
   end
 end

@@ -6,7 +6,7 @@ super_administrator = FactoryBot.create(:user, organization_id:  nil, role: 'sup
 3.times do
   organization = FactoryBot.create(:organization)
 
-  users = FactoryBot.create_list(:user, 10, :with_avatar, organization_id: organization.id)
+  users = FactoryBot.create_list(:user, 10, :with_avatar, :admin, organization_id: organization.id)
   devices = FactoryBot.create_list(:device, 20, organization_id: organization.id)
   device_groups = FactoryBot.create_list(:device_group, 10, organization_id: organization.id)
   channels = FactoryBot.create_list(:channel, 10, organization_id: organization.id)
@@ -49,8 +49,11 @@ super_administrator = FactoryBot.create(:user, organization_id:  nil, role: 'sup
     rand(0..3).times do
       FactoryBot.create(:invite, organization_id: organization.id, sender: user)
     end
-    FactoryBot.create_list(:notification, 7, :user_added, notificable: user, user: user)
+
+    User.admins.where(organization_id: organization.id).each do |admin|
+      FactoryBot.create(:notification, :user_added, notificable: user, user: admin)
+    end
   end
 
-  # FactoryBot.create(:notification, notificable: organization, user: super_administrator, notification_type: Notification::ORGANIZATION_CREATED)
+  super_administrator.notifications.new(notification_type: Notification::ORGANIZATION_CREATED, notificable: organization)
 end
