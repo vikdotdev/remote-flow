@@ -4,4 +4,16 @@ FactoryBot.define do
     user
     association :notificable, factory: :user
   end
+
+  trait :user_added do
+    notification_type { Notification::USER_ADDED }
+  end
+
+  trait :user_deleted do
+    notification_type { Notification::USER_DELETED }
+  end
+
+  trait :organization_created do
+    notification_type { Notification::ORGANIZATION_CREATED }
+  end
 end

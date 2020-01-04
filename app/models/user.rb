@@ -28,11 +28,8 @@ class User < ApplicationRecord
   scope :by_name, -> { order(:first_name) }
   scope :super_admins, -> { where(role: SUPER_ADMIN) }
   scope :admins, -> { where(role: ADMIN) }
-<<<<<<< HEAD
 
-  # after_create :send_notification_about_creation
-=======
->>>>>>> master
+  after_create :send_notification_about_creation
 
   def super_admin?
     self.role == SUPER_ADMIN
@@ -110,11 +107,12 @@ class User < ApplicationRecord
     end
   end
 
-  # def send_notification_about_deletion
-  #   User.admins.where(organization_id: self.organization_id).each do |admin|
-  #     admin.notifications << Notification.new(notification_type: Notification::USER_DELETED, notificable: self, user: admin)
-  #   end
-  # end
+  def send_notification_about_deletion
+    User.admins.where(organization_id: self.organization_id).each do |admin|
+      admin.notifications << Notification.new(notification_type: Notification::USER_DELETED, notificable: self, user: admin)
+    end
+  end
+
   def password_required?
     !skip_password_validation && super
   end
