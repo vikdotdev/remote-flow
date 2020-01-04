@@ -58,6 +58,7 @@
 //= link login.png
 //= link auth-bg.jpg
 //= link register.png
+//= link 404.png
 //= link 500.png
 //= link forgot-password.png
 //= link reset-password.png
