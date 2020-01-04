@@ -20,13 +20,34 @@ RSpec.describe Invite, type: :model do
       expect(invite).to be_valid
     end
 
-    it 'has no role' do
+    it 'has invalid role' do
       invite.role = ''
       expect(invite).not_to be_valid
     end
 
     it 'has valid role' do
       expect(invite).to be_valid
+    end
+
+    describe 'has unique email per organization' do
+      EMAIL = 'example@email.com'
+      let!(:organization) { create(:organization) }
+      let!(:another_organization) { create(:organization) }
+      let!(:second_invite) { build(:invite, email: EMAIL, organization: organization) }
+      let!(:third_invite) { build(:invite, email: EMAIL, organization: organization) }
+
+      it 'cannot have identical invite emails in one organization' do
+        second_invite.save
+        third_invite.save
+        expect(third_invite).not_to be_persisted
+      end
+
+      it 'can have identical emails in different organizations' do
+        second_invite.organization = another_organization
+        second_invite.save
+        third_invite.save
+        expect(third_invite).to be_persisted
+      end
     end
   end
 end

@@ -39,11 +39,11 @@ class Account::DeviceGroupsController < Account::AccountController
 
   def update
     @device_group = resource
-      if @device_group.update(device_group_params)
-        flash[:success] = 'Device group updated'
-      else
-        flash[:danger] = "Error updating device group."
-      end
+    if @device_group.update(device_group_params)
+      flash[:success] = 'Device group updated'
+    else
+      flash[:danger] = "Error updating device group."
+    end
   end
 
   def destroy

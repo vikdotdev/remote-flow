@@ -39,6 +39,8 @@
         = sidebar_button({ text: 'Analytics', path: account_analytics_path, icon: 'pie-chart',\
                            class: "#{'active' if controller.controller_name == 'dashboard' &&\
                                                  controller.action_name == 'analytics'}" })
+         = sidebar_button({ text: 'Feedback', path: account_feedbacks_path, icon: 'envelope-put',\
+                                    class: "#{'active' if controller.controller_name == 'feedbacks'}" })
       = sidebar_button({ text: 'Reports', path: '#', icon: 'morph-folder' })
     ul.navigation.navigation-main data-icon-style="lines" data-menu="menu-navigation"
       = sidebar_button({\

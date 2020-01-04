@@ -1,0 +1,23 @@
+h4.card-title Feedbacks
+- @feedbacks.each_with_index do |feedback, index|
+  .card.collapse-header role="tablist"
+    div id="headingCollapse#{index}" class="card-header d-flex justify-content-between align-items-center border-bottom" aria-controls="collapse#{index}" aria-expanded="false" data-target="#collapse#{index}" data-toggle="collapse" role="tab"
+      .collapse-title.media
+        .media-body
+          span.text-primary.mr-1
+            = feedback.name
+          span.d-sm-inline.d-none
+            = feedback.email
+      .information.d-sm-flex.d-none.align-items-center
+        small.text-muted.mr-5
+          = l(feedback.created_at, format: :long)
+        - if feedback.deleted_at.nil?
+          = link_to 'Delete', account_feedback_path(feedback), method: :delete, class: 'badge'
+        - else
+          = link_to 'Restore', restore_account_feedback_path(feedback), method: :patch, class: 'badge mr-1 btn-success'
+          = link_to 'Delete really', account_feedback_path(feedback), method: :delete, class: 'badge  btn-danger'
+    div id="collapse#{index}" class="collapse" aria-labelledby="headingCollapse#{index}" role="tabpanel"
+      .card-content
+        .card-body.py-1
+          p.text-bold-500
+            = feedback.message

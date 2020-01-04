@@ -51,5 +51,8 @@ section
                   td
                     = link_to "Edit", edit_account_user_path(user)
                   td
-                    = link_to "Delete", account_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
+                    = link_to "Delete",
+                      account_user_path(user),
+                      class: 'danger',
+                      method: :delete, data: { confirm: 'Are you sure?' }
           = paginate @users
