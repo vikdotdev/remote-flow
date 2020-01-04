@@ -7,7 +7,7 @@ class Account::FeedbacksController < Account::AccountController
 
   def destroy
     @feedback = Feedback.with_deleted.find(params[:id])
-    if @feedback.deleted_at == nil
+    if @feedback.deleted_at.nil?
       @feedback.destroy
       flash[:info] = 'Feedback was put on delete queue'
     else
