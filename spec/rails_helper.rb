@@ -77,3 +77,4 @@ module Slack
     end
   end
 end
+

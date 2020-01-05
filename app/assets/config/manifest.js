@@ -58,17 +58,19 @@
 //= link login.png
 //= link auth-bg.jpg
 //= link register.png
+//= link 404.png
+//= link 500.png
 //= link forgot-password.png
 //= link reset-password.png
 //= link default-avatar.png
 //= link arrow-down.png
 //= link fallback/logo/default.png
 //= link github.png
-//= link taras.jpeg
-//= link viktor.jpeg
-//= link vasya.jpeg
-//= link miha.jpeg
-//= link lubomir.jpeg
+//= link taras.jpg
+//= link vasya.jpg
+//= link miha.jpg
+//= link lubomir.jpg
+//= link viktor.jpg
 //
 //= link avatar-s-4.jpg
 //= link avatar-s-11.jpg

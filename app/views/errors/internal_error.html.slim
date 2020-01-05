@@ -1,0 +1,18 @@
+.app-content.content
+  .content-overlay
+  .content-wrapper
+    .content-header.row
+    .content-body
+      section.row.flexbox-container
+        .col-xl-6.col-md-7.col-9
+          .card.bg-transparent.shadow-none
+            .card-content
+              .card-body.text-center
+                = image_tag '500.png', alt: 'branding logo', class: 'img-fluid'
+                h1.error-title.mt-1 Internal Server Error!
+                p.p-2
+                  | Restart the browser after clearing the cache and deleting the cookies.
+                  br/
+                  | Issues triggered by wrong file
+                  | and directory permissions.
+                = link_to 'BACK TO HOME', root_path, class: "btn btn-primary round glow"

@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get '/pricing', to: 'public#pricing'
   get '/about_us', to: 'public#about_us'
 
+  get '/404', to: "errors#not_found"
+  get '/500', to: "errors#internal_error"
+
   resources :accept_invites, only: %i[new create]
   resources :feedbacks, only: %i[new create]
 
@@ -36,7 +39,11 @@ Rails.application.routes.draw do
     resources :channels
     resources :contents
     resources :invites, except: %i[edit update]
-    resources :feedbacks, only: %i[index destroy]
+    resources :feedbacks, only: %i[index destroy] do
+      member do
+        patch :restore
+      end
+    end
   end
 
   namespace :api do

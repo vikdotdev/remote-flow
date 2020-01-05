@@ -15,3 +15,4 @@ end
 Then 'I should see organization token' do
   expect(page).to have_content(@admin.organization.token)
 end
+

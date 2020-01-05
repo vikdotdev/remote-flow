@@ -4,13 +4,9 @@ class ParsePdfWorker
 
   def perform(id)
     presentation = Presentation.find(id)
-    pdf_text = ''
     pdf_file = PDF::Reader.new(presentation.file.path)
+    pdf_text = pdf_file.pages.collect(&:text).join("\n")
 
-    pdf_file.pages.each do |page|
-      pdf_text += page.text
-    end
-
-    presentation.update(presentation_body_plain: pdf_text.to_s)
+    presentation.update(presentation_body_plain: pdf_text)
   end
 end

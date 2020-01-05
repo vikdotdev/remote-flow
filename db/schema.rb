@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_04_184533) do
+ActiveRecord::Schema.define(version: 2020_01_06_205531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_01_04_184533) do
     t.string "title"
     t.text "body"
     t.string "file"
-    t.string "presentation_body_plain"
+    t.text "presentation_body_plain"
     t.index ["organization_id"], name: "index_contents_on_organization_id"
   end
 
@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(version: 2020_01_04_184533) do
     t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_feedbacks_on_deleted_at"
   end
 
   create_table "gallery_images", force: :cascade do |t|
