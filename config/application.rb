@@ -10,6 +10,7 @@ module RemoteFlow
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
     config.assets.precompile += Ckeditor.assets
     config.assets.precompile += %w( ckeditor/* )
+    config.exceptions_app = self.routes
 
     config.generators do |g|
       g.template_engine :slim
