@@ -10,8 +10,7 @@
     .card-header.pb-0
       h4 Edit
     .card-body
-      - path = account_my_organization_path
       = render 'account/my_organization/form',
           organization: @organization,
-          path: path,
-          back_path: path
+          path: [:account, @organization],
+          back_path: [:account, @organization]
