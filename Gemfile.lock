@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    Ascii85 (1.0.3)
     actioncable (6.0.2.1)
       actionpack (= 6.0.2.1)
       nio4r (~> 2.0)
@@ -64,6 +65,7 @@ GEM
       zeitwerk (~> 2.2)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    afm (0.2.2)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
     any_login (1.4.2)
@@ -162,6 +164,7 @@ GEM
       activesupport (>= 4.2.0)
     groupdate (4.2.0)
       activesupport (>= 5)
+    hashery (2.1.2)
     hashie (3.6.0)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
@@ -246,6 +249,12 @@ GEM
       parallel
     parser (2.6.5.0)
       ast (~> 2.4.0)
+    pdf-reader (2.4.0)
+      Ascii85 (~> 1.0.0)
+      afm (~> 0.2.1)
+      hashery (~> 2.0)
+      ruby-rc4
+      ttfunk
     pg (1.2.0)
     polyamorous (2.3.0)
       activerecord (>= 5.0)
@@ -336,6 +345,7 @@ GEM
       rack (>= 1.1)
       rubocop (>= 0.72.0)
     ruby-progressbar (1.10.1)
+    ruby-rc4 (0.1.5)
     ruby-vips (2.0.16)
       ffi (~> 1.9)
     ruby_dep (1.5.0)
@@ -392,6 +402,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    ttfunk (1.6.0)
     tzinfo (1.2.6)
       thread_safe (~> 0.1)
     unicode-display_width (1.6.0)
@@ -453,6 +464,7 @@ DEPENDENCIES
   omniauth
   omniauth-google-oauth2
   parallel_tests
+  pdf-reader
   pg (>= 0.18, < 2.0)
   pretender
   puma (~> 4.3)
