@@ -19,11 +19,11 @@ section.users-view
           .col-12
             .media.d-flex.align-items-center.mb-2.ml-2.mt-1
               a.mr-2 href="#"
-                = image_tag 'avatar-s-11.jpg',
+                = image_tag @user.avatar.url,
                     class: 'users-avatar-shadow rounded-circle',
                     alt: 'avatar',
-                    width: '64',
-                    height: '64'
+                    width: 64,
+                    height: 64
               .media-body
                 h4.media-heading.mb-0
                   span.users-view-name
