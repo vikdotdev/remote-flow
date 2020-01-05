@@ -10,6 +10,8 @@ section
       .card-header.pb-0
         h4 New Device
       .card-body
-        - path = account_devices_path
-        = render 'account/devices/form', device: @device, path: path, back_path: path
+        = render 'account/devices/form',
+            device: @device,
+            path: [:account, @device],
+            back_path: [:account, @device]
 
