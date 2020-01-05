@@ -1,0 +1,13 @@
+- if content.screenshots.present?
+  section
+    .card
+      .card-content
+        .card-header.pb-0
+          h4 Previews
+        .card-body
+          .p-50.p-1
+            - content.screenshots.each do |screenshot|
+              .p-25.shadow.d-inline-block.m-50
+                = link_to \
+                  image_tag(screenshot.file.thumb.url),
+                  screenshot.file.url, target: :blank
