@@ -11,8 +11,8 @@ RSpec.describe Organization, type: :model do
   end
 
   it 'sends slack notification on organization creation' do
-    notifier = instance_double(Slack::Notifier)
-    allow(Slack::Notifier).to receive(:new).and_return(notifier)
+    notifier = class_double(SlackNotifier).as_stubbed_const(transfer_nested_constants: true)
+    allow(SlackNotifier).to receive(:ping)
     expect(notifier).to receive(:ping)
     Organization.create(name: 'hey')
   end
