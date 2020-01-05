@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Organization, type: :model do
-  let!(:organization) { create(:organization) }
+  let(:organization) { create(:organization, name: 'example') }
 
   describe 'factory specs' do
 
@@ -13,7 +13,7 @@ RSpec.describe Organization, type: :model do
   it 'sends slack notification on organization creation' do
     notifier = class_double(SlackNotifier).as_stubbed_const(transfer_nested_constants: true)
     allow(SlackNotifier).to receive(:ping)
-    expect(notifier).to receive(:ping)
-    Organization.create(name: 'hey')
+    expect(notifier).to receive(:ping).with('Organization example was just created!').once
+    organization
   end
 end
