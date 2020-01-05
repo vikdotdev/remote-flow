@@ -17,5 +17,13 @@ module RemoteFlow
     end
 
     config.hosts << 'localhost' << 'www.example.com' << 'remote-flow.pp.ua'
+
+    config.filter_parameters << :password
+
+    Raven.configure do |config|
+      config.dsn = Rails.application.credentials[:sentry_dsn]
+    end
   end
 end
+
+
