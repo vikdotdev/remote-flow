@@ -66,13 +66,14 @@
     .card-header.pb-0
       h4 Users
     .card-body
-      .my-organization-user-cards
+      .row.p-50
         - @users.each do |user|
-          = link_to [:account, user] do
-            .p-50.shadow.h-100.d-flex.flex-column
-              = image_tag(user.avatar.url, class: 'logo-img', width: 90)
-              .pt-50.d-flex.flex-column.justify-content-center.flex-grow-1.flex-shrink-1
-                = user.full_name
+          .d-inline-block.p-50
+            = link_to [:account, user] do
+              .p-50.shadow.h-100.d-flex.flex-column
+                = image_tag(user.avatar.url, width: 90)
+                .pt-50.d-flex.flex-column.justify-content-center.flex-grow-1.flex-shrink-1.text-center style=('max-width: 90px')
+                  = user.full_name
       .pt-2
         = paginate @users
 
