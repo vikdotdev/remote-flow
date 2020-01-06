@@ -31,9 +31,8 @@ section
                   = sort_link @q, :email, 'Email', default_order: :asc
                 th
                   = sort_link @q, :role, 'Role', default_order: :asc
-                - if @user&.current_sign_in_at
-                  th
-                    = sort_link @q, :last_sign_in_at, 'Last Sign In', default_order: :asc
+                th
+                  = sort_link @q, :last_sign_in_at, 'Last Sign In', default_order: :asc
                 th Edit
                 th Delete
             tbody
@@ -52,5 +51,8 @@ section
                   td
                     = link_to "Edit", edit_account_user_path(user)
                   td
-                    = link_to "Delete", account_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
+                    = link_to "Delete",
+                      account_user_path(user),
+                      class: 'danger',
+                      method: :delete, data: { confirm: 'Are you sure?' }
           = paginate @users

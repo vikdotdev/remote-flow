@@ -1,0 +1,2 @@
+class ChannelReport < BaseReport
+end

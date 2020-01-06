@@ -1,0 +1,15 @@
+.app-content.content
+  .content-overlay
+  .content-wrapper
+    .content-header.row
+    .content-body
+      section.row.flexbox-container
+        .col-xl-6.col-md-7.col-9
+          .card.bg-transparent.shadow-none
+            .card-content
+              .card-body.text-center
+                h1.error-title Page Not Found :(
+                p.pb-3
+                  | we couldn't find the page you are looking for
+                = image_tag '404.png', alt: 'branding logo', class: 'img-fluid'
+                = link_to 'BACK TO HOME', root_path, class: "btn btn-primary round glow mt-3"

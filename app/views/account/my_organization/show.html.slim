@@ -61,3 +61,19 @@
                         .text-muted.line-ellipsis Contents
                         h3.mb-0
                           = current_organization.contents.count
+.card
+  .card-content
+    .card-header.pb-0
+      h4 Users
+    .card-body
+      .row.p-50
+        - @users.each do |user|
+          .d-inline-block.p-50
+            = link_to [:account, user] do
+              .p-50.shadow.h-100.d-flex.flex-column
+                = image_tag(user.avatar.url, width: 90)
+                .pt-50.d-flex.flex-column.justify-content-center.flex-grow-1.flex-shrink-1.text-center style=('max-width: 90px')
+                  = user.full_name
+      .pt-2
+        = paginate @users
+

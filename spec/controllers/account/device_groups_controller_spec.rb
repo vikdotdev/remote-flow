@@ -120,6 +120,7 @@ RSpec.describe Account::DeviceGroupsController, type: :controller do
           }
         end.to change(DeviceGroup, :count).by(1)
       end
+
       it 'cannot creates device group with blank name' do
         expect do
           post :create, xhr: true,
@@ -147,6 +148,7 @@ RSpec.describe Account::DeviceGroupsController, type: :controller do
         expect(assigns(:device_group).name).not_to eq('John')
         expect(assigns(:device_group).name).to eq('Theofurt')
       end
+
       it 'cannot updates device group with blank name' do
         patch :update, xhr: true,
         params: {
@@ -159,6 +161,7 @@ RSpec.describe Account::DeviceGroupsController, type: :controller do
         device_group.reload
         expect(device_group.name).not_to eq('')
       end
+
       it 'cannot change device group organization' do
         patch :update, xhr: true,
         params: {

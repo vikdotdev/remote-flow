@@ -4,9 +4,12 @@ class User < ApplicationRecord
   MANAGER = 'manager'.freeze
 
   attr_accessor :skip_organization_validation
+  attr_accessor :skip_password_validation
+
 
   devise :database_authenticatable, :registerable, :trackable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable,
+        omniauth_providers: [:google_oauth2]
 
   mount_uploader :avatar, AvatarUploader
 
@@ -23,6 +26,7 @@ class User < ApplicationRecord
 
   scope :by_name, -> { order(:first_name) }
   scope :super_admins, -> { where(role: SUPER_ADMIN) }
+  scope :admins, -> { where(role: ADMIN) }
 
   def super_admin?
     self.role == SUPER_ADMIN
@@ -57,6 +61,33 @@ class User < ApplicationRecord
     end
   end
 
+  def self.from_omniauth(access_token)
+    data = access_token[:info]
+    google_user = User.find_or_initialize_by(email: data[:email]).tap do |user|
+      if user.new_record?
+        user.assign_attributes(first_name: data[:first_name],
+          last_name: data[:last_name],
+          email: data[:email],
+          role: ADMIN,
+          google_token: access_token[:credentials][:token],
+          google_refresh_token: access_token[:credentials][:refresh_token]
+        )
+        user.save
+      end
+    end
+    google_user
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if session["devise.google_data"].present?
+        user.email = session.dig('devise.google_data', 'info', 'email') if user.email.blank?
+        user.first_name = session.dig('devise.google_data', 'info', 'first_name') if user.first_name.blank?
+        user.last_name = session.dig('devise.google_data', 'info', 'last_name') if user.last_name.blank?
+      end
+    end
+  end
+
   private
 
   def organization_validation
@@ -65,5 +96,9 @@ class User < ApplicationRecord
     return if super_admin? || skip_organization_validation
 
     errors.add(:organization_id, 'must be present')
+  end
+
+  def password_required?
+    !skip_password_validation && super
   end
 end

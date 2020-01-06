@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   mount Ckeditor::Engine => '/ckeditor'
 
   devise_for :users, controllers: {
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   root 'public#index'
@@ -13,7 +14,11 @@ Rails.application.routes.draw do
   get '/pricing', to: 'public#pricing'
   get '/about_us', to: 'public#about_us'
 
+  get '/404', to: "errors#not_found"
+  get '/500', to: "errors#internal_error"
+
   resources :accept_invites, only: %i[new create]
+  resources :feedbacks, only: %i[new create]
 
   namespace :account do
     get '/', to: 'dashboard#index'
@@ -34,12 +39,18 @@ Rails.application.routes.draw do
     resources :channels
     resources :contents
     resources :invites, except: %i[edit update]
+    resources :feedbacks, only: %i[index destroy] do
+      member do
+        patch :restore
+      end
+    end
   end
 
   namespace :api do
     namespace :v1 do
-      resource :organization, only: %i[show]
+      resource :organizations, only: %i[show]
       resources :channels,only: %i[index]
     end
   end
+
 end

@@ -8,6 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
 
     resource.skip_organization_validation = true
+    resource.skip_password_validation = true if session["devise.google_data"]
     resource.role = User::ADMIN
 
     resource.save
