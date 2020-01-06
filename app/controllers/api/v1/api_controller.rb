@@ -1,4 +1,6 @@
 class Api::V1::ApiController < ApplicationController
+  include Rails::Pagination
+
   rescue_from ActiveRecord::RecordNotFound, with: :handle_error
 
   private

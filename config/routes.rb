@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resource :organization, only: %i[show]
+      resources :channels,only: %i[index]
     end
   end
 end
