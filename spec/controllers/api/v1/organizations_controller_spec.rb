@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::OrganizationsController, type: :controller do
   let!(:organization) { create(:organization) }
-  let!(:admin) { create(:user, :admin) }
 
   describe 'GET #show' do
     it 'return organization by token' do

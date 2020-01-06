@@ -10,6 +10,6 @@ class Api::V1::ApiController < ApplicationController
   end
 
   def current_organization
-    @current_organization ||= Organization.find_by!(token: request.headers['token'])
+    @current_organization ||= Organization.find_by!(token: request.headers['Token'])
   end
 end
