@@ -36,6 +36,7 @@
 //= link apexcharts.css
 //= link horizontal-menu.css
 //= link prism.min.css
+//= link select2.css
 //= link style.css
 //= link vendors.min.css
 //= link toastr.css
