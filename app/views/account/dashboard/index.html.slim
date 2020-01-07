@@ -95,48 +95,21 @@ section#js-dashboard
         .card-content
           .card-body
             ul.widget-timeline.position-relative.padding-right-1 style=('height: 400px;')
-              li.timeline-items.timeline-icon-success.active
-                .timeline-time Mon 8:17pm
-                h6.timeline-title Jonny Richie Commented
-                p.timeline-text
-                  | on
-                  a href="JavaScript:void(0);"  Project name
-                .timeline-content
-                  | Story behind vedio game and lame is very creative
-              li.timeline-items.timeline-icon-primary.active
-                .timeline-time 5 days ago
-                h6.timeline-title Mathew Slick attached file
-                p.timeline-text
-                  | on
-                  a href="JavaScript:void(0);"  Project name
-                .timeline-content
-                  | Data Folder.sketch
-              li.timeline-items.timeline-icon-danger.active
-                .timeline-time 7 hours ago
-                h6.timeline-title Mathew Slick docs
-                p.timeline-text
-                  | on
-                  a href="JavaScript:void(0);"  Project name
-                .timeline-content
-                  | Updated Docs.pdf
-              li.timeline-items.timeline-icon-info.active
-                .timeline-time 5 hour ago
-                h6.timeline-title Ndrew send you a message
-                p.timeline-text
-                  | on
-                  a href="JavaScript:void(0);"  Project name
-                .timeline-content
-                  | Nor again is there anyone who loves or pursues or desires to obtain pain of itself,
-                  | because it is
-                  | pain, but because occasionally circumstances
-              li.timeline-items.timeline-icon-warning
-                .timeline-time 2 min ago
-                h6.timeline-title Mathew Slick liked
-                p.timeline-text
-                  | on
-                  a href="JavaScript:void(0);"  Project name
-                .timeline-content
-                  | The Amairates
+              - @data[:content].each do |content|
+                - content.versions.each do |version|
+                  li.timeline-items.timeline-icon-success.active
+                    .timeline-time
+                      = l(version.created_at, format: :long)
+                    h6.timeline-title
+                      - if !version.whodunnit.nil?
+                        = User.find_by(id: version.whodunnit).full_name
+                      - else
+                        = 'Someone'
+                      = ' ' + version.event + 'd'
+                    p.timeline-text
+                      | on 
+                      a href="JavaScript:void(0);"
+                        = content.title
             button.btn.btn-block.btn-primary View All Notifications
     /! Dashboard Ecommerce ends
 /! END: Content
