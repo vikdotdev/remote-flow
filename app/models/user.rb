@@ -105,13 +105,13 @@ class User < ApplicationRecord
 
   def notify_created!
     User.admins.where(organization_id: self.organization_id).each do |admin|
-      admin.notifications.new(notification_type: Notification::USER_ADDED, notificable: self)
+      admin.notifications.create(notification_type: Notification::USER_ADDED, notificable: self)
     end
   end
 
   def notify_deleted!
     User.admins.where(organization_id: self.organization_id).each do |admin|
-      admin.notifications.new(notification_type: Notification::USER_DELETED, notificable: self)
+      admin.notifications.create(notification_type: Notification::USER_DELETED, notificable: self)
     end
   end
 

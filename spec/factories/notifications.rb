@@ -3,6 +3,7 @@ FactoryBot.define do
     notification_type { Notification::NOTIFICATION_TYPES.sample }
     user
     association :notificable, factory: :user
+    body { self.set_body }
   end
 
   trait :user_added do
@@ -15,5 +16,9 @@ FactoryBot.define do
 
   trait :organization_created do
     notification_type { Notification::ORGANIZATION_CREATED }
+  end
+
+  trait :organization_deleted do
+    notification_type { Notification::ORGANIZATION_DELETED }
   end
 end

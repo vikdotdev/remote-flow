@@ -44,13 +44,13 @@ class Organization < ApplicationRecord
 
   def notify_created!
     User.super_admins.each do |super_admin|
-      super_admin.notifications.new(notification_type: Notification::ORGANIZATION_CREATED, notificable: self)
+      super_admin.notifications.create(notification_type: Notification::ORGANIZATION_CREATED, notificable: self)
     end
   end
 
   def notify_deleted!
     User.super_admins.each do |super_admin|
-      super_admin.notifications.new(notification_type: Notification::ORGANIZATION_DELETED, notificable: self)
+      super_admin.notifications.create(notification_type: Notification::ORGANIZATION_DELETED, notificable: self)
     end
   end
 end
