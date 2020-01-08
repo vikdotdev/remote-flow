@@ -130,6 +130,18 @@ RSpec.describe Account::ChannelsController, type: :controller do
         expect(response).to render_template(:new)
         expect(channel.name).to eq('Danialberg')
       end
+
+      it 'has multiple contents' do
+        expect do
+          post :create, params: {
+            channel: {
+              name: 'Rommel',
+              organization_id: channel.organization.id,
+              contents: [create(:video), create(:page)]
+            }
+          }
+        end.to change(Channel, :count).by(1)
+      end
     end
 
     describe 'PATCH #update' do
@@ -169,7 +181,6 @@ RSpec.describe Account::ChannelsController, type: :controller do
         expect(assigns(:channel).organization_id).not_to eq(another_organization.id)
         expect(response).to redirect_to(account_channel_path(assigns(:channel)))
       end
-
     end
 
     describe 'DELETE #destroy' do
