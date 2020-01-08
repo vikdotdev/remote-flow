@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Notify
+
   SUPER_ADMIN = 'super_admin'.freeze
   ADMIN = 'admin'.freeze
   MANAGER = 'manager'.freeze
@@ -26,12 +28,12 @@ class User < ApplicationRecord
   validates :password, confirmation: true
   validates :password_confirmation, presence: true, if: :password
 
+  after_create :notify_created!
+  before_destroy :notify_deleted!
+
   scope :by_name, -> { order(:first_name) }
   scope :super_admins, -> { where(role: SUPER_ADMIN) }
   scope :admins, -> { where(role: ADMIN) }
-
-  after_create :notify_created!
-  before_destroy :notify_deleted!
 
   def super_admin?
     self.role == SUPER_ADMIN
@@ -101,18 +103,6 @@ class User < ApplicationRecord
     return if super_admin? || skip_organization_validation
 
     errors.add(:organization_id, 'must be present')
-  end
-
-  def notify_created!
-    User.admins.where(organization_id: self.organization_id).each do |admin|
-      admin.notifications.create(notification_type: Notification::USER_ADDED, notificable: self)
-    end
-  end
-
-  def notify_deleted!
-    User.admins.where(organization_id: self.organization_id).each do |admin|
-      admin.notifications.create(notification_type: Notification::USER_DELETED, notificable: self)
-    end
   end
 
   def password_required?
