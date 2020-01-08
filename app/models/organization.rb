@@ -22,13 +22,7 @@ class Organization < ApplicationRecord
   private
 
   def send_slack_notification
-    notifier = Slack::Notifier.new(
-      SLACK_CONFIG[:token],
-      channel: SLACK_CONFIG[:channel],
-      username: SLACK_CONFIG[:username]
-    )
-
-    notifier.ping "Organization #{name} was just created!"
+    SlackNotifier.ping("Organization #{name} was just created!")
   end
 
   def send_email_notification

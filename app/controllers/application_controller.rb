@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   layout :layout_by_resource
   impersonates :user
+  before_action :set_raven_context
 
   private
 
@@ -31,5 +32,10 @@ class ApplicationController < ActionController::Base
 
     flash[:warning] = 'You don\'t have permission to perform such action!'
     redirect_to controller: 'dashboard', action: 'index'
+  end
+
+  def set_raven_context
+    Raven.user_context(id: session[:current_user_id])
+    Raven.extra_context(params: params.to_unsafe_h, url: request.url)
   end
 end

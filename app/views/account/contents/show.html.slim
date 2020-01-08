@@ -34,3 +34,5 @@ section
                   td
                     = @content.type
                 = render "account/contents/#{@content.type.downcase}_columns", content: @content
+
+= render 'account/contents/presentation_thumbnails', content: @content if @content.type == Content::PRESENTATION
