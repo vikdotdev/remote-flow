@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Channel, type: :model do
   let!(:organization) { create(:organization) }
-  let!(:channel) { create(:channel, organization: organization) }
+  let!(:channel) { create(:channel, :with_contents, organization: organization) }
   let!(:admin) { create(:user, :admin, organization: organization) }
 
   describe 'factory spec' do
@@ -22,5 +22,9 @@ RSpec.describe Channel, type: :model do
     it '#notify_deleted should work as expected' do
       expect { channel.destroy }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
+  end
+
+  it 'has contents' do
+    expect(channel.contents.count).to eq(3)
   end
 end
