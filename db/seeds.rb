@@ -1,7 +1,7 @@
 require 'factory_bot_rails'
 require 'faker'
 
-super_administrator = FactoryBot.create(:user, organization_id:  nil, role: 'super_admin')
+super_administrator = FactoryBot.create(:user, organization_id: nil, role: 'super_admin')
 
 3.times do
   organization = FactoryBot.create(:organization)
@@ -49,11 +49,5 @@ super_administrator = FactoryBot.create(:user, organization_id:  nil, role: 'sup
     rand(0..3).times do
       FactoryBot.create(:invite, organization_id: organization.id, sender: user)
     end
-
-    User.admins.where(organization_id: user.organization.id).each do |admin|
-      FactoryBot.create(:notification, :user_added, notificable: user, user: admin)
-    end
   end
-
-  FactoryBot.create(:notification, :organization_added, notificable: organization, user: super_administrator)
 end

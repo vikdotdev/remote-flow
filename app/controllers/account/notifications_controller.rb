@@ -1,8 +1,4 @@
 class Account::NotificationsController < Account::AccountController
-  def index
-    collection
-  end
-
   def mark_all_as_read
     collection.update_all(read: true)
 

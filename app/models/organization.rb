@@ -1,5 +1,5 @@
 class Organization < ApplicationRecord
-  include Notify
+  include NotifiableResource
 
   has_many :users, dependent: :destroy
   has_many :device_groups, dependent: :destroy
@@ -10,8 +10,6 @@ class Organization < ApplicationRecord
 
   after_create :send_email_notification
   after_create :send_slack_notification
-  after_create :notify_created!
-  before_destroy :notify_deleted!
   before_create :generate_token
 
   validates :name, presence: true,

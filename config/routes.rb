@@ -26,8 +26,6 @@ Rails.application.routes.draw do
       post :stop_impersonating, on: :collection
     end
 
-    resources :notifications, only: %i[index]
-    get '/notifications', to: 'notifications#index'
     post '/notifications/mark_all_as_read', to: 'notifications#mark_all_as_read'
     resources :devices
     resources :device_groups

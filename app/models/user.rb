@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  include Notify
+  include NotifiableResource
 
   SUPER_ADMIN = 'super_admin'.freeze
   ADMIN = 'admin'.freeze
@@ -7,7 +7,6 @@ class User < ApplicationRecord
 
   attr_accessor :skip_organization_validation
   attr_accessor :skip_password_validation
-
 
   devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable, :omniauthable,
@@ -27,9 +26,6 @@ class User < ApplicationRecord
   validates :role, inclusion: { in: [SUPER_ADMIN, ADMIN, MANAGER] }
   validates :password, confirmation: true
   validates :password_confirmation, presence: true, if: :password
-
-  after_create :notify_created!
-  before_destroy :notify_deleted!
 
   scope :by_name, -> { order(:first_name) }
   scope :super_admins, -> { where(role: SUPER_ADMIN) }
