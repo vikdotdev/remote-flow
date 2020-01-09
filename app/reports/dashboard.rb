@@ -41,6 +41,7 @@ class Dashboard
       contents = @user.organization.contents
     end
 
+
     contents.each do |content|
       content.versions.each do |version|
         versions_array << version
