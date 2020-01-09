@@ -95,21 +95,20 @@ section#js-dashboard
         .card-content
           .card-body
             ul.widget-timeline.position-relative.padding-right-1 style=('height: 400px;')
-              - @data[:content].sort_by {|x| x.updated_at}.reverse.each do |content|
-                - content.versions.each do |version|
+              - @data[:content].each do |version|
                   - if !version.whodunnit.nil?
                     li.timeline-items.timeline-icon-primary.active
-                      .timeline-time
+                      .timeline-time.mr-1
                         = l(version.created_at, format: :long)
                       h6.timeline-title
                           = User.find_by(id: version.whodunnit).full_name
                           = ' ' + version.event + 'd '
+                          - content = Content.find_by(id: version.item_id)
                           = link_to content.title, account_content_path(content)
                       p.timeline-text
                         = content.type
                       p.timeline-text
                         = time_ago_in_words(version.created_at) + ' ago'
-            button.btn.btn-block.btn-primary View All Notifications
     /! Dashboard Ecommerce ends
 /! END: Content
 .sidenav-overlay

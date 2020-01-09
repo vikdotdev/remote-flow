@@ -25,13 +25,28 @@ class Dashboard
     result[:role_distribution] = user_report.role_distribution
     result[:file_count] = content_report.file_count
     result[:content_type_distribution] = content_report.type_distribution
-
-    if @user.super_admin?
-      result[:content] = Content.all
-    else
-      result[:content] = @user.organization.contents
-    end
+    result[:content] = content_versions
 
     result
+  end
+
+  private
+
+  def content_versions
+    versions_array = []
+
+    if @user.super_admin?
+      contents = Content.all
+    else
+      contents = @user.organization.contents
+    end
+
+    contents.each do |content|
+      content.versions.each do |version|
+        versions_array << version
+      end
+    end
+
+    versions_array.sort_by { |version| version.created_at }.reverse
   end
 end
