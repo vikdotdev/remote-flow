@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   get '/404', to: "errors#not_found"
   get '/500', to: "errors#internal_error"
 
+  resources :devices,
+    param: :token,
+    only: %i[show],
+    constraints: { token: /[a-z0-9]+/ }
   resources :accept_invites, only: %i[new create]
   resources :feedbacks, only: %i[new create]
 
