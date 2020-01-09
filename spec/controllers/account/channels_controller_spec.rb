@@ -7,6 +7,8 @@ RSpec.describe Account::ChannelsController, type: :controller do
   let!(:another_organization) { create(:organization) }
   let!(:user) { create(:user, organization: organization) }
   let!(:channel) { create(:channel, name: 'Danialberg', organization: organization) }
+  let!(:video) { create(:video, organization: organization) }
+  let!(:gallery) { create(:gallery, organization: organization) }
 
   context 'when not logged in' do
     describe 'GET #index' do
@@ -137,10 +139,11 @@ RSpec.describe Account::ChannelsController, type: :controller do
             channel: {
               name: 'Rommel',
               organization_id: channel.organization.id,
-              contents: [create(:video), create(:page)]
+              content_ids: [video.id, gallery.id]
             }
           }
         end.to change(Channel, :count).by(1)
+        expect(Channel.find_by(name: 'Rommel').contents.count).to eq(2)
       end
     end
 

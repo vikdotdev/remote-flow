@@ -5,6 +5,12 @@ FactoryBot.define do
   end
 
   trait :with_contents do
-    contents { [create(:video), create(:gallery), create(:page)] }
+    contents do
+      [
+        create(:video, organization: self.organization),
+        create(:gallery, organization: self.organization),
+        create(:page, organization: self.organization)
+      ]
+    end
   end
 end
