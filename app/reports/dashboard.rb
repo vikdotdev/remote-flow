@@ -25,8 +25,13 @@ class Dashboard
     result[:role_distribution] = user_report.role_distribution
     result[:file_count] = content_report.file_count
     result[:content_type_distribution] = content_report.type_distribution
-    result[:content] = Content.all
-    
+
+    if @user.super_admin?
+      result[:content] = Content.all
+    else
+      result[:content] = @user.organization.contents
+    end
+
     result
   end
 end

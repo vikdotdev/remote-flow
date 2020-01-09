@@ -95,21 +95,20 @@ section#js-dashboard
         .card-content
           .card-body
             ul.widget-timeline.position-relative.padding-right-1 style=('height: 400px;')
-              - @data[:content].each do |content|
+              - @data[:content].sort_by {|x| x.updated_at}.reverse.each do |content|
                 - content.versions.each do |version|
-                  li.timeline-items.timeline-icon-success.active
-                    .timeline-time
-                      = l(version.created_at, format: :long)
-                    h6.timeline-title
-                      - if !version.whodunnit.nil?
-                        = User.find_by(id: version.whodunnit).full_name
-                      - else
-                        = 'Someone'
-                      = ' ' + version.event + 'd'
-                    p.timeline-text
-                      | on 
-                      a href="JavaScript:void(0);"
-                        = content.title
+                  - if !version.whodunnit.nil?
+                    li.timeline-items.timeline-icon-primary.active
+                      .timeline-time
+                        = l(version.created_at, format: :long)
+                      h6.timeline-title
+                          = User.find_by(id: version.whodunnit).full_name
+                          = ' ' + version.event + 'd '
+                          = link_to content.title, account_content_path(content)
+                      p.timeline-text
+                        = content.type
+                      p.timeline-text
+                        = time_ago_in_words(version.created_at) + ' ago'
             button.btn.btn-block.btn-primary View All Notifications
     /! Dashboard Ecommerce ends
 /! END: Content
