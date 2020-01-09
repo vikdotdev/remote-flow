@@ -18,6 +18,7 @@
 //= link prism.min.js
 //= link vertical-menu-light.js
 //= link bootstrap.js
+//= link owl.carousel.js
 //= link show_file_name_in_file_field.js
 //= link jqBootstrapValidation.js
 //= link ckeditor/config.js
@@ -39,6 +40,7 @@
 //= link style.css
 //= link vendors.min.css
 //= link toastr.css
+//= link owl.carousel.css
 //= link form-validation.css
 //= link ckeditor/ckeditor.css
 //= link ckeditor/application.css
@@ -83,6 +85,7 @@
 //= link logo-remote-flow.png
 //
 //= link flags/4x3/us.svg
+//= link note-icon.svg
 //
 //= link application.css
 //= link application.js

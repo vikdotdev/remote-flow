@@ -1,5 +1,19 @@
 doctype html
 html
-  body
-    h1 Hello Device!
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    meta content="IE=edge" http-equiv="X-UA-Compatible" /
+    meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport" /
+    meta name="viewport" content="width=device-width, initial-scale=1" /
+
+    = stylesheet_link_tag 'bootstrap.css', media: 'all'
+    = stylesheet_link_tag 'bootstrap-extended.css', media: 'all'
+    = stylesheet_link_tag 'owl.carousel.css', media: 'all'
+    /= stylesheet_link_tag 'owl.theme.default.css', media: 'all'
+    = stylesheet_link_tag 'application', media: 'all'
+
+  body.bg-image
+    script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"
+    = javascript_include_tag 'owl.carousel.js'
     = yield
+
