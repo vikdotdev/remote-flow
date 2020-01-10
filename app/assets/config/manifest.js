@@ -88,7 +88,21 @@
 //= link logo-remote-flow.png
 //
 //= link flags/4x3/us.svg
-//= link note-icon.svg
+//= link device_icons/briefcase.svg
+//= link device_icons/calendar.svg
+//= link device_icons/camera.svg
+//= link device_icons/chat.svg
+//= link device_icons/clock.svg
+//= link device_icons/cloud.svg
+//= link device_icons/dart.svg
+//= link device_icons/magnifier_glass.svg
+//= link device_icons/mail.svg
+//= link device_icons/megaphone.svg
+//= link device_icons/note.svg
+//= link device_icons/note2.svg
+//= link device_icons/rocket.svg
+//= link device_icons/trophy.svg
+//= link device_icons/wallet.svg
 //
 //= link application.css
 //= link application.js

@@ -28,10 +28,6 @@
                 td Status:
                 td
                   = status_badge @device.active
-              tr
-                td Device View
-                td
-                  = link_to 'Link', device_url(@device.token), target: :blank
         .col-12.col-md-8
           .table-responsive
             table.table.mb-0
@@ -44,3 +40,12 @@
                   td Organization
                   td
                     = @device.organization.name
+                tr
+                  td Device View
+                  td
+                    fieldset
+                      .input-group
+                        input#deviceToken.form-control type="text"  readonly=true value="#{device_url(@device.token)}"
+                        .input-group-append
+                          button#copyBtn.btn.btn-light-primary type="button"
+                            i.bx.bx-clipboard
