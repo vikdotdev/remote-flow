@@ -45,7 +45,7 @@ RSpec.describe Api::V1::ChannelsController, type: :controller do
       end
 
       context 'when organization field is empty' do
-        it 'return status code 200' do
+        it 'return new channel' do
           post :create, params: {
             channel: {
               name: 'Dunder Mifflin',
@@ -53,7 +53,10 @@ RSpec.describe Api::V1::ChannelsController, type: :controller do
             }
           }
 
+          json_response = JSON.parse(response.body)
+
           expect(response).to have_http_status(200)
+          expect(json_response['organization_id']).to eq(organization.id)
         end
       end
     end
@@ -72,7 +75,7 @@ RSpec.describe Api::V1::ChannelsController, type: :controller do
       end
 
       context 'when organization field is empty' do
-        it 'return status code 200' do
+        it 'return edit channel' do
           patch :update, params:{
             channel:{
               name: "Sabre",
@@ -82,6 +85,7 @@ RSpec.describe Api::V1::ChannelsController, type: :controller do
           }
 
           expect(response).to have_http_status(200)
+          expect(channel.reload.organization_id).to eq(organization.id)
         end
       end
     end
