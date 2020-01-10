@@ -33,20 +33,9 @@ class Dashboard
   private
 
   def content_versions
-    versions_array = []
+    versions_array = PaperTrail::Version.where("object LIKE ? ",
+      "%organization_id: " + @user.organization_id.to_s + '%').order(created_at: :desc).first(10)
 
-    if @user.super_admin?
-      contents = Content.all
-    else
-      contents = @user.organization.contents
-    end
-
-    contents.each do |content|
-      content.versions.each do |version|
-        versions_array << version
-      end
-    end
-
-    versions_array.sort_by { |version| version.created_at }.reverse
+    versions_array
   end
 end

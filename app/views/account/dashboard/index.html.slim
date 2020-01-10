@@ -96,18 +96,18 @@ section#js-dashboard
           .card-body
             ul.widget-timeline.position-relative.padding-right-1 style=('height: 400px;')
               - @data[:content_versions].each do |version|
-                  - if !version.whodunnit.nil?
-                    li.timeline-items.timeline-icon-primary.active
-                      .timeline-time.mr-1
-                        = l(version.created_at, format: :long)
-                      h6.timeline-title
-                          = User.find_by(id: version.whodunnit).full_name
-                          = ' ' + version.event + 'd '
-                          - content = Content.find_by(id: version.item_id)
-                          = link_to content.title, account_content_path(content)
-                      p.timeline-text
-                        = content.type
-                      p.timeline-text
-                        = time_ago_in_words(version.created_at) + ' ago'
+                - next if version.whodunnit.nil?
+                li.timeline-items.timeline-icon-primary.active
+                  .timeline-time.mr-1
+                    = l(version.created_at, format: :long)
+                  h6.timeline-title
+                      = User.find_by(id: version.whodunnit).full_name
+                      = ' ' + version.event + 'd '
+                      - content = Content.find_by(id: version.item_id)
+                      = link_to content.title, account_content_path(content)
+                  p.timeline-text
+                    = content.type
+                  p.timeline-text
+                    = time_ago_in_words(version.created_at) + ' ago'
 .sidenav-overlay
 .drag-target
