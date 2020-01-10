@@ -39,6 +39,7 @@ gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
 gem 'paranoia'
 gem "sentry-raven"
+gem 'paper_trail'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
