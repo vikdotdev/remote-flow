@@ -25,17 +25,14 @@ class Dashboard
     result[:role_distribution] = user_report.role_distribution
     result[:file_count] = content_report.file_count
     result[:content_type_distribution] = content_report.type_distribution
-    result[:content_versions] = content_versions
+    
+    if @user.super_admin?
+      result[:content_versions] = PaperTrail::Version.order(created_at: :desc).first(10)
+    else
+      result[:content_versions] = PaperTrail::Version.where("whodunnit IN (?)", @user.organization.users.ids.map(&:to_s))
+        .order(created_at: :desc).first(10)
+    end
 
     result
-  end
-
-  private
-
-  def content_versions
-    versions_array = PaperTrail::Version.where("object LIKE ? ",
-      "%organization_id: " + @user.organization_id.to_s + '%').order(created_at: :desc).first(10)
-
-    versions_array
   end
 end
