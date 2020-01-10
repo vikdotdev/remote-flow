@@ -20,6 +20,7 @@
 //= link bootstrap.js
 //= link owl.carousel.js
 //= link device_carousel.js
+//= link device_time.js
 //= link show_file_name_in_file_field.js
 //= link jqBootstrapValidation.js
 //= link ckeditor/config.js

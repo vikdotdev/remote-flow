@@ -1,7 +1,8 @@
 .d-flex.flex-column.justify-content-between.vh-100
   header.navbar.p-25.ui-background
     .m-auto.text-white
-      = '9:42'
+      #display-date
+
 
   main.d-flex.d-justify-content-center.fix-bottom.py-1.owl-carousel.ui-background
     - @device.organization.channels.each do |channel|
