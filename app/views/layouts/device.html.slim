@@ -12,10 +12,10 @@ html
     = stylesheet_link_tag 'application', media: 'all'
 
   body.device-bg
+    = yield
     = javascript_include_tag 'jquery.js'
     = javascript_include_tag 'moment.min.js'
     = javascript_include_tag 'owl.carousel.js'
     = javascript_include_tag 'device_carousel.js'
     = javascript_include_tag 'device_time.js'
-    = yield
 
