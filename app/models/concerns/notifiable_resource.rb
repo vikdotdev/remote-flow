@@ -3,7 +3,7 @@ module NotifiableResource
 
   included do
     after_create :notify_created!
-    after_destroy :notify_deleted!
+    before_destroy :notify_deleted!
 
     private
 
@@ -23,7 +23,7 @@ module NotifiableResource
         return if self.role == User::SUPER_ADMIN
         User.admins.where(organization_id: self.organization.id).where.not(id: self.id)
       else
-        User.super_admins.all
+        User.super_admins
       end
 
       notify(people, type)
