@@ -16,12 +16,12 @@ module NotifiableResource
     end
 
     def notify_event!(callback_type)
-      type = Notification::RESOURCE_EVENTS[self.class.name.to_sym][callback_type.to_sym]
+      type = Notification::RESOURCE_EVENTS[self.class.name.to_sym][callback_type]
 
       people = case self.class.name
       when 'User'
         return if self.role == User::SUPER_ADMIN
-        User.admins.where(organization_id: self.organization.id)
+        User.admins.where(organization_id: self.organization.id).where.not(id: self.id)
       else
         User.super_admins.all
       end

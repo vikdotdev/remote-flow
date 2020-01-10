@@ -1,5 +1,4 @@
 class Notification < ApplicationRecord
-
   USER_ADDED = "USER_ADDED".freeze
   USER_DELETED = "USER_DELETED".freeze
   ORGANIZATION_CREATED = "ORGANIZATION_CREATED".freeze
@@ -7,11 +6,10 @@ class Notification < ApplicationRecord
   NOTIFICATION_TYPES = [USER_ADDED, USER_DELETED, ORGANIZATION_CREATED, ORGANIZATION_DELETED]
 
   RESOURCE_EVENTS = {
-      User: { created: USER_ADDED,
-              destroyed: USER_DELETED },
-
-      Organization: { created: ORGANIZATION_CREATED,
-                      destroyed: ORGANIZATION_DELETED }
+    User: { created: USER_ADDED,
+            destroyed: USER_DELETED },
+    Organization: { created: ORGANIZATION_CREATED,
+                    destroyed: ORGANIZATION_DELETED }
     }
 
   belongs_to :notificable, polymorphic: true
