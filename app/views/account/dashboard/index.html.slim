@@ -95,7 +95,7 @@ section#js-dashboard
         .card-content
           .card-body
             ul.widget-timeline.position-relative.padding-right-1 style=('height: 400px;')
-              - @data[:content].each do |version|
+              - @data[:content_versions].each do |version|
                   - if !version.whodunnit.nil?
                     li.timeline-items.timeline-icon-primary.active
                       .timeline-time.mr-1
@@ -109,7 +109,5 @@ section#js-dashboard
                         = content.type
                       p.timeline-text
                         = time_ago_in_words(version.created_at) + ' ago'
-    /! Dashboard Ecommerce ends
-/! END: Content
 .sidenav-overlay
 .drag-target
