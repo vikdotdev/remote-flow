@@ -7,7 +7,7 @@
   main.d-flex.d-justify-content-center.fix-bottom.py-1.owl-carousel.ui-background
     - @device.organization.channels.each do |channel|
       .icon-card.m-50.d-flex.flex-column.justify-content-center.align-items-center
-        = inline_svg_tag('note-icon.svg', size: '80% * 80%',)
+        = inline_svg_tag('note-icon.svg', size: '80% * 80%')
         .pt-25.text-white
           = channel.name.truncate(14)
 

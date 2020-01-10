@@ -28,6 +28,10 @@
                 td Status:
                 td
                   = status_badge @device.active
+              tr
+                td Device View
+                td
+                  = link_to 'Link', device_url(@device.token), target: :blank
         .col-12.col-md-8
           .table-responsive
             table.table.mb-0
