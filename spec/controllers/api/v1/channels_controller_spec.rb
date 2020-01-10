@@ -4,63 +4,142 @@ RSpec.describe Api::V1::ChannelsController, type: :controller do
   let!(:organization) { create(:organization) }
   let!(:channel) { create(:channel, organization: organization) }
 
-  describe 'GET #show' do
-    it 'return channel' do
-      request.headers['token'] = organization.token
-      get :show, params: { id: channel.id }
-      json_response = JSON.parse(response.body)
-      expect(response).to have_http_status(200)
-      expect(json_response['id']).to eq(channel.id)
+  context 'when token is valid' do
+    before do
+      request.headers['Token'] = organization.token
     end
 
-    it 'return error by invalid token' do
-      request.headers['token'] = organization.token + 'Ruby'
-      get :show, params: { id: channel.id }
-      expect(response).to have_http_status(400)
+    describe 'GET #show' do
+      it 'return channel' do
+        get :show, params: { id: channel.id }
+
+        json_response = JSON.parse(response.body)
+
+        expect(response).to have_http_status(200)
+        expect(json_response['id']).to eq(channel.id)
+      end
     end
 
-    it 'return error by non exit channel' do
-      request.headers['token'] = organization.token
-      get :show, params: { id: 44 }
-      expect(response).to have_http_status(400)
-    end
-  end
+    describe 'POST #create' do
+      it 'change Channel.count' do
+        expect do
+          post :create, params: {
+            channel: {
+              name: 'Dunder Mifflin'
+            }
+          }
+        end.to change(Channel, :count).by(1)
+      end
 
-  describe 'POST #create' do
-    it 'return new channel' do
-      request.headers['token'] = organization.token
-      post :create, params: {
-        channel: {
-          name: 'Dunder Mifflin'
+      it 'return new channel' do
+        post :create, params: {
+          channel: {
+            name: 'Dunder Mifflin'
+          }
         }
-      }
-      json_response = JSON.parse(response.body)
-      expect(response).to have_http_status(200)
-      expect(json_response['name']).to eq('Dunder Mifflin')
+
+        json_response = JSON.parse(response.body)
+
+        expect(response).to have_http_status(200)
+        expect(json_response['name']).to eq('Dunder Mifflin')
+      end
+
+      context 'when organization field is empty' do
+        it 'return status code 200' do
+          post :create, params: {
+            channel: {
+              name: 'Dunder Mifflin',
+              organization:''
+            }
+          }
+
+          expect(response).to have_http_status(200)
+        end
+      end
+    end
+
+    describe 'PATCH #update' do
+      it 'return edit channel' do
+        patch :update, params:{
+          channel:{
+            name: "Sabre"
+          },
+          id: channel.id
+        }
+
+        expect(response).to have_http_status(200)
+        expect(channel.reload.name).to eq('Sabre')
+      end
+
+      context 'when organization field is empty' do
+        it 'return status code 200' do
+          patch :update, params:{
+            channel:{
+              name: "Sabre",
+              organization: ''
+            },
+            id: channel.id
+          }
+
+          expect(response).to have_http_status(200)
+        end
+      end
+    end
+
+    describe 'DELETE #destroy' do
+      it 'return status code 200' do
+        expect{ delete :destroy, params:{ id: channel.id } }.to change(Channel, :count).by(-1)
+        expect(response).to have_http_status(200)
+      end
     end
   end
 
-  describe 'PATCH #update' do
-    it 'return edit channel' do
-      request.headers['token'] = organization.token
-      patch :update, params:{
-        channel:{
-          name: "Sabre"
-        },
-        id: channel.id
-      }
-      channel.reload
-      expect(response).to have_http_status(200)
-      expect(channel.name).to eq('Sabre')
+  context 'when token is invalid' do
+    before do
+      request.headers['Token'] = organization.token + 'Ruby'
+    end
+
+    describe 'GET #show' do
+      it 'return status code 400' do
+        get :show, params: { id: channel.id }
+
+        expect(response).to have_http_status(400)
+      end
+    end
+
+    describe 'POST #create' do
+      it 'return status code 400' do
+        post :create, params: {
+          channel: {
+            name: 'Dunder Mifflin'
+          }
+        }
+
+        expect(response).to have_http_status(400)
+      end
+    end
+
+    describe 'PATCH #update' do
+      it 'return status code 400' do
+        patch :update, params:{
+          channel:{
+            name: "Sabre"
+          },
+          id: channel.id
+        }
+
+        expect(response).to have_http_status(400)
+      end
+    end
+
+    describe 'DELETE #destroy' do
+      it 'return status code 400' do
+        expect do
+          delete :destroy, params:{ id: channel.id }
+        end.not_to change(Channel, :count)
+
+        expect(response).to have_http_status(400)
+      end
     end
   end
-
-  describe 'PATCH #update' do
-    it 'return status code 200' do
-      request.headers['token'] = organization.token
-      delete :destroy, params:{ id: channel.id }
-      expect(response).to have_http_status(200)
-    end
-  end
-
 end

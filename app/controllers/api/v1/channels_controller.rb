@@ -6,22 +6,25 @@ class Api::V1::ChannelsController < Api::V1::ApiController
   end
 
   def create
-    @channel = Channel.new(channel_params)
-    @channel.organization = current_organization
+    @channel = collection.new(channel_params)
     if @channel.save
       render json: @channel
+    else
+      render json: { errors: @channel.errors }, status: :unprocessable_entity
     end
   end
 
   def update
     if resource.update(channel_params)
       render json: resource
+    else
+      render json: { errors: resource.errors }, status: :unprocessable_entity
     end
   end
 
   def destroy
     resource.destroy
-    render json: current_organization
+    head 200
   end
 
   private
