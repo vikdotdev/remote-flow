@@ -8,6 +8,7 @@
 //= link LivIconsEvo.tools.js
 //= link apexcharts.js
 
+//= link jquery.js
 //= link moment.min.js
 //= link daterangepicker.js
 //= link vendors.min.js
