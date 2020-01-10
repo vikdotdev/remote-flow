@@ -12,8 +12,9 @@ html
     /= stylesheet_link_tag 'owl.theme.default.css', media: 'all'
     = stylesheet_link_tag 'application', media: 'all'
 
-  body.bg-image
+  body.device-bg
     script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"
     = javascript_include_tag 'owl.carousel.js'
+    = javascript_include_tag 'device_carousel.js'
     = yield
 

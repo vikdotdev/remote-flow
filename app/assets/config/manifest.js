@@ -19,6 +19,7 @@
 //= link vertical-menu-light.js
 //= link bootstrap.js
 //= link owl.carousel.js
+//= link device_carousel.js
 //= link show_file_name_in_file_field.js
 //= link jqBootstrapValidation.js
 //= link ckeditor/config.js

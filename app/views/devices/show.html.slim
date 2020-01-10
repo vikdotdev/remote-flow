@@ -3,34 +3,10 @@
     .m-auto.text-white
       = '9:42'
 
-  main.d-flex.d-justify-content-center.fix-bottom.p-1.owl-carousel.ui-background
+  main.d-flex.d-justify-content-center.fix-bottom.py-1.owl-carousel.ui-background
     - @device.organization.channels.each do |channel|
       .icon-card.m-50.d-flex.flex-column.justify-content-center.align-items-center
         = inline_svg_tag('note-icon.svg', size: '80% * 80%',)
-        .pt-1
-          = channel.name
-
-javascript:
-  $(document).ready(function(){
-    $(".owl-carousel").owlCarousel({
-      loop: true,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        480: {
-          items: 2,
-        },
-        768: {
-          items: 3,
-        },
-        1024: {
-          items: 4,
-        },
-        1200: {
-          items: 5,
-        }
-      }
-    });
-  });
+        .pt-25.text-white
+          = channel.name.truncate(14)
 
