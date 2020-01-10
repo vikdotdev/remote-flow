@@ -1,8 +1,7 @@
 class Api::V1::ChannelsController < Api::V1::ApiController
-  skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
-
   def show
-    render json: resource
+    @channel = resource
+    render json: @channel
   end
 
   def create
@@ -15,15 +14,17 @@ class Api::V1::ChannelsController < Api::V1::ApiController
   end
 
   def update
-    if resource.update(channel_params)
-      render json: resource
+    @channel = resource
+    if @channel.update(channel_params)
+      render json: @channel
     else
-      render json: { errors: resource.errors }, status: :unprocessable_entity
+      render json: { errors: @channel.errors }, status: :unprocessable_entity
     end
   end
 
   def destroy
-    resource.destroy
+    @channel = resource
+    @channel.destroy
     head 200
   end
 

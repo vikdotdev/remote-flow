@@ -21,27 +21,54 @@ RSpec.describe Api::V1::ChannelsController, type: :controller do
     end
 
     describe 'POST #create' do
-      it 'change Channel.count' do
-        expect do
+      context 'when name field is full' do
+        it 'change Channel.count' do
+          expect do
+            post :create, params: {
+              channel: {
+                name: 'Dunder Mifflin'
+              }
+            }
+          end.to change(Channel, :count).by(1)
+        end
+
+        it 'return new channel' do
           post :create, params: {
             channel: {
               name: 'Dunder Mifflin'
             }
           }
-        end.to change(Channel, :count).by(1)
+
+          json_response = JSON.parse(response.body)
+
+          expect(response).to have_http_status(200)
+          expect(json_response['name']).to eq('Dunder Mifflin')
+        end
       end
 
-      it 'return new channel' do
-        post :create, params: {
-          channel: {
-            name: 'Dunder Mifflin'
+      context 'when name field is empty' do
+        it 'not change Channel.count' do
+          expect do
+            post :create, params: {
+              channel: {
+                name: ''
+              }
+            }
+          end.not_to change(Channel, :count)
+        end
+
+        it 'return status code 422' do
+          post :create, params: {
+            channel: {
+              name: ''
+            }
           }
-        }
 
-        json_response = JSON.parse(response.body)
+          json_response = JSON.parse(response.body)
 
-        expect(response).to have_http_status(200)
-        expect(json_response['name']).to eq('Dunder Mifflin')
+          expect(response).to have_http_status(422)
+          expect(json_response).to include('errors')
+        end
       end
 
       context 'when organization field is empty' do
@@ -62,16 +89,34 @@ RSpec.describe Api::V1::ChannelsController, type: :controller do
     end
 
     describe 'PATCH #update' do
-      it 'return edit channel' do
-        patch :update, params:{
-          channel:{
-            name: "Sabre"
-          },
-          id: channel.id
-        }
+      context 'when name field is full' do
+        it 'return edit channel' do
+          patch :update, params:{
+            channel:{
+              name: "Sabre"
+            },
+            id: channel.id
+          }
 
-        expect(response).to have_http_status(200)
-        expect(channel.reload.name).to eq('Sabre')
+          expect(response).to have_http_status(200)
+          expect(channel.reload.name).to eq('Sabre')
+        end
+      end
+
+      context 'when name field is empty' do
+        it 'return status code 422' do
+          patch :update, params:{
+            channel:{
+              name: ""
+            },
+            id: channel.id
+          }
+
+          json_response = JSON.parse(response.body)
+
+          expect(response).to have_http_status(422)
+          expect(json_response).to include('errors')
+        end
       end
 
       context 'when organization field is empty' do
