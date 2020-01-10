@@ -53,7 +53,7 @@ class Account::ChannelsController < Account::AccountController
   private
 
   def channel_params
-    params.require(:channel).permit(:name)
+    params.require(:channel).permit(:name, content_ids: [])
   end
 
   def collection
