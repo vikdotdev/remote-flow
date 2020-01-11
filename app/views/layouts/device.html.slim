@@ -6,16 +6,9 @@ html
     meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport" /
     meta name="viewport" content="width=device-width, initial-scale=1" /
 
-    = stylesheet_link_tag 'bootstrap.css', media: 'all'
-    = stylesheet_link_tag 'bootstrap-extended.css', media: 'all'
-    = stylesheet_link_tag 'owl.carousel.css', media: 'all'
-    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'device-app.css', media: 'all'
 
   body.device-bg
     = yield
-    = javascript_include_tag 'jquery.js'
-    = javascript_include_tag 'moment.min.js'
-    = javascript_include_tag 'owl.carousel.js'
-    = javascript_include_tag 'device_carousel.js'
-    = javascript_include_tag 'device_time.js'
+    = javascript_include_tag 'device-app.js'
 

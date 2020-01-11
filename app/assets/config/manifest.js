@@ -8,7 +8,6 @@
 //= link LivIconsEvo.tools.js
 //= link apexcharts.js
 
-//= link jquery.js
 //= link moment.min.js
 //= link daterangepicker.js
 //= link vendors.min.js
@@ -19,9 +18,7 @@
 //= link prism.min.js
 //= link vertical-menu-light.js
 //= link bootstrap.js
-//= link owl.carousel.js
-//= link device_carousel.js
-//= link device_time.js
+//= link device-app.js
 //= link show_file_name_in_file_field.js
 //= link jqBootstrapValidation.js
 //= link ckeditor/config.js
@@ -43,7 +40,7 @@
 //= link style.css
 //= link vendors.min.css
 //= link toastr.css
-//= link owl.carousel.css
+//= link device-app.css
 //= link form-validation.css
 //= link ckeditor/ckeditor.css
 //= link ckeditor/application.css

@@ -1,3 +1,10 @@
+/*
+ *= require_self
+ *= require bootstrap.css
+ *= require bootstrap-extended.css
+ *= require owl.carousel.css
+*/
+
 .device-bg {
   background-image: url("https://wallpaperaccess.com/full/298406.jpg");
   background-position: center;
