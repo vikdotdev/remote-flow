@@ -12,4 +12,14 @@ FactoryBot.define do
       end
     end
   end
+
+  trait :with_contents do
+    contents do
+      [
+        create(:video, organization: self.organization),
+        create(:gallery, organization: self.organization),
+        create(:page, organization: self.organization)
+      ]
+    end
+  end
 end

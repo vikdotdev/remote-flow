@@ -1,4 +1,5 @@
 class Content < ApplicationRecord
+  has_paper_trail
   VIDEO = 'Video'.freeze
   GALLERY = 'Gallery'.freeze
   PAGE = 'Page'.freeze
@@ -12,7 +13,7 @@ class Content < ApplicationRecord
   scope :videos, -> { where(type: 'Video') }
   scope :presentation, -> { where(type: 'Presentation') }
   scope :pages, -> { where(type: 'Page') }
-  
+
   validates :title, presence: true
 
   def file_name
