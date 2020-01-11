@@ -20,6 +20,8 @@ module RemoteFlow
 
     config.filter_parameters << :password
 
+    config.telegram_updates_controller.session_store = :redis_store, {expires_in: 1.month}
+
     Raven.configure do |config|
       config.dsn = Rails.application.credentials[:sentry_dsn]
       config.environments = ['production']

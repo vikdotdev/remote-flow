@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  telegram_webhook TelegramBotController
+
   root 'public#index'
 
   get '/pricing', to: 'public#pricing'
