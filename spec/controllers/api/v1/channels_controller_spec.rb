@@ -17,6 +17,8 @@ RSpec.describe Api::V1::ChannelsController, type: :controller do
 
         expect(response).to have_http_status(200)
         expect(json_response['id']).to eq(channel.id)
+        expect(json_response['name']).to eq(channel.name)
+        expect(json_response['organization_id']).to eq(channel.organization_id)
       end
     end
 
@@ -43,6 +45,7 @@ RSpec.describe Api::V1::ChannelsController, type: :controller do
 
           expect(response).to have_http_status(200)
           expect(json_response['name']).to eq('Dunder Mifflin')
+          expect(json_response['organization_id']).to eq(organization.id)
         end
       end
 
@@ -83,6 +86,7 @@ RSpec.describe Api::V1::ChannelsController, type: :controller do
           json_response = JSON.parse(response.body)
 
           expect(response).to have_http_status(200)
+          expect(json_response['name']).to eq('Dunder Mifflin')
           expect(json_response['organization_id']).to eq(organization.id)
         end
       end
@@ -182,10 +186,14 @@ RSpec.describe Api::V1::ChannelsController, type: :controller do
     end
 
     describe 'DELETE #destroy' do
-      it 'return status code 400' do
+      it 'not change Channel.count' do
         expect do
           delete :destroy, params:{ id: channel.id }
         end.not_to change(Channel, :count)
+      end
+
+      it 'return status code 400' do
+        delete :destroy, params:{ id: channel.id }
 
         expect(response).to have_http_status(400)
       end

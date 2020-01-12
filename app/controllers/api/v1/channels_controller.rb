@@ -23,8 +23,7 @@ class Api::V1::ChannelsController < Api::V1::ApiController
   end
 
   def destroy
-    @channel = resource
-    @channel.destroy
+    resource.destroy
     head 200
   end
 
