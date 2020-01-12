@@ -6,7 +6,7 @@ class IconUploader < CarrierWave::Uploader::Base
   end
 
   def default_url(*args)
-    'images/device_icons/default.svg'
+    'images/channel_icons/default.svg'
   end
 
   def extension_whitelist

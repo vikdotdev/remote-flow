@@ -1,4 +1,5 @@
 class Account::ChannelsController < Account::AccountController
+  before_action :set_icon, only: %i[create update]
   def index
     @q = collection.ransack(params[:q])
     @channels = @q.result.by_name.page(params[:page]).per(10)
@@ -52,8 +53,13 @@ class Account::ChannelsController < Account::AccountController
 
   private
 
+  def set_icon
+    path = "vendor/assets/images/channel_icons/#{params[:channel][:icon].downcase}.svg"
+    params[:channel][:icon] = File.open(path) if File.exist?(path)
+  end
+
   def channel_params
-    params.require(:channel).permit(:name, content_ids: [])
+    params.require(:channel).permit(:name, :icon, content_ids: [])
   end
 
   def collection

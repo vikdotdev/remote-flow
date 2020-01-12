@@ -4,6 +4,9 @@
       label: :contents,
       collection: current_organization.contents,
       input_html: { multiple: :multiple, class: 'js-select2-contents select2 form-control' }
+  = f.input :icon,
+      collection: Dir.glob("vendor/assets/images/channel_icons/*.svg").map { |icon| File.basename(icon, ".*").capitalize },
+      input_html: { class: 'js-select2-channel-icon select2 form-control' }
   = f.button :submit, class: "btn-primary mt-1 mr-50"
   = link_to 'Back', back_path, class: "btn border mt-1"
 
