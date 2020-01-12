@@ -3,7 +3,7 @@ class Account::ProfilesController < Account::AccountController
 
   def update
     if current_user.update(user_params)
-      flash[:success] = 'You have successfully updated'
+      flash[:success] = 'Profile was successfully updated'
       redirect_to edit_account_profile_path
     else
       flash[:error] = 'Failed to update profile'

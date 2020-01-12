@@ -10,5 +10,7 @@ section
       .card-header.pb-0
         h4 New user
       .card-body
-        - path = account_users_path
-        = render 'account/shared/form', user: @user, path: path, back_path: path
+        = render 'account/users/form',
+            user: @user,
+            path: [:account, @user],
+            back_path: [:account, @user]

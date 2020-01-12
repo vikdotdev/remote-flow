@@ -12,5 +12,5 @@ section
       .card-body
         = render 'account/channels/form',
                 channel: @channel,
-                path: account_channels_path,
-                back_path: account_channels_path
+                path: [:account, @channel],
+                back_path: [:account, @channel]
