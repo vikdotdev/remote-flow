@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get '/pricing', to: 'public#pricing'
   get '/about_us', to: 'public#about_us'
 
+
   get '/404', to: "errors#not_found"
   get '/500', to: "errors#internal_error"
 
@@ -23,6 +24,8 @@ Rails.application.routes.draw do
   namespace :account do
     get '/', to: 'dashboard#index'
     get '/analytics', to: 'dashboard#analytics'
+    get '/search', to: 'search#search'
+
     resources :users do
       post :impersonate, on: :member
       post :stop_impersonating, on: :collection

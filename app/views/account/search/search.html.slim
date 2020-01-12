@@ -1,0 +1,24 @@
+h1 Search results:
+= form_for account_search_path, method: :get do |f|
+  p
+    = f.label "Search for"
+    = text_field_tag :q, params[:q]
+    = submit_tag "Go", name: nil
+ul
+  - content_types = [@pages, @galleries, @videos, @presentations]
+
+  - @users.each do |user|
+    li
+      h3
+        = link_to user.first_name, controller: "users", action: "show", id: user._id
+
+  - @channels.each do |channel|
+    li
+      h3
+        = link_to channel.name, controller: "channels", action: "show", id: channel._id
+
+  - content_types.each do |content_type|
+    - content_type.each do |content|
+      li
+        h3
+          = link_to content.title, controller: "contents", action: "show", id: content._id
