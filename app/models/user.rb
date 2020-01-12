@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Searchable
+
   SUPER_ADMIN = 'super_admin'.freeze
   ADMIN = 'admin'.freeze
   MANAGER = 'manager'.freeze
