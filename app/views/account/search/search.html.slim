@@ -1,24 +1,27 @@
-h1 Search results:
-= form_for account_search_path, method: :get do |f|
-  p
-    = f.label "Search for"
-    = text_field_tag :q, params[:q]
-    = submit_tag "Go", name: nil
-ul
-  - content_types = [@pages, @galleries, @videos, @presentations]
+.card
+  .card-header
+    h4.card-title Search results:
+  .card-content
+    .card-body
+      = form_for account_search_path, method: :get do |f|
+        .row.mb-1
+          .col-md-3.col-12.pr-md-0
+            = text_field_tag :q, params[:q], class: 'form-control', placeholder: 'Enter your search keyword'
+          .col-md-2.col-12
+            = submit_tag 'Search', name: nil, class: "btn btn-primary"
+      ul
+        - search_array = [@users, @channels, @pages, @galleries, @videos, @presentations]
 
-  - @users.each do |user|
-    li
-      h3
-        = link_to user.first_name, controller: "users", action: "show", id: user._id
-
-  - @channels.each do |channel|
-    li
-      h3
-        = link_to channel.name, controller: "channels", action: "show", id: channel._id
-
-  - content_types.each do |content_type|
-    - content_type.each do |content|
-      li
-        h3
-          = link_to content.title, controller: "contents", action: "show", id: content._id
+        - search_array.each do |search_item|
+          - search_item.each do |item|
+            li
+              h5
+                - if search_item == @users
+                  = link_to item.first_name, controller: "users", action: "show", id: item._id
+                  |  (User)
+                - elsif search_item == @channels
+                  = link_to item.name, controller: "channels", action: "show", id: item._id
+                  |  (Channel)
+                - else
+                  = link_to item.title, controller: "contents", action: "show", id: item._id
+                  |  (Content)
