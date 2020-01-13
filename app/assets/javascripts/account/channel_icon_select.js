@@ -1,17 +1,14 @@
-function formatState(state) {
-  if (!state.id) {
-    return state.text;
+$(document).ready(function() {
+  function formatState(state) {
+    if (!state.id) return state.text;
+    else return $(`
+      <span>
+        <img src='${state.id}' class='pl-50 pr-1 channel-icon-picker'/>
+        ${state.text}
+      </span>`
+    );
   }
 
-  debugger
-  var baseUrl = "/assets/channel_icons";
-  var $state = $(
-    '<span value="' + state.text.toUpperCase() + '"}><img src="' + baseUrl + '/' + state.text.toLowerCase() + '.svg" width="30px"/> ' + state.text + '</span>'
-  );
-  return $state;
-};
-
-$(document).ready(function() {
   $('.js-select2-channel-icon').select2({
     placeholder: '-- Select Icon --',
     width: '100%',

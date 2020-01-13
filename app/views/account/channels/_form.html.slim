@@ -1,6 +1,3 @@
-javascript:
-  var icons = #{raw system_icons.to_json}
-
 = simple_form_for channel, url: path do |f|
   = f.input :name, autofocus: true, placeholder: 'Channel Name'
   = f.input :content_ids,
@@ -8,7 +5,7 @@ javascript:
       collection: current_organization.contents,
       input_html: { multiple: :multiple, class: 'js-select2-contents select2 form-control' }
   = f.input :icon,
-    collection: system_icons,
+      collection: channel_icons,
       input_html: { class: 'js-select2-channel-icon select2 form-control' }
   = f.button :submit, class: "btn-primary mt-1 mr-50"
   = link_to 'Back', back_path, class: "btn border mt-1"

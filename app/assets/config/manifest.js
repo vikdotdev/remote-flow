@@ -86,6 +86,8 @@
 //= link logo-remote-flow.png
 //
 //= link flags/4x3/us.svg
+
+//= link channel_icons/book.svg
 //= link channel_icons/briefcase.svg
 //= link channel_icons/calendar.svg
 //= link channel_icons/camera.svg
@@ -93,11 +95,11 @@
 //= link channel_icons/clock.svg
 //= link channel_icons/cloud.svg
 //= link channel_icons/dart.svg
+//= link channel_icons/default.svg
 //= link channel_icons/magnifier_glass.svg
 //= link channel_icons/mail.svg
 //= link channel_icons/megaphone.svg
 //= link channel_icons/note.svg
-//= link channel_icons/note2.svg
 //= link channel_icons/rocket.svg
 //= link channel_icons/trophy.svg
 //= link channel_icons/wallet.svg

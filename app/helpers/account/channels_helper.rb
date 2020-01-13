@@ -1,11 +1,12 @@
 module Account::ChannelsHelper
-  def system_icons
-    Dir.glob(Rails.root.join('vendor', 'assets', 'images', 'channel_icons', '**/*')).map do |img_path|
-      {
-        id: img_path,
-        text: File.basename(img_path, ".*").humanize,
-        icon: asset_url(img_path)
-      }
+  def channel_icons
+    images_path = Pathname.new('vendor/assets/images')
+
+    Dir.glob("vendor/assets/images/channel_icons/*.svg").map do |img_path|
+      [
+        File.basename(img_path, ".*").humanize,
+        asset_url(Pathname.new(img_path).relative_path_from(images_path))
+      ]
     end
   end
 end

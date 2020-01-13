@@ -6,6 +6,7 @@
  *= require account/nav-bar
  *= require account/page-content
  *= require account/feedback
+ *= require account/channel_icon_dropdown
  *= require public/themify-icons
  *= require public/public
  *= require public/about-us
