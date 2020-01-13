@@ -3,6 +3,7 @@ function formatState(state) {
     return state.text;
   }
 
+  debugger
   var baseUrl = "/assets/channel_icons";
   var $state = $(
     '<span value="' + state.text.toUpperCase() + '"}><img src="' + baseUrl + '/' + state.text.toLowerCase() + '.svg" width="30px"/> ' + state.text + '</span>'
