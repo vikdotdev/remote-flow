@@ -3,10 +3,14 @@ require 'digest'
 
 RSpec.describe Device, type: :model do
   describe 'factory specs' do
-    let!(:device) { create(:device) }
+    let!(:device) { create(:device, :with_channels) }
 
     it 'has factory' do
       expect(device).to be_persisted
+    end
+
+    it 'has channels through organization' do
+      expect(device.organization.channels.count).to eq(3)
     end
   end
 
