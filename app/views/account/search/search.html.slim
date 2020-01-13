@@ -15,18 +15,16 @@
           .col-md-2.col-12
             = submit_tag 'Search', name: nil, class: "btn btn-primary"
       ul
-        - search_array = [@users, @channels, @pages, @galleries, @videos, @presentations]
-
-        - search_array.each do |search_item|
-          - search_item.each do |item|
-            li
-              h5
-                - if search_item == @users
-                  = link_to "#{item.first_name} #{item.last_name}", controller: "users", action: "show", id: item._id
-                  |  (User)
-                - elsif search_item == @channels
-                  = link_to item.name, controller: "channels", action: "show", id: item._id
-                  |  (Channel)
-                - else
-                  = link_to item.title, controller: "contents", action: "show", id: item._id
-                  |  (Content)
+        - @search_results.each do |item|
+          li
+            h5
+              - if item._index == 'users'
+                = link_to "#{item.first_name} #{item.last_name}", controller: "users", action: "show", id: item._id
+                |  (User)
+              - elsif item._index == 'channels'
+                = link_to item.name, controller: "channels", action: "show", id: item._id
+                |  (Channel)
+              - else
+                = link_to item.title, controller: "contents", action: "show", id: item._id
+                |  (Content)
+      = paginate @search_results

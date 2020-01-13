@@ -1,10 +1,5 @@
 class Account::SearchController < Account::AccountController
   def search
-    @channels = Channel.search(params[:q])
-    @users = User.search(params[:q])
-    @pages = Page.search(params[:q])
-    @galleries = Gallery.search(params[:q])
-    @videos = Video.search(params[:q])
-    @presentations = Presentation.search(params[:q])
+    @search_results = Elasticsearch::Model.search(params[:q]).page(params[:page]).per(1)
   end
 end
