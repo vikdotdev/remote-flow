@@ -1,15 +1,14 @@
 $(document).ready(function () {
-  var inputEl = $("#deviceToken");
-  var btnEl = $("#copyBtn");
+  var $input = $("#deviceToken");
+  var $button = $("#copyBtn");
 
-  if (!inputEl || !btnEl) return;
+  if (!$input.length || !$button.length) return;
 
-  inputEl.click(function() {
-    inputEl.select();
-  });
+  function inputSelect(_, copy) {
+    $input.select();
+    if (copy || false) document.execCommand('copy');
+  }
 
-  btnEl.click(function () {
-    inputEl.select();
-    document.execCommand('copy');
-  });
+  $input.on('click', inputSelect);
+  $button.on('click', inputSelect.bind(this, {}, true));
 });
