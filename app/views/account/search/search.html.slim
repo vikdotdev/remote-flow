@@ -1,3 +1,8 @@
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Search' },\
+]
+
 .card
   .card-header
     h4.card-title Search results:
@@ -17,7 +22,7 @@
             li
               h5
                 - if search_item == @users
-                  = link_to item.first_name, controller: "users", action: "show", id: item._id
+                  = link_to "#{item.first_name} #{item.last_name}", controller: "users", action: "show", id: item._id
                   |  (User)
                 - elsif search_item == @channels
                   = link_to item.name, controller: "channels", action: "show", id: item._id
