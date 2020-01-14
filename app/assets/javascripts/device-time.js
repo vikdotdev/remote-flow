@@ -1,12 +1,12 @@
 $(document).ready(function(){
-  function setElementTime() {
-    el.textContent = moment().format('HH:mm');
+  function updateDeviceTimeIndicator($el) {
+    if ($el.length) {
+      $el.text(moment().format('HH:mm'));
+    }
   }
 
-  var el = document.getElementById('display-date');
+  var $time = $('#display-date');
 
-  setElementTime();
-  setInterval(function() {
-    setElementTime();
-  }, 1000);
+  updateDeviceTimeIndicator($time);
+  setInterval(updateDeviceTimeIndicator.bind(this, $time), 1000);
 });

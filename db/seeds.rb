@@ -1,7 +1,7 @@
 require 'factory_bot_rails'
 require 'faker'
 
-FactoryBot.create(:user, organization_id:  nil, role: 'super_admin')
+super_administrator = FactoryBot.create(:user, organization_id: nil, role: 'super_admin')
 
 3.times do
   organization = FactoryBot.create(:organization)
@@ -44,7 +44,6 @@ FactoryBot.create(:user, organization_id:  nil, role: 'super_admin')
       channel.contents << content unless channel.contents.include? content
     end
   end
-
 
   users.each do |user|
     rand(0..3).times do

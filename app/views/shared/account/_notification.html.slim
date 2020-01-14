@@ -1,0 +1,33 @@
+li.dropdown.dropdown-notification.nav-item
+  a.nav-link.nav-link-label data-toggle="dropdown" href="#"
+    i.ficon.bx.bx-bell.bx-tada.bx-flip-horizontal
+    span.badge.badge-pill.badge-up[ class="#{ unread_notifications_count == 0 ? \
+                                             "notification-badge-custom badge-dark" :\
+                                             "badge-danger" }" ]= unread_notifications_count
+  ul.dropdown-menu.dropdown-menu-media.dropdown-menu-right
+    li.dropdown-menu-header
+      .dropdown-header.px-1.py-75.d-flex.justify-content-between
+        span.notification-title
+          = unread_notifications_count.to_s + " unread " + "notification".pluralize(unread_notifications_count)
+        = link_to account_notifications_mark_all_as_read_path, method: :post do
+          span.text-bold-400.cursor-pointer.notification-span Mark all as read
+    li.scrollable-container.media-list.ps
+      - notifications.each do |notification|
+        .d-flex.justify-content-between.[ class="#{ notification.read ? "" : "read-notification" }" ]
+          .media.d-flex.align-items-center
+            .media-body
+              h6.media-heading
+                span.text-bold-500
+                  = notification.body
+              small.notification-text
+                - if notification.created_at.today?
+                  = notification.created_at.strftime("At %I:%M%p")
+                - else
+                  = notification.created_at.strftime("%I:%M%p %m/%d/%Y")
+      .ps__rail-x style=("left: 0px; bottom: 0px;")
+        .ps__thumb-x style=("left: 0px; width: 0px;") tabindex="0"
+      .ps__rail-y style=("top: 0px; right: 0px;")
+        .ps__thumb-y style=("top: 0px; height: 0px;") tabindex="0"
+    li.dropdown-menu-footer
+      = link_to "Mark all as read", account_notifications_mark_all_as_read_path,\
+                class: "dropdown-item p-50 text-primary justify-content-center"

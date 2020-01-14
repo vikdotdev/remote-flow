@@ -13,9 +13,7 @@ FactoryBot.define do
 
     trait :with_channels do
       after(:create) do |device|
-        3.times do
-          create(:channel, organization: device.organization)
-        end
+        create_list(:channel, 3, organization: device.organization)
       end
     end
   end
