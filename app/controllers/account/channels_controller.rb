@@ -54,7 +54,7 @@ class Account::ChannelsController < Account::AccountController
   private
 
   def set_icon
-    file = Rails.root.join('public').to_s + params[:channel][:icon]
+    file = Rails.root.join('public').to_s + params[:channel][:icon].to_s
     params[:channel][:icon] = File.file?(file) ? File.open(file) : nil
   end
 
@@ -69,5 +69,4 @@ class Account::ChannelsController < Account::AccountController
   def resource
     collection.find(params[:id])
   end
-
 end
