@@ -27,19 +27,25 @@ Rails.application.routes.draw do
   namespace :account do
     get '/', to: 'dashboard#index'
     get '/analytics', to: 'dashboard#analytics'
+
     resources :users do
       post :impersonate, on: :member
       post :stop_impersonating, on: :collection
     end
+
+    post '/notifications/mark_all_as_read', to: 'notifications#mark_all_as_read'
     resources :devices
     resources :device_groups
+
     resource  :profile, only: %i[edit update] do
       patch :update_password, on: :member
     end
+
     resources :organizations, except: %i[new create]
     resource  :my_organization,
               only: %i[show edit update],
               controller: :my_organization
+
     resources :channels
     resources :contents
     resources :invites, except: %i[edit update]
