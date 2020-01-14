@@ -1,13 +1,11 @@
 FactoryBot.define do
   factory :notification do
-    before(:create) { FactoryBot.create(:organization) }
-    notification_type { Notification::ORGANIZATION_CREATED }
+    notification_type { Notification::USER_ADDED }
     user
     association :notificable, factory: :user
 
     trait :user_added do
       notification_type { Notification::USER_ADDED }
-      notifiable { manager } unless notifiable
     end
 
     trait :user_deleted do
@@ -16,9 +14,11 @@ FactoryBot.define do
 
     trait :organization_created do
       notification_type { Notification::ORGANIZATION_CREATED }
+      notificable { FactoryBot.create(:organization) }
     end
 
     trait :organization_deleted do
+      notificable { FactoryBot.create(:organization) }
       notification_type { Notification::ORGANIZATION_DELETED }
     end
   end
