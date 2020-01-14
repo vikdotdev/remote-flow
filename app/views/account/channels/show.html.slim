@@ -25,6 +25,9 @@
                 td Registered:
                 td
                   = l(@channel.created_at, format: :long)
+          - @channel.contents.each do |content|
+            .badge.badge-pill.badge-light-primary.mr-1.mb-1
+              = content.title
         .col-12.col-md-8
           .table-responsive
             table.table.mb-0

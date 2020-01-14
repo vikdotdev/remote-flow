@@ -25,15 +25,6 @@ RSpec.describe Notification, type: :model do
         notificable: organization,
         notification_type: Notification::ORGANIZATION_CREATED).first.body).to include(organization.name)
     end
-
-    # it 'notification about deleted user has body' do
-    #   manager.destroy
-    #   expect(admin.notifications.where(
-    #     notificable: manager,
-    #     notification_type: Notification::USER_DELETED
-    #     ).first.body
-    #   ).to be_any
-    # end
   end
 
   describe 'admin receives notifications abount user' do
