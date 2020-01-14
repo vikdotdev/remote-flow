@@ -5,8 +5,8 @@ class IconUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  def default_url(*args)
-    'images/channel_icons/default.svg'
+  def default_url(*)
+    'default_channel_icon.svg'
   end
 
   def extension_whitelist

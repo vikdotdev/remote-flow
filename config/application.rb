@@ -24,6 +24,13 @@ module RemoteFlow
       config.dsn = Rails.application.credentials[:sentry_dsn]
       config.environments = ['production']
     end
+
+    InlineSvg.configure do |config|
+      config.asset_file = InlineSvg::CachedAssetFile.new(
+        paths: [Rails.root.join('public/uploads/channel/icon').to_s],
+        filters: /\.svg/
+      )
+    end
   end
 end
 

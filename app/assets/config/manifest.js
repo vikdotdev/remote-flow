@@ -95,7 +95,6 @@
 //= link channel_icons/clock.svg
 //= link channel_icons/cloud.svg
 //= link channel_icons/dart.svg
-//= link channel_icons/default.svg
 //= link channel_icons/magnifier_glass.svg
 //= link channel_icons/mail.svg
 //= link channel_icons/megaphone.svg
@@ -103,6 +102,7 @@
 //= link channel_icons/rocket.svg
 //= link channel_icons/trophy.svg
 //= link channel_icons/wallet.svg
+//= link default_channel_icon.svg
 //
 //= link application.css
 //= link application.js

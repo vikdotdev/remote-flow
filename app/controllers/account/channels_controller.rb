@@ -54,8 +54,8 @@ class Account::ChannelsController < Account::AccountController
   private
 
   def set_icon
-    path = "vendor/assets/images/channel_icons/#{params[:channel][:icon].downcase}.svg"
-    params[:channel][:icon] = File.open(path) if File.exist?(path)
+    file = Rails.root.join('public').to_s + params[:channel][:icon]
+    params[:channel][:icon] = File.file?(file) ? File.open(file) : nil
   end
 
   def channel_params
