@@ -9,7 +9,7 @@ li.dropdown.dropdown-notification.nav-item
       .dropdown-header.px-1.py-75.d-flex.justify-content-between
         span.notification-title
           = unread_notifications_count.to_s + " unread " + "notification".pluralize(unread_notifications_count)
-        = link_to account_notifications_mark_all_as_read_path, method: :post
+        = link_to account_notifications_mark_all_as_read_path, method: :post do
           span.text-bold-400.cursor-pointer.notification-span Mark all as read
     li.scrollable-container.media-list.ps
       - notifications.each do |notification|
