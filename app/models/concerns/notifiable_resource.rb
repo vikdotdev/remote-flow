@@ -2,8 +2,8 @@ module NotifiableResource
   extend ActiveSupport::Concern
 
   included do
-    after_create :notify_created!
-    before_destroy :notify_deleted!
+    after_commit :notify_created!, on: :create
+    after_commit :notify_deleted!, on: :destroy
 
     private
 
@@ -20,8 +20,11 @@ module NotifiableResource
 
       people = case self.class.name
       when 'User'
-        return if self.role == User::SUPER_ADMIN
-        User.admins.where(organization_id: self.organization.id).where.not(id: self.id)
+        if self.organization
+          organization.users.admins.where.not(id: self.id)
+        else
+          User.none
+        end
       else
         User.super_admins
       end

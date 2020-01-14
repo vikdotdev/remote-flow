@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 2020_01_02_134524) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "organization_id"
     t.string "title"
-    t.string "file"
     t.text "body"
+    t.string "file"
     t.index ["organization_id"], name: "index_contents_on_organization_id"
   end
 
@@ -118,7 +118,6 @@ ActiveRecord::Schema.define(version: 2020_01_02_134524) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.string "body"
     t.boolean "read", default: false
     t.string "notificable_type"
     t.bigint "notificable_id"
