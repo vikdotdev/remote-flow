@@ -1,4 +1,4 @@
-= search_form_for(q, url: account_channels_path) do |f|
+= search_form_for(q, url: [:account, :channels]) do |f|
   .row.mb-1.justify-content-lg-center
     .col-md-4.col-12.pr-md-0
       = f.label :name_start, 'Name'

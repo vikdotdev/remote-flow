@@ -12,6 +12,7 @@ require 'rspec/rails'
 require 'support/factory_bot'
 require 'capybara/rails'
 require 'sidekiq/testing'
+require 'paper_trail/frameworks/rspec'
 Capybara.asset_host = "http://localhost:3000"
 # Add additional requires below this line. Rails is not loaded until this point!
 

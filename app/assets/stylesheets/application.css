@@ -4,11 +4,11 @@
  *= require account/_form
  *= require account/organization_form
  *= require account/nav-bar
+ *= require account/notification
  *= require account/page-content
  *= require account/feedback
  *= require public/themify-icons
  *= require public/public
  *= require public/about-us
-
  *= require profile
 */
