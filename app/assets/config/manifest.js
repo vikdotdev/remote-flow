@@ -102,7 +102,7 @@
 //= link channel_icons/rocket.svg
 //= link channel_icons/trophy.svg
 //= link channel_icons/wallet.svg
-//= link default_channel_icon.svg
+//= link fallback/default_channel_icon.svg
 //
 //= link application.css
 //= link application.js

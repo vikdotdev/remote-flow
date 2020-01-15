@@ -6,6 +6,6 @@
   main.d-flex.d-justify-content-center.fix-bottom.py-1.owl-carousel.ui-background
     - @device.organization.channels.each do |channel|
       .icon-card.m-50.d-flex.flex-column.justify-content-center.align-items-center
-        = icon(asset_path(channel.icon))
+        = icon(channel.icon)
         .pt-50.text-white
           = truncate channel.name, length: 16
