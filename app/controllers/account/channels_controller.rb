@@ -1,5 +1,4 @@
 class Account::ChannelsController < Account::AccountController
-  before_action :set_icon, only: %i[create update]
   def index
     @q = collection.ransack(params[:q])
     @channels = @q.result.by_name.page(params[:page]).per(10)
@@ -52,11 +51,6 @@ class Account::ChannelsController < Account::AccountController
   end
 
   private
-
-  def set_icon
-    file = Rails.root.join('public').to_s + params[:channel][:icon].to_s
-    params[:channel][:icon] = File.file?(file) ? File.open(file) : nil
-  end
 
   def channel_params
     params.require(:channel).permit(:name, :icon, content_ids: [])

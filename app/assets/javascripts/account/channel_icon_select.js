@@ -3,7 +3,7 @@ $(document).ready(function() {
     if (!state.id) return state.text;
     else return $(`
       <span>
-        <img src='${state.id}' class='pl-50 pr-1 channel-icon-picker'/>
+        <img src='${state.element.dataset.icon}' class='pl-50 pr-1 channel-icon-picker'/>
         ${state.text}
       </span>`
     );
@@ -14,5 +14,7 @@ $(document).ready(function() {
     width: '100%',
     templateResult: formatState
   });
+
+  $('.js-select2-channel-icon').trigger("change");
 });
 
