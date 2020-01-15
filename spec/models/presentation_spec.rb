@@ -9,10 +9,11 @@ RSpec.describe Presentation, type: :model do
       expect(presentation).to be_persisted
     end
 
-    it 'has screenshots' do
+    it 'has screenshots and thumbnails' do
       Sidekiq::Testing.inline! do
         presentation = FactoryBot.create(:presentation)
         expect(presentation.screenshots.count).to eq(5)
+        expect(presentation.screenshots.each { |s| s.file.thumb }.count).to eq(5)
       end
     end
   end

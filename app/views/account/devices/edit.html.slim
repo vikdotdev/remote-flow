@@ -17,8 +17,7 @@
     .card-header.pb-0
       h4 Edit
     .card-body
-      - path = account_device_path(@device)
       = render 'account/devices/form',
           device: @device,
-          path: path,
-          back_path: path
+          path: [:account, @device],
+          back_path: [:account, @device]

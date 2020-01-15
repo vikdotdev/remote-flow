@@ -16,10 +16,6 @@ AllCops:
     - 'actiontext/test/dummy/**/*'
     - '**/node_modules/**/*'
 
-Performance:
-  Exclude:
-    - '**/test/**/*'
-
 # Prefer assert_not over assert !
 Rails/AssertNot:
   Include:
@@ -218,25 +214,4 @@ Style/ColonMethodCall:
   Enabled: true
 
 Style/TrivialAccessors:
-  Enabled: true
-
-Performance/FlatMap:
-  Enabled: true
-
-Performance/RedundantMerge:
-  Enabled: true
-
-Performance/StartWith:
-  Enabled: true
-
-Performance/EndWith:
-  Enabled: true
-
-Performance/RegexpMatch:
-  Enabled: true
-
-Performance/ReverseEach:
-  Enabled: true
-
-Performance/UnfreezeString:
   Enabled: true

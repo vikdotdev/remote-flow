@@ -11,5 +11,7 @@ section
         h4
           = "New #{@content.type}"
       .card-body
-        - path = account_contents_path
-        = render 'account/contents/form', content: @content, path: path, back_path: path
+        = render 'account/contents/form',
+            content: @content,
+            path: [:account, :contents],
+            back_path: [:account, :contents]

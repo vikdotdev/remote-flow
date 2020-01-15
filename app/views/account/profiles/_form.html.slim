@@ -1,4 +1,4 @@
-= simple_form_for(current_user, url: account_profile_path, method: :patch) do |f|
+= simple_form_for(current_user, url: [:account, :profile], method: :patch) do |f|
   .media
     = image_tag current_user.avatar.url,
       width: 64,
