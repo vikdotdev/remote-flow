@@ -1,13 +1,12 @@
 class TelegramBotController < Telegram::Bot::UpdatesController
   include Telegram::Bot::UpdatesController::MessageContext
-
   def start!(*)
     respond_with :message, text: 'Hi. Entry you /email exmple@mail.com and /password exepmle'
   end
 
   def email!(email)
-    respond_with :message, text: email
-    session['email'] = 'Success'
+    respond_with :message, text: 'Success'
+    session['email'] = email
   end
 
   def password!(password)
@@ -21,8 +20,7 @@ class TelegramBotController < Telegram::Bot::UpdatesController
 
   def channels!
     if user_valid?
-      channels = user.organization.channels.pluck(:name).join("\n")
-      respond_with :message, text: channels
+      respond_with :message, text: channels.pluck(:name).join("\n")
     else
       respond_with :message, text: 'Not valid email or password'
     end
@@ -31,11 +29,13 @@ class TelegramBotController < Telegram::Bot::UpdatesController
   private
 
   def user_valid?
-    User.find_by(email: session['email']).valid_password?(session['password'])
+    user = User.find_by(email: session['email'])
+    return if user.nil?
+    user.valid_password?(session['password'])
   end
 
-  def user
+  def channels
     return unless user_valid?
-    User.find_by(email: session['email'])
+    User.find_by(email: session['email']).organization.channels
   end
 end
