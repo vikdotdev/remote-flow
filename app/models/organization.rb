@@ -1,4 +1,6 @@
 class Organization < ApplicationRecord
+  include NotifiableResource
+
   has_many :users, dependent: :destroy
   has_many :device_groups, dependent: :destroy
   has_many :devices, dependent: :destroy
@@ -20,13 +22,7 @@ class Organization < ApplicationRecord
   private
 
   def send_slack_notification
-    notifier = Slack::Notifier.new(
-      SLACK_CONFIG[:token],
-      channel: SLACK_CONFIG[:channel],
-      username: SLACK_CONFIG[:username]
-    )
-
-    notifier.ping "Organization #{name} was just created!"
+    SlackNotifier.ping("Organization #{name} was just created!")
   end
 
   def send_email_notification

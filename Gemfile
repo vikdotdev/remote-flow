@@ -39,6 +39,9 @@ gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
 gem 'pdf-reader'
 gem 'paranoia'
+gem 'sentry-raven'
+gem 'inline_svg'
+gem 'paper_trail'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -62,7 +65,6 @@ group :development, :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'capybara-screenshot'
-  gem 'rspec-sidekiq'
 end
 
 group :development do
@@ -75,6 +77,8 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-passenger', '>= 0.1.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 end
 
 group :test do

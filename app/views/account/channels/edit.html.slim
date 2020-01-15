@@ -18,8 +18,8 @@
     .card-header.pb-0
       h4 Edit
     .card-body
-      - path = account_channel_path(@channel)
       = render 'account/channels/form',
               channel: @channel,
-              path: path,
-              back_path: path
+              path: [:account, @channel],
+              back_path: [:account, @channel]
+

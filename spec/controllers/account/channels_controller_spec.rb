@@ -7,6 +7,8 @@ RSpec.describe Account::ChannelsController, type: :controller do
   let!(:another_organization) { create(:organization) }
   let!(:user) { create(:user, organization: organization) }
   let!(:channel) { create(:channel, name: 'Danialberg', organization: organization) }
+  let!(:video) { create(:video, organization: organization) }
+  let!(:gallery) { create(:gallery, organization: organization) }
 
   context 'when not logged in' do
     describe 'GET #index' do
@@ -130,6 +132,19 @@ RSpec.describe Account::ChannelsController, type: :controller do
         expect(response).to render_template(:new)
         expect(channel.name).to eq('Danialberg')
       end
+
+      it 'has multiple contents' do
+        expect do
+          post :create, params: {
+            channel: {
+              name: 'Rommel',
+              organization_id: channel.organization.id,
+              content_ids: [video.id, gallery.id]
+            }
+          }
+        end.to change(Channel, :count).by(1)
+        expect(Channel.find_by(name: 'Rommel').contents.count).to eq(2)
+      end
     end
 
     describe 'PATCH #update' do
@@ -169,7 +184,6 @@ RSpec.describe Account::ChannelsController, type: :controller do
         expect(assigns(:channel).organization_id).not_to eq(another_organization.id)
         expect(response).to redirect_to(account_channel_path(assigns(:channel)))
       end
-
     end
 
     describe 'DELETE #destroy' do

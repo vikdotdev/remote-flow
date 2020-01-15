@@ -21,5 +21,7 @@ section
         .card-header.pb-0
           h4 Edit
         .card-body
-          - path = account_user_path(@user)
-          = render 'account/shared/form_without_password', user: @user, path: path, back_path: path
+          = render 'account/users/form_without_password',
+              user: @user,
+              path: [:account, @user],
+              back_path: [:account, @user]
