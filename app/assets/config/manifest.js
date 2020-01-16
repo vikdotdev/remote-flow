@@ -101,6 +101,12 @@
 //= link device_icons/rocket.svg
 //= link device_icons/trophy.svg
 //= link device_icons/wallet.svg
-//
+
+//= link backgrounds/1.jpg
+//= link backgrounds/2.jpg
+//= link backgrounds/3.jpg
+//= link backgrounds/4.jpg
+//= link backgrounds/5.jpg
+
 //= link application.css
 //= link application.js

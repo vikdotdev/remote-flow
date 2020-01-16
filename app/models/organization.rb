@@ -7,6 +7,7 @@ class Organization < ApplicationRecord
   has_many :channels, dependent: :destroy
   has_many :contents, dependent: :destroy
   has_many :invites, dependent: :delete_all
+  has_many :backgrounds, dependent: :delete_all
 
   after_create :send_email_notification
   after_create :send_slack_notification
