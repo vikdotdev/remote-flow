@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :background do
     image do
-      ActionController::Base.helpers.asset_url(
-        "backgrounds/#{File.basename(Dir.glob("app/assets/images/backgrounds/*.jpg").sample)}"
+      Rack::Test::UploadedFile.new(
+        Rails.root.join("app/assets/images/backgrounds/#{rand(1..5)}.jpg"),
+        'image/jpeg'
       )
     end
     organization

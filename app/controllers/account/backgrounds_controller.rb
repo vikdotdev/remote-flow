@@ -1,6 +1,9 @@
 class Account::BackgroundsController < Account::AccountController
   def index
-    render json: collection
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: collection }
+    end
   end
 
   def create

@@ -1,0 +1,12 @@
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Backgrounds' },\
+]
+
+- content_for :actions do
+  = link_to 'Add New Background',
+      new_account_user_path,
+      class: "btn btn-sm btn-light-primary"
+
+= react_component('BackgroundList')
+

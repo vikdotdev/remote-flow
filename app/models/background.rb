@@ -1,5 +1,6 @@
 class Background < ApplicationRecord
-  validates :image, presence: true
+  mount_uploader :image, BackgroundUploader
 
+  validates :image, presence: true
   belongs_to :organization
 end
