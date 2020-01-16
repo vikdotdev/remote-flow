@@ -40,7 +40,6 @@ gem 'omniauth-google-oauth2'
 gem 'activerecord-session_store'
 gem 'paranoia'
 gem 'sentry-raven'
-gem 'inline_svg'
 gem 'paper_trail'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
