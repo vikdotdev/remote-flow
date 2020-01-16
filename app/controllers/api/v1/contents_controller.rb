@@ -1,14 +1,14 @@
-class Account::ContentsController < Account::AccountController
+class Api::V1::ContentsController < Api::V1::ApiController
   before_action :set_paper_trail_whodunnit
 
   def index
     @q = collection.ransack(params[:q])
     @contents = @q.result.by_title.page(params[:page]).per(10)
+    render json: @contents
   end
 
   def show
-    @content = resource
-    set_meta_tags title: @content.title
+    render json: resource
   end
 
   def new
@@ -16,40 +16,27 @@ class Account::ContentsController < Account::AccountController
     @content.type = params[:type]
   end
 
-  def edit
-    @content = resource
-  end
-
   def create
     @content = collection.new(contents_params)
     if @content.save
-      flash[:success] = 'Content successfully created.'
-      redirect_to account_content_path(@content)
+      render json: @content
     else
-      flash[:danger] = 'Failed to create content.'
-      render :new
+      render json: { errors: @content.errors }, status: :unprocessable_entity
     end
   end
 
   def update
     @content = resource
     if @content.update(contents_params)
-      redirect_to account_content_path(@content)
-      flash[:success] = 'Content successfully updated.'
+      render json: @content
     else
-      flash[:danger] = 'Failed to update content.'
-      render :edit
+      render json: { errors: @content.errors }, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @content = resource
-    if @content.destroy
-      flash[:success] = 'Content successfully deleted.'
-    else
-      flash[:danger] = 'Failed to delete content.'
-    end
-    redirect_to account_contents_path
+    resource.destroy
+    head 200
   end
 
   private
