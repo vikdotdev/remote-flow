@@ -1,4 +1,4 @@
-class Api::V1::BackgroundsController < Api::V1::ApiController
+class Account::BackgroundsController < Account::AccountController
   def index
     render json: collection
   end

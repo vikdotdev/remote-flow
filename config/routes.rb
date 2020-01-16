@@ -54,11 +54,12 @@ Rails.application.routes.draw do
         patch :restore
       end
     end
+
+    resources :backgrounds, only: %i[index create destroy]
   end
 
   namespace :api do
     namespace :v1 do
-      resources :backgrounds, only: %i[index create destroy]
       resource  :organization, only: :show
       resources :channels, except: :index
     end
