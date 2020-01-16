@@ -1,7 +1,7 @@
 class TelegramBotController < Telegram::Bot::UpdatesController
   include Telegram::Bot::UpdatesController::MessageContext
   def start!(*)
-    respond_with :message, text: 'Hi. Entry your /email exmple@mail.com and then /password example'
+    respond_with :message, text: 'Hi. Entry your /email example@mail.com and then /password example'
   end
 
   def email!(email)

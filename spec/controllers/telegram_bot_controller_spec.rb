@@ -9,7 +9,7 @@ RSpec.describe TelegramBotController, type: :telegram_bot_controller do
 
   describe '#start' do
     it 'return response' do
-      expect{ dispatch_command :start }.to respond_with_message 'Hi. Entry your /email exmple@mail.com and then /password example'
+      expect{ dispatch_command :start }.to respond_with_message 'Hi. Entry your /email example@mail.com and then /password example'
     end
   end
 
