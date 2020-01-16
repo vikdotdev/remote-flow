@@ -53,7 +53,7 @@ class Account::ChannelsController < Account::AccountController
   private
 
   def channel_params
-    params.require(:channel).permit(:name, content_ids: [])
+    params.require(:channel).permit(:name, :icon, content_ids: [])
   end
 
   def collection
@@ -63,5 +63,4 @@ class Account::ChannelsController < Account::AccountController
   def resource
     collection.find(params[:id])
   end
-
 end

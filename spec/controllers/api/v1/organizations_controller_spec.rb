@@ -10,11 +10,10 @@ RSpec.describe Api::V1::OrganizationsController, type: :controller do
       expect(response).to have_http_status(200)
     end
 
-    it 'return :bad_request by invalid token' do
+    it 'return error by invalid token' do
       request.headers['token'] = organization.token + 'Ruby'
       get :show
       expect(response).to have_http_status(400)
     end
   end
-
 end

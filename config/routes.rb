@@ -61,6 +61,7 @@ Rails.application.routes.draw do
       resource  :organization, only: :show
       resources :channels, except: %i[index edit]
       resources :contents, except: %i[edit]
+      resource :organizations, only: %i[show]
     end
   end
 end
