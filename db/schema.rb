@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_01_10_174807) do
     t.string "title"
     t.text "body"
     t.string "file"
+    t.string "presentation_body_plain"
     t.index ["organization_id"], name: "index_contents_on_organization_id"
   end
 
@@ -116,6 +117,19 @@ ActiveRecord::Schema.define(version: 2020_01_10_174807) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["organization_id"], name: "index_invites_on_organization_id"
     t.index ["token"], name: "index_invites_on_token"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.boolean "read", default: false
+    t.string "notificable_type"
+    t.bigint "notificable_id"
+    t.bigint "user_id"
+    t.string "notification_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["notificable_type", "notificable_id"], name: "index_notifications_on_notificable_type_and_notificable_id"
+    t.index ["read"], name: "index_notifications_on_read"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|

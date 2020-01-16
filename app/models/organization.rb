@@ -1,4 +1,6 @@
 class Organization < ApplicationRecord
+  include NotifiableResource
+
   has_many :users, dependent: :destroy
   has_many :device_groups, dependent: :destroy
   has_many :devices, dependent: :destroy
