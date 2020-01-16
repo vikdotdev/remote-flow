@@ -2,7 +2,6 @@ class PublicController < ApplicationController
   layout 'public'
 
   def index
-    debugger
     set_meta_tags title: 'Public page'
   end
 
