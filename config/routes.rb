@@ -60,8 +60,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resource  :organization, only: :show
-      resources :channels, except: :index
+      resource :organizations, only: %i[show]
+      resources :channels
     end
   end
 

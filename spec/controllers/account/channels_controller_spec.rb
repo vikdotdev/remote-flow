@@ -161,6 +161,19 @@ RSpec.describe Account::ChannelsController, type: :controller do
         expect(assigns(:channel).name).to eq('Theofurt')
       end
 
+      it 'updates device icon' do
+        patch :update, params: {
+            channel: {
+              icon: ActionController::Base.helpers.asset_path('channel_icons/briefcase.svg')
+            },
+            id: channel.id
+        }
+
+        expect(response).to redirect_to(account_channel_path(assigns(:channel)))
+        expect(assigns(:channel).icon).not_to eq(ActionController::Base.helpers.asset_path('fallback/default_channel_icon.svg'))
+        expect(assigns(:channel).icon).to eq(ActionController::Base.helpers.asset_path('channel_icons/briefcase.svg'))
+      end
+
       it 'renders edit action on blank name' do
         patch :update, params: {
             channel: {
