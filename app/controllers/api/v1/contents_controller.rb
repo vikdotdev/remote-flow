@@ -2,22 +2,17 @@ class Api::V1::ContentsController < Api::V1::ApiController
   before_action :set_paper_trail_whodunnit
 
   def index
-    @q = collection.ransack(params[:q])
-    @contents = @q.result.by_title.page(params[:page]).per(10)
-    render json: @contents
+    render json: collection
   end
 
   def show
     render json: resource
   end
 
-  def new
-    @content = Content.new
-    @content.type = params[:type]
-  end
-
   def create
     @content = collection.new(contents_params)
+    @content.type = params[:type]
+
     if @content.save
       render json: @content
     else
