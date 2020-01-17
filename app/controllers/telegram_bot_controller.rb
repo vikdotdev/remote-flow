@@ -14,7 +14,7 @@ class TelegramBotController < Telegram::Bot::UpdatesController
     if telegram_user?
       respond_with :message, text: 'Success. Entry /channels to see all channels'
     else
-      respond_with :message, text: 'Not valid email or password'
+      respond_with :message, text: 'Not found'
     end
   end
 
@@ -22,7 +22,7 @@ class TelegramBotController < Telegram::Bot::UpdatesController
     if telegram_user?
       respond_with :message, text: channels.pluck(:name).join("\n")
     else
-      respond_with :message, text: 'Not valid email or password'
+      respond_with :message, text: 'Not found'
     end
   end
 
@@ -33,15 +33,14 @@ class TelegramBotController < Telegram::Bot::UpdatesController
   end
 
   def telegram_user
-    @telegram_user = User.find_by(email: session['email'])
+    @telegram_user  = User.find_by(email: session['email'])
   end
 
   def channels
-    user = User.find_by(email: session['email'])
-    if user.super_admin?
+    if telegram_user.super_admin?
       Channel.all
     else
-      user.organization.channels
+      telegram_user.organization.channels
     end
   end
 end

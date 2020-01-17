@@ -39,7 +39,7 @@ RSpec.describe TelegramBotController, type: :telegram_bot_controller do
       it 'return a failure message' do
         dispatch_command :email, user.email
 
-        expect{ dispatch_command :password, '123456' }.to respond_with_message 'Not valid email or password'
+        expect{ dispatch_command :password, '123456' }.to respond_with_message 'Not found'
         expect(session['password']).not_to eq(user.password)
       end
     end
@@ -61,7 +61,7 @@ RSpec.describe TelegramBotController, type: :telegram_bot_controller do
           dispatch_command :email, 'email@mail.com'
           dispatch_command :password, '123456'
 
-          expect{ dispatch_command :channels }.to respond_with_message 'Not valid email or password'
+          expect{ dispatch_command :channels }.to respond_with_message 'Not found'
         end
       end
     end
@@ -85,7 +85,7 @@ RSpec.describe TelegramBotController, type: :telegram_bot_controller do
           dispatch_command :email, 'email@mail.com'
           dispatch_command :password, '123456'
 
-          expect{ dispatch_command :channels }.to respond_with_message 'Not valid email or password'
+          expect{ dispatch_command :channels }.to respond_with_message 'Not found'
         end
       end
     end
