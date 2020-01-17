@@ -9,7 +9,7 @@ class Account::BackgroundsController < Account::AccountController
   end
 
   def create
-    render json: Background.create(background_params)
+    collection.create(background_params)
   end
 
   def destroy
@@ -20,7 +20,7 @@ class Account::BackgroundsController < Account::AccountController
   private
 
   def background_params
-    params.require(:background).permit(:image)
+    params.permit(:image)
   end
 
   def collection
