@@ -2,9 +2,10 @@ class Account::BackgroundsController < Account::AccountController
   skip_before_action :verify_authenticity_token
 
   def index
+    sleep 6
     respond_to do |format|
       format.html { render :index }
-      format.json { render json: collection }
+      format.json { render json: collection.reverse_order }
     end
   end
 

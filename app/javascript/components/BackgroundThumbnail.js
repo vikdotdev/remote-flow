@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const BackgroundThumbnail = ({ img, thumb, onClick }) => {
+const BackgroundThumbnail = props => {
+  const { image, thumb } = props.image;
+
   return (
-    <a href={img} target='_blank'>
+    <a href={image} target='_blank'>
       <div className='thumbnail'>
         <img src={thumb} />
-        <button onClick={onClick} className='close' />
+        <button onClick={props.onClick} className='close' />
       </div>
     </a>
   );
