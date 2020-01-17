@@ -7,6 +7,10 @@ RSpec.describe TelegramBotController, type: :telegram_bot_controller do
   let!(:super_admin) { create(:user, :super_admin) }
   let!(:channels) { create_list(:channel, 5, organization: organization) }
 
+  after do
+    Telegram.bot.reset
+  end
+
   describe '#start' do
     it 'return response' do
       expect{ dispatch_command :start }.to respond_with_message 'Hi. Entry your /email example@mail.com and then /password example'

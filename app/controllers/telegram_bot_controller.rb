@@ -11,7 +11,7 @@ class TelegramBotController < Telegram::Bot::UpdatesController
 
   def password!(password)
     session['password'] = password
-    if user_valid?
+    if telegram_user?
       respond_with :message, text: 'Success. Entry /channels to see all channels'
     else
       respond_with :message, text: 'Not valid email or password'
@@ -19,7 +19,7 @@ class TelegramBotController < Telegram::Bot::UpdatesController
   end
 
   def channels!
-    if user_valid?
+    if telegram_user?
       respond_with :message, text: channels.pluck(:name).join("\n")
     else
       respond_with :message, text: 'Not valid email or password'
@@ -28,10 +28,12 @@ class TelegramBotController < Telegram::Bot::UpdatesController
 
   private
 
-  def user_valid?
-    user = User.find_by(email: session['email'])
-    return if user.nil?
-    user.valid_password?(session['password'])
+  def telegram_user?
+    telegram_user&.valid_password?(session['password'])
+  end
+
+  def telegram_user
+    @telegram_user = User.find_by(email: session['email'])
   end
 
   def channels
