@@ -31,7 +31,7 @@ RSpec.describe TelegramBotController, type: :telegram_bot_controller do
         dispatch_command :email, user.email
 
         expect{ dispatch_command :password, user.password }.to respond_with_message 'Success. Entry /channels to see all channels'
-        expect(session['password']).to eq(user.password)
+        expect(session['user_id']).to eq(user.id)
       end
     end
 
@@ -40,7 +40,7 @@ RSpec.describe TelegramBotController, type: :telegram_bot_controller do
         dispatch_command :email, user.email
 
         expect{ dispatch_command :password, '123456' }.to respond_with_message 'Not found'
-        expect(session['password']).not_to eq(user.password)
+        expect(session['user_id']).not_to eq(user.id)
       end
     end
   end
