@@ -11,7 +11,6 @@ class Api::V1::ContentsController < Api::V1::ApiController
 
   def create
     @content = collection.new(contents_params)
-    @content.type = params[:type]
 
     if @content.save
       render json: @content
