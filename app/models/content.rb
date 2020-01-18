@@ -1,5 +1,4 @@
 class Content < ApplicationRecord
-  include Searchable
   has_paper_trail
 
   VIDEO = 'Video'.freeze

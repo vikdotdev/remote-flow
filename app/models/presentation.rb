@@ -1,4 +1,6 @@
 class Presentation < Content
+  include Searchable
+  
   mount_uploader :file, PresentationUploader
 
   has_many :screenshots, dependent: :destroy

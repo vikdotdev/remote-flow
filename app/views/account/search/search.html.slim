@@ -20,11 +20,11 @@
             h5
               - if item._index == 'users'
                 = link_to "#{item.first_name} #{item.last_name}", controller: "users", action: "show", id: item._id
-                |  (User)
+                |  in User
               - elsif item._index == 'channels'
                 = link_to item.name, controller: "channels", action: "show", id: item._id
-                |  (Channel)
+                |  in Channel
               - else
                 = link_to item.title, controller: "contents", action: "show", id: item._id
-                |  (Content)
+                |  in Content-#{Content.find(item.id).type}
       = paginate @search_results
