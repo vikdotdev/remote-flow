@@ -68,11 +68,15 @@ export default class Background extends React.Component {
     return (
       <>
         <UploadButton onChange={this.uploadFile} />
-        <BackgroundList
-          backgrounds={this.state.backgrounds}
-          loading={this.state.imageSpinner}
-          onDeleteClick={this.onDeleteClick}
-        />
+        <div className='card'>
+          <div className="card-body">
+            <BackgroundList
+              backgrounds={this.state.backgrounds}
+              loading={this.state.imageSpinner}
+              onDeleteClick={this.onDeleteClick}
+            />
+          </div>
+        </div>
       </>
     );
   }
