@@ -34,12 +34,14 @@ export default class Background extends React.Component {
       }
     })
     .then(res => res.json())
-    .then(bgs => this.setState({ backgrounds: bgs, imageSpinner: false }));
+    .then(bgs => this.setState({
+      backgrounds: bgs.data.map(d => d.attributes),
+      imageSpinner: false
+    }));
   }
 
   onDeleteClick(e, id) {
     e.preventDefault();
-    console.log(id, e)
 
     fetch(`/account/backgrounds/${id}`, { method: 'DELETE' })
     .then(res => {

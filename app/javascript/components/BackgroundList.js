@@ -29,7 +29,7 @@ class BackgroundList extends React.Component {
           <BackgroundThumbnail
             key={bg.id}
             onClick={e => this.props.onDeleteClick(e, bg.id)}
-            image={{image: bg.image.url, thumb: bg.image.thumb.url}}
+            image={{image: bg.image, thumb: bg.thumb}}
           />
         );
       });

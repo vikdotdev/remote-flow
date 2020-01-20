@@ -4,7 +4,7 @@ class Account::BackgroundsController < Account::AccountController
   def index
     respond_to do |format|
       format.html { render :index }
-      format.json { render json: collection.reverse_order }
+      format.json { render json: BackgroundSerializer.new(collection.reverse_order) }
     end
   end
 
