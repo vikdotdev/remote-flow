@@ -37,7 +37,8 @@ export default class Background extends React.Component {
     .then(bgs => this.setState({
       backgrounds: bgs.data.map(d => d.attributes),
       imageSpinner: false
-    }));
+    }))
+    .catch(() => toastr.error('Failed to fetch images.'));
   }
 
   onDeleteClick(e, id) {
@@ -48,8 +49,10 @@ export default class Background extends React.Component {
       this.setState({
         backgrounds: this.state.backgrounds.filter(bg => bg.id !== id)
       });
+
+      toastr.success('Image successfully deleted.')
     })
-    .catch(err => console.error(err))
+    .catch(() => toastr.error('Failed to delete background.'));
   }
 
   uploadFile(e) {
@@ -63,7 +66,9 @@ export default class Background extends React.Component {
     .then(res => {
       this.fetchImages();
       this.setState({ uploadSpinner: false })
-    });
+      toastr.success('Image successfully uploaded.')
+    })
+    .catch(() => toastr.error('Failed to upload an image.'));
   }
 
   render() {
