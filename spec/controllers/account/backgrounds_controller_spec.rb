@@ -22,6 +22,23 @@ RSpec.describe Account::BackgroundsController, type: :controller do
         expect(response).to be_successful
         expect(response).to render_template(:index)
       end
+
+      it 'renders index template' do
+        get :index
+        expect(response).to be_successful
+        expect(response).to render_template(:index)
+      end
+
+      it 'renders index json' do
+        get :index, format: :json
+
+        json = JSON.parse response.body
+        attr = json['data'][0]['attributes']
+
+        expect(attr['id']).to eq(background.id)
+        expect(attr['image']).to eq(background.image.url)
+        expect(attr['thumb']).to eq(background.image.thumb.url)
+      end
     end
 
     describe 'POST #create' do
