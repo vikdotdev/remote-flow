@@ -10,5 +10,11 @@ FactoryBot.define do
     trait :active do
       active { true }
     end
+
+    trait :with_channels do
+      after(:create) do |device|
+        create_list(:channel, 3, organization: device.organization)
+      end
+    end
   end
 end

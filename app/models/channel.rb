@@ -7,9 +7,7 @@ class Channel < ApplicationRecord
 
   after_destroy :notify_deleted
 
-  validates :name, presence: true,
-                   length: { minimum: 2,
-                             maximum: 255 }
+  validates :name, presence: true, length: { minimum: 2, maximum: 255 }
 
   scope :by_name, -> { order(:name) }
 

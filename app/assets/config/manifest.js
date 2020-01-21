@@ -18,6 +18,7 @@
 //= link prism.min.js
 //= link vertical-menu-light.js
 //= link bootstrap.js
+//= link device-app.js
 //= link show_file_name_in_file_field.js
 //= link jqBootstrapValidation.js
 //= link ckeditor/config.js
@@ -40,6 +41,7 @@
 //= link style.css
 //= link vendors.min.css
 //= link toastr.css
+//= link device-app.css
 //= link form-validation.css
 //= link ckeditor/ckeditor.css
 //= link ckeditor/application.css
@@ -84,6 +86,23 @@
 //= link logo-remote-flow.png
 //
 //= link flags/4x3/us.svg
+
+//= link channel_icons/book.svg
+//= link channel_icons/briefcase.svg
+//= link channel_icons/calendar.svg
+//= link channel_icons/camera.svg
+//= link channel_icons/chat.svg
+//= link channel_icons/clock.svg
+//= link channel_icons/cloud.svg
+//= link channel_icons/dart.svg
+//= link channel_icons/magnifier_glass.svg
+//= link channel_icons/mail.svg
+//= link channel_icons/megaphone.svg
+//= link channel_icons/note.svg
+//= link channel_icons/rocket.svg
+//= link channel_icons/trophy.svg
+//= link channel_icons/wallet.svg
+//= link fallback/default_channel_icon.svg
 //
 //= link application.css
 //= link application.js

@@ -1,13 +1,13 @@
 class User < ApplicationRecord
   include Searchable
-
+  include NotifiableResource
+  
   SUPER_ADMIN = 'super_admin'.freeze
   ADMIN = 'admin'.freeze
   MANAGER = 'manager'.freeze
 
   attr_accessor :skip_organization_validation
   attr_accessor :skip_password_validation
-
 
   devise :database_authenticatable, :registerable, :trackable,
          :recoverable, :rememberable, :validatable, :omniauthable,
@@ -17,6 +17,8 @@ class User < ApplicationRecord
 
   belongs_to :organization, optional: true
   has_many :sent_invites, class_name: 'Invite', foreign_key: 'sender_id'
+  has_many :notifications, as: :notificable, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   accepts_nested_attributes_for :organization
 
   validates :first_name, length: { maximum: 250 }, presence: true
