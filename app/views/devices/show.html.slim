@@ -1,6 +1,6 @@
 css:
   .device-bg {
-    background-image: url("#{asset_path @device.organization.backgrounds.order('random()').first.image}");
+    background-image: url("#{random_background(@device)}");
   }
 
 .d-flex.flex-column.justify-content-between.vh-100
