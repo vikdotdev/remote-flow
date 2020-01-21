@@ -42,7 +42,6 @@ gem "sentry-raven"
 gem 'paper_trail'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
-gem 'elasticsearch-extensions'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -87,6 +86,7 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'rails-controller-testing'
+  gem 'elasticsearch-extensions'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'simplecov', require: false
