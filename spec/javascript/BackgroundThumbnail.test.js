@@ -17,12 +17,12 @@ describe('<BackgroundThumbnail />', () => {
   });
 
   it('renders link to an image', () => {
-    const wrapper = mount(<BackgroundThumbnail {...props} />);
+    const wrapper = shallow(<BackgroundThumbnail {...props} />);
     expect(wrapper.find(`a[href="${props.image.image}"]`)).toHaveLength(1)
   });
 
   it('renders image thumbnail', () => {
-    const wrapper = mount(<BackgroundThumbnail {...props} />);
+    const wrapper = shallow(<BackgroundThumbnail {...props} />);
     expect(wrapper.find(`img[src="${props.image.thumb}"]`)).toHaveLength(1)
   });
 
