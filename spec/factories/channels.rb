@@ -2,14 +2,10 @@ FactoryBot.define do
   factory :channel do
     name { Faker::App.name }
     organization
-
-    trait :with_icon do
-      icon do
-        Rack::Test::UploadedFile.new(
-          Rails.root + 'vendor/assets/images/device_icons/default.svg',
-          'image/svg'
-        )
-      end
+    icon do
+      ActionController::Base.helpers.asset_path(
+        "channel_icons/#{File.basename(Dir.glob("app/assets/images/channel_icons/*.svg").sample)}"
+      )
     end
   end
 
