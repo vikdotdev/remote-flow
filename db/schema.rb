@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_01_16_092942) do
   enable_extension "plpgsql"
 
   create_table "backgrounds", force: :cascade do |t|
-    t.integer "organization_id"
+    t.bigint "organization_id"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -65,7 +65,6 @@ ActiveRecord::Schema.define(version: 2020_01_16_092942) do
     t.string "title"
     t.text "body"
     t.string "file"
-    t.string "presentation_body_plain"
     t.index ["organization_id"], name: "index_contents_on_organization_id"
   end
 
@@ -200,6 +199,7 @@ ActiveRecord::Schema.define(version: 2020_01_16_092942) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
+  add_foreign_key "backgrounds", "organizations"
   add_foreign_key "channels", "organizations"
   add_foreign_key "contents", "organizations"
   add_foreign_key "device_groups", "organizations"

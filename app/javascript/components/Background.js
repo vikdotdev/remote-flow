@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Loader from 'react-loader-spinner'
 
-import { BackgroundList } from './BackgroundList'
-import { UploadButton } from './UploadButton'
+import BackgroundList from './BackgroundList'
+import UploadButton from './UploadButton'
 
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import '../../assets/stylesheets/account/backgrounds.scss'
@@ -35,9 +35,10 @@ export default class Background extends React.Component {
     })
     .then(res => res.json())
     .then(bgs => this.setState({
-      backgrounds: bgs.data.map(d => d.attributes),
-      imageSpinner: false
-    }))
+        backgrounds: bgs.data.map(d => ({id: d.id, ...d.attributes})),
+        imageSpinner: false
+      })
+    )
     .catch(() => toastr.error('Failed to fetch images.'));
   }
 

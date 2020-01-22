@@ -14,4 +14,4 @@ const BackgroundThumbnail = props => {
   );
 };
 
-export { BackgroundThumbnail };
+export default BackgroundThumbnail;

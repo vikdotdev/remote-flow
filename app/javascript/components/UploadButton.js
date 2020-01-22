@@ -14,4 +14,4 @@ const UploadButton = ({ onChange }) => {
   );
 }
 
-export { UploadButton };
+export default UploadButton;
