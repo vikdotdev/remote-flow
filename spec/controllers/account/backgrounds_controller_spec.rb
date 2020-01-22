@@ -35,7 +35,7 @@ RSpec.describe Account::BackgroundsController, type: :controller do
         json = JSON.parse response.body
         attr = json['data'][0]['attributes']
 
-        expect(attr['id']).to eq(background.id)
+        expect(json['data'][0]['id'].to_i).to eq(background.id)
         expect(attr['image']).to eq(background.image.url)
         expect(attr['thumb']).to eq(background.image.thumb.url)
       end

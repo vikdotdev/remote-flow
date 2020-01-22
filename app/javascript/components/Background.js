@@ -13,7 +13,6 @@ export default class Background extends React.Component {
     super(props);
     this.state = {
       backgrounds: [],
-      uploadSpinner: true,
       imageSpinner: true
     };
 
