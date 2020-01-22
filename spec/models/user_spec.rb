@@ -22,6 +22,19 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'search spec' do
+    it 'should update ES when the object is created' do
+      User.__elasticsearch__.refresh_index!
+      expect(User.search("#{user.first_name}").records.length).to eq(1)
+    end
+
+    it 'should update ES when the object is destroyed' do
+      user.destroy!
+      User.__elasticsearch__.refresh_index!
+      expect(User.search("#{user.first_name}").records.length).to eq(0)
+    end
+  end
+
   describe '::from_omniauth' do
     context 'with existing user' do
       let!(:google_user) { create(:user, first_name: 'Jesse',

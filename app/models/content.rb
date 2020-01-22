@@ -1,5 +1,6 @@
 class Content < ApplicationRecord
   has_paper_trail
+
   VIDEO = 'Video'.freeze
   GALLERY = 'Gallery'.freeze
   PAGE = 'Page'.freeze

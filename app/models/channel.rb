@@ -1,4 +1,6 @@
 class Channel < ApplicationRecord
+  include Searchable
+
   belongs_to :organization
   has_and_belongs_to_many :device_groups
   has_and_belongs_to_many :contents
@@ -14,4 +16,5 @@ class Channel < ApplicationRecord
   def notify_deleted
     AdminMailer.delete_channel(self).deliver_now
   end
+
 end

@@ -20,16 +20,18 @@ nav.header-navbar.main-header-navbar.navbar-expand-lg.navbar.navbar-with-menu.fi
           = render partial: 'shared/account/notification',\
                    locals: { notifications: current_user.notifications.recent,
                              unread_notifications_count: current_user.notifications.unread.count }
-          li.nav-item.nav-search
-            a.nav-link.nav-link-search
-              i.ficon.bx.bx-search
-            .search-input
-              .search-input-icon
-                i.bx.bx-search.primary
-              input.input placeholder=("Search") tabindex="-1" type="text" /
-              .search-input-close
-                i.bx.bx-x
-              ul.search-list
+          = form_for :search, url: account_search_path, method: :get do |f|
+            li.nav-item.nav-search
+              a.nav-link.nav-link-search
+                i.ficon.bx.bx-search
+              .search-input
+                .search-input-icon
+                  = button_tag :submit, id: 'search-submit', class: 'btn bg-transparent p-0' do
+                    i.bx.bx-search.primary
+                = text_field_tag :el, params[:el], placeholder: 'Search ...', class: 'input'
+                .search-input-close
+                  i.bx.bx-x
+                ul.search-list
           li.dropdown.dropdown-user.nav-item
             a.dropdown-toggle.nav-link.dropdown-user-link data-toggle="dropdown" href="#"
               .user-nav.d-sm-flex.d-none

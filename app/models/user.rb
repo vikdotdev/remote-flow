@@ -1,6 +1,7 @@
 class User < ApplicationRecord
+  include Searchable
   include NotifiableResource
-
+  
   SUPER_ADMIN = 'super_admin'.freeze
   ADMIN = 'admin'.freeze
   MANAGER = 'manager'.freeze

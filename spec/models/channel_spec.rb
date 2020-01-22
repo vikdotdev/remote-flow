@@ -23,4 +23,17 @@ RSpec.describe Channel, type: :model do
       expect { channel.destroy }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
   end
+
+  describe 'search spec' do
+    it 'should update ES when the object is created' do
+      Channel.__elasticsearch__.refresh_index!
+      expect(Channel.search("#{channel.name}").records.length).to eq(1)
+    end
+
+    it 'should update ES when the object is destroyed' do
+      channel.destroy!
+      Channel.__elasticsearch__.refresh_index!
+      expect(Channel.search("#{channel.name}").records.length).to eq(0)
+    end
+  end
 end
