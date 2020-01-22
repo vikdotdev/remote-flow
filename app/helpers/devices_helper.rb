@@ -5,7 +5,7 @@ module DevicesHelper
   end
 
   def random_background(device)
-    bg = device.organization.backgrounds.order('random()').limit(100)
+    bg = device.organization.backgrounds.order('random()').limit(1)
     asset_path(bg.first&.image ? bg.first.image : '')
   end
 end
