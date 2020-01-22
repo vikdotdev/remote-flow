@@ -1,6 +1,6 @@
 import React from 'react';
 import sinon from 'sinon';
-import { shallow, render, mount } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 
 import BackgroundThumbnail from 'components/BackgroundThumbnail'
 
@@ -16,18 +16,14 @@ describe('<BackgroundThumbnail />', () => {
     };
   });
 
-  xit('renders link to an image', () => {
-    const wrapper = render(<BackgroundThumbnail {...props} />);
-    expect(wrapper.html()).toEqual(
-      expect.stringContaining(`href="${props.image.image}"`)
-    );
+  it('renders link to an image', () => {
+    const wrapper = mount(<BackgroundThumbnail {...props} />);
+    expect(wrapper.find(`a[href="${props.image.image}"]`)).toHaveLength(1)
   });
 
   it('renders image thumbnail', () => {
-    const wrapper = render(<BackgroundThumbnail {...props} />);
-    expect(wrapper.html()).toEqual(
-      expect.stringContaining(`src="${props.image.thumb}"`)
-    );
+    const wrapper = mount(<BackgroundThumbnail {...props} />);
+    expect(wrapper.find(`img[src="${props.image.thumb}"]`)).toHaveLength(1)
   });
 
   it('has .close', () => {
