@@ -29,7 +29,7 @@ export default class Background extends React.Component {
     fetch('/account/backgrounds.json')
     .then(res => res.json())
     .then(bgs => this.setState({
-        backgrounds: bgs.data.map(d => ({id: d.id, ...d.attributes})),
+        backgrounds: bgs.data.map((d, attr) => ({ ...attr, id })),
         imageSpinner: false
       })
     )

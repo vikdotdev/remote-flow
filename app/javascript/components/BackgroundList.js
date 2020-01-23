@@ -15,7 +15,7 @@ export default class BackgroundList extends React.Component {
       <BackgroundThumbnail
         key={bg.id}
         onClick={e => this.props.onDeleteClick(e, bg.id)}
-        image={{image: bg.image, thumb: bg.thumb}}
+        image={bg}
       />
     );
   }
@@ -26,7 +26,6 @@ export default class BackgroundList extends React.Component {
         <Loader
           type='TailSpin'
           color='#aaaaaa'
-          className=''
           height={100}
           width={100}
         />

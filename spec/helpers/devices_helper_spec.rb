@@ -18,7 +18,7 @@ RSpec.describe DevicesHelper, type: :helper do
   describe 'background helper' do
     it 'returns random existing image path' do
       path = Rails.root.join('public').to_s + random_background(device)
-      expect(Pathname.new(path).exist?).to be true
+      expect(Pathname.new(path)).to be_exist
     end
   end
 end
