@@ -26,12 +26,7 @@ export default class Background extends React.Component {
   }
 
   fetchImages() {
-    fetch('/account/backgrounds', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
+    fetch('/account/backgrounds.json')
     .then(res => res.json())
     .then(bgs => this.setState({
         backgrounds: bgs.data.map(d => ({id: d.id, ...d.attributes})),
