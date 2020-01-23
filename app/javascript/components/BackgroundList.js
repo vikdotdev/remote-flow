@@ -7,39 +7,41 @@ import BackgroundThumbnail from './BackgroundThumbnail'
 export default class BackgroundList extends React.Component {
   constructor(props) {
     super(props);
-    this.renderImages = this.renderImages.bind(this);
+    this.renderImage = this.renderImage.bind(this);
   }
 
-  renderImages() {
-    if (this.props.loading) {
-      return (
-        <div className='d-flex flex-wrap justify-content-center align-items-center vw-100 background-spinner-container'>
-          <Loader
-            type='TailSpin'
-            color='#aaaaaa'
-            className=''
-            height={100}
-            width={100}
-          />
-        </div>
-      );
-    }
+  renderImage(bg) {
+    return (
+      <BackgroundThumbnail
+        key={bg.id}
+        onClick={e => this.props.onDeleteClick(e, bg.id)}
+        image={{image: bg.image, thumb: bg.thumb}}
+      />
+    );
+  }
 
-    return this.props.backgrounds.map(bg => {
-      return (
-        <BackgroundThumbnail
-          key={bg.id}
-          onClick={e => this.props.onDeleteClick(e, bg.id)}
-          image={{image: bg.image, thumb: bg.thumb}}
+  renderLoader() {
+    return (
+      <div className='d-flex flex-wrap justify-content-center align-items-center vw-100 background-spinner-container'>
+        <Loader
+          type='TailSpin'
+          color='#aaaaaa'
+          className=''
+          height={100}
+          width={100}
         />
-      );
-    });
+      </div>
+    );
   }
 
   render() {
-    return (
+    const { loading } = this.props;
+    const list = this.props.backgrounds.map(this.renderImage);
+
+    return(
       <div className='background-spinner-container d-flex flex-wrap'>
-        { this.renderImages() }
+        { list }
+        { loading && this.renderLoader() }
       </div>
     );
   }
