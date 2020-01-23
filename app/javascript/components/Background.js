@@ -11,6 +11,8 @@ import '../../assets/stylesheets/account/backgrounds.scss'
 export default class Background extends React.Component {
   constructor(props) {
     super(props);
+    this.csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+    console.log(this.csrfToken);
     this.state = {
       backgrounds: [],
       imageSpinner: true
@@ -39,7 +41,10 @@ export default class Background extends React.Component {
   onDeleteClick(e, id) {
     e.preventDefault();
 
-    fetch(`/account/backgrounds/${id}`, { method: 'DELETE' })
+    fetch(`/account/backgrounds/${id}`, {
+      headers: { 'X-CSRF-Token': this.csrfToken },
+      method: 'DELETE'
+    })
     .then(res => {
       this.setState({
         backgrounds: this.state.backgrounds.filter(bg => bg.id !== id)
@@ -55,6 +60,7 @@ export default class Background extends React.Component {
     form.append('image', e.target.files[0]);
 
     fetch('/account/backgrounds', {
+      headers: { 'X-CSRF-Token': this.csrfToken },
       method: 'POST',
       body: form
     })
