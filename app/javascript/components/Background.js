@@ -60,7 +60,6 @@ export default class Background extends React.Component {
     })
     .then(res => {
       this.fetchImages();
-      this.setState({ uploadSpinner: false })
       toastr.success('Image successfully uploaded.')
     })
     .catch(() => toastr.error('Failed to upload an image.'));
