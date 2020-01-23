@@ -17,11 +17,6 @@ describe('<Background />', () => {
     expect(wrapper.find(BackgroundList)).toHaveLength(1);
   });
 
-  it('renders one <BackgroundList />', () => {
-    const wrapper = shallow(<Background />);
-    expect(wrapper.find(BackgroundList)).toHaveLength(1);
-  });
-
   it('calls fetchImages on mount', () => {
     sinon.spy(Background.prototype, 'fetchImages');
     const wrapper = mount(<Background />);
