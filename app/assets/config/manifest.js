@@ -103,6 +103,12 @@
 //= link channel_icons/trophy.svg
 //= link channel_icons/wallet.svg
 //= link fallback/default_channel_icon.svg
-//
+
+//= link backgrounds/1.jpg
+//= link backgrounds/2.jpg
+//= link backgrounds/3.jpg
+//= link backgrounds/4.jpg
+//= link backgrounds/5.jpg
+
 //= link application.css
 //= link application.js

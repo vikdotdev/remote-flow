@@ -15,6 +15,7 @@ super_administrator = FactoryBot.create(:user, organization_id: nil, role: 'supe
   content_with_presentation = FactoryBot.create_list(:presentation_with_screenshots, 5, organization_id: organization.id)
   content_with_page = FactoryBot.create_list(:content, 5, :page, organization_id: organization.id)
   feedbacks = FactoryBot.create_list(:feedback, 5)
+  backgrounds = FactoryBot.create_list(:background, 5, organization: organization)
 
   device_groups.each do |device_group|
     rand(2..6).times do
