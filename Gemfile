@@ -43,6 +43,8 @@ gem 'sentry-raven'
 gem 'paper_trail'
 gem 'telegram-bot'
 gem 'redis-rails'
+gem 'react-rails'
+gem 'fast_jsonapi'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
