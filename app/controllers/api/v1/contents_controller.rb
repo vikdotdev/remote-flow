@@ -21,6 +21,7 @@ class Api::V1::ContentsController < Api::V1::ApiController
 
   def update
     @content = resource
+
     if @content.update(contents_params)
       render json: @content
     else
@@ -37,6 +38,7 @@ class Api::V1::ContentsController < Api::V1::ApiController
 
   def contents_params
     permitted = %i[title type]
+
     permitted << :video_url if params[:content][:type] == Content::VIDEO
     permitted << :body if params[:content][:type] == Content::PAGE
     permitted << :file if params[:content][:type] == Content::PRESENTATION

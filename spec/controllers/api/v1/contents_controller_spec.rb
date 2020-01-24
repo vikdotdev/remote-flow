@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::ContentsController, type: :controller do
   let!(:organization) { create(:organization) }
-  let!(:content) { create(:content, :video, organization_id: organization.id) }
+  let!(:content) { create(:content, organization_id: organization.id) }
 
   describe 'GET #index' do
     it 'return organization by token' do
