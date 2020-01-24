@@ -15,7 +15,7 @@ export default class BackgroundList extends React.Component {
       <BackgroundThumbnail
         key={bg.id}
         onClick={e => this.props.onDeleteClick(e, bg.id)}
-        image={bg}
+        image={{ image: bg.image, thumb: bg.thumb }}
       />
     );
   }
@@ -35,7 +35,7 @@ export default class BackgroundList extends React.Component {
 
   render() {
     const { loading } = this.props;
-    const list = this.props.backgrounds.map(this.renderImage);
+    const list = this.props.backgrounds.map(bg => this.renderImage(bg));
 
     return(
       <div className='background-spinner-container d-flex flex-wrap'>
