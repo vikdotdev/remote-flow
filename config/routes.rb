@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  telegram_webhook TelegramBotController
+
   root 'public#index'
 
   get '/pricing', to: 'public#pricing'
@@ -54,13 +56,16 @@ Rails.application.routes.draw do
         patch :restore
       end
     end
+
+    resources :backgrounds, only: %i[index create destroy]
   end
 
   namespace :api do
     namespace :v1 do
       resource  :organization, only: :show
-      resources :channels, except: :index
+      resources :channels, except: %i[edit new]
+      resources :contents, except: %i[edit new]
+      resource :organizations, only: %i[show]
     end
   end
-
 end

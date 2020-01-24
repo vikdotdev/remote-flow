@@ -1,5 +1,6 @@
 class Account::ContentsController < Account::AccountController
   before_action :set_paper_trail_whodunnit
+
   def index
     @q = collection.ransack(params[:q])
     @contents = @q.result.by_title.page(params[:page]).per(10)

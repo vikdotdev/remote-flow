@@ -30,6 +30,8 @@
                            class: "#{'active' if controller.controller_name == 'devices'}" })
         = sidebar_button({ text: 'Channels', path: account_channels_path, icon: 'thumbnails-small',\
                            class: "#{'active' if controller.controller_name == 'channels'}" })
+        = sidebar_button({ text: 'Themes', path: account_backgrounds_path, icon: 'image',\
+                           class: "#{'active' if controller.controller_name == 'devices'}" })
         = sidebar_button({ text: 'Content', path: account_contents_path, icon: 'box',\
                            class: "#{'active' if controller.controller_name == 'contents'}" })
         = sidebar_button({ text: 'Analytics', path: '#', icon: 'pie-chart' })
@@ -39,7 +41,7 @@
         = sidebar_button({ text: 'Analytics', path: account_analytics_path, icon: 'pie-chart',\
                            class: "#{'active' if controller.controller_name == 'dashboard' &&\
                                                  controller.action_name == 'analytics'}" })
-         = sidebar_button({ text: 'Feedback', path: account_feedbacks_path, icon: 'envelope-put',\
+        = sidebar_button({ text: 'Feedback', path: account_feedbacks_path, icon: 'envelope-put',\
                                     class: "#{'active' if controller.controller_name == 'feedbacks'}" })
       = sidebar_button({ text: 'Reports', path: '#', icon: 'morph-folder' })
     ul.navigation.navigation-main data-icon-style="lines" data-menu="menu-navigation"
