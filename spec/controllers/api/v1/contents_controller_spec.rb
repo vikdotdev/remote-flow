@@ -9,16 +9,12 @@ RSpec.describe Api::V1::ContentsController, type: :controller do
       request.headers['Token'] = organization.token
       get :index
       expect(response).to have_http_status(200)
-      expect(response.headers).to have_key('Per-Page')
-      expect(response.headers).to have_key('Total')
     end
 
     it 'return error by invalid token' do
       request.headers['Token'] = organization.token + 'Ruby'
       get :index
       expect(response).to have_http_status(400)
-      expect(response.headers).to_not have_key('Per-Page')
-      expect(response.headers).to_not have_key('Total')
     end
   end
 
@@ -121,7 +117,7 @@ RSpec.describe Api::V1::ContentsController, type: :controller do
           }
 
           expect(response).to have_http_status(200)
-          expect(channel.reload.title).to eq('Sabre')
+          expect(content.reload.title).to eq('Sabre')
         end
       end
 
@@ -152,7 +148,7 @@ RSpec.describe Api::V1::ContentsController, type: :controller do
           }
 
           expect(response).to have_http_status(200)
-          expect(channel.reload.organization_id).to eq(organization.id)
+          expect(content.reload.organization_id).to eq(organization.id)
         end
       end
     end
