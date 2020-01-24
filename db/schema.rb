@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2020_01_16_092942) do
     t.string "title"
     t.text "body"
     t.string "file"
+    t.text "presentation_body_plain"
     t.index ["organization_id"], name: "index_contents_on_organization_id"
   end
 
