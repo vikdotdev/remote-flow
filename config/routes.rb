@@ -54,6 +54,8 @@ Rails.application.routes.draw do
         patch :restore
       end
     end
+
+    resources :backgrounds, only: %i[index create destroy]
   end
 
   namespace :api do
