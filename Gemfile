@@ -41,6 +41,8 @@ gem 'activerecord-session_store'
 gem 'paranoia'
 gem 'sentry-raven'
 gem 'paper_trail'
+gem 'telegram-bot'
+gem 'redis-rails'
 gem 'react-rails'
 gem 'fast_jsonapi'
 # Use Redis adapter to run Action Cable in production
